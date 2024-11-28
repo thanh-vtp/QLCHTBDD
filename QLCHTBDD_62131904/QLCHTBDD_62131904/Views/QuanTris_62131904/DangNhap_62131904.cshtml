@@ -1,0 +1,43 @@
+﻿
+@model QLCHTBDD_62131904.Models.QuanTri
+@{
+    ViewBag.Title = "DangNhap_62131904";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+<h2>THÔNG TIN ĐĂNG NHẬP</h2>
+
+@*//-- actionName, controllerName ---*@
+@using (Html.BeginForm("DangNhap_62131904", "QuanTris_62131904", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "Đăng nhập không thành công. Kiểm tra lại các thông tin.", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input type="password" name="password" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng nhập" class="btn btn-default" />
+            </div>
+            <div>
+                @ViewBag.TB
+            </div>
+        </div>
+    </div>
+}
+

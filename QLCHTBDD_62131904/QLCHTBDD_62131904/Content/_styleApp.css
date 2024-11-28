@@ -1,0 +1,78 @@
+﻿/* Reset mặc định */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; /* Đảm bảo padding và border được tính trong width và height */
+}
+
+/* Style cho phần banner */
+#banner {
+    height: 60px;
+    font-size: 22px;
+    color: blue;
+    text-align: center;
+    background-color: aqua;
+    line-height: 60px; /* Đảm bảo nội dung căn giữa theo chiều dọc */
+    width: 100%;
+    border-color: #080808;
+    border-bottom: 1px solid #ccc; /* Đường kẻ phân cách banner */
+}
+
+/* Style cho menu */
+#menu {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: aquamarine;
+    font-size: 14px;
+    /*text-align: center;*/ /* Căn giữa nội dung */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+    /* Định dạng link trong menu */
+    #menu a {
+        text-decoration: none; /* Tắt gạch chân */
+        color: blue;
+        margin: 0 10px; /* Khoảng cách giữa các link */
+        font-weight: bold;
+        transition: none;
+    }
+
+        /* Hover và active cho link menu */
+        #menu a:hover {
+            color: orange; /* Đổi màu khi hover */
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        #menu a.current {
+            color: orange; /* Màu nổi bật cho menu hiện tại */
+            font-weight: bold;
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+/* Style cho footer */
+#footer {
+    width: 100%;
+    height: 30px;
+    line-height: 30px; /* Căn giữa nội dung theo chiều dọc */
+    text-align: center;
+    background-color: aqua;
+    border-top: 1px solid #ccc; /* Đường kẻ phân cách footer */
+    position: fixed; /* Giữ footer cố định bên dưới */
+    bottom: 0;
+}
+
+/* Style cho content */
+#content {
+    width: 100%;
+    height: calc(100vh - 130px); /* 100% màn hình trừ chiều cao banner và footer */
+    background-color: white; /* Màu nền mặc định */
+    overflow-y: auto; /* Hiển thị thanh cuộn dọc nếu nội dung dài */
+    margin: 0 auto;
+    box-sizing: border-box; /* Bao gồm padding, border trong height */
+    padding: 10px; /* Khoảng cách bên trong content */
+}
