@@ -129,13 +129,23 @@
         <ScalarProperty Name="MaNV" ColumnName="MaNV" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="QuanTris">
-      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTri">
-        <MappingFragment StoreEntitySet="QuanTri">
+    <EntitySetMapping Name="QuanTriHeThongs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTriHeThong">
+        <MappingFragment StoreEntitySet="QuanTriHeThong">
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="Admin" ColumnName="Admin" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MaQT" ColumnName="MaQT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HinhAnhSanPhams">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.HinhAnhSanPham">
+        <MappingFragment StoreEntitySet="HinhAnhSanPham">
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="AnhPhuSP" ColumnName="AnhPhuSP" />
+          <ScalarProperty Name="MaHA" ColumnName="MaHA" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

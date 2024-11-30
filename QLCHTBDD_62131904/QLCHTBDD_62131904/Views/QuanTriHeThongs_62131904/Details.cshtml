@@ -1,0 +1,42 @@
+﻿@model QLCHTBDD_62131904.Models.QuanTriHeThong
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    string _admin = Model.Admin == true ? "Admin" : "Nhân viên";
+}
+
+<div style="margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; max-width: 600px; background-color: #f9f9f9;">
+    <h2 style="text-align: center;margin-bottom: 20px; font-weight: bold; color: #007BFF;">Thông tin chi tiết</h2>
+    <table style="width: 100%; font-size: 14px; border-collapse: collapse;">
+        <tr>
+            <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Email:</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">@Model.Email</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Quyền:</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">@_admin</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Họ tên:</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">@Model.HoTen</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Password:</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">***************</td>
+        </tr>
+    </table>
+    <div style="text-align: center; margin-top: 20px;">
+        @Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaQT }, new { @class = "btn btn-primary", style = "margin-right: 10px; padding: 10px 15px; text-decoration: none;" })
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary", style = "padding: 10px 15px; text-decoration: none;" })
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+</style>

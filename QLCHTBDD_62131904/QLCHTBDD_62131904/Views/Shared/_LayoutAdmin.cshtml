@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Admin Panel</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/_styleAdmin.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="sidebar">
+        @Html.ActionLink("Admin Panel", "Index", "SanPhams_62131904", null, new { @class = "navbar-brand text-center py-3" })
+        @Html.ActionLink("Thông tin quản trị", "GetCurrentAdmin", "GetCurrentAdmin_62131904", null, new { @class = "a" })
+        @Html.ActionLink("Quản trị hệ thống", "Index", "QuanTriHeThongs_62131904", null, new { @class = "a" })
+        @Html.ActionLink("Loại sản phẩm", "Index", "LoaiSPs_62131904", null, new { @class = "a" })
+        @Html.ActionLink("Sản phẩm", "Index", "SanPhams_62131904", null, new { @class = "a" })
+        @Html.ActionLink("Khách hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
+        @Html.ActionLink("Đơn hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
+        @Html.ActionLink("Đăng xuất", "Logout", "QuanTriHeThongs_62131904", null, new { @class = "a" })
+    </div>
+    <div class="content">
+        @RenderBody()
+    </div>
+    <footer class="text-center mt-5">
+        <p>© @DateTime.Now.Year Admin Panel</p>
+    </footer>
+</body>
+</html>

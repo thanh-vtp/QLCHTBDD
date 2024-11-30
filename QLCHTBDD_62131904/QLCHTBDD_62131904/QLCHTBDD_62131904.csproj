@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -54,8 +57,21 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -129,9 +145,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GetCurrentAdmin_62131904Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NhanViens_62131904Controller.cs" />
-    <Compile Include="Controllers\QuanTris_62131904Controller.cs" />
+    <Compile Include="Controllers\LoaiSPs_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanTriHeThongs_62131904Controller.cs" />
+    <Compile Include="Controllers\SanPhams_62131904Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -142,6 +160,9 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GioHang.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HinhAnhSanPham.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhachHang.cs">
@@ -177,7 +198,7 @@
     <Compile Include="Models\PhanQuyen.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuanTri.cs">
+    <Compile Include="Models\QuanTriHeThong.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SanPham.cs">
@@ -187,6 +208,7 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Authentication_Services.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -205,14 +227,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\_styleAdmin.css" />
     <Content Include="Content\_styleApp.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model_62131904.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model_62131904.Context.cs</LastGenOutput>
       <DependentUpon>Model_62131904.edmx</DependentUpon>
+      <LastGenOutput>Model_62131904.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model_62131904.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -258,25 +281,28 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutApp.cshtml" />
-    <Content Include="Views\QuanTris62131904\Create.cshtml" />
-    <Content Include="Views\QuanTris62131904\Delete.cshtml" />
-    <Content Include="Views\QuanTris62131904\Details.cshtml" />
-    <Content Include="Views\QuanTris62131904\Edit.cshtml" />
-    <Content Include="Views\QuanTris62131904\Index.cshtml" />
-    <Content Include="Views\NhanViens_62131904\Create.cshtml" />
-    <Content Include="Views\NhanViens_62131904\Delete.cshtml" />
-    <Content Include="Views\NhanViens_62131904\Details.cshtml" />
-    <Content Include="Views\NhanViens_62131904\Edit.cshtml" />
-    <Content Include="Views\NhanViens_62131904\Index.cshtml" />
-    <Content Include="Views\QuanTris_62131904\Create.cshtml" />
-    <Content Include="Views\QuanTris_62131904\Delete.cshtml" />
-    <Content Include="Views\QuanTris_62131904\Details.cshtml" />
-    <Content Include="Views\QuanTris_62131904\Edit.cshtml" />
-    <Content Include="Views\QuanTris_62131904\Index.cshtml" />
-    <Content Include="Views\QuanTris_62131904\DangNhap_62131904.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Create.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Delete.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Details.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Edit.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Index.cshtml" />
+    <Content Include="Views\LoaiSPs_62131904\Create.cshtml" />
+    <Content Include="Views\LoaiSPs_62131904\Delete.cshtml" />
+    <Content Include="Views\LoaiSPs_62131904\Details.cshtml" />
+    <Content Include="Views\LoaiSPs_62131904\Edit.cshtml" />
+    <Content Include="Views\LoaiSPs_62131904\Index.cshtml" />
+    <Content Include="Views\QuanTriHeThongs_62131904\Create.cshtml" />
+    <Content Include="Views\QuanTriHeThongs_62131904\Index.cshtml" />
+    <Content Include="Views\QuanTriHeThongs_62131904\Login.cshtml" />
+    <Content Include="Views\QuanTriHeThongs_62131904\Details.cshtml" />
+    <Content Include="Views\QuanTriHeThongs_62131904\Edit.cshtml" />
+    <Content Include="Views\QuanTriHeThongs_62131904\Delete.cshtml" />
+    <Content Include="Views\GetCurrentAdmin_62131904\GetCurrentAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

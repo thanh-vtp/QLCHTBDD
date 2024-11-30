@@ -36,6 +36,7 @@ namespace QLCHTBDD_62131904.Models
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<ThongSoKiThuat> ThongSoKiThuats { get; set; }
-        public virtual DbSet<QuanTri> QuanTris { get; set; }
+        public virtual DbSet<QuanTriHeThong> QuanTriHeThongs { get; set; }
+        public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
     }
 }
