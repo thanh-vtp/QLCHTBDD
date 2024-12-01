@@ -1,0 +1,287 @@
+﻿@model QLCHTBDD_62131904.Models.SanPham
+
+@{
+    ViewBag.Title = "Thêm mới sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+}
+<h2 style="text-align: center; font-weight: bold; color: #007BFF;">Thêm mới sản phẩm</h2>
+<div class="container" style="margin-top: 20px;  display: flex; justify-content: space-between;">
+
+    <!-- Cụm ảnh nằm bên trái -->
+    <div style="width: 40%; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
+        <!-- Ảnh đặc trưng -->
+        <div id="imagePreview">
+            <h5 style="font-weight: bold; color: #007BFF">Ảnh đặc trưng đã chọn:</h5>
+            <div id="main-avatar" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <div id="placeholder" class="fixed-size-placeholder">
+                    <span style="color: #ccc;">No image selected</span>
+                </div>
+            </div>
+        </div>
+        <!-- Ảnh phụ -->
+        <div id="imagePreview">
+            <h5 style="font-weight: bold; color: #007BFF">Ảnh phụ đã chọn:</h5>
+            <div id="second-avatar" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <div id="placeholder-second" class="fixed-second-size-placeholder">
+                    <span style="color: #ccc;">No image selected</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Form tạo sản phẩm -->
+    <div style="width: 55%; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
+        @using (Html.BeginForm("Create", "SanPhams_62131904", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div style="margin: 10px 0;">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                @Html.LabelFor(model => model.TenSP, "Tên sản phẩm", new { style = "font-weight: bold;" })
+                @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên sản phẩm" } })
+                @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                @Html.LabelFor(model => model.MoTa, "Mô tả", new { style = "font-weight: bold;" })
+                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mô tả" } })
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                @Html.LabelFor(model => model.DonGia, "Đơn giá", new { style = "font-weight: bold;" })
+                @Html.EditorFor(model => model.DonGia, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập đơn giá" } })
+                @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                @Html.LabelFor(model => model.DonViTinh, "Đơn vị tính", new { style = "font-weight: bold;" })
+                @Html.DropDownListFor(model => model.DonViTinh,
+                                      new SelectList(new List<string> { "Cái", "Chiếc", "Bộ", "Máy" }),
+                                      "Chọn đơn vị tính",
+                                      new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DonViTinh, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                @Html.LabelFor(model => model.MaLSP, "Loại sản phẩm", new { style = "font-weight: bold;" })
+                @Html.DropDownList("MaLSP", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaLSP, "", new { @class = "text-danger" })
+            </div>
+
+            <!-- Trường nhập liệu cho ảnh đặc trưng -->
+            <div style="margin-bottom: 15px;">
+                @Html.LabelFor(model => model.AnhSP, "Ảnh đặc trưng", new { style = "font-weight: bold;" })
+                <input type="file" id="mainImageInput" name="Avatar" accept="image/*" class="form-control" onchange="previewMainImage(event)" />
+                <input type="hidden" id="mainImageFilename" name="MainImageFilename" />
+                @Html.ValidationMessageFor(model => model.AnhSP, "", new { @class = "text-danger" })
+            </div>
+
+            <!-- Trường nhập liệu cho ảnh phụ -->
+            <div style="margin-bottom: 15px;">
+                <label for="AnhPhuSP" style="font-weight: bold;">Ảnh phụ</label>
+                <input type="file" name="AnhPhuSP" accept="image/*" class="form-control" multiple onchange="previewAdditionalImages(event)" />
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="submit" class="btn btn-primary" style="padding: 10px 15px; margin-right: 10px;">Thêm mới</button>
+                @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary", style = "padding: 10px 15px;" })
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    // Preview ảnh đặc trưng khi chọns
+    function previewMainImage(event) {
+        const previewImages = document.getElementById('main-avatar');
+        const placeholder = document.getElementById('placeholder');
+
+        // Xóa nội dung cũ (ảnh hoặc giữ placeholder nếu không có ảnh mới)
+        previewImages.innerHTML = '';
+
+        const file = event.target.files[0];
+        if (file) {
+            // Nếu có file được chọn, xóa placeholder
+            if (placeholder) {
+                placeholder.remove();
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                // Tạo container chứa ảnh và nút xóa
+                const imgContainer = document.createElement('div');
+                imgContainer.style.position = 'relative'; // Để đặt nút xóa lên ảnh
+                imgContainer.style.display = 'inline-block';
+                imgContainer.style.margin = '5px';
+
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('fixed-size-image');
+
+                // Tạo nút xóa (icon "x")
+                const removeButton = document.createElement('span');
+                removeButton.innerHTML = '&#10005;'; // Biểu tượng xóa (x)
+                removeButton.style.position = 'absolute';
+                removeButton.style.top = '10px';
+                removeButton.style.right = '10px';
+                removeButton.style.fontSize = '20px';
+                removeButton.style.color = 'red';
+                removeButton.style.cursor = 'pointer';
+                removeButton.title = 'Xóa hình ảnh';
+                removeButton.onclick = function () {
+                    // Xóa ảnh khi nhấn nút x
+                    previewImages.removeChild(imgContainer);
+                    document.getElementById('mainImageInput').value = ''; // Clear file input
+
+                    // Hiển thị lại placeholder nếu không còn ảnh
+                    if (previewImages.children.length === 0) {
+                        previewImages.appendChild(placeholder);
+                    }
+                };
+
+                // Thêm ảnh và nút xóa vào container
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(removeButton);
+
+                // Thêm container vào vùng hiển thị
+                previewImages.appendChild(imgContainer);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            // Nếu không có file, giữ nguyên placeholder
+            previewImages.appendChild(placeholder);
+        }
+    }
+
+    // Preview ảnh phụ khi chọn
+    function previewAdditionalImages(event) {
+        const previewImages = document.getElementById('second-avatar');
+        let placeholder = document.getElementById('placeholder-second');
+
+        // Nếu không có placeholder, tạo mới
+        if (!placeholder) {
+            placeholder = document.createElement('div');
+            placeholder.id = 'placeholder-second';
+            placeholder.classList.add('fixed-second-size-placeholder');
+            placeholder.innerHTML = '<span style="color: #ccc;">No image selected</span>';
+            previewImages.appendChild(placeholder);
+        }
+
+        const files = event.target.files;
+
+        if (files.length > 0) {
+            // Nếu có file, giữ placeholder nhưng đảm bảo nó luôn ở cuối
+            placeholder.style.display = 'none'; // Ẩn tạm placeholder
+
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    // Tạo container chứa ảnh và nút xóa
+                    const imgContainer = document.createElement('div');
+                    imgContainer.style.position = 'relative'; // Để đặt nút xóa lên ảnh
+                    imgContainer.style.display = 'inline-block';
+                    imgContainer.style.margin = '5px';
+
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('fixed-second-size-image');
+
+                    // Tạo nút xóa (icon "x")
+                    const removeButton = document.createElement('span');
+                    removeButton.innerHTML = '&#10005;'; // Biểu tượng xóa (x)
+                    removeButton.style.position = 'absolute';
+                    removeButton.style.top = '10px';
+                    removeButton.style.right = '10px';
+                    removeButton.style.fontSize = '20px';
+                    removeButton.style.color = 'red';
+                    removeButton.style.cursor = 'pointer';
+                    removeButton.title = 'Xóa hình ảnh';
+                    removeButton.onclick = function () {
+                        // Xóa ảnh khi nhấn nút x
+                        previewImages.removeChild(imgContainer);
+
+                        // Hiển thị lại placeholder nếu không còn ảnh nào
+                        if (previewImages.querySelectorAll('.fixed-second-size-image').length === 0) {
+                            placeholder.style.display = 'flex';
+                        }
+                    };
+
+                    // Thêm ảnh và nút xóa vào container
+                    imgContainer.appendChild(img);
+                    imgContainer.appendChild(removeButton);
+
+                    // Thêm ảnh vào trước placeholder
+                    previewImages.insertBefore(imgContainer, placeholder);
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Đảm bảo placeholder luôn ở cuối
+            placeholder.style.display = 'flex'; // Hiện lại placeholder sau khi thêm ảnh
+        } else {
+            // Nếu không có file, hiển thị lại placeholder
+            placeholder.style.display = 'flex';
+        }
+    }
+
+</script>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    #main-avatar, #second-avatar {
+        margin-bottom: 20px;
+    }
+
+    .fixed-size-image {
+        width: 300px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .fixed-size-placeholder {
+        width: 300px;
+        height: 225px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed #ccc;
+        border-radius: 5px;
+        color: #ccc;
+    }
+
+    .fixed-second-size-image {
+        max-width: 100px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .fixed-second-size-placeholder {
+        width: 100px;
+        height: 75px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed #ccc;
+        border-radius: 5px;
+        color: #ccc;
+        font-size: 12px;
+    }
+</style>
