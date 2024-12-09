@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QLCHTBDD_62131904.Models;
+using QLCHTBDD_62131904.ViewModels;
 
 namespace QLCHTBDD_62131904.Controllers
 {
@@ -15,8 +16,7 @@ namespace QLCHTBDD_62131904.Controllers
     {
         private QLCHTBDD_62131904Entities db = new QLCHTBDD_62131904Entities();
 
-        // GET: SanPhams_62131904
-        public ActionResult Index()
+        public List<SanPhamViewModel> dsSanPham()
         {
             var rawProducts = db.BienTheSanPhams
         .Include(b => b.SanPham)
@@ -24,27 +24,34 @@ namespace QLCHTBDD_62131904.Controllers
         .Include(b => b.HinhAnhSanPhams)
         .Select(b => new
         {
+            MaSP = b.SanPham.MaSP,
             TenSanPham = b.SanPham.TenSP,
             MoTa = b.SanPham.MoTa,
             LoaiSanPham = b.SanPham.LoaiSP.TenLSP,
-            AnhSanPham = b.HinhAnhSanPhams.Select(h => h.AnhSP).ToList(), // Chỉ lấy danh sách URL ảnh
+            AnhSanPham = b.HinhAnhSanPhams.Select(h => h.AnhSP).ToList(),
             SoLuong = b.SoLuong,
             DonGia = b.DonGia,
             DonViTinh = b.DonViTinh
-        }).ToList(); // Chuyển dữ liệu sang bộ nhớ
+        }).ToList(); // Lấy dữ liệu vào bộ nhớ
 
-            // Xử lý danh sách ảnh trong bộ nhớ
-            var products = rawProducts.Select(p => new
+            // Chuyển đổi sang ViewModel
+            return rawProducts.Select(p => new SanPhamViewModel
             {
-                p.TenSanPham,
-                p.MoTa,
-                p.LoaiSanPham,
-                AnhSanPhamHtml = string.Join("", p.AnhSanPham.Select(img => $"<img src='{img}' alt='Ảnh sản phẩm' width='50' style='margin: 0 5px;' />")),
-                p.SoLuong,
-                p.DonGia,
-                p.DonViTinh
+                MaSP = p.MaSP,
+                TenSP = p.TenSanPham,
+                MoTa = p.MoTa,
+                LoaiSP = p.LoaiSanPham,
+                AnhSP = string.Join("", p.AnhSanPham.Select(img => $"<img src='{img}' alt='Ảnh sản phẩm' class='table-img' />")),
+                SoLuong = p.SoLuong,
+                DonGia = p.DonGia,
+                DonViTinh = p.DonViTinh
             }).ToList();
+        }
 
+        // GET: SanPhams_62131904
+        public ActionResult Index()
+        {
+            var products = dsSanPham();
             return View(products);
         }
 
@@ -121,13 +128,13 @@ namespace QLCHTBDD_62131904.Controllers
                     {
                         if (file != null && file.ContentLength > 0)
                         {
-                            var filePath = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(file.FileName));
+                            var filePath = Path.Combine(Server.MapPath("/Images"), Path.GetFileName(file.FileName));
                             file.SaveAs(filePath);
 
                             HinhAnhSanPham hinhAnhSP = new HinhAnhSanPham
                             {
                                 MaBienThe = bienThe.MaBienThe,
-                                AnhSP = "~/Images/" + Path.GetFileName(file.FileName)
+                                AnhSP = "/Images/" + Path.GetFileName(file.FileName)
                             };
 
                             db.HinhAnhSanPhams.Add(hinhAnhSP);
@@ -202,11 +209,14 @@ namespace QLCHTBDD_62131904.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPhams.Find(id);
+
+            // Tìm sản phẩm theo ID
+            var sanPham = db.SanPhams.Find(id);
             if (sanPham == null)
             {
                 return HttpNotFound();
             }
+
             return View(sanPham);
         }
 
@@ -215,11 +225,49 @@ namespace QLCHTBDD_62131904.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SanPham sanPham = db.SanPhams.Find(id);
-            db.SanPhams.Remove(sanPham);
-            db.SaveChanges();
+            try
+            {
+                // Lấy sản phẩm cần xóa
+                var sanPham = db.SanPhams.Find(id);
+
+                if (sanPham == null)
+                {
+                    TempData["ErrorMessage"] = "Sản phẩm không tồn tại!";
+                    return RedirectToAction("Index");
+                }
+
+                // Xóa các hình ảnh liên quan trong bảng HinhAnhSanPham
+                var relatedImages = db.HinhAnhSanPhams.Where(image => image.BienTheSanPham.MaSP == id).ToList();
+                foreach (var image in relatedImages)
+                {
+                    db.HinhAnhSanPhams.Remove(image);
+                }
+
+                // Xóa các ràng buộc khác (nếu có) ở bảng liên quan trước khi xóa sản phẩm
+                var relatedVariants = db.BienTheSanPhams.Where(bienThe => bienThe.MaSP == id).ToList();
+                foreach (var variant in relatedVariants)
+                {
+                    db.BienTheSanPhams.Remove(variant);
+                }
+
+                // Xóa sản phẩm
+                db.SanPhams.Remove(sanPham);
+                db.SaveChanges();
+
+                // Thông báo thành công
+                TempData["SuccessMessage"] = "Xóa sản phẩm thành công!";
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi nếu có vấn đề xảy ra trong quá trình xóa
+                TempData["ErrorMessage"] = "Không thể xóa sản phẩm. Vui lòng kiểm tra lại!";
+                // Log lỗi (tuỳ chọn)
+                Console.WriteLine(ex.Message);
+            }
+
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -218,6 +218,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Authentication_Services.cs" />
+    <Compile Include="ViewModels\SanPhamViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -306,6 +307,7 @@
     <Content Include="Views\GetCurrentAdmin_62131904\GetCurrentAdmin.cshtml" />
     <Content Include="Views\SanPhams_62131904\Create.cshtml" />
     <Content Include="Views\SanPhams_62131904\Index.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

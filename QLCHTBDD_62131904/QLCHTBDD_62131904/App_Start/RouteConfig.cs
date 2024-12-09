@@ -16,7 +16,7 @@ namespace QLCHTBDD_62131904
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "SanPhams_62131904", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

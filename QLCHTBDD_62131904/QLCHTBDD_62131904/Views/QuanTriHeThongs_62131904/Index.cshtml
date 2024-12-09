@@ -14,6 +14,7 @@
         padding: 0;
     }
 
+    /*    title page*/
     h2 {
         font-weight: bold;
         color: #007BFF;
@@ -21,6 +22,7 @@
         margin: 20px 0;
     }
 
+    /*    button add new*/
     .btn-primary {
         background-color: #007bff;
         border: none;
@@ -32,6 +34,7 @@
             background-color: #0056b3;
         }
 
+    /*    table*/
     .table {
         background-color: #ffffff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -40,18 +43,18 @@
         overflow: hidden;
     }
 
-        .table th {
-            background-color: #343a40;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-        }
+    .table-header.thead-light th {
+        background-color: #343a40;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+    }
 
-        .table td, .table th {
-            vertical-align: middle;
-            text-align: center;
-            padding: 8px;
-        }
+    .table td, .table th {
+        vertical-align: middle;
+        text-align: center;
+        padding: 8px;
+    }
 
     .table-hover tbody tr:hover {
         background-color: #e9ecef;
@@ -66,6 +69,7 @@
             text-decoration: none;
         }
 
+    /*    button actions*/
     .btn {
         font-weight: bold;
         text-shadow: none;
@@ -90,32 +94,6 @@
     .btn:hover {
         opacity: 0.8;
     }
-
-    img.table-img {
-        border-radius: 5px;
-        max-width: 50px;
-        height: auto;
-        max-height: 50px;
-        object-fit: cover;
-    }
-
-    .grid-footer {
-        padding: 15px;
-        background-color: #f1f1f1;
-        font-size: 16px;
-        color: #343a40;
-        text-align: center;
-    }
-
-        .grid-footer a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-
-            .grid-footer a:hover {
-                color: #0056b3;
-            }
 </style>
 
 <h2>Danh sách quản trị</h2>
@@ -126,23 +104,20 @@
 
 <div id="gridContent">
     @grid.GetHtml(
-        tableStyle: "table table-bordered table-hover",
-        headerStyle: "thead-light",
-        alternatingRowStyle: "table-secondary",
-        footerStyle: "grid-footer",
+        tableStyle: "table table-bordered table-striped",
+        headerStyle: "table-header thead-light",
+        alternatingRowStyle: "table-alternate-row",
         mode: WebGridPagerModes.Numeric,
-        columns: new[]
-          {
-            grid.Column("STT", format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+         columns: grid.Columns(
+                         grid.Column("STT", format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
             grid.Column("Email", "Email", format: item => item.Email),
             grid.Column("Admin", "Quyền", format: item => item.Admin == true ? "Admin" : "Nhân viên"),
             grid.Column("HoTen", "Họ tên", format: item => item.HoTen),
             grid.Column("Password", "Mật khẩu", format: item => "********"),
             grid.Column("Chức năng", format: @<text>
-    <a href="@Url.Action("Edit", new { id = item.MaQT })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
-    <a href="@Url.Action("Details", new { id = item.MaQT })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>
-    <a href="@Url.Action("Delete", new { id = item.MaQT })" title="Xóa" class='btn btn-sm btn-danger'>Xóa</a>
-            </text>)
-}
+                    <a href="@Url.Action("Edit", new { id = item.MaQT })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
+                    <a href="@Url.Action("Details", new { id = item.MaQT })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>
+                    <a href="@Url.Action("Delete", new { id = item.MaQT })" title="Xóa" class='btn btn-sm btn-danger'>Xóa</a>
+            </text>))
 )
 </div>

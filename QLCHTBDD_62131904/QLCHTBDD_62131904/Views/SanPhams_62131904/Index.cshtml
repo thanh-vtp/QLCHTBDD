@@ -1,24 +1,145 @@
-﻿@model IEnumerable<dynamic>
+﻿@model IEnumerable<QLCHTBDD_62131904.ViewModels.SanPhamViewModel>
 
 @{
     ViewBag.Title = "Danh Sách Sản Phẩm";
-    var grid = new WebGrid(source: Model, canPage: true,defaultSort: "TenSanPham", rowsPerPage: 3);
+    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "TenSP", rowsPerPage: 3);
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
 }
 
-<h2>Danh Sách Sản Phẩm</h2>
 
-@grid.GetHtml(
-    tableStyle: "table table-bordered table-striped",
-    headerStyle: "table-header",
-    alternatingRowStyle: "table-alternate-row",
-    columns: grid.Columns(
-        grid.Column("TenSanPham", "Tên Sản Phẩm"),
-        grid.Column("MoTa", "Mô Tả"),
-        grid.Column("LoaiSanPham", "Loại Sản Phẩm"),
-        grid.Column("AnhSanPhamHtml", "Ảnh", format: (item) => new HtmlString(item.AnhSanPhamHtml)),
-        grid.Column("SoLuong", "Số Lượng"),
-        grid.Column("DonGia", "Đơn Giá", format: (item) => String.Format("{0:0,0 VNĐ}", item.DonGia)),
-        grid.Column("DonViTinh", "Đơn Vị Tính")
-    )
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    /*    title page*/
+    h2 {
+        font-weight: bold;
+        color: #007BFF;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    /*    button add new*/
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /*    table*/
+    .table {
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+
+    .table-header.thead-light th {
+        background-color: #343a40;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .table td, .table th {
+        vertical-align: middle;
+        text-align: center;
+        padding: 8px;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+    }
+
+    .thead-light th a {
+        text-decoration: none;
+    }
+
+    .thead-light th a:hover {
+        text-decoration: none;
+    }
+
+    /*    image products*/
+    img.table-img {
+        max-width: 50px;
+        height: auto;
+        max-height: 50px;
+        object-fit: cover;
+        border-radius: 5px;
+        border: 2px solid #007BFF;
+        margin-right: 5px;
+    }
+
+    /*    button actions*/
+    .btn {
+        font-weight: bold;
+        text-shadow: none;
+        border: none;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #fff;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: #fff;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+</style>
+
+
+<h2>Danh sách sản phẩm</h2>
+
+<p class="text-left mb-3">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div id="gridContent">
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-striped",
+        headerStyle: "table-header thead-light",
+        alternatingRowStyle: "table-alternate-row",
+        mode: WebGridPagerModes.Numeric,
+        columns: grid.Columns(
+
+            grid.Column("STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage), header: "STT"),
+            grid.Column("TenSP", "Tên Sản Phẩm", format: item => item.TenSP),
+            grid.Column("MoTa", "Mô Tả", format: item => item.MoTa),
+            grid.Column("LoaiSP", "Loại Sản Phẩm", format: item => item.LoaiSP),
+            grid.Column("AnhSP", "Ảnh", format: item => new HtmlString(item.AnhSP)),
+            grid.Column("SoLuong", "Số Lượng", format: item => item.SoLuong),
+            grid.Column("DonGia", "Đơn Giá", format: item => String.Format("{0:0,0 VNĐ}", item.DonGia)),
+            grid.Column("DonViTinh", "Đơn Vị Tính", format: item => item.DonViTinh),
+            grid.Column("Chức năng", format: @<text>
+                    <a href="@Url.Action("Edit", new { id = item.MaSP })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
+                    <a href="@Url.Action("Details", new { id = item.MaSP })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>
+                    <a href="@Url.Action("Delete", new { id = item.MaSP })" title="Xóa" class='btn btn-sm btn-danger'>Xóa</a>
+            </text>)
 )
+)
+</div>
+
+
+
