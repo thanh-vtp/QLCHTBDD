@@ -26,17 +26,20 @@ namespace QLCHTBDD_62131904.Models
         }
     
         public virtual DbSet<BaoHanh> BaoHanhs { get; set; }
+        public virtual DbSet<BienTheSanPham> BienTheSanPhams { get; set; }
         public virtual DbSet<ChiTietGioHang> ChiTietGioHangs { get; set; }
         public virtual DbSet<GioHang> GioHangs { get; set; }
+        public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
         public virtual DbSet<LichSuGiaoDich> LichSuGiaoDiches { get; set; }
         public virtual DbSet<LoaiSP> LoaiSPs { get; set; }
+        public virtual DbSet<MauSac> MauSacs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
+        public virtual DbSet<QuanTriHeThong> QuanTriHeThongs { get; set; }
+        public virtual DbSet<ROM> ROMs { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<ThongSoKiThuat> ThongSoKiThuats { get; set; }
-        public virtual DbSet<QuanTriHeThong> QuanTriHeThongs { get; set; }
-        public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
     }
 }

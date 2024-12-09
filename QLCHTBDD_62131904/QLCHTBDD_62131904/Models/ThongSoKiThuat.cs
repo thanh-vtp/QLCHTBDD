@@ -20,10 +20,9 @@ namespace QLCHTBDD_62131904.Models
         public string Pin { get; set; }
         public string Chipset { get; set; }
         public string RAM { get; set; }
-        public string ROM { get; set; }
         public string HeDieuHanh { get; set; }
-        public Nullable<int> MaSP { get; set; }
+        public Nullable<int> MaBienThe { get; set; }
     
-        public virtual SanPham SanPham { get; set; }
+        public virtual BienTheSanPham BienTheSanPham { get; set; }
     }
 }

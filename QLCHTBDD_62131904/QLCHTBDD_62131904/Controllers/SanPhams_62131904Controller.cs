@@ -13,13 +13,39 @@ namespace QLCHTBDD_62131904.Controllers
 {
     public class SanPhams_62131904Controller : Controller
     {
-        private readonly QLCHTBDD_62131904Entities db = new QLCHTBDD_62131904Entities();
+        private QLCHTBDD_62131904Entities db = new QLCHTBDD_62131904Entities();
 
         // GET: SanPhams_62131904
         public ActionResult Index()
         {
-            var sanPhams = db.SanPhams.Include(s => s.LoaiSP);
-            return View(sanPhams.ToList());
+            var rawProducts = db.BienTheSanPhams
+        .Include(b => b.SanPham)
+        .Include(b => b.SanPham.LoaiSP)
+        .Include(b => b.HinhAnhSanPhams)
+        .Select(b => new
+        {
+            TenSanPham = b.SanPham.TenSP,
+            MoTa = b.SanPham.MoTa,
+            LoaiSanPham = b.SanPham.LoaiSP.TenLSP,
+            AnhSanPham = b.HinhAnhSanPhams.Select(h => h.AnhSP).ToList(), // Chỉ lấy danh sách URL ảnh
+            SoLuong = b.SoLuong,
+            DonGia = b.DonGia,
+            DonViTinh = b.DonViTinh
+        }).ToList(); // Chuyển dữ liệu sang bộ nhớ
+
+            // Xử lý danh sách ảnh trong bộ nhớ
+            var products = rawProducts.Select(p => new
+            {
+                p.TenSanPham,
+                p.MoTa,
+                p.LoaiSanPham,
+                AnhSanPhamHtml = string.Join("", p.AnhSanPham.Select(img => $"<img src='{img}' alt='Ảnh sản phẩm' width='50' style='margin: 0 5px;' />")),
+                p.SoLuong,
+                p.DonGia,
+                p.DonViTinh
+            }).ToList();
+
+            return View(products);
         }
 
         // GET: SanPhams_62131904/Details/5
@@ -29,20 +55,11 @@ namespace QLCHTBDD_62131904.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            // Tìm sản phẩm theo id
             SanPham sanPham = db.SanPhams.Find(id);
             if (sanPham == null)
             {
                 return HttpNotFound();
             }
-
-            // Lấy danh sách hình ảnh của sản phẩm
-            var images = db.HinhAnhSanPhams.Where(h => h.MaSP == sanPham.MaSP).ToList();
-
-            // Truyền sản phẩm và hình ảnh vào ViewBag
-            ViewBag.Images = images;
-
             return View(sanPham);
         }
 
@@ -50,68 +67,100 @@ namespace QLCHTBDD_62131904.Controllers
         public ActionResult Create()
         {
             ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP");
+
+            // Load danh sách Màu sắc và ROM để người dùng có thể chọn cho biến thể sản phẩm
+            ViewBag.MaMau = new SelectList(db.MauSacs, "MaMau", "TenMau");
+            ViewBag.MaROM = new SelectList(db.ROMs, "MaROM", "DungLuong");
+
             return View();
         }
 
         // POST: SanPhams_62131904/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,MoTa,DonGia,DonViTinh,MaLSP")] SanPham sanPham)
+        public ActionResult Create(
+            [Bind(Include = "TenSP,MoTa,MaLSP")] SanPham sanPham,
+            int maMau,
+            int maRom,
+            int soLuong,
+            string donViTinh,
+            int donGia,
+            HttpPostedFileBase[] hinhAnh,
+            string manHinh,
+            string camera,
+            string pin,
+            string chipset,
+            string ram,
+            string heDieuHanh
+            )
         {
-            // Xử lý file ảnh đặc trưng
-            var avatarFile = Request.Files["Avatar"];
             if (ModelState.IsValid)
             {
-                // Lưu sản phẩm vào cơ sở dữ liệu
+                // Thêm sản phẩm vào bảng SanPham
                 db.SanPhams.Add(sanPham);
                 db.SaveChanges();
 
-                // Lưu ảnh đặc trưng vào bảng SanPham
-                if (avatarFile != null && avatarFile.ContentLength > 0)
+                // Tạo biến thể sản phẩm
+                BienTheSanPham bienThe = new BienTheSanPham
                 {
-                    string avatarFileName = Path.GetFileName(avatarFile.FileName);
-                    string avatarFilePath = Path.Combine(Server.MapPath("/Images/"), avatarFileName);
-                    avatarFile.SaveAs(avatarFilePath);
+                    MaSP = sanPham.MaSP,
+                    MaMau = maMau,
+                    MaROM = maRom,
+                    SoLuong = soLuong,
+                    DonGia = donGia,
+                    DonViTinh = donViTinh
+                };
 
-                    // Cập nhật ảnh sản phẩm vào bảng SanPham
-                    sanPham.AnhSP = "/Images/" + avatarFileName;
-                    db.Entry(sanPham).State = EntityState.Modified;
+                db.BienTheSanPhams.Add(bienThe);
+                db.SaveChanges();
+
+                // Thêm hình ảnh vào bảng HinhAnhSanPham
+                if (hinhAnh != null)
+                {
+                    foreach (var file in hinhAnh)
+                    {
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            var filePath = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(file.FileName));
+                            file.SaveAs(filePath);
+
+                            HinhAnhSanPham hinhAnhSP = new HinhAnhSanPham
+                            {
+                                MaBienThe = bienThe.MaBienThe,
+                                AnhSP = "~/Images/" + Path.GetFileName(file.FileName)
+                            };
+
+                            db.HinhAnhSanPhams.Add(hinhAnhSP);
+                        }
+                    }
                     db.SaveChanges();
                 }
 
-                // Xử lý các hình ảnh phụ
-                var imgFiles = Request.Files;
-                List<HinhAnhSanPham> newImages = new List<HinhAnhSanPham>();
-
-                foreach (string fileKey in imgFiles)
+                // Thêm thông số kỹ thuật vào bảng ThongSoKiThuat
+                ThongSoKiThuat thongSoKiThuat = new ThongSoKiThuat
                 {
-                    var file = imgFiles[fileKey];
-                    if (file != null && file.ContentLength > 0 && fileKey != "Avatar") // Đảm bảo không lưu lại ảnh đại diện
-                    {
-                        string fileName = Path.GetFileName(file.FileName);
-                        string filePath = Path.Combine(Server.MapPath("/Images/"), fileName);
-                        file.SaveAs(filePath);
+                    MaBienThe = bienThe.MaBienThe,
+                    ManHinh = manHinh,
+                    Camera = camera,
+                    Pin = pin,
+                    Chipset = chipset,
+                    RAM = ram,
+                    HeDieuHanh = heDieuHanh,
+                };
 
-                        newImages.Add(new HinhAnhSanPham
-                        {
-                            AnhPhuSP = "/Images/" + fileName,
-                            MaSP = sanPham.MaSP
-                        });
-                    }
-                }
-
-                // Lưu các hình ảnh phụ vào bảng HinhAnhSanPhams
-                db.HinhAnhSanPhams.AddRange(newImages);
+                db.ThongSoKiThuats.Add(thongSoKiThuat);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            // Nếu model không hợp lệ, trả lại View với lỗi
+            // Nếu có lỗi, hiển thị lại dropdowns cho người dùng
             ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP", sanPham.MaLSP);
+            ViewBag.MaMau = new SelectList(db.MauSacs, "MaMau", "TenMau", maMau);
+            ViewBag.MaROM = new SelectList(db.ROMs, "MaROM", "DungLuong", maRom);
+
             return View(sanPham);
         }
-
 
         // GET: SanPhams_62131904/Edit/5
         public ActionResult Edit(int? id)
@@ -126,10 +175,6 @@ namespace QLCHTBDD_62131904.Controllers
                 return HttpNotFound();
             }
             ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP", sanPham.MaLSP);
-            // Lấy danh sách các hình ảnh hiện tại của sản phẩm
-            var currentImages = db.HinhAnhSanPhams.Where(h => h.MaSP == sanPham.MaSP).ToList();
-            ViewBag.CurrentImages = currentImages;
-
             return View(sanPham);
         }
 
@@ -138,43 +183,14 @@ namespace QLCHTBDD_62131904.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,MoTa,DonGia,DonViTinh,AnhSP,MaLSP")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,MoTa,MaLSP")] SanPham sanPham)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(sanPham).State = EntityState.Modified;
-
-                // Xử lý việc tải lên các hình ảnh mới
-                var imgFiles = Request.Files;
-                List<HinhAnhSanPham> newImages = new List<HinhAnhSanPham>();
-
-                foreach (string fileKey in imgFiles)
-                {
-                    var file = imgFiles[fileKey];
-                    if (file != null && file.ContentLength > 0)
-                    {
-                        string fileName = System.IO.Path.GetFileName(file.FileName);
-                        string path = Server.MapPath("/Images/" + fileName);
-                        file.SaveAs(path);
-
-                        newImages.Add(new HinhAnhSanPham
-                        {
-                            AnhPhuSP = "/Images/" + fileName,
-                            MaSP = sanPham.MaSP
-                        });
-                    }
-                }
-
-                // Thêm hình ảnh mới vào cơ sở dữ liệu
-                foreach (var image in newImages)
-                {
-                    db.HinhAnhSanPhams.Add(image);
-                }
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP", sanPham.MaLSP);
             return View(sanPham);
         }
@@ -195,42 +211,15 @@ namespace QLCHTBDD_62131904.Controllers
         }
 
         // POST: SanPhams_62131904/Delete/5
-        // POST: SanPhams_62131904/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            // Tìm sản phẩm theo id
             SanPham sanPham = db.SanPhams.Find(id);
-            if (sanPham == null)
-            {
-                return HttpNotFound();
-            }
-
-            // Lấy danh sách hình ảnh của sản phẩm
-            var images = db.HinhAnhSanPhams.Where(h => h.MaSP == sanPham.MaSP).ToList();
-
-            // Xóa tất cả hình ảnh liên quan đến sản phẩm (nếu có)
-            foreach (var image in images)
-            {
-                // Nếu có ảnh lưu trên server, xóa ảnh khỏi thư mục
-                var imagePath = Server.MapPath(image.AnhPhuSP);
-                if (System.IO.File.Exists(imagePath))
-                {
-                    System.IO.File.Delete(imagePath);
-                }
-
-                // Xóa hình ảnh trong cơ sở dữ liệu
-                db.HinhAnhSanPhams.Remove(image);
-            }
-
-            // Xóa sản phẩm trong cơ sở dữ liệu
             db.SanPhams.Remove(sanPham);
             db.SaveChanges();
-
             return RedirectToAction("Index");
         }
-
 
         protected override void Dispose(bool disposing)
         {

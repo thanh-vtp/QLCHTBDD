@@ -11,6 +11,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BienTheSanPhams">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.BienTheSanPham">
+        <MappingFragment StoreEntitySet="BienTheSanPham">
+          <ScalarProperty Name="MaBienThe" ColumnName="MaBienThe" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="MaMau" ColumnName="MaMau" />
+          <ScalarProperty Name="MaROM" ColumnName="MaROM" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ChiTietGioHangs">
       <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ChiTietGioHang">
         <MappingFragment StoreEntitySet="ChiTietGioHang">
@@ -29,6 +42,15 @@
           <ScalarProperty Name="NgayGiaoHang" ColumnName="NgayGiaoHang" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HinhAnhSanPhams">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.HinhAnhSanPham">
+        <MappingFragment StoreEntitySet="HinhAnhSanPham">
+          <ScalarProperty Name="MaHA" ColumnName="MaHA" />
+          <ScalarProperty Name="MaBienThe" ColumnName="MaBienThe" />
+          <ScalarProperty Name="AnhSP" ColumnName="AnhSP" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -74,6 +96,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MauSacs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.MauSac">
+        <MappingFragment StoreEntitySet="MauSac">
+          <ScalarProperty Name="MaMau" ColumnName="MaMau" />
+          <ScalarProperty Name="TenMau" ColumnName="TenMau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="NhanViens">
       <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.NhanVien">
         <MappingFragment StoreEntitySet="NhanVien">
@@ -93,35 +123,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="QuanTriHeThongs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTriHeThong">
+        <MappingFragment StoreEntitySet="QuanTriHeThong">
+          <ScalarProperty Name="MaQT" ColumnName="MaQT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROMs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ROM">
+        <MappingFragment StoreEntitySet="ROM">
+          <ScalarProperty Name="MaROM" ColumnName="MaROM" />
+          <ScalarProperty Name="DungLuong" ColumnName="DungLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
           <ScalarProperty Name="TenSP" ColumnName="TenSP" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-          <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
-          <ScalarProperty Name="AnhSP" ColumnName="AnhSP" />
           <ScalarProperty Name="MaLSP" ColumnName="MaLSP" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ThongSoKiThuats">
-      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongSoKiThuat">
-        <MappingFragment StoreEntitySet="ThongSoKiThuat">
-          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
-          <ScalarProperty Name="ManHinh" ColumnName="ManHinh" />
-          <ScalarProperty Name="Camera" ColumnName="Camera" />
-          <ScalarProperty Name="Pin" ColumnName="Pin" />
-          <ScalarProperty Name="Chipset" ColumnName="Chipset" />
-          <ScalarProperty Name="RAM" ColumnName="RAM" />
-          <ScalarProperty Name="ROM" ColumnName="ROM" />
-          <ScalarProperty Name="HeDieuHanh" ColumnName="HeDieuHanh" />
-          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="NhanVien_PhanQuyen" TypeName="QLCHTBDD_62131904Model.NhanVien_PhanQuyen" StoreEntitySet="NhanVien_PhanQuyen">
+    <AssociationSetMapping Name="NhanVienPhanQuyen" TypeName="QLCHTBDD_62131904Model.NhanVienPhanQuyen" StoreEntitySet="NhanVienPhanQuyen">
       <EndProperty Name="PhanQuyen">
         <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
       </EndProperty>
@@ -129,23 +160,17 @@
         <ScalarProperty Name="MaNV" ColumnName="MaNV" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="QuanTriHeThongs">
-      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTriHeThong">
-        <MappingFragment StoreEntitySet="QuanTriHeThong">
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-          <ScalarProperty Name="Admin" ColumnName="Admin" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="MaQT" ColumnName="MaQT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HinhAnhSanPhams">
-      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.HinhAnhSanPham">
-        <MappingFragment StoreEntitySet="HinhAnhSanPham">
-          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-          <ScalarProperty Name="AnhPhuSP" ColumnName="AnhPhuSP" />
-          <ScalarProperty Name="MaHA" ColumnName="MaHA" />
+    <EntitySetMapping Name="ThongSoKiThuats">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongSoKiThuat">
+        <MappingFragment StoreEntitySet="ThongSoKiThuat">
+          <ScalarProperty Name="MaBienThe" ColumnName="MaBienThe" />
+          <ScalarProperty Name="HeDieuHanh" ColumnName="HeDieuHanh" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="Chipset" ColumnName="Chipset" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="Camera" ColumnName="Camera" />
+          <ScalarProperty Name="ManHinh" ColumnName="ManHinh" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

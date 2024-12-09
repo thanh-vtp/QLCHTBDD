@@ -18,30 +18,24 @@ namespace QLCHTBDD_62131904.Models
         public SanPham()
         {
             this.BaoHanhs = new HashSet<BaoHanh>();
+            this.BienTheSanPhams = new HashSet<BienTheSanPham>();
             this.ChiTietGioHangs = new HashSet<ChiTietGioHang>();
             this.KhuyenMais = new HashSet<KhuyenMai>();
-            this.ThongSoKiThuats = new HashSet<ThongSoKiThuat>();
-            this.HinhAnhSanPhams = new HashSet<HinhAnhSanPham>();
         }
     
         public int MaSP { get; set; }
         public string TenSP { get; set; }
         public string MoTa { get; set; }
-        public Nullable<int> DonGia { get; set; }
-        public string DonViTinh { get; set; }
-        public string AnhSP { get; set; }
         public Nullable<int> MaLSP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoHanh> BaoHanhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BienTheSanPham> BienTheSanPhams { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhuyenMai> KhuyenMais { get; set; }
         public virtual LoaiSP LoaiSP { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThongSoKiThuat> ThongSoKiThuats { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
     }
 }

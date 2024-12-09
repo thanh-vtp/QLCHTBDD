@@ -156,6 +156,9 @@
     <Compile Include="Models\BaoHanh.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BienTheSanPham.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChiTietGioHang.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
@@ -175,6 +178,9 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoaiSP.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MauSac.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model_62131904.Context.cs">
@@ -199,6 +205,9 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QuanTriHeThong.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROM.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SanPham.cs">
@@ -266,6 +275,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Script\_styleAdmin.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -282,10 +292,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutApp.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\SanPhams_62131904\Delete.cshtml" />
-    <Content Include="Views\SanPhams_62131904\Details.cshtml" />
-    <Content Include="Views\SanPhams_62131904\Edit.cshtml" />
-    <Content Include="Views\SanPhams_62131904\Index.cshtml" />
     <Content Include="Views\LoaiSPs_62131904\Create.cshtml" />
     <Content Include="Views\LoaiSPs_62131904\Delete.cshtml" />
     <Content Include="Views\LoaiSPs_62131904\Details.cshtml" />
@@ -299,6 +305,7 @@
     <Content Include="Views\QuanTriHeThongs_62131904\Delete.cshtml" />
     <Content Include="Views\GetCurrentAdmin_62131904\GetCurrentAdmin.cshtml" />
     <Content Include="Views\SanPhams_62131904\Create.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
