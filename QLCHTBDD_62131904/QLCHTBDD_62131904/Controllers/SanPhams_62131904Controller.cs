@@ -18,34 +18,21 @@ namespace QLCHTBDD_62131904.Controllers
 
         public List<SanPhamViewModel> dsSanPham()
         {
-            var rawProducts = db.BienTheSanPhams
-        .Include(b => b.SanPham)
-        .Include(b => b.SanPham.LoaiSP)
-        .Include(b => b.HinhAnhSanPhams)
-        .Select(b => new
-        {
-            MaSP = b.SanPham.MaSP,
-            TenSanPham = b.SanPham.TenSP,
-            MoTa = b.SanPham.MoTa,
-            LoaiSanPham = b.SanPham.LoaiSP.TenLSP,
-            AnhSanPham = b.HinhAnhSanPhams.Select(h => h.AnhSP).ToList(),
-            SoLuong = b.SoLuong,
-            DonGia = b.DonGia,
-            DonViTinh = b.DonViTinh
-        }).ToList(); // Lấy dữ liệu vào bộ nhớ
-
-            // Chuyển đổi sang ViewModel
-            return rawProducts.Select(p => new SanPhamViewModel
-            {
-                MaSP = p.MaSP,
-                TenSP = p.TenSanPham,
-                MoTa = p.MoTa,
-                LoaiSP = p.LoaiSanPham,
-                AnhSP = string.Join("", p.AnhSanPham.Select(img => $"<img src='{img}' alt='Ảnh sản phẩm' class='table-img' />")),
-                SoLuong = p.SoLuong,
-                DonGia = p.DonGia,
-                DonViTinh = p.DonViTinh
-            }).ToList();
+            return db.BienTheSanPhams
+                .Include(b => b.SanPham)
+                .Include(b => b.SanPham.LoaiSP)
+                .Include(b => b.HinhAnhSanPhams)
+                .Select(b => new SanPhamViewModel
+                {
+                    MaSP = b.SanPham.MaSP,
+                    TenSP = b.SanPham.TenSP,
+                    MoTa = b.SanPham.MoTa,
+                    LoaiSP = b.SanPham.LoaiSP.TenLSP,
+                    AnhSP = b.HinhAnhSanPhams.Select(h => h.AnhSP).ToList(),
+                    SoLuong = b.SoLuong,
+                    DonGia = b.DonGia,
+                    DonViTinh = b.DonViTinh
+                }).ToList();
         }
 
         // GET: SanPhams_62131904
@@ -74,11 +61,8 @@ namespace QLCHTBDD_62131904.Controllers
         public ActionResult Create()
         {
             ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP");
-
-            // Load danh sách Màu sắc và ROM để người dùng có thể chọn cho biến thể sản phẩm
             ViewBag.MaMau = new SelectList(db.MauSacs, "MaMau", "TenMau");
             ViewBag.MaROM = new SelectList(db.ROMs, "MaROM", "DungLuong");
-
             return View();
         }
 
@@ -86,87 +70,83 @@ namespace QLCHTBDD_62131904.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
-            [Bind(Include = "TenSP,MoTa,MaLSP")] SanPham sanPham,
-            int maMau,
-            int maRom,
-            int soLuong,
-            string donViTinh,
-            int donGia,
-            HttpPostedFileBase[] hinhAnh,
-            string manHinh,
+            [Bind(Include = "TenSP,MoTa,MaLSP")] SanPham product,
+            int colorId,
+            int romId,
+            int quantity,
+            string unitOfMeasure,
+            int price,
+            HttpPostedFileBase[] uploadedImages,
+            string screen,
             string camera,
-            string pin,
+            string battery,
             string chipset,
             string ram,
-            string heDieuHanh
-            )
+            string operatingSystem
+        )
         {
             if (ModelState.IsValid)
             {
-                // Thêm sản phẩm vào bảng SanPham
-                db.SanPhams.Add(sanPham);
+                // 1. Add Product
+                db.SanPhams.Add(product);
                 db.SaveChanges();
 
-                // Tạo biến thể sản phẩm
-                BienTheSanPham bienThe = new BienTheSanPham
+                // 2. Add Product Variant
+                var variant = new BienTheSanPham
                 {
-                    MaSP = sanPham.MaSP,
-                    MaMau = maMau,
-                    MaROM = maRom,
-                    SoLuong = soLuong,
-                    DonGia = donGia,
-                    DonViTinh = donViTinh
+                    MaSP = product.MaSP,
+                    MaMau = colorId,
+                    MaROM = romId,
+                    SoLuong = quantity,
+                    DonGia = price,
+                    DonViTinh = unitOfMeasure
                 };
-
-                db.BienTheSanPhams.Add(bienThe);
+                db.BienTheSanPhams.Add(variant);
                 db.SaveChanges();
 
-                // Thêm hình ảnh vào bảng HinhAnhSanPham
-                if (hinhAnh != null)
+                // 3. Add Product Images
+                if (uploadedImages != null)
                 {
-                    foreach (var file in hinhAnh)
+                    foreach (var image in uploadedImages)
                     {
-                        if (file != null && file.ContentLength > 0)
+                        if (image != null && image.ContentLength > 0)
                         {
-                            var filePath = Path.Combine(Server.MapPath("/Images"), Path.GetFileName(file.FileName));
-                            file.SaveAs(filePath);
+                            var fileName = Path.GetFileName(image.FileName);
+                            var filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                            image.SaveAs(filePath);
 
-                            HinhAnhSanPham hinhAnhSP = new HinhAnhSanPham
+                            var productImage = new HinhAnhSanPham
                             {
-                                MaBienThe = bienThe.MaBienThe,
-                                AnhSP = "/Images/" + Path.GetFileName(file.FileName)
+                                MaBienThe = variant.MaBienThe,
+                                AnhSP = "/Images/" + fileName
                             };
 
-                            db.HinhAnhSanPhams.Add(hinhAnhSP);
+                            db.HinhAnhSanPhams.Add(productImage);
                         }
                     }
                     db.SaveChanges();
                 }
 
-                // Thêm thông số kỹ thuật vào bảng ThongSoKiThuat
-                ThongSoKiThuat thongSoKiThuat = new ThongSoKiThuat
+                // 4. Add Technical Specifications
+                var technicalSpecs = new ThongSoKiThuat
                 {
-                    MaBienThe = bienThe.MaBienThe,
-                    ManHinh = manHinh,
+                    MaBienThe = variant.MaBienThe,
+                    ManHinh = screen,
                     Camera = camera,
-                    Pin = pin,
+                    Pin = battery,
                     Chipset = chipset,
                     RAM = ram,
-                    HeDieuHanh = heDieuHanh,
+                    HeDieuHanh = operatingSystem
                 };
-
-                db.ThongSoKiThuats.Add(thongSoKiThuat);
+                db.ThongSoKiThuats.Add(technicalSpecs);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            // Nếu có lỗi, hiển thị lại dropdowns cho người dùng
-            ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP", sanPham.MaLSP);
-            ViewBag.MaMau = new SelectList(db.MauSacs, "MaMau", "TenMau", maMau);
-            ViewBag.MaROM = new SelectList(db.ROMs, "MaROM", "DungLuong", maRom);
+            // Reload Dropdowns if Validation Fails
 
-            return View(sanPham);
+            return View(product);
         }
 
         // GET: SanPhams_62131904/Edit/5

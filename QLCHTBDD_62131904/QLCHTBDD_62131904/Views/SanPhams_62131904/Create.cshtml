@@ -3,242 +3,120 @@
 @{
     ViewBag.Title = "Thêm mới sản phẩm";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 }
-<h2 style="text-align: center; font-weight: bold; color: #007BFF;">Thêm mới sản phẩm</h2>
-<div class="container" style="margin-top: 20px; display: flex; justify-content: space-between;">
+<h2 class="page-title">Thêm mới sản phẩm</h2>
 
-    <!-- Cụm ảnh nằm bên trái -->
-    <div style="width: 40%; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
+<div class="add-product">
+    <!-- Cụm ảnh -->
+    <div class="add-product__image-preview">
         <div id="imagePreview">
-            <h5 style="font-weight: bold; color: #007BFF">Ảnh sản phẩm đã chọn:</h5>
-            <div id="second-avatar" style="display: flex; flex-wrap: wrap; gap: 10px;">
-                <div id="placeholder-second" class="fixed-second-size-placeholder">
-                    <span style="color: #ccc;">No image selected</span>
+            <h5 class="add-product__image-preview-title">Ảnh sản phẩm đã chọn:</h5>
+            <div id="imagePreviewContainer" class="add-product__image-preview-container">
+                <div id="placeholderImage" class="image-placeholder">
+                    <span>No image selected</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Form tạo sản phẩm -->
-    <div style="width: 55%; padding: 20px; border-radius: 10px; background-color: #f9f9f9;">
+    <!-- Form -->
+    <div class="add-product__form">
         @using (Html.BeginForm("Create", "SanPhams_62131904", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
-            <div style="margin: 10px 0;">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            </div>
+            @Html.ValidationSummary(true, "", new { @class = "form-error" })
 
-            <div style="margin-bottom: 15px;">
-                @Html.LabelFor(model => model.MaLSP, "Loại sản phẩm", new { style = "font-weight: bold;" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaLSP, "Loại sản phẩm", new { @class = "form-group__label" })
                 @Html.DropDownList("MaLSP", null, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaLSP, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.MaLSP, "", new { @class = "form-error" })
             </div>
 
-            <div style="margin-bottom: 15px;">
-                @Html.LabelFor(model => model.TenSP, "Tên sản phẩm", new { style = "font-weight: bold;" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.TenSP, "Tên sản phẩm", new { @class = "form-group__label" })
                 @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên sản phẩm" } })
-                @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "form-error" })
             </div>
 
-            <div style="margin-bottom: 15px;">
-                @Html.LabelFor(model => model.MoTa, "Mô tả", new { style = "font-weight: bold;" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.MoTa, "Mô tả", new { @class = "form-group__label" })
                 @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mô tả" } })
-                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "form-error" })
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <label for="MaMau" style="font-weight: bold;">Màu sắc</label>
-                @Html.DropDownList("MaMau", (SelectList)ViewBag.MaMau, "Chọn màu sắc", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaLSP, "", new { @class = "text-danger" })
+            <!-- Các trường bổ sung -->
+            <div class="form-group">
+                <label for="MaMau" class="form-group__label">Màu sắc</label>
+                @Html.DropDownList("colorId", ViewBag.MaMau as SelectList, "Chọn màu sắc", new { @class = "form-control" })
             </div>
 
             <div class="form-group">
-                <label for="soLuong">Số lượng</label>
-                <input type="number" id="soLuong" name="soLuong" class="form-control" required />
+                <label for="quantity" class="form-group__label">Số lượng</label>
+                <input type="number" id="quantity" name="quantity" class="form-control" required />
             </div>
 
             <div class="form-group">
-                <label for="donViTinh">Đơn vị tính</label>
-                <select id="donViTinh" name="donViTinh" class="form-control">
+                <label for="unitOfMeasure" class="form-group__label">Đơn vị tính</label>
+                <select id="unitOfMeasure" name="unitOfMeasure" class="form-control">
                     <option value="Cái">Cái</option>
                     <option value="Bộ">Bộ</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="donGia">Đơn giá</label>
-                <input type="number" id="donGia" name="donGia" class="form-control" required />
+                <label for="price" class="form-group__label">Đơn giá</label>
+                <input type="number" id="price" name="price" class="form-control" required />
             </div>
 
             <div class="form-group">
-                <label for="MaROM">Dung lượng ROM</label>
-                @Html.DropDownList("maRom", ViewBag.MaROM as SelectList, "Chọn dung lượng", new { @class = "form-control" })
+                <label for="MaROM" class="form-group__label">Dung lượng ROM</label>
+                @Html.DropDownList("romId", ViewBag.MaROM as SelectList, "Chọn dung lượng", new { @class = "form-control" })
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label for="manHinh" style="font-weight: bold;">Màn hình</label>
-                <input type="text" name="manHinh" class="form-control" placeholder="Nhập thông tin màn hình" />
+                <label for="screen" class="form-group__label">Màn hình</label>
+                <input type="text" id="screen" name="screen" class="form-control" placeholder="Nhập thông tin màn hình" />
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label for="camera" style="font-weight: bold;">Camera</label>
-                <input type="text" name="camera" class="form-control" placeholder="Nhập thông tin camera" />
+                <label for="camera" class="form-group__label">Camera</label>
+                <input type="text" id="camera" name="camera" class="form-control" placeholder="Nhập thông tin camera" />
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label for="pin" style="font-weight: bold;">Pin</label>
-                <input type="text" name="pin" class="form-control" placeholder="Nhập dung lượng pin" />
+                <label for="battery" class="form-group__label">Dung lượng pin</label>
+                <input type="text" id="battery" name="battery" class="form-control" placeholder="Nhập dung lượng pin" />
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label for="chipset" style="font-weight: bold;">Chipset</label>
-                <input type="text" name="chipset" class="form-control" placeholder="Nhập thông tin chipset" />
+                <label for="chipset" class="form-group__label">Bộ xử lý (chipset)</label>
+                <input type="text" id="chipset" name="chipset" class="form-control" placeholder="Nhập bộ xử lý" />
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label for="ram" style="font-weight: bold;">RAM</label>
-                <input type="text" name="ram" class="form-control" placeholder="Nhập dung lượng RAM" />
+                <label for="ram" class="form-group__label">RAM</label>
+                <input type="text" id="ram" name="ram" class="form-control" placeholder="Nhập dung lượng RAM" />
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label for="heDieuHanh" style="font-weight: bold;">Hệ điều hành</label>
-                <input type="text" name="heDieuHanh" class="form-control" placeholder="Nhập hệ điều hành" />
+                <label for="operatingSystem" class="form-group__label">Hệ điều hành</label>
+                <input type="text" id="operatingSystem" name="operatingSystem" class="form-control" placeholder="Nhập hệ điều hành" />
             </div>
 
-            <!-- Trường chọn ảnh -->
-            <div style="margin-bottom: 15px;">
-                <label for="hinhAnh" style="font-weight: bold;">Hình ảnh sản phẩm</label>
-                <input type="file" name="hinhAnh" class="form-control" accept="image/*" multiple onchange="previewAdditionalImages(event)" />
-                <p style="color: #007BFF; font-size: 12px;">Chọn nhiều ảnh nếu cần.</p>
+            <div class="form-group">
+                <label for="uploadedImages" class="form-group__label">Hình ảnh sản phẩm</label>
+                <input type="file" id="uploadedImages" name="uploadedImages" class="form-control" accept="image/*" multiple />
+                <p class="form-group__helper-text">Chọn nhiều ảnh nếu cần (tối đa 15 ảnh).</p>
             </div>
 
-            <div style="text-align: center; margin-top: 20px;">
-                <button type="submit" class="btn btn-primary" style="padding: 10px 15px; margin-right: 10px;">Thêm sản phấm</button>
-                @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary", style = "padding: 10px 15px;" })
+            <div class="form-group form-group--actions">
+                <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+                @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
             </div>
         }
     </div>
 </div>
-
-<script>
-    // Mảng để lưu trữ các file đã chọn
-    let selectedFiles = [];
-
-    // Preview ảnh phụ khi chọn
-    function previewAdditionalImages(event) {
-        const previewImages = document.getElementById('second-avatar');
-        let placeholder = document.getElementById('placeholder-second');
-
-        // Nếu không có placeholder, tạo mới
-        if (!placeholder) {
-            placeholder = document.createElement('div');
-            placeholder.id = 'placeholder-second';
-            placeholder.classList.add('fixed-second-size-placeholder');
-            placeholder.innerHTML = '<span style="color: #ccc;">No image selected</span>';
-            previewImages.appendChild(placeholder);
-        }
-
-        const files = event.target.files;
-
-        if (files.length > 0) {
-            // Lưu các file vào mảng selectedFiles
-            Array.from(files).forEach(file => {
-                selectedFiles.push(file);
-            });
-
-            // Nếu có file, giữ placeholder nhưng đảm bảo nó luôn ở cuối
-            placeholder.style.display = 'none'; // Ẩn tạm placeholder
-
-            for (const file of files) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    // Tạo container chứa ảnh và nút xóa
-                    const imgContainer = document.createElement('div');
-                    imgContainer.style.position = 'relative'; // Để đặt nút xóa lên ảnh
-                    imgContainer.style.display = 'inline-block';
-                    imgContainer.style.margin = '5px';
-
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.classList.add('fixed-second-size-image');
-
-                    // Tạo nút xóa (icon "x")
-                    const removeButton = document.createElement('span');
-                    removeButton.innerHTML = '&#10005;'; // Biểu tượng xóa (x)
-                    removeButton.style.position = 'absolute';
-                    removeButton.style.top = '10px';
-                    removeButton.style.right = '10px';
-                    removeButton.style.fontSize = '20px';
-                    removeButton.style.color = 'red';
-                    removeButton.style.cursor = 'pointer';
-                    removeButton.title = 'Xóa hình ảnh';
-                    removeButton.onclick = function () {
-                        // Xóa ảnh khi nhấn nút x
-                        previewImages.removeChild(imgContainer);
-
-                        // Cập nhật lại mảng selectedFiles bằng cách loại bỏ file đã xóa
-                        selectedFiles = selectedFiles.filter(f => f.name !== file.name);
-
-                        // Hiển thị lại placeholder nếu không còn ảnh nào
-                        if (previewImages.querySelectorAll('.fixed-second-size-image').length === 0) {
-                            placeholder.style.display = 'flex';
-                        }
-
-                        // Cập nhật lại giá trị input file (xóa file đã xóa khỏi input)
-                        updateFileInput();
-                    };
-
-                    // Thêm ảnh và nút xóa vào container
-                    imgContainer.appendChild(img);
-                    imgContainer.appendChild(removeButton);
-
-                    // Thêm ảnh vào trước placeholder
-                    previewImages.insertBefore(imgContainer, placeholder);
-                };
-                reader.readAsDataURL(file);
-            }
-
-            // Đảm bảo placeholder luôn ở cuối
-            placeholder.style.display = 'flex'; // Hiện lại placeholder sau khi thêm ảnh
-        } else {
-            // Nếu không có file, hiển thị lại placeholder
-            placeholder.style.display = 'flex';
-        }
-
-        // Cập nhật lại giá trị input file
-        updateFileInput();
-    }
-
-    // Hàm để cập nhật giá trị input file khi xóa ảnh
-    function updateFileInput() {
-        const fileInput = document.querySelector('input[name="HinhAnh"]');
-
-        // Tạo lại một input file mới (reset)
-        const newInput = document.createElement('input');
-        newInput.type = 'file';
-        newInput.name = 'HinhAnh';
-        newInput.classList.add('form-control');
-        newInput.accept = 'image/*';
-        newInput.multiple = true;
-        newInput.onchange = previewAdditionalImages;
-
-        // Duy trì các file còn lại trong mảng selectedFiles
-        const dataTransfer = new DataTransfer();
-        selectedFiles.forEach(file => {
-            dataTransfer.items.add(file);
-        });
-
-        // Gán lại các file vào input file mới
-        newInput.files = dataTransfer.files;
-
-        // Thay thế input cũ bằng input mới
-        fileInput.parentNode.replaceChild(newInput, fileInput);
-    }
-</script>
-
 
 <style>
     body {
@@ -248,28 +126,181 @@
         padding: 0;
     }
 
-    #second-avatar {
-        margin-bottom: 20px;
-    }
-
-    .fixed-second-size-image {
-        max-width: 100px;
-        height: auto;
-        object-fit: cover;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    .fixed-second-size-placeholder {
-        width: 100px;
-        height: 75px;
-        display: flex;
+    .page-title {
         text-align: center;
-        align-items: center;
+        font-weight: bold;
+        color: #007BFF;
+        margin: 20px 0;
+    }
+
+    .add-product {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+    }
+
+    .add-product__image-preview,
+    .add-product__form {
+        width: 48%;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-product__image-preview-title {
+        font-weight: bold;
+        color: #007BFF;
+        margin-bottom: 10px;
+    }
+
+    .add-product__image-preview-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /*image */
+    .image-placeholder {
+        width: 180px; /* Chiều rộng hợp lý cho placeholder */
+        height: 180px; /* Chiều cao hợp lý cho placeholder */
+        display: flex;
         justify-content: center;
+        align-items: center;
         border: 1px dashed #ccc;
-        border-radius: 5px;
+        border-radius: 8px;
         color: #ccc;
+        font-size: 14px;
+        background-color: #f8f8f8;
+    }
+
+    .fixed-image {
+        position: relative;
+        display: inline-block;
+        width: 180px; /* Giới hạn chiều rộng */
+        height: 180px; /* Giới hạn chiều cao */
+        margin: 10px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .fixed-image img {
+        width: 100%; /* Ảnh sẽ vừa khung */
+        height: 100%; /* Ảnh sẽ vừa khung */
+        object-fit: cover; /* Đảm bảo ảnh không bị méo, cắt gọn nếu cần */
+        border-radius: 8px;
+    }
+
+    .fixed-image span {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        cursor: pointer;
+        color: red;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 3px 8px;
+        border-radius: 50%;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group__label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .form-group__helper-text {
+        color: #007BFF;
+        font-size: 12px;
+    }
+
+    .form-group--actions {
+        text-align: center;
+    }
+
+    .form-error {
+        color: red;
         font-size: 12px;
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageInput = document.getElementById('uploadedImages');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        const placeholderImage = document.getElementById('placeholderImage');
+
+        let selectedFiles = [];
+
+        imageInput.addEventListener('change', function (event) {
+            const files = event.target.files;
+
+            if (selectedFiles.length + files.length > 15) {
+                alert("Bạn chỉ được tải lên tối đa 15 ảnh.");
+                return;
+            }
+
+            placeholderImage.style.display = 'none';
+
+            Array.from(files).forEach((file) => {
+                if (!file.type.startsWith('image/')) {
+                    alert("Chỉ được phép chọn các tệp ảnh.");
+                    return;
+                }
+
+                selectedFiles.push(file);
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imgContainer = document.createElement('div');
+                    imgContainer.classList.add('fixed-image');
+
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+
+                    const removeButton = document.createElement('span');
+                    removeButton.innerHTML = '&#10005;';
+                    removeButton.style.position = 'absolute';
+                    removeButton.style.top = '5px';
+                    removeButton.style.right = '5px';
+                    removeButton.style.cursor = 'pointer';
+                    removeButton.style.color = 'red';
+                    removeButton.title = 'Xóa ảnh';
+
+                    removeButton.addEventListener('click', function () {
+                        imagePreviewContainer.removeChild(imgContainer);
+                        selectedFiles = selectedFiles.filter((f) => f.name !== file.name);
+
+                        if (selectedFiles.length === 0) {
+                            placeholderImage.style.display = 'flex';
+                        }
+
+                        updateFileInput();
+                    });
+
+                    imgContainer.appendChild(img);
+                    imgContainer.appendChild(removeButton);
+                    imagePreviewContainer.appendChild(imgContainer);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            updateFileInput();
+        });
+
+        function updateFileInput() {
+            const dataTransfer = new DataTransfer();
+            selectedFiles.forEach((file) => dataTransfer.items.add(file));
+            imageInput.files = dataTransfer.files;
+        }
+    });
+
+</script>

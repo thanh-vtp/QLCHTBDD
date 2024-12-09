@@ -128,7 +128,11 @@
             grid.Column("TenSP", "Tên Sản Phẩm", format: item => item.TenSP),
             grid.Column("MoTa", "Mô Tả", format: item => item.MoTa),
             grid.Column("LoaiSP", "Loại Sản Phẩm", format: item => item.LoaiSP),
-            grid.Column("AnhSP", "Ảnh", format: item => new HtmlString(item.AnhSP)),
+            grid.Column(
+                "AnhSP",
+                "Hình Ảnh",
+                format: item => new HtmlString(RenderImages(item.AnhSP).ToHtmlString())
+            ),
             grid.Column("SoLuong", "Số Lượng", format: item => item.SoLuong),
             grid.Column("DonGia", "Đơn Giá", format: item => String.Format("{0:0,0 VNĐ}", item.DonGia)),
             grid.Column("DonViTinh", "Đơn Vị Tính", format: item => item.DonViTinh),
@@ -143,3 +147,10 @@
 
 
 
+@helper RenderImages(List<string> images)
+{
+    foreach (var img in images)
+    {
+        <img src="@img" alt="Ảnh sản phẩm" class="table-img" />
+    }
+}

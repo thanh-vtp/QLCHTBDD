@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\sanphams_62131904\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\views\\sanphams_62131904\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\sanphams_62131904\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\controllers\\sanphams_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\controllers\\sanphams_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\viewmodels\\sanphamviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\viewmodels\\sanphamviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\sanphams_62131904\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\sanphams_62131904\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\sanphams_62131904\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\sanphams_62131904\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\controllers\\sanphams_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\controllers\\sanphams_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\views\\sanphams_62131904\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\sanphams_62131904\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,27 +44,40 @@
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Create.cshtml",
               "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Create.cshtml",
               "RelativeToolTip": "QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Create.cshtml",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAAD8AAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAABwBAAAAAAAAAAAAACcBAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-09T04:26:41.25Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SanPhamViewModel.cs",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\ViewModels\\SanPhamViewModel.cs",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\ViewModels\\SanPhamViewModel.cs",
               "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\ViewModels\\SanPhamViewModel.cs",
               "RelativeToolTip": "QLCHTBDD_62131904\\ViewModels\\SanPhamViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T03:53:31.603Z",
+              "WhenOpened": "2024-12-09T16:38:06.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Index.cshtml",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Index.cshtml",
+              "RelativeToolTip": "QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-09T16:20:19.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Delete.cshtml",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\SanPhams_62131904\\Delete.cshtml",
@@ -73,13 +90,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SanPhams_62131904Controller.cs",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\SanPhams_62131904Controller.cs",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Controllers\\SanPhams_62131904Controller.cs",
               "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\SanPhams_62131904Controller.cs",
               "RelativeToolTip": "QLCHTBDD_62131904\\Controllers\\SanPhams_62131904Controller.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAcwIgAAABSAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAxwFEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-08T05:52:52.874Z",
               "EditorCaption": ""
