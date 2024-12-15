@@ -18,23 +18,25 @@ namespace QLCHTBDD_62131904.Models
         public BienTheSanPham()
         {
             this.HinhAnhSanPhams = new HashSet<HinhAnhSanPham>();
-            this.ThongSoKiThuats = new HashSet<ThongSoKiThuat>();
+            this.ThongSoKTDienThoais = new HashSet<ThongSoKTDienThoai>();
         }
     
-        public int MaBienThe { get; set; }
+        public int MaBT { get; set; }
         public Nullable<int> MaSP { get; set; }
         public Nullable<int> MaMau { get; set; }
+        public Nullable<int> MaRAM { get; set; }
         public Nullable<int> MaROM { get; set; }
         public int SoLuong { get; set; }
         public string DonViTinh { get; set; }
         public int DonGia { get; set; }
     
         public virtual MauSac MauSac { get; set; }
+        public virtual RAM RAM { get; set; }
         public virtual ROM ROM { get; set; }
         public virtual SanPham SanPham { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThongSoKiThuat> ThongSoKiThuats { get; set; }
+        public virtual ICollection<ThongSoKTDienThoai> ThongSoKTDienThoais { get; set; }
     }
 }

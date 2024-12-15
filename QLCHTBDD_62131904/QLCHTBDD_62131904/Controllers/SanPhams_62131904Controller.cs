@@ -10,36 +10,36 @@ using System.Web.Mvc;
 using QLCHTBDD_62131904.Models;
 using QLCHTBDD_62131904.ViewModels;
 
+
 namespace QLCHTBDD_62131904.Controllers
 {
     public class SanPhams_62131904Controller : Controller
     {
         private QLCHTBDD_62131904Entities db = new QLCHTBDD_62131904Entities();
 
-        public List<SanPhamViewModel> dsSanPham()
+        public List<DanhSachSanPhamViewModel> dsSanPham()
         {
             return db.BienTheSanPhams
                 .Include(b => b.SanPham)
-                .Include(b => b.SanPham.LoaiSP)
+                .Include(b => b.SanPham.LoaiSanPham)
                 .Include(b => b.HinhAnhSanPhams)
-                .Select(b => new SanPhamViewModel
+                .Select(b => new DanhSachSanPhamViewModel
                 {
                     MaSP = b.SanPham.MaSP,
                     TenSP = b.SanPham.TenSP,
-                    MoTa = b.SanPham.MoTa,
-                    LoaiSP = b.SanPham.LoaiSP.TenLSP,
                     AnhSP = b.HinhAnhSanPhams.Select(h => h.AnhSP).ToList(),
                     SoLuong = b.SoLuong,
                     DonGia = b.DonGia,
-                    DonViTinh = b.DonViTinh
+                    DonViTinh = b.DonViTinh,
+                    LoaiSanPham = b.SanPham.LoaiSanPham.TenLSP,
                 }).ToList();
         }
 
         // GET: SanPhams_62131904
         public ActionResult Index()
         {
-            var products = dsSanPham();
-            return View(products);
+            var sanPhams = dsSanPham();
+            return View(sanPhams);
         }
 
         // GET: SanPhams_62131904/Details/5
@@ -60,9 +60,19 @@ namespace QLCHTBDD_62131904.Controllers
         // GET: SanPhams_62131904/Create
         public ActionResult Create()
         {
-            ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP");
-            ViewBag.MaMau = new SelectList(db.MauSacs, "MaMau", "TenMau");
-            ViewBag.MaROM = new SelectList(db.ROMs, "MaROM", "DungLuong");
+            ViewBag.MaQG = new SelectList(db.QuocGias.Where(qg => qg.IsActive == true), "MaQG", "TenQuocGia");
+            ViewBag.MaHang = new SelectList(db.HangSanXuats.Where(hsx => hsx.IsActive == true), "MaHang", "TenHang");
+            ViewBag.MaLSP = new SelectList(db.LoaiSanPhams.Where(lsp => lsp.IsActive == true), "MaLSP", "TenLSP");
+            ViewBag.MaMau = new SelectList(db.MauSacs.Where(ms => ms.IsActive == true), "MaMau", "TenMau");
+            ViewBag.MaRAM = new SelectList(db.RAMs.Where(ram => ram.IsActive == true), "MaRAM", "DungLuong");
+            ViewBag.MaROM = new SelectList(db.ROMs.Where(rom => rom.IsActive == true), "MaROM", "DungLuong");
+            ViewBag.MaHDH = new SelectList(db.HeDieuHanhs.Where(hdh => hdh.IsActive == true), "MaHDH", "TenHDH");
+            ViewBag.MaBluetooth = new SelectList(db.Blueteeth.Where(bt => bt.IsActive == true), "MaBluetooth", "PhienBan");
+            ViewBag.MaChuanKhangBuiNuoc = new SelectList(db.ChuanKhangBuiNuocs.Where(ckbn => ckbn.IsActive == true), "MaChuanKhangBuiNuoc", "TenChuan");
+            ViewBag.MaChip = new SelectList(db.ChipXuLies.Where(chip => chip.IsActive == true), "MaChip", "TenChip");
+            ViewBag.MaDoPhanGiai = new SelectList(db.DoPhanGiaiCameras.Where(dpg => dpg.IsActive == true), "MaDoPhanGiai", "DoPhanGiai");
+            ViewBag.MaCongKetNoiSac = new SelectList(db.CongKetNoiSacs.Where(cks => cks.IsActive == true), "MaCongKetNoiSac", "LoaiKetNoi");
+            ViewBag.MaCongKetNoiKhac = new SelectList(db.CongKetNoiKhacs.Where(ckk => ckk.IsActive == true), "MaCongKetNoiKhac", "LoaiKetNoi");
             return View();
         }
 
@@ -70,84 +80,119 @@ namespace QLCHTBDD_62131904.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
-            [Bind(Include = "TenSP,MoTa,MaLSP")] SanPham product,
-            int colorId,
-            int romId,
-            int quantity,
-            string unitOfMeasure,
-            int price,
-            HttpPostedFileBase[] uploadedImages,
-            string screen,
-            string camera,
-            string battery,
-            string chipset,
-            string ram,
-            string operatingSystem
+            [Bind(Include = "TenSP,MoTa,MaLSP,MaHang")] SanPham product,
+                int? MaQG,
+                int? MaMau,
+                int? MaRAM,
+                int? MaROM,
+                int? MaBluetooth,
+                int? MaHDH,
+                int? MaChuanKhangBuiNuoc,
+                int? MaChip,
+                int? MaDoPhanGiai,
+                int? MaCongKetNoiSac,
+                int? MaCongKetNoiKhac,
+                int? SoLuong,
+                string DonViTinh,
+                int? DonGia,
+                HttpPostedFileBase[] uploadedImages,
+                ThongSoKTDienThoai phoneModel
         )
         {
             if (ModelState.IsValid)
             {
-                // 1. Add Product
-                db.SanPhams.Add(product);
-                db.SaveChanges();
-
-                // 2. Add Product Variant
-                var variant = new BienTheSanPham
+                try
                 {
-                    MaSP = product.MaSP,
-                    MaMau = colorId,
-                    MaROM = romId,
-                    SoLuong = quantity,
-                    DonGia = price,
-                    DonViTinh = unitOfMeasure
-                };
-                db.BienTheSanPhams.Add(variant);
-                db.SaveChanges();
-
-                // 3. Add Product Images
-                if (uploadedImages != null)
-                {
-                    foreach (var image in uploadedImages)
-                    {
-                        if (image != null && image.ContentLength > 0)
-                        {
-                            var fileName = Path.GetFileName(image.FileName);
-                            var filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
-                            image.SaveAs(filePath);
-
-                            var productImage = new HinhAnhSanPham
-                            {
-                                MaBienThe = variant.MaBienThe,
-                                AnhSP = "/Images/" + fileName
-                            };
-
-                            db.HinhAnhSanPhams.Add(productImage);
-                        }
-                    }
+                    // 1. Thêm sản phẩm mới
+                    db.SanPhams.Add(product);
                     db.SaveChanges();
+
+                    // 2. Thêm biến thể sản phẩm
+                    var variant = new BienTheSanPham
+                    {
+                        MaSP = product.MaSP,
+                        MaMau = MaMau,
+                        MaRAM = MaRAM,
+                        MaROM = MaROM,
+                        SoLuong = SoLuong.Value,
+                        DonViTinh = DonViTinh,
+                        DonGia = DonGia.Value,
+                    };
+
+                    db.BienTheSanPhams.Add(variant);
+                    db.SaveChanges();
+
+                    // 3. Thêm hình ảnh sản phẩm
+                    if (uploadedImages != null)
+                    {
+                        foreach (var image in uploadedImages)
+                        {
+                            if (image != null && image.ContentLength > 0)
+                            {
+                                var fileName = Path.GetFileName(image.FileName);
+                                var filePath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                                image.SaveAs(filePath);
+
+                                var productImage = new HinhAnhSanPham
+                                {
+                                    MaBT = variant.MaBT,
+                                    AnhSP = "/Images/" + fileName
+                                };
+
+                                db.HinhAnhSanPhams.Add(productImage);
+                            }
+                        }
+                        db.SaveChanges();
+                    }
+
+
+                    // 4. Thêm thông số kỹ thuật theo loại sản phẩm
+                    if (phoneModel != null)
+                    {
+                        var phoneSpecs = new ThongSoKTDienThoai
+                        {
+                            MaBT = variant.MaBT, // Khóa ngoại liên kết đến biến thể sản phẩm (MÃ BIẾN THỂ)
+                            MaHDH = MaHDH,
+                            MaChip = MaChip,
+                            MaBluetooth = MaBluetooth,
+                            MaChuanKhangBuiNuoc = MaChuanKhangBuiNuoc,
+                            MaCongKetNoiSac = MaCongKetNoiSac,
+                            MaCongKetNoiKhac = MaCongKetNoiKhac,
+                            DoPhanGiaiManHinh = phoneModel.DoPhanGiaiManHinh,
+                            KichThuocManHinh = phoneModel.KichThuocManHinh,
+                            DungLuongPin = phoneModel.DungLuongPin,
+                            LoaiPin = phoneModel.LoaiPin,
+                            TocDoCPU = phoneModel.TocDoCPU,
+                            ChipDoHoaGPU = phoneModel.ChipDoHoaGPU,
+                            DungLuongConLai = phoneModel.DungLuongConLai,
+                            BaoMatNangCao = phoneModel.BaoMatNangCao,
+                            ThoiDiemRaMat = phoneModel.ThoiDiemRaMat,
+                            JackTaiNghe = phoneModel.JackTaiNghe,
+                            DenFlashCameraSau = phoneModel.DenFlashCameraSau,
+                            GhiAm = phoneModel.GhiAm,
+                            NgheNhac = phoneModel.NgheNhac,
+                            MatKinhCamUng = phoneModel.MatKinhCamUng,
+                            ThietKe = phoneModel.ThietKe,
+                            ChatLieu = phoneModel.ChatLieu,
+                           
+                        };
+
+                        db.ThongSoKTDienThoais.Add(phoneSpecs);
+                        db.SaveChanges();
+                    }
+
+                    return RedirectToAction("Index");
                 }
-
-                // 4. Add Technical Specifications
-                var technicalSpecs = new ThongSoKiThuat
+                catch (Exception ex)
                 {
-                    MaBienThe = variant.MaBienThe,
-                    ManHinh = screen,
-                    Camera = camera,
-                    Pin = battery,
-                    Chipset = chipset,
-                    RAM = ram,
-                    HeDieuHanh = operatingSystem
-                };
-                db.ThongSoKiThuats.Add(technicalSpecs);
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
+                    ModelState.AddModelError("", "Lỗi khi lưu dữ liệu: " + ex.Message);
+                }
             }
 
-            // Reload Dropdowns if Validation Fails
-
-            return View(product);
+            // Trả lại view với model nếu có lỗi
+            return View(phoneModel != null ? (object)phoneModel : null);
         }
+
 
         // GET: SanPhams_62131904/Edit/5
         public ActionResult Edit(int? id)
@@ -161,7 +206,8 @@ namespace QLCHTBDD_62131904.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP", sanPham.MaLSP);
+            ViewBag.MaHang = new SelectList(db.HangSanXuats, "MaHang", "TenHang", sanPham.MaHang);
+            ViewBag.MaLSP = new SelectList(db.LoaiSanPhams, "MaLSP", "TenLSP", sanPham.MaLSP);
             return View(sanPham);
         }
 
@@ -170,7 +216,7 @@ namespace QLCHTBDD_62131904.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,MoTa,MaLSP")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,MoTa,MaLSP,MaHang")] SanPham sanPham)
         {
             if (ModelState.IsValid)
             {
@@ -178,7 +224,8 @@ namespace QLCHTBDD_62131904.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaLSP = new SelectList(db.LoaiSPs, "MaLSP", "TenLSP", sanPham.MaLSP);
+            ViewBag.MaHang = new SelectList(db.HangSanXuats, "MaHang", "TenHang", sanPham.MaHang);
+            ViewBag.MaLSP = new SelectList(db.LoaiSanPhams, "MaLSP", "TenLSP", sanPham.MaLSP);
             return View(sanPham);
         }
 
@@ -189,14 +236,11 @@ namespace QLCHTBDD_62131904.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            // Tìm sản phẩm theo ID
-            var sanPham = db.SanPhams.Find(id);
+            SanPham sanPham = db.SanPhams.Find(id);
             if (sanPham == null)
             {
                 return HttpNotFound();
             }
-
             return View(sanPham);
         }
 
@@ -205,49 +249,11 @@ namespace QLCHTBDD_62131904.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // Lấy sản phẩm cần xóa
-                var sanPham = db.SanPhams.Find(id);
-
-                if (sanPham == null)
-                {
-                    TempData["ErrorMessage"] = "Sản phẩm không tồn tại!";
-                    return RedirectToAction("Index");
-                }
-
-                // Xóa các hình ảnh liên quan trong bảng HinhAnhSanPham
-                var relatedImages = db.HinhAnhSanPhams.Where(image => image.BienTheSanPham.MaSP == id).ToList();
-                foreach (var image in relatedImages)
-                {
-                    db.HinhAnhSanPhams.Remove(image);
-                }
-
-                // Xóa các ràng buộc khác (nếu có) ở bảng liên quan trước khi xóa sản phẩm
-                var relatedVariants = db.BienTheSanPhams.Where(bienThe => bienThe.MaSP == id).ToList();
-                foreach (var variant in relatedVariants)
-                {
-                    db.BienTheSanPhams.Remove(variant);
-                }
-
-                // Xóa sản phẩm
-                db.SanPhams.Remove(sanPham);
-                db.SaveChanges();
-
-                // Thông báo thành công
-                TempData["SuccessMessage"] = "Xóa sản phẩm thành công!";
-            }
-            catch (Exception ex)
-            {
-                // Xử lý lỗi nếu có vấn đề xảy ra trong quá trình xóa
-                TempData["ErrorMessage"] = "Không thể xóa sản phẩm. Vui lòng kiểm tra lại!";
-                // Log lỗi (tuỳ chọn)
-                Console.WriteLine(ex.Message);
-            }
-
+            SanPham sanPham = db.SanPhams.Find(id);
+            db.SanPhams.Remove(sanPham);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
-
 
         protected override void Dispose(bool disposing)
         {

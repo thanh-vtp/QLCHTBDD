@@ -11,10 +11,6 @@
     <h2 style="text-align: center; font-weight: bold; color: #007BFF;">Thông tin chi tiết</h2>
     <table style="width: 100%; font-size: 14px; border-collapse: collapse;">
         <tr>
-            <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd; width: 40%;">Mã quản trị:</td>
-            <td style="padding: 8px; border-bottom: 1px solid #ddd;">@Model.MaQT</td>
-        </tr>
-        <tr>
             <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Email</td>
             <td style="padding: 8px; border-bottom: 1px solid #ddd;">@Model.Email</td>
         </tr>
@@ -27,8 +23,17 @@
             <td style="padding: 8px; border-bottom: 1px solid #ddd;">@Model.HoTen</td>
         </tr>
         <tr>
-            <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Mật khẩu:</td>
-            <td style="padding: 8px; border-bottom: 1px solid #ddd;">***************</td>
+            <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Trạng thái:</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                @if (Model.IsActive)
+                {
+                    <span class="active-status">Đã kích hoạt</span>
+                }
+                else
+                {
+                    <span class="inactive-status">Chưa kích hoạt</span>
+                }
+            </td>
         </tr>
     </table>
 
@@ -69,5 +74,14 @@
         background-color: #f8f9fa;
         margin: 0;
         padding: 0;
+    }
+    .active-status {
+        color: green;
+        font-weight: bold;
+    }
+
+    .inactive-status {
+        color: red;
+        font-weight: bold;
     }
 </style>

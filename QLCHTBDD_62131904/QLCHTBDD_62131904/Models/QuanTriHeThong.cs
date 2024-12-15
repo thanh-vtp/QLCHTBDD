@@ -19,5 +19,6 @@ namespace QLCHTBDD_62131904.Models
         public Nullable<bool> Admin { get; set; }
         public string HoTen { get; set; }
         public string Password { get; set; }
+        public bool IsActive { get; set; }
     }
 }

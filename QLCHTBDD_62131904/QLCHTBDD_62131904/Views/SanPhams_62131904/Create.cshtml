@@ -1,26 +1,15 @@
 ﻿@model QLCHTBDD_62131904.Models.SanPham
 
 @{
-    ViewBag.Title = "Thêm mới sản phẩm";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <h2 class="page-title">Thêm mới sản phẩm</h2>
 
 <div class="add-product">
-    <!-- Cụm ảnh -->
-    <div class="add-product__image-preview">
-        <div id="imagePreview">
-            <h5 class="add-product__image-preview-title">Ảnh sản phẩm đã chọn:</h5>
-            <div id="imagePreviewContainer" class="add-product__image-preview-container">
-                <div id="placeholderImage" class="image-placeholder">
-                    <span>No image selected</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Form -->
-    <div class="add-product__form">
+    <!-- Form nhập chính -->
+    <div class="">
         @using (Html.BeginForm("Create", "SanPhams_62131904", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
@@ -28,86 +17,81 @@
             @Html.ValidationSummary(true, "", new { @class = "form-error" })
 
             <div class="form-group">
-                @Html.LabelFor(model => model.MaLSP, "Loại sản phẩm", new { @class = "form-group__label" })
-                @Html.DropDownList("MaLSP", null, new { @class = "form-control" })
+                @Html.LabelFor(model => model.MaHang, "Hãng sản phẩm", new { @class = "" })
+                @Html.DropDownList("MaHang", null, new { @class = "" })
+                @Html.ValidationMessageFor(model => model.MaHang, "", new { @class = "form-error" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaLSP, "Loại sản phẩm", new { @class = "" })
+                @Html.DropDownList("MaLSP",
+                    new SelectList(ViewBag.MaLSP, "Value", "Text", null),
+                    "Chọn loại sản phẩm",
+                    new { @class = "", id = "productType" })
                 @Html.ValidationMessageFor(model => model.MaLSP, "", new { @class = "form-error" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.TenSP, "Tên sản phẩm", new { @class = "form-group__label" })
-                @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên sản phẩm" } })
+                @Html.LabelFor(model => model.TenSP, "Tên sản phẩm", new { @class = "" })
+                @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "", placeholder = "Nhập tên sản phẩm" } })
                 @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "form-error" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.MoTa, "Mô tả", new { @class = "form-group__label" })
-                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mô tả" } })
+                @Html.LabelFor(model => model.MoTa, "Mô tả", new { @class = "" })
+                @Html.TextAreaFor(model => model.MoTa, new { @class = "", placeholder = "Nhập mô tả", rows = "3" })
                 @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "form-error" })
             </div>
 
-            <!-- Các trường bổ sung -->
+            <!-- Quốc gia -->
             <div class="form-group">
-                <label for="MaMau" class="form-group__label">Màu sắc</label>
-                @Html.DropDownList("colorId", ViewBag.MaMau as SelectList, "Chọn màu sắc", new { @class = "form-control" })
+                <label for="MaQG" class="">Quốc gia</label>
+                @Html.DropDownList("MaQG", ViewBag.MaQG as SelectList, "Chọn quốc gia", new { @class = "" })
             </div>
 
             <div class="form-group">
-                <label for="quantity" class="form-group__label">Số lượng</label>
-                <input type="number" id="quantity" name="quantity" class="form-control" required />
+                <label for="MaRAM" class="">RAM</label>
+                @Html.DropDownList("MaRAM", ViewBag.MaRAM as SelectList, "Chọn dung lượng", new { @class = "" })
             </div>
 
             <div class="form-group">
-                <label for="unitOfMeasure" class="form-group__label">Đơn vị tính</label>
-                <select id="unitOfMeasure" name="unitOfMeasure" class="form-control">
-                    <option value="Cái">Cái</option>
+                <label for="MaROM" class="">Dung lượng Lưu trữ (ROM)</label>
+                @Html.DropDownList("MaROM", ViewBag.MaROM as SelectList, "Chọn dung lượng", new { @class = "" })
+            </div>
+
+            <div class="form-group">
+                <label for="MaMau" class="">Màu sắc</label>
+                @Html.DropDownList("MaMau", ViewBag.MaMau as SelectList, "Chọn màu sắc", new { @class = "" })
+            </div>
+
+            <div class="form-group">
+                <label for="SoLuong" class="">Số lượng</label>
+                <input type="number" id="SoLuong" name="SoLuong" class="" required />
+            </div>
+
+            <div class="form-group">
+                <label for="DonViTinh" class="">Đơn vị tính</label>
+                <select id="DonViTinh" name="DonViTinh" class="">
+                    <option value="Chiếc">Chiếc</option>
                     <option value="Bộ">Bộ</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="price" class="form-group__label">Đơn giá</label>
-                <input type="number" id="price" name="price" class="form-control" required />
+                <label for="DonGia" class="">Đơn giá</label>
+                <input type="number" id="DonGia" name="DonGia" class="" required />
             </div>
 
+            <!-- Upload ảnh sản phẩm -->
             <div class="form-group">
-                <label for="MaROM" class="form-group__label">Dung lượng ROM</label>
-                @Html.DropDownList("romId", ViewBag.MaROM as SelectList, "Chọn dung lượng", new { @class = "form-control" })
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label for="screen" class="form-group__label">Màn hình</label>
-                <input type="text" id="screen" name="screen" class="form-control" placeholder="Nhập thông tin màn hình" />
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label for="camera" class="form-group__label">Camera</label>
-                <input type="text" id="camera" name="camera" class="form-control" placeholder="Nhập thông tin camera" />
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label for="battery" class="form-group__label">Dung lượng pin</label>
-                <input type="text" id="battery" name="battery" class="form-control" placeholder="Nhập dung lượng pin" />
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label for="chipset" class="form-group__label">Bộ xử lý (chipset)</label>
-                <input type="text" id="chipset" name="chipset" class="form-control" placeholder="Nhập bộ xử lý" />
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label for="ram" class="form-group__label">RAM</label>
-                <input type="text" id="ram" name="ram" class="form-control" placeholder="Nhập dung lượng RAM" />
-            </div>
-
-            <div style="margin-bottom: 15px;">
-                <label for="operatingSystem" class="form-group__label">Hệ điều hành</label>
-                <input type="text" id="operatingSystem" name="operatingSystem" class="form-control" placeholder="Nhập hệ điều hành" />
-            </div>
-
-            <div class="form-group">
-                <label for="uploadedImages" class="form-group__label">Hình ảnh sản phẩm</label>
-                <input type="file" id="uploadedImages" name="uploadedImages" class="form-control" accept="image/*" multiple />
+                <label for="uploadedImages" class="">Hình ảnh sản phẩm</label>
+                <input type="file" id="uploadedImages" name="uploadedImages" class="" accept="image/*" multiple />
                 <p class="form-group__helper-text">Chọn nhiều ảnh nếu cần (tối đa 15 ảnh).</p>
+            </div>
+
+            <!-- Form thay đổi theo loại sản phẩm -->
+            <div class="add-product__form-dynamic" id="dynamicForm">
+                <!-- Nội dung sẽ được thêm động qua JavaScript -->
             </div>
 
             <div class="form-group form-group--actions">
@@ -115,6 +99,17 @@
                 @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
             </div>
         }
+    </div>
+</div>
+
+
+<!-- Cụm ảnh dưới cùng -->
+<div class="add-product__image-preview">
+    <h5 class="add-product__image-preview-title">Ảnh sản phẩm đã chọn:</h5>
+    <div id="imagePreviewContainer" class="add-product__image-preview-container">
+        <div id="placeholderImage" class="image-placeholder">
+            <span>No image selected</span>
+        </div>
     </div>
 </div>
 
@@ -135,29 +130,14 @@
 
     .add-product {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 20px;
         margin: 20px;
     }
 
-    .add-product__image-preview,
-    .add-product__form {
-        width: 48%;
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .add-product__image-preview-title {
-        font-weight: bold;
-        color: #007BFF;
-        margin-bottom: 10px;
-    }
-
-    .add-product__image-preview-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+    .form-error {
+        color: red;
+        font-size: 12px;
     }
 
     /*image */
@@ -186,53 +166,29 @@
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     }
 
-    .fixed-image img {
-        width: 100%; /* Ảnh sẽ vừa khung */
-        height: 100%; /* Ảnh sẽ vừa khung */
-        object-fit: cover; /* Đảm bảo ảnh không bị méo, cắt gọn nếu cần */
-        border-radius: 8px;
-    }
+        .fixed-image img {
+            width: 100%; /* Ảnh sẽ vừa khung */
+            height: 100%; /* Ảnh sẽ vừa khung */
+            object-fit: cover; /* Đảm bảo ảnh không bị méo, cắt gọn nếu cần */
+            border-radius: 8px;
+        }
 
-    .fixed-image span {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        cursor: pointer;
-        color: red;
-        font-weight: bold;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 3px 8px;
-        border-radius: 50%;
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-group__label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    .form-group__helper-text {
-        color: #007BFF;
-        font-size: 12px;
-    }
-
-    .form-group--actions {
-        text-align: center;
-    }
-
-    .form-error {
-        color: red;
-        font-size: 12px;
-    }
+        .fixed-image span {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3px 8px;
+            border-radius: 50%;
+            font-size: 14px;
+            text-align: center;
+        }
 </style>
-
 <script>
+    // script xử lý chọn ảnh
     document.addEventListener('DOMContentLoaded', function () {
         const imageInput = document.getElementById('uploadedImages');
         const imagePreviewContainer = document.getElementById('imagePreviewContainer');
@@ -296,11 +252,11 @@
             updateFileInput();
         });
 
+        // cập nhật file input
         function updateFileInput() {
             const dataTransfer = new DataTransfer();
             selectedFiles.forEach((file) => dataTransfer.items.add(file));
             imageInput.files = dataTransfer.files;
         }
     });
-
 </script>

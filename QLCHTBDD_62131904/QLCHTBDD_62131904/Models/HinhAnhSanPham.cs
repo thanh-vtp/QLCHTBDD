@@ -15,7 +15,7 @@ namespace QLCHTBDD_62131904.Models
     public partial class HinhAnhSanPham
     {
         public int MaHA { get; set; }
-        public Nullable<int> MaBienThe { get; set; }
+        public Nullable<int> MaBT { get; set; }
         public string AnhSP { get; set; }
     
         public virtual BienTheSanPham BienTheSanPham { get; set; }

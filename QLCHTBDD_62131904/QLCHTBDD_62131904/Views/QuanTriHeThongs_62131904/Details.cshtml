@@ -25,6 +25,19 @@
             <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Password:</td>
             <td style="padding: 8px; border-bottom: 1px solid #ddd;">***************</td>
         </tr>
+        <tr>
+            <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #ddd;">Trạng thái:</td>
+            <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+                @if (Model.IsActive)
+                {
+                    <span class="active-status">Đã kích hoạt</span>
+                }
+                else
+                {
+                    <span class="inactive-status">Chưa kích hoạt</span>
+                }
+            </td>
+        </tr>
     </table>
     <div style="text-align: center; margin-top: 20px;">
         @Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaQT }, new { @class = "btn btn-primary", style = "margin-right: 10px; padding: 10px 15px; text-decoration: none;" })
@@ -39,4 +52,15 @@
         margin: 0;
         padding: 0;
     }
+
+    .active-status {
+        color: green;
+        font-weight: bold;
+    }
+
+    .inactive-status {
+        color: red;
+        font-weight: bold;
+    }
+
 </style>

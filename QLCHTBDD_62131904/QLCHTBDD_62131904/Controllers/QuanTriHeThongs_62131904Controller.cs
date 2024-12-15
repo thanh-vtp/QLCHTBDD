@@ -33,9 +33,9 @@ namespace QLCHTBDD_62131904.Controllers
 
             // Tìm kiếm quản trị viên
             var admin = db.QuanTriHeThongs.FirstOrDefault(q => q.Email == email);
-            if (admin == null)
+            if (admin == null || !admin.IsActive)
             {
-                ModelState.AddModelError("", "Email không tồn tại.");
+                ModelState.AddModelError("", "Email không tồn tại hoặc tài khoản đã bị vô hiệu hóa.");
                 return View();
             }
 
@@ -70,11 +70,25 @@ namespace QLCHTBDD_62131904.Controllers
         }
 
         // GET: QuanTriHeThongs_62131904/Register
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        // POST: QuanTriHeThongs_62131904/Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(string email, string password, string hoTen)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(hoTen))
             {
-                ModelState.AddModelError("", "All fields are required.");
+                ModelState.AddModelError("", "Email, mật khẩu và họ tên không được để trống.");
+                return View();
+            }
+
+            if (db.QuanTriHeThongs.Any(q => q.Email == email))
+            {
+                ModelState.AddModelError("", "Email đã tồn tại.");
                 return View();
             }
 
@@ -84,13 +98,14 @@ namespace QLCHTBDD_62131904.Controllers
             {
                 Email = email,
                 HoTen = hoTen,
-                Password = hashedPassword
+                Password = hashedPassword,
+                IsActive = true // Mặc định tài khoản mới được kích hoạt
             };
 
             db.QuanTriHeThongs.Add(newUser);
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
 
         // POST: QuanTriHeThongs_62131904/ChangePassword
@@ -100,7 +115,7 @@ namespace QLCHTBDD_62131904.Controllers
         {
             if (string.IsNullOrEmpty(newPassword))
             {
-                ModelState.AddModelError("", "New password is required.");
+                ModelState.AddModelError("", "Mật khẩu mới không được để trống.");
                 return View();
             }
 
@@ -149,10 +164,11 @@ namespace QLCHTBDD_62131904.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaQT,Email,Admin,HoTen,Password")] QuanTriHeThong quanTriHeThong)
+        public ActionResult Create([Bind(Include = "MaQT,Email,Admin,HoTen,Password,IsActive")] QuanTriHeThong quanTriHeThong)
         {
             if (ModelState.IsValid)
             {
+                quanTriHeThong.IsActive = true;
                 quanTriHeThong.Password = Authentication_Services.HashPassword(quanTriHeThong.Password);
                 db.QuanTriHeThongs.Add(quanTriHeThong);
                 db.SaveChanges();
@@ -182,17 +198,26 @@ namespace QLCHTBDD_62131904.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaQT,Email,Admin,HoTen,Password")] QuanTriHeThong quanTriHeThong)
+        public ActionResult Edit([Bind(Include = "MaQT,Email,Admin,HoTen,Password,IsActive")] QuanTriHeThong quanTriHeThong)
         {
             if (ModelState.IsValid)
             {
-                // Kiểm tra nếu mật khẩu có thay đổi (người dùng có nhập mật khẩu mới)
-                if (!string.IsNullOrEmpty(quanTriHeThong.Password))
+                var existingUser = db.QuanTriHeThongs.AsNoTracking().FirstOrDefault(q => q.MaQT == quanTriHeThong.MaQT);
+                if (existingUser == null)
                 {
-                    // Mã hóa mật khẩu mới
+                    return HttpNotFound();
+                }
+
+                // Kiểm tra nếu mật khẩu không thay đổi
+                if (string.IsNullOrEmpty(quanTriHeThong.Password))
+                {
+                    quanTriHeThong.Password = existingUser.Password;
+                }
+                else
+                {
                     quanTriHeThong.Password = Authentication_Services.HashPassword(quanTriHeThong.Password);
                 }
-                // Cập nhật thông tin quản trị viên
+
                 db.Entry(quanTriHeThong).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -226,6 +251,23 @@ namespace QLCHTBDD_62131904.Controllers
             return RedirectToAction("Index");
         }
 
+        // POST: QuanTriHeThongs_62131904/Deactivate
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Deactivate(int id)
+        {
+            var user = db.QuanTriHeThongs.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            user.IsActive = false;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

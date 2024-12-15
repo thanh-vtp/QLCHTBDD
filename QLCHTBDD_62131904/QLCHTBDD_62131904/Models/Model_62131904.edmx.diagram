@@ -4,38 +4,62 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0a8eeff74b074ad49756131caff51afb" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.BaoHanh" Width="1.5" PointX="6.625" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.BienTheSanPham" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ChiTietGioHang" Width="1.5" PointX="11.5" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.GioHang" Width="1.5" PointX="9.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.HinhAnhSanPham" Width="2.125" PointX="7.375" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.KhachHang" Width="1.5" PointX="3.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.KhuyenMai" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.LichSuGiaoDich" Width="1.5" PointX="11.625" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.LoaiSP" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.MauSac" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.NhanVien" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.PhanQuyen" Width="1.5" PointX="1.5" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.QuanTriHeThong" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ROM" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.SanPham" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__BaoHanh__MaSP__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__BienTheSa__MaMau__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__BienTheSa__MaROM__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__BienTheSan__MaSP__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__HinhAnhSa__MaBie__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ChiTietGio__MaHD__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ChiTietGio__MaSP__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__GioHang__MaKH__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__GioHang__MaNV__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__LichSuGiao__MaHD__5CD6CB2B" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__KhuyenMai__MaSP__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__SanPham__MaLSP__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.NhanVienPhanQuyen" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ThongSoKiThuat" Width="1.5" PointX="7.5" PointY="15.25" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoKi__MaBie__693CA210" />
-      </Diagram>
+      <Diagram DiagramId="0a8eeff74b074ad49756131caff51afb" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.QuanTriHeThong" Width="1.5" PointX="25.375" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.HinhAnhSanPham" Width="1.5" PointX="9.5" PointY="10.25" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.BienTheSanPham" Width="1.5" PointX="7.5" PointY="9.25" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.Bluetooth" Width="1.5" PointX="10.5" PointY="15.625" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ChipXuLy" Width="1.5" PointX="10.5" PointY="13.125" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ChuanKhangBuiNuoc" Width="1.5" PointX="10.5" PointY="20.75" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.CongKetNoiKhac" Width="1.5" PointX="10.5" PointY="6.5" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.CongKetNoiSac" Width="1.5" PointX="10.5" PointY="18.125" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.CongNgheGP" Width="1.5" PointX="15" PointY="38" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.CongNgheManHinhDienThoai" Width="1.5" PointX="15" PointY="27.875" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.CongNghePin" Width="1.5" PointX="15" PointY="30.5" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.CongNgheWifi" Width="1.5" PointX="15" PointY="25.375" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.CongNgheXemPhim" Width="1.5" PointX="15" PointY="35.5" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.DoPhanGiaiCamera" Width="1.5" PointX="12.75" PointY="3.25" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.HangSanXuat" Width="1.5" PointX="3" PointY="12.625" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.HeDieuHanh" Width="1.5" PointX="10.5" PointY="3.75" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.KichThuocKhoiLuong" Width="1.5" PointX="15" PointY="19.75" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.LoaiSanPham" Width="1.5" PointX="3" PointY="10" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.MauSac" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.QuocGia" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.RAM" Width="1.5" PointX="5.25" PointY="7.5" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ROM" Width="1.5" PointX="5.25" PointY="15.5" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.SanPham" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ThongSoCamera" Width="1.5" PointX="15" PointY="10" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ThongSoKTDienThoai" Width="1.5" PointX="12.75" PointY="6.25" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ThongSoQuayPhim" Width="1.5" PointX="15" PointY="22.875" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.TinhNangCamera" Width="1.5" PointX="15" PointY="17" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.TinhNangDacBiet" Width="1.5" PointX="15" PointY="33" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__BienTheSa__MaMau__656C112C" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__BienTheSa__MaRAM__66603565" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__BienTheSa__MaROM__6754599E" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__BienTheSan__MaSP__6477ECF3" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__HinhAnhSan__MaBT__6A30C649" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoKTD__MaBT__6D0D32F4" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoKT__MaBlu__73BA3083" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoKT__MaChi__6EF57B66" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoKT__MaChu__71D1E811" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoKT__MaCon__76969D2E" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoKT__MaCon__74AE54BC" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__CongNgheG__MaTSK__0E6E26BF" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__CongNgheM__MaTSK__00200768" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__CongNgheP__MaTSK__02FC7413" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__CongNgheW__MaTSK__0B91BA14" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__CongNgheX__MaTSK__08B54D69" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoCa__MaDoP__123EB7A3" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__HangSanXua__MaQG__3A81B327" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__SanPham__MaHang__4222D4EF" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoKT__MaHDH__6E01572D" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__KichThuoc__MaTSK__160F4887" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__SanPham__MaLSP__412EB0B6" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoCa__MaTSK__114A936A" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ThongSoQu__MaTSK__797309D9" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__TinhNangC__MaTSK__7C4F7684" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__TinhNangD__MaTSK__05D8E0BE" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

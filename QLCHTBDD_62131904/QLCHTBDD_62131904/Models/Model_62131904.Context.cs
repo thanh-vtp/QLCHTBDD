@@ -25,21 +25,33 @@ namespace QLCHTBDD_62131904.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BaoHanh> BaoHanhs { get; set; }
-        public virtual DbSet<BienTheSanPham> BienTheSanPhams { get; set; }
-        public virtual DbSet<ChiTietGioHang> ChiTietGioHangs { get; set; }
-        public virtual DbSet<GioHang> GioHangs { get; set; }
-        public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
-        public virtual DbSet<LichSuGiaoDich> LichSuGiaoDiches { get; set; }
-        public virtual DbSet<LoaiSP> LoaiSPs { get; set; }
-        public virtual DbSet<MauSac> MauSacs { get; set; }
-        public virtual DbSet<NhanVien> NhanViens { get; set; }
-        public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<QuanTriHeThong> QuanTriHeThongs { get; set; }
+        public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
+        public virtual DbSet<BienTheSanPham> BienTheSanPhams { get; set; }
+        public virtual DbSet<Bluetooth> Blueteeth { get; set; }
+        public virtual DbSet<ChipXuLy> ChipXuLies { get; set; }
+        public virtual DbSet<ChuanKhangBuiNuoc> ChuanKhangBuiNuocs { get; set; }
+        public virtual DbSet<CongKetNoiKhac> CongKetNoiKhacs { get; set; }
+        public virtual DbSet<CongKetNoiSac> CongKetNoiSacs { get; set; }
+        public virtual DbSet<CongNgheGP> CongNgheGPS { get; set; }
+        public virtual DbSet<CongNgheManHinhDienThoai> CongNgheManHinhDienThoais { get; set; }
+        public virtual DbSet<CongNghePin> CongNghePins { get; set; }
+        public virtual DbSet<CongNgheWifi> CongNgheWifis { get; set; }
+        public virtual DbSet<CongNgheXemPhim> CongNgheXemPhims { get; set; }
+        public virtual DbSet<DoPhanGiaiCamera> DoPhanGiaiCameras { get; set; }
+        public virtual DbSet<HangSanXuat> HangSanXuats { get; set; }
+        public virtual DbSet<HeDieuHanh> HeDieuHanhs { get; set; }
+        public virtual DbSet<KichThuocKhoiLuong> KichThuocKhoiLuongs { get; set; }
+        public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
+        public virtual DbSet<MauSac> MauSacs { get; set; }
+        public virtual DbSet<QuocGia> QuocGias { get; set; }
+        public virtual DbSet<RAM> RAMs { get; set; }
         public virtual DbSet<ROM> ROMs { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<ThongSoKiThuat> ThongSoKiThuats { get; set; }
+        public virtual DbSet<ThongSoCamera> ThongSoCameras { get; set; }
+        public virtual DbSet<ThongSoKTDienThoai> ThongSoKTDienThoais { get; set; }
+        public virtual DbSet<ThongSoQuayPhim> ThongSoQuayPhims { get; set; }
+        public virtual DbSet<TinhNangCamera> TinhNangCameras { get; set; }
+        public virtual DbSet<TinhNangDacBiet> TinhNangDacBiets { get; set; }
     }
 }

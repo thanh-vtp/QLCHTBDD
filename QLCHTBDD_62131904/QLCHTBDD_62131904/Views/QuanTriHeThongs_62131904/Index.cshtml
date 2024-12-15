@@ -69,6 +69,7 @@
             text-decoration: none;
         }
 
+
     /*    button actions*/
     .btn {
         font-weight: bold;
@@ -113,7 +114,10 @@
             grid.Column("Email", "Email", format: item => item.Email),
             grid.Column("Admin", "Quyền", format: item => item.Admin == true ? "Admin" : "Nhân viên"),
             grid.Column("HoTen", "Họ tên", format: item => item.HoTen),
-            grid.Column("Password", "Mật khẩu", format: item => "********"),
+                    grid.Column("IsActive", "Trạng thái", format: item =>
+                @Html.Raw(item.IsActive
+                ? "<span class='text-success'>Đã kích hoạt</span>"
+                : "<span class='text-danger'>Chưa kích hoạt</span>")),
             grid.Column("Chức năng", format: @<text>
                     <a href="@Url.Action("Edit", new { id = item.MaQT })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
                     <a href="@Url.Action("Details", new { id = item.MaQT })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>
