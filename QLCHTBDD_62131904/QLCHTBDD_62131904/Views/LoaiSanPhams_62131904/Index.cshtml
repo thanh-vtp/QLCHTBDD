@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Loại sản phẩm";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var grid = new WebGrid(Model, canPage: true, defaultSort: "TenLSP", rowsPerPage: 10);
     @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
 }

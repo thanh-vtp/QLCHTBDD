@@ -1,3 +1,14 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@*@{
+    if (HttpContext.Current.User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_MainLayout.cshtml";
+    }
+}*@
+
+@{ 
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }

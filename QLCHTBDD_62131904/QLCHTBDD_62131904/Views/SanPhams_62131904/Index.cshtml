@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Danh Sách Sản Phẩm";
     var grid = new WebGrid(source: Model, canPage: true, defaultSort: "TenSP", rowsPerPage: 3);
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
 }
 
