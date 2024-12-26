@@ -16,11 +16,10 @@ namespace QLCHTBDD_62131904.Models
     {
         public int MaKichThuocKhoiLuong { get; set; }
         public Nullable<int> MaTSKT { get; set; }
-        public Nullable<double> ChieuDai { get; set; }
-        public Nullable<double> ChieuNgang { get; set; }
-        public Nullable<double> ChieuDay { get; set; }
+        public Nullable<int> MaKichThuoc { get; set; }
         public Nullable<double> KhoiLuong { get; set; }
     
+        public virtual KichThuoc KichThuoc { get; set; }
         public virtual ThongSoKTDienThoai ThongSoKTDienThoai { get; set; }
     }
 }

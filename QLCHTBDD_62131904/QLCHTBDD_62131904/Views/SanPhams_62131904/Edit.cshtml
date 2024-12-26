@@ -1,0 +1,52 @@
+﻿@model QLCHTBDD_62131904.ViewModels.SanPhamViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/create_product.css" rel="stylesheet" />
+<h2>Chỉnh sửa thông tin sản phẩm</h2>
+@using (Html.BeginForm("Edit", "SanPhams_62131904", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "")
+
+    <div class="form-container">
+        <!-- Thông tin sản phẩm -->
+        <div class="form-section" id="product-info">
+            <h3>Thông tin sản phẩm</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TenHangSanXuat, "Hãng sản phẩm", new { @class = "form-label" })
+                    @Html.DropDownList("MaHang", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TenHangSanXuat, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TenLoaiSanPham, "Loại sản phẩm", new { @class = "form-label" })
+                    @Html.DropDownList("MaLSP", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TenLoaiSanPham, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TenSP, "Tên sản phẩm", new { @class = "form-label" })
+                @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên sản phẩm" } })
+                @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MoTa, "Mô tả", new { @class = "form-label" })
+                @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", placeholder = "Nhập mô tả", rows = "3" })
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <!-- Nút hành động -->
+        <div class="form-group form-group--actions">
+            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}

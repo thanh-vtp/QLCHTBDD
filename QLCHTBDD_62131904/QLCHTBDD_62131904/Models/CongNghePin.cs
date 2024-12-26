@@ -14,10 +14,17 @@ namespace QLCHTBDD_62131904.Models
     
     public partial class CongNghePin
     {
-        public int MaCongNghePin { get; set; }
-        public Nullable<int> MaTSKT { get; set; }
-        public string CongNghe { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CongNghePin()
+        {
+            this.ThongTinCongNghePinDienThoais = new HashSet<ThongTinCongNghePinDienThoai>();
+        }
     
-        public virtual ThongSoKTDienThoai ThongSoKTDienThoai { get; set; }
+        public int MaCongNghePin { get; set; }
+        public string TenCongNghePin { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinCongNghePinDienThoai> ThongTinCongNghePinDienThoais { get; set; }
     }
 }

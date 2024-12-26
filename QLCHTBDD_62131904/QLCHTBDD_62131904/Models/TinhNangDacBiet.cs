@@ -14,10 +14,17 @@ namespace QLCHTBDD_62131904.Models
     
     public partial class TinhNangDacBiet
     {
-        public int MaTinhNangDacBiet { get; set; }
-        public Nullable<int> MaTSKT { get; set; }
-        public string TinhNang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TinhNangDacBiet()
+        {
+            this.ThongTinTinhNangDacBietDienThoais = new HashSet<ThongTinTinhNangDacBietDienThoai>();
+        }
     
-        public virtual ThongSoKTDienThoai ThongSoKTDienThoai { get; set; }
+        public int MaTinhNangDacBiet { get; set; }
+        public string TenTinhNangDacBiet { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinTinhNangDacBietDienThoai> ThongTinTinhNangDacBietDienThoais { get; set; }
     }
 }

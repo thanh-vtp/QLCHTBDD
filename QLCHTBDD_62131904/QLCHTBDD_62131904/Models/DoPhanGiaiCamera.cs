@@ -17,7 +17,7 @@ namespace QLCHTBDD_62131904.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DoPhanGiaiCamera()
         {
-            this.ThongSoCameras = new HashSet<ThongSoCamera>();
+            this.ChiTietDoPhanGiaiCameras = new HashSet<ChiTietDoPhanGiaiCamera>();
         }
     
         public int MaDoPhanGiai { get; set; }
@@ -25,6 +25,6 @@ namespace QLCHTBDD_62131904.Models
         public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThongSoCamera> ThongSoCameras { get; set; }
+        public virtual ICollection<ChiTietDoPhanGiaiCamera> ChiTietDoPhanGiaiCameras { get; set; }
     }
 }

@@ -16,7 +16,9 @@ namespace QLCHTBDD_62131904.Models
     {
         public int MaHA { get; set; }
         public Nullable<int> MaBT { get; set; }
-        public string AnhSP { get; set; }
+        public string DuongDanAnh { get; set; }
+        public string TenAnh { get; set; }
+        public Nullable<bool> AnhChinh { get; set; }
     
         public virtual BienTheSanPham BienTheSanPham { get; set; }
     }

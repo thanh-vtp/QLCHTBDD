@@ -14,12 +14,19 @@ namespace QLCHTBDD_62131904.Models
     
     public partial class ThongSoCamera
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ThongSoCamera()
+        {
+            this.ChiTietDoPhanGiaiCameras = new HashSet<ChiTietDoPhanGiaiCamera>();
+        }
+    
         public int MaThongSoCamera { get; set; }
         public Nullable<int> MaTSKT { get; set; }
-        public Nullable<int> MaDoPhanGiai { get; set; }
-        public string LoaiCamera { get; set; }
+        public Nullable<int> MaLoaiCamera { get; set; }
     
-        public virtual DoPhanGiaiCamera DoPhanGiaiCamera { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDoPhanGiaiCamera> ChiTietDoPhanGiaiCameras { get; set; }
+        public virtual LoaiCamera LoaiCamera { get; set; }
         public virtual ThongSoKTDienThoai ThongSoKTDienThoai { get; set; }
     }
 }

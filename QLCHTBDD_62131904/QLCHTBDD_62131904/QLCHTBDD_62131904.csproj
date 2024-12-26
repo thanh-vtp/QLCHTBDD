@@ -145,20 +145,36 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GetCurrentAdmin_62131904Controller.cs" />
-    <Compile Include="Controllers\LoaiSanPhams_62131904Controller.cs" />
-    <Compile Include="Controllers\QuanTriHeThongs_62131904Controller.cs" />
-    <Compile Include="Controllers\SanPhams_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanTris\GetCurrentAdmin_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanTris\QuanTriHeThongs_62131904Controller.cs" />
+    <Compile Include="Controllers\SanPhams\LoaiSanPhams_62131904Controller.cs" />
+    <Compile Include="Controllers\SanPhams\SanPhams_62131904Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\StaticEntityHelper.cs" />
     <Compile Include="Models\BienTheSanPham.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bluetooth.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChatLieu.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChipDoHoaGPU.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChipXuLy.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietDoPhanGiaiCamera.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietDoPhanGiaiManHinh.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietTinhNangCamera.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChuanKhangBuiNuoc.cs">
@@ -170,37 +186,73 @@
     <Compile Include="Models\CongKetNoiSac.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CongNgheGP.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CongNgheManHinhDienThoai.cs">
+    <Compile Include="Models\CongNgheManHinh.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CongNghePin.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CongNgheWifi.cs">
+    <Compile Include="Models\DinhDangGhiAm.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CongNgheXemPhim.cs">
+    <Compile Include="Models\DinhDangNhac.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DinhDangPhim.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DoPhanGiaiCamera.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DoPhanGiaiManHinh.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoPhanGiaiQuayPhim.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoSangToiDa.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DungLuongPin.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HangSanXuat.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HeDieuHanh.cs">
+    <Compile Include="Models\HeThongDinhViGP.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HinhAnhSanPham.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HoTroSacToiDa.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JackTaiNghe.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KichThuoc.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KichThuocKhoiLuong.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\KichThuocManHinh.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiCamera.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiKinhCuongLuc.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiPin.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MangDiDong.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MauSac.cs">
@@ -221,6 +273,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model_62131904.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PhienBanHDH.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\QuanTriHeThong.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
@@ -236,6 +291,15 @@
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SIM.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TanSoQuetManHinh.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThietKe.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ThongSoCamera.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
@@ -245,17 +309,67 @@
     <Compile Include="Models\ThongSoQuayPhim.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TinhNangCamera.cs">
+    <Compile Include="Models\ThongTinBaoMatNangCaoDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinCongNgheManHinhDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinCongNghePinDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinDinhDangPhimVaNhacDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinDoSangDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinHeThongDinhViDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinKinhCuongLucDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinMangDiDongDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinManHinhDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinPinVaSacDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinTinhNangDacBietDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinWifiDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TinhNang.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TinhNangBaoMat.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TinhNangDacBiet.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TocDoCPU.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TocDoKhungHinh.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrangThaiSanPham.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wifi.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Authentication_Services.cs" />
     <Compile Include="ViewModels\ChiTietSanPhamDienThoaiViewModel.cs" />
-    <Compile Include="ViewModels\ChiTietSanPhamLaptopViewModel.cs" />
-    <Compile Include="ViewModels\DanhSachSanPhamViewModel.cs" />
+    <Compile Include="ViewModels\SanPhamViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -274,6 +388,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\create_product.css" />
     <Content Include="Content\_styleAdmin.css" />
     <Content Include="Content\_styleApp.css" />
     <Content Include="favicon.ico" />
@@ -313,6 +428,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\page_create_sanpham.js" />
     <Content Include="Scripts\_styleAdmin.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -342,10 +458,13 @@
     <Content Include="Views\SanPhams_62131904\Create.cshtml" />
     <Content Include="Views\SanPhams_62131904\ThongTinDienThoai.cshtml" />
     <Content Include="Views\SanPhams_62131904\ThongTinLapTop.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Details.cshtml" />
+    <Content Include="Views\SanPhams_62131904\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\DanhSachBangTinhs_62131904\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

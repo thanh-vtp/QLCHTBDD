@@ -17,74 +17,92 @@ namespace QLCHTBDD_62131904.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ThongSoKTDienThoai()
         {
-            this.CongNgheGPS = new HashSet<CongNgheGP>();
-            this.CongNgheManHinhDienThoais = new HashSet<CongNgheManHinhDienThoai>();
-            this.CongNghePins = new HashSet<CongNghePin>();
-            this.CongNgheWifis = new HashSet<CongNgheWifi>();
-            this.CongNgheXemPhims = new HashSet<CongNgheXemPhim>();
+            this.ChiTietDoPhanGiaiManHinhs = new HashSet<ChiTietDoPhanGiaiManHinh>();
+            this.ChiTietTinhNangCameras = new HashSet<ChiTietTinhNangCamera>();
             this.KichThuocKhoiLuongs = new HashSet<KichThuocKhoiLuong>();
             this.ThongSoCameras = new HashSet<ThongSoCamera>();
             this.ThongSoQuayPhims = new HashSet<ThongSoQuayPhim>();
-            this.TinhNangCameras = new HashSet<TinhNangCamera>();
-            this.TinhNangDacBiets = new HashSet<TinhNangDacBiet>();
+            this.ThongTinBaoMatNangCaoDienThoais = new HashSet<ThongTinBaoMatNangCaoDienThoai>();
+            this.ThongTinCongNghePinDienThoais = new HashSet<ThongTinCongNghePinDienThoai>();
+            this.ThongTinCongNgheManHinhDienThoais = new HashSet<ThongTinCongNgheManHinhDienThoai>();
+            this.ThongTinDinhDangPhimVaNhacDienThoais = new HashSet<ThongTinDinhDangPhimVaNhacDienThoai>();
+            this.ThongTinDoSangDienThoais = new HashSet<ThongTinDoSangDienThoai>();
+            this.ThongTinHeThongDinhViDienThoais = new HashSet<ThongTinHeThongDinhViDienThoai>();
+            this.ThongTinKinhCuongLucDienThoais = new HashSet<ThongTinKinhCuongLucDienThoai>();
+            this.ThongTinMangDiDongDienThoais = new HashSet<ThongTinMangDiDongDienThoai>();
+            this.ThongTinManHinhDienThoais = new HashSet<ThongTinManHinhDienThoai>();
+            this.ThongTinPinVaSacDienThoais = new HashSet<ThongTinPinVaSacDienThoai>();
+            this.ThongTinTinhNangDacBietDienThoais = new HashSet<ThongTinTinhNangDacBietDienThoai>();
+            this.ThongTinWifiDienThoais = new HashSet<ThongTinWifiDienThoai>();
         }
     
         public int MaTSKT { get; set; }
-        public Nullable<int> MaBT { get; set; }
-        public Nullable<int> MaHDH { get; set; }
+        public Nullable<int> MaSP { get; set; }
+        public Nullable<int> MaPhienBanHDH { get; set; }
         public Nullable<int> MaChip { get; set; }
-        public string TocDoCPU { get; set; }
-        public string ChipDoHoaGPU { get; set; }
+        public Nullable<int> MaTocDoCPU { get; set; }
+        public Nullable<int> MaChipDoHoaGPU { get; set; }
         public string DungLuongConLai { get; set; }
         public Nullable<bool> DanhBa { get; set; }
         public Nullable<bool> DenFlashCameraSau { get; set; }
-        public string DoPhanGiaiManHinh { get; set; }
-        public string KichThuocManHinh { get; set; }
-        public string DoSangToiDa { get; set; }
-        public string MatKinhCamUng { get; set; }
-        public string DungLuongPin { get; set; }
-        public string LoaiPin { get; set; }
-        public string HoTroSacToiDa { get; set; }
-        public string BaoMatNangCao { get; set; }
         public Nullable<int> MaChuanKhangBuiNuoc { get; set; }
-        public string GhiAm { get; set; }
-        public Nullable<bool> NgheNhac { get; set; }
-        public string MangDiDong { get; set; }
-        public string SIM { get; set; }
+        public Nullable<int> MaDinhDangGhiAm { get; set; }
+        public Nullable<int> MaSIM { get; set; }
         public Nullable<int> MaBluetooth { get; set; }
         public Nullable<int> MaCongKetNoiSac { get; set; }
-        public Nullable<bool> JackTaiNghe { get; set; }
+        public Nullable<int> MaJackTaiNghe { get; set; }
         public Nullable<int> MaCongKetNoiKhac { get; set; }
-        public string ThietKe { get; set; }
-        public string ChatLieu { get; set; }
+        public Nullable<int> MaThietKe { get; set; }
+        public Nullable<int> MaChatLieu { get; set; }
         public Nullable<System.DateTime> ThoiDiemRaMat { get; set; }
     
-        public virtual BienTheSanPham BienTheSanPham { get; set; }
         public virtual Bluetooth Bluetooth { get; set; }
+        public virtual ChatLieu ChatLieu { get; set; }
+        public virtual ChipDoHoaGPU ChipDoHoaGPU { get; set; }
         public virtual ChipXuLy ChipXuLy { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDoPhanGiaiManHinh> ChiTietDoPhanGiaiManHinhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietTinhNangCamera> ChiTietTinhNangCameras { get; set; }
         public virtual ChuanKhangBuiNuoc ChuanKhangBuiNuoc { get; set; }
         public virtual CongKetNoiKhac CongKetNoiKhac { get; set; }
         public virtual CongKetNoiSac CongKetNoiSac { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CongNgheGP> CongNgheGPS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CongNgheManHinhDienThoai> CongNgheManHinhDienThoais { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CongNghePin> CongNghePins { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CongNgheWifi> CongNgheWifis { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CongNgheXemPhim> CongNgheXemPhims { get; set; }
-        public virtual HeDieuHanh HeDieuHanh { get; set; }
+        public virtual DinhDangGhiAm DinhDangGhiAm { get; set; }
+        public virtual JackTaiNghe JackTaiNghe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KichThuocKhoiLuong> KichThuocKhoiLuongs { get; set; }
+        public virtual PhienBanHDH PhienBanHDH { get; set; }
+        public virtual SanPham SanPham { get; set; }
+        public virtual SIM SIM { get; set; }
+        public virtual ThietKe ThietKe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThongSoCamera> ThongSoCameras { get; set; }
+        public virtual TocDoCPU TocDoCPU { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThongSoQuayPhim> ThongSoQuayPhims { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TinhNangCamera> TinhNangCameras { get; set; }
+        public virtual ICollection<ThongTinBaoMatNangCaoDienThoai> ThongTinBaoMatNangCaoDienThoais { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TinhNangDacBiet> TinhNangDacBiets { get; set; }
+        public virtual ICollection<ThongTinCongNghePinDienThoai> ThongTinCongNghePinDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinCongNgheManHinhDienThoai> ThongTinCongNgheManHinhDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinDinhDangPhimVaNhacDienThoai> ThongTinDinhDangPhimVaNhacDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinDoSangDienThoai> ThongTinDoSangDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinHeThongDinhViDienThoai> ThongTinHeThongDinhViDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinKinhCuongLucDienThoai> ThongTinKinhCuongLucDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinMangDiDongDienThoai> ThongTinMangDiDongDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinManHinhDienThoai> ThongTinManHinhDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinPinVaSacDienThoai> ThongTinPinVaSacDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinTinhNangDacBietDienThoai> ThongTinTinhNangDacBietDienThoais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongTinWifiDienThoai> ThongTinWifiDienThoais { get; set; }
     }
 }

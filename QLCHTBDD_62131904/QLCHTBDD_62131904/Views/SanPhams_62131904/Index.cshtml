@@ -1,7 +1,7 @@
-﻿@model IEnumerable<QLCHTBDD_62131904.ViewModels.DanhSachSanPhamViewModel>
+﻿@model IEnumerable<QLCHTBDD_62131904.ViewModels.SanPhamViewModel>
 @{
     ViewBag.Title = "Danh Sách Sản Phẩm";
-    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "TenSP", rowsPerPage: 3);
+    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "TenSP", rowsPerPage: 20);
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
 }
@@ -22,15 +22,16 @@
 
             grid.Column("STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage), header: "STT"),
             grid.Column("TenSP", "Tên Sản Phẩm", format: item => item.TenSP),
-            grid.Column("LoaiSP", "Loại Sản Phẩm", format: item => item.LoaiSP),
-            grid.Column(
-                "AnhSP",
-                "Hình Ảnh",
-                format: item => new HtmlString(RenderImages(item.AnhSP).ToHtmlString())
-            ),
-            grid.Column("SoLuong", "Số Lượng", format: item => item.SoLuong),
-            grid.Column("DonGia", "Đơn Giá", format: item => String.Format("{0:0,0 VNĐ}", item.DonGia)),
-            grid.Column("DonViTinh", "Đơn Vị Tính", format: item => item.DonViTinh),
+            grid.Column("TenHangSanXuat", "Hãng Sản Xuất", format: item => item.TenHangSanXuat),
+            grid.Column("TenLoaiSanPham", "Loại Sản Phẩm", format: item => item.TenLoaiSanPham),
+            //grid.Column(
+            //    "AnhSP",
+            //    "Hình Ảnh",
+            //    format: item => new HtmlString(RenderImages(item.AnhSP).ToHtmlString())
+            //),
+            //grid.Column("SoLuong", "Số Lượng", format: item => item.SoLuong),
+            //grid.Column("DonGia", "Đơn Giá", format: item => String.Format("{0:0,0 VNĐ}", item.DonGia)),
+            //grid.Column("DonViTinh", "Đơn Vị Tính", format: item => item.DonViTinh),
             grid.Column("Chức năng", format: @<text>
                     <a href="@Url.Action("Edit", new { id = item.MaSP })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
                     <a href="@Url.Action("Details", new { id = item.MaSP })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>
