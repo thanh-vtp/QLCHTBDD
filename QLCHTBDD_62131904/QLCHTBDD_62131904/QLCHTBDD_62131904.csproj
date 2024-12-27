@@ -460,13 +460,12 @@
     <Content Include="Views\SanPhams_62131904\Create.cshtml" />
     <Content Include="Views\SanPhams_62131904\Details.cshtml" />
     <Content Include="Views\SanPhams_62131904\Edit.cshtml" />
-    <Content Include="Views\ThongSoKTDienThoais_62131904\Index.cshtml" />
-    <Content Include="Views\ThongSoKTDienThoais_62131904\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Views\DanhSachBangTinhs_62131904\" />
+    <Folder Include="Views\ThongSoKTDienThoais_62131904\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

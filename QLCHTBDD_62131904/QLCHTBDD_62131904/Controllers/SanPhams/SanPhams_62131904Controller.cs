@@ -71,22 +71,6 @@ namespace QLCHTBDD_62131904.Controllers.SanPhams
             return View(sanPham);
         }
 
-        // create view model
-        public SanPhamViewModel CreateSanPhamViewModel(SanPham sanPham)
-        {
-            var viewModel = new SanPhamViewModel
-            {
-                MaSP = sanPham.MaSP,
-                TenSP = sanPham.TenSP,
-                MoTa = sanPham.MoTa,
-                TenHangSanXuat = db.HangSanXuats.FirstOrDefault(h => h.MaHang == sanPham.MaHang)?.TenHang,
-                TenLoaiSanPham = db.LoaiSanPhams.FirstOrDefault(l => l.MaLSP == sanPham.MaLSP)?.TenLSP,
-                // Bạn có thể thêm các thuộc tính khác vào đây nếu cần
-            };
-
-            return viewModel;
-        }
-
         // GET: SanPhams_62131904/Create
         public ActionResult Create()
         {
@@ -107,7 +91,6 @@ namespace QLCHTBDD_62131904.Controllers.SanPhams
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            var viewModel = CreateSanPhamViewModel(sanPham);
             ViewBag.MaHang = new SelectList(StaticEntityHelper.GetHangSanXuat(), "MaHang", "TenHang", sanPham.MaHang);
             ViewBag.MaLSP = new SelectList(StaticEntityHelper.GetLoaiSanPham(), "MaLSP", "TenLSP", sanPham.MaLSP);
             return View(sanPham);
