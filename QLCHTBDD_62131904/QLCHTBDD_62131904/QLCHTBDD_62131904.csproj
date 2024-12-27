@@ -149,6 +149,7 @@
     <Compile Include="Controllers\QuanTris\QuanTriHeThongs_62131904Controller.cs" />
     <Compile Include="Controllers\SanPhams\LoaiSanPhams_62131904Controller.cs" />
     <Compile Include="Controllers\SanPhams\SanPhams_62131904Controller.cs" />
+    <Compile Include="Controllers\SanPhams\ThongSoKTDienThoais_62131904Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -368,7 +369,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Authentication_Services.cs" />
-    <Compile Include="ViewModels\ChiTietSanPhamDienThoaiViewModel.cs" />
+    <Compile Include="ViewModels\ThongSoKTDienThoaiViewModel.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -388,7 +389,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\create_product.css" />
+    <Content Include="Content\_pages_sanpham.css" />
+    <Content Include="Content\_pages_thongsokithuat.css" />
+    <Content Include="Content\_page_index_projects.css" />
     <Content Include="Content\_styleAdmin.css" />
     <Content Include="Content\_styleApp.css" />
     <Content Include="favicon.ico" />
@@ -428,7 +431,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\page_create_sanpham.js" />
     <Content Include="Scripts\_styleAdmin.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -456,10 +458,10 @@
     <Content Include="Views\LoaiSanPhams_62131904\Details.cshtml" />
     <Content Include="Views\SanPhams_62131904\Index.cshtml" />
     <Content Include="Views\SanPhams_62131904\Create.cshtml" />
-    <Content Include="Views\SanPhams_62131904\ThongTinDienThoai.cshtml" />
-    <Content Include="Views\SanPhams_62131904\ThongTinLapTop.cshtml" />
     <Content Include="Views\SanPhams_62131904\Details.cshtml" />
     <Content Include="Views\SanPhams_62131904\Edit.cshtml" />
+    <Content Include="Views\ThongSoKTDienThoais_62131904\Index.cshtml" />
+    <Content Include="Views\ThongSoKTDienThoais_62131904\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

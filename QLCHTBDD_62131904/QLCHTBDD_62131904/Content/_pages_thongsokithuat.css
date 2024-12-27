@@ -53,7 +53,7 @@ h3 {
 
 
 /* Dropzone (vùng upload) */
-.dropzone {
+/*.dropzone {
     width: 100%;
     max-width: 820px;
     padding: 10px;
@@ -79,15 +79,15 @@ h3 {
     transform: translate(-50%, -50%);
     color: #aaa;
     pointer-events: none;
-}
+}*/
 
 /* Danh sách file upload */
-.file-list {
+/*.file-list {
     display: contents;
-}
+}*/
 
 /* Từng ảnh (file-item) */
-.file-item {
+/*.file-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,10 +121,10 @@ h3 {
         width: 100%;
         text-align: left;
         padding-left: 5px;
-    }
+    }*/
 
 /* Nút xóa file */
-.remove-btn {
+/*.remove-btn {
     background-color: #ff4d4d;
     color: white;
     border: none;
@@ -142,7 +142,7 @@ h3 {
 .upload-icon {
     font-size: 30px;
     display: block;
-}
+}*/
 
 .checkbox-list {
     display: flex;

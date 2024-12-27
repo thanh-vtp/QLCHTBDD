@@ -10,6 +10,7 @@ using QLCHTBDD_62131904.Models;
 using QLCHTBDD_62131904.ViewModels;
 using QLCHTBDD_62131904.Helpers;
 using System.EnterpriseServices.Internal;
+using System.Data.Entity.Infrastructure;
 
 namespace QLCHTBDD_62131904.Controllers.SanPhams
 {
@@ -32,6 +33,7 @@ namespace QLCHTBDD_62131904.Controllers.SanPhams
                 }).ToList();
         }
 
+        // lấy sản phẩm
         private SanPhamViewModel GetSanPhamViewModel(SanPham sanPham)
         {
             return new SanPhamViewModel
@@ -43,6 +45,7 @@ namespace QLCHTBDD_62131904.Controllers.SanPhams
                 TenHangSanXuat = sanPham.HangSanXuat?.TenHang 
             };
         }
+
         // GET: SanPhams_62131904
         public ActionResult Index()
         {
@@ -124,28 +127,31 @@ namespace QLCHTBDD_62131904.Controllers.SanPhams
             }
 
             var sanPham = GetSanPhamViewModel(sanPhamResult);
-            ViewBag.MaHang = new SelectList(db.HangSanXuats.Where(h => h.IsActive == true), "MaHang", "TenHang", sanPhamResult.MaHang);
-            ViewBag.MaLSP = new SelectList(db.LoaiSanPhams.Where(lsp=> lsp.IsActive == true), "MaLSP", "TenLSP", sanPhamResult.MaLSP);
+            ViewBag.MaHang = StaticEntityHelper.GetHangSanXuat();
+            ViewBag.MaLSP = StaticEntityHelper.GetLoaiSanPham();
             return View(sanPham);
         }
 
         // POST: SanPhams_62131904/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaSP,TenSP,MoTa,MaLSP,MaHang")] SanPham sanPham)
         {
+            //Console.WriteLine(sanPham.MaSP);
+            //Console.WriteLine(sanPham.TenSP);
             if (ModelState.IsValid)
             {
                 db.Entry(sanPham).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaHang = new SelectList(db.HangSanXuats.Where(h => h.IsActive == true), "MaHang", "TenHang", sanPham.MaLSP);
-            ViewBag.MaLSP = new SelectList(db.LoaiSanPhams.Where(lsp => lsp.IsActive == true), "MaLSP", "TenLSP", sanPham.MaLSP);
+
+            ViewBag.MaHang = StaticEntityHelper.GetHangSanXuat();
+            ViewBag.MaLSP = StaticEntityHelper.GetLoaiSanPham();
             return View(sanPham);
         }
+
+
 
         // GET: SanPhams_62131904/Delete/5
         public ActionResult Delete(int? id)

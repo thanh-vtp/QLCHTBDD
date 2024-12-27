@@ -6,8 +6,8 @@
     @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
 }
 
+<link href="~/Content/_page_index_projects.css" rel="stylesheet" />
 <h2>Danh sách sản phẩm</h2>
-
 <p class="text-left mb-3">
     @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
 </p>
@@ -41,107 +41,6 @@
 )
 </div>
 
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 0;
-    }
-
-    /*    title page*/
-    h2 {
-        font-weight: bold;
-        color: #007BFF;
-        text-align: center;
-        margin: 20px 0;
-    }
-
-    /*    button add new*/
-    .btn-primary {
-        background-color: #007bff;
-        border: none;
-        font-weight: bold;
-        color: #fff;
-    }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-    /*    table*/
-    .table {
-        background-color: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        margin: 20px auto;
-        overflow: hidden;
-    }
-
-    .table-header.thead-light th {
-        background-color: #343a40;
-        color: #ffffff;
-        text-align: center;
-        padding: 10px;
-    }
-
-    .table td, .table th {
-        vertical-align: middle;
-        text-align: center;
-        padding: 8px;
-    }
-
-    .table-hover tbody tr:hover {
-        background-color: #e9ecef;
-        cursor: pointer;
-    }
-
-    .thead-light th a {
-        text-decoration: none;
-    }
-
-        .thead-light th a:hover {
-            text-decoration: none;
-        }
-
-    /*    image products*/
-    img.table-img {
-        max-width: 50px;
-        height: auto;
-        max-height: 50px;
-        object-fit: cover;
-        border-radius: 5px;
-        border: 2px solid #007BFF;
-        margin-right: 5px;
-    }
-
-    /*    button actions*/
-    .btn {
-        font-weight: bold;
-        text-shadow: none;
-        border: none;
-    }
-
-    .btn-warning {
-        background-color: #ffc107;
-        color: #fff;
-    }
-
-    .btn-info {
-        background-color: #17a2b8;
-        color: #fff;
-    }
-
-    .btn-danger {
-        background-color: #dc3545;
-        color: #fff;
-    }
-
-    .btn:hover {
-        opacity: 0.8;
-    }
-</style>
-
 @helper RenderImages(List<string> images)
 {
     foreach (var img in images)
@@ -149,6 +48,3 @@
         <img src="@img" alt="Ảnh sản phẩm" class="table-img" />
     }
 }
-
-
-

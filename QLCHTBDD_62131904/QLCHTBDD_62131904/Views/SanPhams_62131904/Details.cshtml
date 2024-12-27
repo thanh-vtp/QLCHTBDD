@@ -6,7 +6,7 @@
 }
 
 <h2>Thông tin sản phẩm</h2>
-<link href="~/Content/create_product.css" rel="stylesheet" />
+<link href="~/Content/_pages_sanpham.css" rel="stylesheet" />
 <div class="form-container">
     <!-- Thông tin sản phẩm -->
     <div class="form-section" id="product-info">
@@ -14,25 +14,25 @@
         <div class="form-row">
             <div class="form-group">
                 @Html.LabelFor(model => model.TenHangSanXuat, "Hãng sản phẩm", new { @class = "form-label" })
-                @Html.EditorFor(model => model.TenHangSanXuat, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.EditorFor(model => model.TenHangSanXuat, new { htmlAttributes = new { @class = "form-control",  @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.TenHangSanXuat, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.TenLoaiSanPham, "Loại sản phẩm", new { @class = "form-label" })
-                @Html.EditorFor(model => model.TenLoaiSanPham, new { htmlAttributes = new { @class = "form-control" , disabled = "disabled" } })
+                @Html.EditorFor(model => model.TenLoaiSanPham, new { htmlAttributes = new { @class = "form-control" ,  @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.TenLoaiSanPham, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.TenSP, "Tên sản phẩm", new { @class = "form-label" })
-            @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control",  @readonly = "readonly" } })
             @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.MoTa, "Mô tả", new { @class = "form-label" })
-            @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", disabled = "disabled", rows = "3" })
+            @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control",  @readonly = "readonly", rows = "3" })
             @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
         </div>
     </div>

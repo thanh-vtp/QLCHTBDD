@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace QLCHTBDD_62131904.Helpers
 {
@@ -92,6 +93,63 @@ namespace QLCHTBDD_62131904.Helpers
                         break;
                     case "ChatLieux":
                         query = db.ChatLieux.Where(cl => cl.IsActive == true);
+                        break;
+                    case "TocDoKhungHinhs":
+                        query = db.TocDoKhungHinhs.Where(x => x.IsActive == true);
+                        break;
+                    case "CongNgheManHinhs":
+                        query = db.CongNgheManHinhs.Where(x => x.IsActive == true);
+                        break;
+                    case "DoPhanGiaiManHinhs":
+                        query = db.DoPhanGiaiManHinhs.Where(x => x.IsActive == true);
+                        break;
+                    case "KichThuocManHinhs":
+                        query = db.KichThuocManHinhs.Where(x => x.IsActive == true);
+                        break;
+                    case "DoSangToiDas":
+                        query = db.DoSangToiDas.Where(x => x.IsActive == true);
+                        break;
+                    case "LoaiKinhCuongLucs":
+                        query = db.LoaiKinhCuongLucs.Where(x => x.IsActive == true);
+                        break;
+                    case "HoTroSacToiDas":
+                        query = db.HoTroSacToiDas.Where(x => x.IsActive == true);
+                        break;
+                    case "CongNghePins":
+                        query = db.CongNghePins.Where(x => x.IsActive == true);
+                        break;
+                    case "TinhNangBaoMats":
+                        query = db.TinhNangBaoMats.Where(x => x.IsActive == true);
+                        break;
+                    case "TinhNangDacBiets":
+                        query = db.TinhNangDacBiets.Where(x => x.IsActive == true);
+                        break;
+                    case "DinhDangGhiAms":
+                        query = db.DinhDangGhiAms.Where(x => x.IsActive == true);
+                        break;
+                    case "DinhDangPhims":
+                        query = db.DinhDangPhims.Where(x => x.IsActive == true);
+                        break;
+                    case "DinhDangNhacs":
+                        query = db.DinhDangNhacs.Where(x => x.IsActive == true);
+                        break;
+                    case "MangDiDongs":
+                        query = db.MangDiDongs.Where(x => x.IsActive == true);
+                        break;
+                    case "HeThongDinhViGPS":
+                        query = db.HeThongDinhViGPS.Where(x => x.IsActive == true);
+                        break;
+                    case "CongKetNoiSacs":
+                        query = db.CongKetNoiSacs.Where(x => x.IsActive == true);
+                        break;
+                    case "JackTaiNghes":
+                        query = db.JackTaiNghes.Where(x => x.IsActive == true);
+                        break;
+                    case "CongKetNoiKhacs":
+                        query = db.CongKetNoiKhacs.Where(x => x.IsActive == true);
+                        break;
+                    case "SanPhams":
+                        query = db.SanPhams;
                         break;
                     default:
                         throw new ArgumentException($"Table '{tableName}' is not recognized.");
@@ -215,6 +273,106 @@ namespace QLCHTBDD_62131904.Helpers
         public static SelectList GetChatLieu()
         {
             return GetDynamicSelectList("ChatLieux", "MaChatLieu", "TenChatLieu");
+        }
+
+        public static SelectList GetTocDoKhungHinh()
+        {
+            return GetDynamicSelectList("TocDoKhungHinhs", "MaTocDoKhungHinh", "TocDo");
+        }
+
+        public static SelectList GetCongNgheManHinh()
+        {
+            return GetDynamicSelectList("CongNgheManHinhs", "MaCongNgheManHinh", "TenCongNgheManHinh");
+        }
+
+        public static SelectList GetDoPhanGiaiManHinh()
+        {
+            return GetDynamicSelectList("DoPhanGiaiManHinhs", "MaDoPhanGiai", "TenDoPhanGiai");
+        }
+
+        public static SelectList GetKichThuocManHinh()
+        {
+            return GetDynamicSelectList("KichThuocManHinhs", "MaKichThuocManHinh", "KichThuoc");
+        }
+
+        public static SelectList GetDoSangToiDa()
+        {
+            return GetDynamicSelectList("DoSangToiDas", "MaDoSang", "DoSang");
+        }
+
+        public static SelectList GetLoaiKinhCuongLuc()
+        {
+            return GetDynamicSelectList("LoaiKinhCuongLucs", "MaLoaiKinh", "TenLoaiKinh");
+        }
+
+        public static SelectList GetHoTroSacToiDa()
+        {
+            return GetDynamicSelectList("HoTroSacToiDas", "MaHoTroSac", "CongSuat");
+        }
+
+        public static SelectList GetCongNghePin()
+        {
+            return GetDynamicSelectList("CongNghePins", "MaCongNghePin", "TenCongNghePin");
+        }
+
+        public static SelectList GetTinhNangBaoMat()
+        {
+            return GetDynamicSelectList("TinhNangBaoMats", "MaTinhNangBaoMat", "TenTinhNangBaoMat");
+        }
+
+        public static SelectList GetTinhNangDacBiet()
+        {
+            return GetDynamicSelectList("TinhNangDacBiets", "MaTinhNangDacBiet", "TenTinhNangDacBiet");
+        }
+
+        public static SelectList GetDinhDangGhiAm()
+        {
+            return GetDynamicSelectList("DinhDangGhiAms", "MaDinhDangGhiAm", "TenDinhDangGhiAm");
+        }
+
+        public static SelectList GetDinhDangPhim()
+        {
+            return GetDynamicSelectList("DinhDangPhims", "MaDinhDangPhim", "TenDinhDangPhim");
+        }
+
+        public static SelectList GetDinhDangNhac()
+        {
+            return GetDynamicSelectList("DinhDangNhacs", "MaDinhDangNhac", "TenDinhDangNhac");
+        }
+
+        public static SelectList GetMangDiDong()
+        {
+            return GetDynamicSelectList("MangDiDongs", "MaMangDiDong", "TenMangDiDong");
+        }
+
+        public static SelectList GetSim()
+        {
+            return GetDynamicSelectList("SIMs", "MaSIM", "TenSIM");
+        }
+
+        public static SelectList GetHeThongDinhViGPS()
+        {
+            return GetDynamicSelectList("HeThongDinhViGPS", "MaHeThongDinhViGPS", "TenHeThongDinhViGPS");
+        }
+
+        public static SelectList GetCongKetNoiSac()
+        {
+            return GetDynamicSelectList("CongKetNoiSacs", "MaCongKetNoiSac", "TenCongKetNoiSac");
+        }
+
+        public static SelectList GetJackTaiNghe()
+        {
+            return GetDynamicSelectList("JackTaiNghes", "MaJackTaiNghe", "TenJackTaiNghe");
+        }
+
+        public static SelectList GetCongKetNoiKhac()
+        {
+            return GetDynamicSelectList("CongKetNoiKhacs", "MaCongKetNoiKhac", "TenCongKetNoiKhac");
+        }
+
+        public static SelectList GetSanPham()
+        {
+            return GetDynamicSelectList("SanPhams", "MaSP", "TenSP");
         }
     }
 }

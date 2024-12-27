@@ -20,6 +20,13 @@
             @Html.ActionLink("Danh sách loại sản phấm", "Index", "LoaiSanPhams_62131904", null, new { @class = "a" })
             @Html.ActionLink("Danh sách sản phẩm", "Index", "SanPhams_62131904", null, new { @class = "a" })
         </div>
+        <button class="dropdown-btn">
+            Quản lý thông số kĩ thuật sản phẩm
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @Html.ActionLink("Danh sách thông số kĩ thuật sản phẩm", "Index", "ThongSoKTDienThoais_62131904", null, new { @class = "a" })
+        </div>
         @Html.ActionLink("Khách hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
         @Html.ActionLink("Đơn hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
         @Html.ActionLink("Đăng xuất", "Logout", "QuanTriHeThongs_62131904", null, new { @class = "a" })
