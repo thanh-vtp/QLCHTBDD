@@ -1,0 +1,143 @@
+﻿@model QLCHTBDD_62131904.Models.HinhAnhSanPham
+
+@{
+    ViewBag.Title = "Thêm hình ảnh cho biến thể sản phẩm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/_page_hinhanhsp.css" rel="stylesheet" />
+<h2>Thêm thông tin hình ảnh cho biến thể sản phẩm</h2>
+@using (Html.BeginForm("Create", "HinhAnhSanPhams_62131904", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "")
+
+<div class="form-container">
+    <!-- Thông tin sản phẩm -->
+    <div class="form-section">
+        <h3>Thông tin biến thể</h3>
+        <div class="config-row">
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaBT, "Mã biến thể sản phẩm", new { @class = "form-label" })
+                @Html.DropDownList("MaBT", null, "Chọn biến thể", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaBT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <!-- Vùng upload ảnh -->
+    <div class="form-section" id="upload-image">
+        <h3>Ảnh sản phẩm</h3>
+        <div id="imageList">
+            <!-- Danh sách các ảnh sẽ được hiển thị tại đây -->
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addImage()">Thêm ảnh</button>
+    </div>
+
+
+    <!-- Nút hành động -->
+    <div class="form-group form-group--actions">
+        <button type="submit" class="btn btn-primary">Lưu thông tin hình ảnh</button>
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+}
+
+<script>
+    const imageList = document.getElementById("imageList");
+    const maxImages = 5; // Giới hạn số lượng ảnh
+    const imageNames = new Set(); // Lưu tên ảnh để kiểm tra trùng lặp
+
+    function addImage() {
+        if (imageList.children.length >= maxImages) {
+            alert(`Chỉ được thêm tối đa ${maxImages} ảnh.`);
+            return;
+        }
+
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+        fileInput.style.display = "none";
+
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                if (imageNames.has(file.name)) {
+                    alert("Ảnh đã tồn tại, vui lòng chọn ảnh khác.");
+                    return;
+                }
+                imageNames.add(file.name);
+                addImageItem(file, fileInput);
+            }
+        });
+
+        fileInput.click();
+    }
+
+    function addImageItem(file, fileInput) {
+        const imageItem = document.createElement("div");
+        imageItem.className = "image-item";
+
+        // Hiển thị ảnh
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        img.onload = () => URL.revokeObjectURL(img.src);
+
+        // Thông tin ảnh
+        const imageInfo = document.createElement("div");
+        imageInfo.className = "image-info";
+
+        // Tên ảnh
+        const nameLabel = document.createElement("label");
+        nameLabel.textContent = "Tên ảnh:";
+        const nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.name = "TenAnh";
+        nameInput.className = "form-control";
+        nameInput.value = file.name;
+
+        // Input file (ẩn) để gửi tệp
+        fileInput.name = "DuongDanAnh"; // Gán name để gửi qua form
+        fileInput.style.display = "none";
+
+        // Dung lượng
+        const sizeLabel = document.createElement("label");
+        sizeLabel.textContent = "Dung lượng:";
+        const sizeText = document.createElement("p");
+        sizeText.textContent = `${(file.size / 1024).toFixed(1)} KB`;
+
+        // Ảnh chính
+        const mainLabel = document.createElement("label");
+        mainLabel.textContent = "Ảnh chính:";
+        const mainCheckbox = document.createElement("input");
+        mainCheckbox.type = "radio";
+        mainCheckbox.name = "AnhChinh"; // Đảm bảo chỉ một ảnh chính được chọn
+        mainCheckbox.value = file.name;
+
+        // Nút xóa
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Xóa";
+        removeBtn.className = "remove-btn";
+        removeBtn.addEventListener("click", () => {
+            imageItem.remove();
+            imageNames.delete(file.name);
+        });
+
+        // Thêm thông tin vào container
+        imageInfo.appendChild(nameLabel);
+        imageInfo.appendChild(nameInput);
+        imageInfo.appendChild(sizeLabel);
+        imageInfo.appendChild(sizeText);
+        imageInfo.appendChild(fileInput);
+        imageInfo.appendChild(mainLabel);
+        imageInfo.appendChild(mainCheckbox);
+
+        // Gắn thông tin và nút xóa vào container ảnh
+        imageItem.appendChild(img);
+        imageItem.appendChild(imageInfo);
+        imageItem.appendChild(removeBtn);
+
+        // Thêm container ảnh vào danh sách
+        imageList.appendChild(imageItem);
+    }
+
+</script>

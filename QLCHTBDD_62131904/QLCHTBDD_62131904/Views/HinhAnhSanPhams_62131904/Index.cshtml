@@ -1,0 +1,51 @@
+﻿@model IEnumerable<QLCHTBDD_62131904.Models.HinhAnhSanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "SanPham.TenSP", rowsPerPage: 20);
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
+}
+
+<link href="~/Content/_page_index_projects.css" rel="stylesheet" />
+<h2>Danh sách thông số hình ảnh sản phẩm</h2>
+<p class="text-left mb-3">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div id="gridContent">
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-striped",
+        headerStyle: "table-header thead-light",
+        alternatingRowStyle: "table-alternate-row",
+        mode: WebGridPagerModes.Numeric,
+        columns: grid.Columns(
+
+            grid.Column("STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage), header: "STT"),
+            grid.Column("BienTheSanPham.MaBT", "Mã biến thể SP", format: item => item.BienTheSanPham?.MaBT ?? "N/A"),
+            grid.Column("SanPham.TenSP", "Tên sản phẩm", format: item => item.BienTheSanPham?.SanPham?.TenSP ?? "N/A"),
+            grid.Column("TenAnh", "Tên ảnh", format: item => item.TenAnh ?? "N/A"),
+            grid.Column("DuongDanAnh", "Ảnh", format: item => new HtmlString(RenderImages(item.DuongDanAnh).ToHtmlString())),
+            grid.Column("AnhChinh", "Ảnh chính", format: item => item.AnhChinh ?? "N/A"),
+            grid.Column("Chức năng", format: @<text>
+                    <a href="@Url.Action("Edit", new { id = item.MaHA })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
+                    <a href="@Url.Action("Details", new { id = item.MaHA })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>
+                    <a href="@Url.Action("Delete", new { id = item.MaHA })" title="Xóa" class='btn btn-sm btn-danger'>Xóa</a>
+            </text>)
+)
+)
+</div>
+
+@helper RenderImages(string DuongDanAnh)
+{
+    if (!string.IsNullOrEmpty(DuongDanAnh))
+    {
+        <img src="@DuongDanAnh" alt="Ảnh sản phẩm" class="table-img" style="width: 100px; height: 100px; object-fit: cover;" />
+    }
+    else
+    {
+        <span>Không có ảnh</span>
+    }
+}
+

@@ -147,6 +147,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\QuanTris\GetCurrentAdmin_62131904Controller.cs" />
     <Compile Include="Controllers\QuanTris\QuanTriHeThongs_62131904Controller.cs" />
+    <Compile Include="Controllers\SanPhams\BienTheSanPhams_62131904Controller.cs" />
+    <Compile Include="Controllers\SanPhams\HinhAnhSanPhams_62131904Controller.cs" />
     <Compile Include="Controllers\SanPhams\LoaiSanPhams_62131904Controller.cs" />
     <Compile Include="Controllers\SanPhams\SanPhams_62131904Controller.cs" />
     <Compile Include="Controllers\SanPhams\ThongSoKTDienThoais_62131904Controller.cs" />
@@ -369,7 +371,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Authentication_Services.cs" />
-    <Compile Include="ViewModels\ThongSoKTDienThoaiViewModel.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -391,12 +392,31 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\_pages_sanpham.css" />
     <Content Include="Content\_pages_thongsokithuat.css" />
+    <Content Include="Content\_page_hinhanhsp.css" />
     <Content Include="Content\_page_index_projects.css" />
     <Content Include="Content\_styleAdmin.css" />
     <Content Include="Content\_styleApp.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\468937572_1339138330394198_5060579631519032727_n.jpg" />
+    <Content Include="Images\Hoshino.jpg" />
+    <Content Include="Images\iphone-13-1-1-750x500 - Copy.jpg" />
+    <Content Include="Images\iphone-13-1-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-10-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-11-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-12-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-2-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-3-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-4-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-5-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-6-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-7-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-8-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-9-1-750x500.jpg" />
+    <Content Include="Images\iphone-13-bh-org.jpg" />
+    <Content Include="Images\petal-power-wallpaper-preview.jpg" />
+    <Content Include="Images\wallpaperflare.com_wallpaper.jpg" />
     <Content Include="Models\Model_62131904.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model_62131904.edmx</DependentUpon>
@@ -460,12 +480,16 @@
     <Content Include="Views\SanPhams_62131904\Create.cshtml" />
     <Content Include="Views\SanPhams_62131904\Details.cshtml" />
     <Content Include="Views\SanPhams_62131904\Edit.cshtml" />
+    <Content Include="Views\ThongSoKTDienThoais_62131904\Create.cshtml" />
+    <Content Include="Views\BienTheSanPhams_62131904\Index.cshtml" />
+    <Content Include="Views\BienTheSanPhams_62131904\Create.cshtml" />
+    <Content Include="Views\HinhAnhSanPhams_62131904\Create.cshtml" />
+    <Content Include="Views\ThongSoKTDienThoais_62131904\Index.cshtml" />
+    <Content Include="Views\HinhAnhSanPhams_62131904\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
     <Folder Include="Views\DanhSachBangTinhs_62131904\" />
-    <Folder Include="Views\ThongSoKTDienThoais_62131904\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

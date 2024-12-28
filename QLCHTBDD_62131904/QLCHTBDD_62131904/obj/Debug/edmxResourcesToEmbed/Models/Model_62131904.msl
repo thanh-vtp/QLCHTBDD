@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLCHTBDD_62131904ModelStoreContainer" CdmEntityContainer="QLCHTBDD_62131904Entities">
+    <EntitySetMapping Name="QuanTriHeThongs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTriHeThong">
+        <MappingFragment StoreEntitySet="QuanTriHeThong">
+          <ScalarProperty Name="MaQT" ColumnName="MaQT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BienTheSanPhams">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.BienTheSanPham">
+        <MappingFragment StoreEntitySet="BienTheSanPham">
+          <ScalarProperty Name="MaTrangThai" ColumnName="MaTrangThai" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="MaROM" ColumnName="MaROM" />
+          <ScalarProperty Name="MaRAM" ColumnName="MaRAM" />
+          <ScalarProperty Name="MaMau" ColumnName="MaMau" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="MaBT" ColumnName="MaBT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blueteeth">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.Bluetooth">
+        <MappingFragment StoreEntitySet="Bluetooth">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenBluetooth" ColumnName="TenBluetooth" />
+          <ScalarProperty Name="MaBluetooth" ColumnName="MaBluetooth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatLieux">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ChatLieu">
+        <MappingFragment StoreEntitySet="ChatLieu">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenChatLieu" ColumnName="TenChatLieu" />
+          <ScalarProperty Name="MaChatLieu" ColumnName="MaChatLieu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChipDoHoaGPUs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ChipDoHoaGPU">
+        <MappingFragment StoreEntitySet="ChipDoHoaGPU">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenChipDoHoaGPU" ColumnName="TenChipDoHoaGPU" />
+          <ScalarProperty Name="MaChipDoHoaGPU" ColumnName="MaChipDoHoaGPU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChipXuLies">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ChipXuLy">
+        <MappingFragment StoreEntitySet="ChipXuLy">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenChip" ColumnName="TenChip" />
+          <ScalarProperty Name="MaChip" ColumnName="MaChip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietDoPhanGiaiCameras">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ChiTietDoPhanGiaiCamera">
+        <MappingFragment StoreEntitySet="ChiTietDoPhanGiaiCamera">
+          <ScalarProperty Name="MaDoPhanGiai" ColumnName="MaDoPhanGiai" />
+          <ScalarProperty Name="MaThongSoCamera" ColumnName="MaThongSoCamera" />
+          <ScalarProperty Name="MaChiTietDoPhanGiaiCamera" ColumnName="MaChiTietDoPhanGiaiCamera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietDoPhanGiaiManHinhs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ChiTietDoPhanGiaiManHinh">
+        <MappingFragment StoreEntitySet="ChiTietDoPhanGiaiManHinh">
+          <ScalarProperty Name="ChieuDoc" ColumnName="ChieuDoc" />
+          <ScalarProperty Name="ChieuNgang" ColumnName="ChieuNgang" />
+          <ScalarProperty Name="MaDoPhanGiai" ColumnName="MaDoPhanGiai" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaChiTietDoPhanGiai" ColumnName="MaChiTietDoPhanGiai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietTinhNangCameras">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ChiTietTinhNangCamera">
+        <MappingFragment StoreEntitySet="ChiTietTinhNangCamera">
+          <ScalarProperty Name="MaTinhNang" ColumnName="MaTinhNang" />
+          <ScalarProperty Name="MaLoaiCamera" ColumnName="MaLoaiCamera" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaChiTietTinhNangCamera" ColumnName="MaChiTietTinhNangCamera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChuanKhangBuiNuocs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ChuanKhangBuiNuoc">
+        <MappingFragment StoreEntitySet="ChuanKhangBuiNuoc">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenChuanKhangBuiNuoc" ColumnName="TenChuanKhangBuiNuoc" />
+          <ScalarProperty Name="MaChuanKhangBuiNuoc" ColumnName="MaChuanKhangBuiNuoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CongKetNoiKhacs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.CongKetNoiKhac">
+        <MappingFragment StoreEntitySet="CongKetNoiKhac">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenCongKetNoiKhac" ColumnName="TenCongKetNoiKhac" />
+          <ScalarProperty Name="MaCongKetNoiKhac" ColumnName="MaCongKetNoiKhac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CongKetNoiSacs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.CongKetNoiSac">
+        <MappingFragment StoreEntitySet="CongKetNoiSac">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenCongKetNoiSac" ColumnName="TenCongKetNoiSac" />
+          <ScalarProperty Name="MaCongKetNoiSac" ColumnName="MaCongKetNoiSac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CongNgheManHinhs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.CongNgheManHinh">
+        <MappingFragment StoreEntitySet="CongNgheManHinh">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenCongNgheManHinh" ColumnName="TenCongNgheManHinh" />
+          <ScalarProperty Name="MaCongNgheManHinh" ColumnName="MaCongNgheManHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CongNghePins">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.CongNghePin">
+        <MappingFragment StoreEntitySet="CongNghePin">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenCongNghePin" ColumnName="TenCongNghePin" />
+          <ScalarProperty Name="MaCongNghePin" ColumnName="MaCongNghePin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DinhDangGhiAms">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DinhDangGhiAm">
+        <MappingFragment StoreEntitySet="DinhDangGhiAm">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenDinhDangGhiAm" ColumnName="TenDinhDangGhiAm" />
+          <ScalarProperty Name="MaDinhDangGhiAm" ColumnName="MaDinhDangGhiAm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DinhDangNhacs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DinhDangNhac">
+        <MappingFragment StoreEntitySet="DinhDangNhac">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenDinhDangNhac" ColumnName="TenDinhDangNhac" />
+          <ScalarProperty Name="MaDinhDangNhac" ColumnName="MaDinhDangNhac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DinhDangPhims">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DinhDangPhim">
+        <MappingFragment StoreEntitySet="DinhDangPhim">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenDinhDangPhim" ColumnName="TenDinhDangPhim" />
+          <ScalarProperty Name="MaDinhDangPhim" ColumnName="MaDinhDangPhim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoPhanGiaiCameras">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DoPhanGiaiCamera">
+        <MappingFragment StoreEntitySet="DoPhanGiaiCamera">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DoPhanGiai" ColumnName="DoPhanGiai" />
+          <ScalarProperty Name="MaDoPhanGiai" ColumnName="MaDoPhanGiai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoPhanGiaiManHinhs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DoPhanGiaiManHinh">
+        <MappingFragment StoreEntitySet="DoPhanGiaiManHinh">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenDoPhanGiai" ColumnName="TenDoPhanGiai" />
+          <ScalarProperty Name="MaDoPhanGiai" ColumnName="MaDoPhanGiai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoPhanGiaiQuayPhims">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DoPhanGiaiQuayPhim">
+        <MappingFragment StoreEntitySet="DoPhanGiaiQuayPhim">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenDoPhanGiaiQuayPhim" ColumnName="TenDoPhanGiaiQuayPhim" />
+          <ScalarProperty Name="MaDoPhanGiaiQuayPhim" ColumnName="MaDoPhanGiaiQuayPhim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoSangToiDas">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DoSangToiDa">
+        <MappingFragment StoreEntitySet="DoSangToiDa">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DoSang" ColumnName="DoSang" />
+          <ScalarProperty Name="MaDoSang" ColumnName="MaDoSang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DungLuongPins">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DungLuongPin">
+        <MappingFragment StoreEntitySet="DungLuongPin">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DungLuong" ColumnName="DungLuong" />
+          <ScalarProperty Name="MaDungLuongPin" ColumnName="MaDungLuongPin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HangSanXuats">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.HangSanXuat">
+        <MappingFragment StoreEntitySet="HangSanXuat">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MaQG" ColumnName="MaQG" />
+          <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+          <ScalarProperty Name="MaHang" ColumnName="MaHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HeThongDinhViGPS">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.HeThongDinhViGP">
+        <MappingFragment StoreEntitySet="HeThongDinhViGPS">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenHeThongDinhViGPS" ColumnName="TenHeThongDinhViGPS" />
+          <ScalarProperty Name="MaHeThongDinhViGPS" ColumnName="MaHeThongDinhViGPS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HinhAnhSanPhams">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.HinhAnhSanPham">
+        <MappingFragment StoreEntitySet="HinhAnhSanPham">
+          <ScalarProperty Name="AnhChinh" ColumnName="AnhChinh" />
+          <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
+          <ScalarProperty Name="DuongDanAnh" ColumnName="DuongDanAnh" />
+          <ScalarProperty Name="MaBT" ColumnName="MaBT" />
+          <ScalarProperty Name="MaHA" ColumnName="MaHA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoTroSacToiDas">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.HoTroSacToiDa">
+        <MappingFragment StoreEntitySet="HoTroSacToiDa">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CongSuat" ColumnName="CongSuat" />
+          <ScalarProperty Name="MaHoTroSac" ColumnName="MaHoTroSac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JackTaiNghes">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.JackTaiNghe">
+        <MappingFragment StoreEntitySet="JackTaiNghe">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenJackTaiNghe" ColumnName="TenJackTaiNghe" />
+          <ScalarProperty Name="MaJackTaiNghe" ColumnName="MaJackTaiNghe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KichThuocs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.KichThuoc">
+        <MappingFragment StoreEntitySet="KichThuoc">
+          <ScalarProperty Name="DoDay" ColumnName="DoDay" />
+          <ScalarProperty Name="ChieuNgang" ColumnName="ChieuNgang" />
+          <ScalarProperty Name="ChieuDai" ColumnName="ChieuDai" />
+          <ScalarProperty Name="MaKichThuoc" ColumnName="MaKichThuoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KichThuocKhoiLuongs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.KichThuocKhoiLuong">
+        <MappingFragment StoreEntitySet="KichThuocKhoiLuong">
+          <ScalarProperty Name="KhoiLuong" ColumnName="KhoiLuong" />
+          <ScalarProperty Name="MaKichThuoc" ColumnName="MaKichThuoc" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaKichThuocKhoiLuong" ColumnName="MaKichThuocKhoiLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KichThuocManHinhs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.KichThuocManHinh">
+        <MappingFragment StoreEntitySet="KichThuocManHinh">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
+          <ScalarProperty Name="MaKichThuocManHinh" ColumnName="MaKichThuocManHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiCameras">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.LoaiCamera">
+        <MappingFragment StoreEntitySet="LoaiCamera">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenLoaiCamera" ColumnName="TenLoaiCamera" />
+          <ScalarProperty Name="MaLoaiCamera" ColumnName="MaLoaiCamera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiKinhCuongLucs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.LoaiKinhCuongLuc">
+        <MappingFragment StoreEntitySet="LoaiKinhCuongLuc">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenLoaiKinh" ColumnName="TenLoaiKinh" />
+          <ScalarProperty Name="MaLoaiKinh" ColumnName="MaLoaiKinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiPins">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.LoaiPin">
+        <MappingFragment StoreEntitySet="LoaiPin">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenLoaiPin" ColumnName="TenLoaiPin" />
+          <ScalarProperty Name="MaLoaiPin" ColumnName="MaLoaiPin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiSanPhams">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.LoaiSanPham">
+        <MappingFragment StoreEntitySet="LoaiSanPham">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenLSP" ColumnName="TenLSP" />
+          <ScalarProperty Name="MaLSP" ColumnName="MaLSP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MangDiDongs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.MangDiDong">
+        <MappingFragment StoreEntitySet="MangDiDong">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenMangDiDong" ColumnName="TenMangDiDong" />
+          <ScalarProperty Name="MaMangDiDong" ColumnName="MaMangDiDong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MauSacs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.MauSac">
+        <MappingFragment StoreEntitySet="MauSac">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenMau" ColumnName="TenMau" />
+          <ScalarProperty Name="MaMau" ColumnName="MaMau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhienBanHDHs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.PhienBanHDH">
+        <MappingFragment StoreEntitySet="PhienBanHDH">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenPhienBanHDH" ColumnName="TenPhienBanHDH" />
+          <ScalarProperty Name="MaPhienBanHDH" ColumnName="MaPhienBanHDH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuocGias">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuocGia">
+        <MappingFragment StoreEntitySet="QuocGia">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenQuocGia" ColumnName="TenQuocGia" />
+          <ScalarProperty Name="MaQG" ColumnName="MaQG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RAMs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.RAM">
+        <MappingFragment StoreEntitySet="RAM">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DungLuong" ColumnName="DungLuong" />
+          <ScalarProperty Name="MaRAM" ColumnName="MaRAM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROMs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ROM">
+        <MappingFragment StoreEntitySet="ROM">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DungLuong" ColumnName="DungLuong" />
+          <ScalarProperty Name="MaROM" ColumnName="MaROM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SanPhams">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.SanPham">
+        <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="MaHang" ColumnName="MaHang" />
+          <ScalarProperty Name="MaLSP" ColumnName="MaLSP" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIMs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.SIM">
+        <MappingFragment StoreEntitySet="SIM">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenSIM" ColumnName="TenSIM" />
+          <ScalarProperty Name="MaSIM" ColumnName="MaSIM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TanSoQuetManHinhs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.TanSoQuetManHinh">
+        <MappingFragment StoreEntitySet="TanSoQuetManHinh">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TanSo" ColumnName="TanSo" />
+          <ScalarProperty Name="MaTanSoQuet" ColumnName="MaTanSoQuet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThietKes">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThietKe">
+        <MappingFragment StoreEntitySet="ThietKe">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenThietKe" ColumnName="TenThietKe" />
+          <ScalarProperty Name="MaThietKe" ColumnName="MaThietKe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongSoCameras">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongSoCamera">
+        <MappingFragment StoreEntitySet="ThongSoCamera">
+          <ScalarProperty Name="MaLoaiCamera" ColumnName="MaLoaiCamera" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongSoCamera" ColumnName="MaThongSoCamera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongSoKTDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongSoKTDienThoai">
+        <MappingFragment StoreEntitySet="ThongSoKTDienThoai">
+          <ScalarProperty Name="ThoiDiemRaMat" ColumnName="ThoiDiemRaMat" />
+          <ScalarProperty Name="MaChatLieu" ColumnName="MaChatLieu" />
+          <ScalarProperty Name="MaThietKe" ColumnName="MaThietKe" />
+          <ScalarProperty Name="MaCongKetNoiKhac" ColumnName="MaCongKetNoiKhac" />
+          <ScalarProperty Name="MaJackTaiNghe" ColumnName="MaJackTaiNghe" />
+          <ScalarProperty Name="MaCongKetNoiSac" ColumnName="MaCongKetNoiSac" />
+          <ScalarProperty Name="MaBluetooth" ColumnName="MaBluetooth" />
+          <ScalarProperty Name="MaSIM" ColumnName="MaSIM" />
+          <ScalarProperty Name="MaDinhDangGhiAm" ColumnName="MaDinhDangGhiAm" />
+          <ScalarProperty Name="MaChuanKhangBuiNuoc" ColumnName="MaChuanKhangBuiNuoc" />
+          <ScalarProperty Name="DenFlashCameraSau" ColumnName="DenFlashCameraSau" />
+          <ScalarProperty Name="DanhBa" ColumnName="DanhBa" />
+          <ScalarProperty Name="DungLuongConLai" ColumnName="DungLuongConLai" />
+          <ScalarProperty Name="MaChipDoHoaGPU" ColumnName="MaChipDoHoaGPU" />
+          <ScalarProperty Name="MaTocDoCPU" ColumnName="MaTocDoCPU" />
+          <ScalarProperty Name="MaChip" ColumnName="MaChip" />
+          <ScalarProperty Name="MaPhienBanHDH" ColumnName="MaPhienBanHDH" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongSoQuayPhims">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongSoQuayPhim">
+        <MappingFragment StoreEntitySet="ThongSoQuayPhim">
+          <ScalarProperty Name="MaTocDoKhungHinh" ColumnName="MaTocDoKhungHinh" />
+          <ScalarProperty Name="MaDoPhanGiaiQuayPhim" ColumnName="MaDoPhanGiaiQuayPhim" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongSoQuayPhim" ColumnName="MaThongSoQuayPhim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinBaoMatNangCaoDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinBaoMatNangCaoDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinBaoMatNangCaoDienThoai">
+          <ScalarProperty Name="MaTinhNangBaoMat" ColumnName="MaTinhNangBaoMat" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinBaoMat" ColumnName="MaThongTinBaoMat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinCongNgheManHinhDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinCongNgheManHinhDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinCongNgheManHinhDienThoai">
+          <ScalarProperty Name="MaCongNgheManHinh" ColumnName="MaCongNgheManHinh" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinCongNgheManHinh" ColumnName="MaThongTinCongNgheManHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinCongNghePinDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinCongNghePinDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinCongNghePinDienThoai">
+          <ScalarProperty Name="MaCongNghePin" ColumnName="MaCongNghePin" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinCongNghePin" ColumnName="MaThongTinCongNghePin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinDinhDangPhimVaNhacDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinDinhDangPhimVaNhacDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinDinhDangPhimVaNhacDienThoai">
+          <ScalarProperty Name="MaDinhDangNhac" ColumnName="MaDinhDangNhac" />
+          <ScalarProperty Name="MaDinhDangPhim" ColumnName="MaDinhDangPhim" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinDinhDang" ColumnName="MaThongTinDinhDang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinDoSangDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinDoSangDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinDoSangDienThoai">
+          <ScalarProperty Name="MaDoSang" ColumnName="MaDoSang" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinDoSang" ColumnName="MaThongTinDoSang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinHeThongDinhViDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinHeThongDinhViDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinHeThongDinhViDienThoai">
+          <ScalarProperty Name="MaHeThongDinhViGPS" ColumnName="MaHeThongDinhViGPS" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinHeThongDinhVi" ColumnName="MaThongTinHeThongDinhVi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinKinhCuongLucDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinKinhCuongLucDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinKinhCuongLucDienThoai">
+          <ScalarProperty Name="MaLoaiKinh" ColumnName="MaLoaiKinh" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinKinhCuongLuc" ColumnName="MaThongTinKinhCuongLuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinMangDiDongDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinMangDiDongDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinMangDiDongDienThoai">
+          <ScalarProperty Name="MaMangDiDong" ColumnName="MaMangDiDong" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinMangDiDong" ColumnName="MaThongTinMangDiDong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinManHinhDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinManHinhDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinManHinhDienThoai">
+          <ScalarProperty Name="MaTanSoQuet" ColumnName="MaTanSoQuet" />
+          <ScalarProperty Name="MaKichThuocManHinh" ColumnName="MaKichThuocManHinh" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinManHinh" ColumnName="MaThongTinManHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinPinVaSacDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinPinVaSacDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinPinVaSacDienThoai">
+          <ScalarProperty Name="MaHoTroSac" ColumnName="MaHoTroSac" />
+          <ScalarProperty Name="MaDungLuongPin" ColumnName="MaDungLuongPin" />
+          <ScalarProperty Name="MaLoaiPin" ColumnName="MaLoaiPin" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinPinSac" ColumnName="MaThongTinPinSac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinTinhNangDacBietDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinTinhNangDacBietDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinTinhNangDacBietDienThoai">
+          <ScalarProperty Name="MaTinhNangDacBiet" ColumnName="MaTinhNangDacBiet" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinTinhNangDacBiet" ColumnName="MaThongTinTinhNangDacBiet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinWifiDienThoais">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.ThongTinWifiDienThoai">
+        <MappingFragment StoreEntitySet="ThongTinWifiDienThoai">
+          <ScalarProperty Name="MaWifi" ColumnName="MaWifi" />
+          <ScalarProperty Name="MaTSKT" ColumnName="MaTSKT" />
+          <ScalarProperty Name="MaThongTinWifi" ColumnName="MaThongTinWifi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TinhNangs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.TinhNang">
+        <MappingFragment StoreEntitySet="TinhNang">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenTinhNang" ColumnName="TenTinhNang" />
+          <ScalarProperty Name="MaTinhNang" ColumnName="MaTinhNang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TinhNangBaoMats">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.TinhNangBaoMat">
+        <MappingFragment StoreEntitySet="TinhNangBaoMat">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenTinhNangBaoMat" ColumnName="TenTinhNangBaoMat" />
+          <ScalarProperty Name="MaTinhNangBaoMat" ColumnName="MaTinhNangBaoMat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TinhNangDacBiets">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.TinhNangDacBiet">
+        <MappingFragment StoreEntitySet="TinhNangDacBiet">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenTinhNangDacBiet" ColumnName="TenTinhNangDacBiet" />
+          <ScalarProperty Name="MaTinhNangDacBiet" ColumnName="MaTinhNangDacBiet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TocDoCPUs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.TocDoCPU">
+        <MappingFragment StoreEntitySet="TocDoCPU">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TocDo" ColumnName="TocDo" />
+          <ScalarProperty Name="MaTocDoCPU" ColumnName="MaTocDoCPU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TocDoKhungHinhs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.TocDoKhungHinh">
+        <MappingFragment StoreEntitySet="TocDoKhungHinh">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TocDo" ColumnName="TocDo" />
+          <ScalarProperty Name="MaTocDoKhungHinh" ColumnName="MaTocDoKhungHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrangThaiSanPhams">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.TrangThaiSanPham">
+        <MappingFragment StoreEntitySet="TrangThaiSanPham">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenTrangThai" ColumnName="TenTrangThai" />
+          <ScalarProperty Name="MaTrangThai" ColumnName="MaTrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wifis">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.Wifi">
+        <MappingFragment StoreEntitySet="Wifi">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TenWifi" ColumnName="TenWifi" />
+          <ScalarProperty Name="MaWifi" ColumnName="MaWifi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

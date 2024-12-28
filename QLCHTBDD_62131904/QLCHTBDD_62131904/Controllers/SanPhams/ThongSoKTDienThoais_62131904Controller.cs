@@ -17,7 +17,13 @@ namespace QLCHTBDD_62131904.Controllers.SanPhams
         // GET: ThongSoKTDienThoais_62131904
         public ActionResult Index()
         {
-            var thongSoKTDienThoais = db.ThongSoKTDienThoais.Include(t => t.Bluetooth).Include(t => t.ChatLieu).Include(t => t.ChipDoHoaGPU).Include(t => t.ChipXuLy).Include(t => t.ChuanKhangBuiNuoc).Include(t => t.CongKetNoiKhac).Include(t => t.CongKetNoiSac).Include(t => t.DinhDangGhiAm).Include(t => t.JackTaiNghe).Include(t => t.PhienBanHDH).Include(t => t.SanPham).Include(t => t.SIM).Include(t => t.ThietKe).Include(t => t.TocDoCPU);
+            var thongSoKTDienThoais = db.ThongSoKTDienThoais
+                .Include(t => t.Bluetooth).Include(t => t.ChatLieu).Include(t => t.ChipDoHoaGPU)
+                .Include(t => t.ChipXuLy).Include(t => t.ChuanKhangBuiNuoc).Include(t => t.CongKetNoiKhac)
+                .Include(t => t.CongKetNoiSac).Include(t => t.DinhDangGhiAm).Include(t => t.JackTaiNghe)
+                .Include(t => t.PhienBanHDH).Include(t => t.SanPham).Include(t => t.SIM).Include(t => t.ThietKe)
+                .Include(t => t.TocDoCPU);
+
             return View(thongSoKTDienThoais.ToList());
         }
 
