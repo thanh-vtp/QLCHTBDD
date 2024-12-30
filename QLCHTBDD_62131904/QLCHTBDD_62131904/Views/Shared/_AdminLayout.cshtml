@@ -17,33 +17,49 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            @Html.ActionLink("Danh sách loại sản phấm", "Index", "LoaiSanPhams_62131904", null, new { @class = "a" })
+            @*@Html.ActionLink("Danh sách loại sản phấm", "Index", "LoaiSanPhams_62131904", null, new { @class = "a" })*@
             @Html.ActionLink("Danh sách sản phẩm", "Index", "SanPhams_62131904", null, new { @class = "a" })
-        </div>
-        @*Quản lý thông số kĩ thuật sản phẩm*@
-        <button class="dropdown-btn">
-            Quản lý thông số kĩ thuật sản phẩm
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            @Html.ActionLink("Danh sách thông số kĩ thuật sản phẩm", "Index", "ThongSoKTDienThoais_62131904", null, new { @class = "a" })
-        </div>
-        @*Quản lý biến thể sản phẩm*@
-        <button class="dropdown-btn">
-            Quản lý biến thể sản phẩm
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
             @Html.ActionLink("Danh sách biến thể sản phẩm", "Index", "BienTheSanPhams_62131904", null, new { @class = "a" })
+            @Html.ActionLink("Thông số sản phẩm", "Index", "ThongSoDienThoais_62131904", null, new { @class = "a" })
+            @Html.ActionLink("Thông số biến thể sản phẩm", "Index", "ThongSoBienTheDienThoais_62131904", null, new { @class = "a" })
+            @Html.ActionLink("Hình ảnh biến thể của từng sản phẩm", "Index", "HinhAnhSanPhams_62131904", null, new { @class = "a" })
         </div>
-        @*Quản lý hình ảnh biến thể sản phẩm*@
+
         <button class="dropdown-btn">
-            Quản lý hình ảnh biến thể sản phẩm
+            Quản lý tính năng camera
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            @Html.ActionLink("Danh sách hình ảnh của các biến thể sản phẩm", "Index", "HinhAnhSanPhams_62131904", null, new { @class = "a" })
+            @Html.ActionLink("Thông số camera", "Index", "ThongSoCameras_62131904", null, new { @class = "a" })
+            @Html.ActionLink("Chi tiết độ phân giải camera", "Index", "ChiTietDoPhanGiaiCameras_62131904", null, new { @class = "a" })
+            @Html.ActionLink("Chi tiết tính năng camera", "Index", "ChiTietTinhNangCameras_62131904", null, new { @class = "a" })
         </div>
+
+        <button class="dropdown-btn">
+            Quản lý tính năng quay phim
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @Html.ActionLink("Thông số quay phim", "Index", "ThongSoQuayPhims_62131904", null, new { @class = "a" })
+        </div>
+
+        <button class="dropdown-btn">
+            Quản lý tiện ích
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @Html.ActionLink("Tính năng đặc biệt", "Index", "ThongTinTinhNangDacBietDienThoais_62131904", null, new { @class = "a" })
+            @Html.ActionLink("Định dạng xem phim & nghe nhạc", "Index", "ThongTinDinhDangPhimVaNhacDienThoais_62131904", null, new { @class = "a" })
+        </div>
+
+        <button class="dropdown-btn">
+            Quản lý kết nối
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @Html.ActionLink("Wifi", "Index", "ThongTinWifiDienThoais_62131904", null, new { @class = "a" })
+            @Html.ActionLink("Hệ thống định vị", "Index", "ThongTinHeThongDinhViDienThoais_62131904", null, new { @class = "a" })
+        </div> 
 
         @Html.ActionLink("Khách hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
         @Html.ActionLink("Đơn hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })

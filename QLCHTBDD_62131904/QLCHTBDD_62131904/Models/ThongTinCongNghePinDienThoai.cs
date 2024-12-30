@@ -15,10 +15,10 @@ namespace QLCHTBDD_62131904.Models
     public partial class ThongTinCongNghePinDienThoai
     {
         public int MaThongTinCongNghePin { get; set; }
-        public Nullable<int> MaTSKT { get; set; }
+        public Nullable<int> MaTSBTDT { get; set; }
         public Nullable<int> MaCongNghePin { get; set; }
     
         public virtual CongNghePin CongNghePin { get; set; }
-        public virtual ThongSoKTDienThoai ThongSoKTDienThoai { get; set; }
+        public virtual ThongSoBienTheDienThoai ThongSoBienTheDienThoai { get; set; }
     }
 }

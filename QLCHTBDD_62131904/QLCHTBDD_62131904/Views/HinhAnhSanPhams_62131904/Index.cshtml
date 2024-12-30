@@ -27,7 +27,7 @@
             grid.Column("SanPham.TenSP", "Tên sản phẩm", format: item => item.BienTheSanPham?.SanPham?.TenSP ?? "N/A"),
             grid.Column("TenAnh", "Tên ảnh", format: item => item.TenAnh ?? "N/A"),
             grid.Column("DuongDanAnh", "Ảnh", format: item => new HtmlString(RenderImages(item.DuongDanAnh).ToHtmlString())),
-            grid.Column("AnhChinh", "Ảnh chính", format: item => item.AnhChinh ?? "N/A"),
+            grid.Column("AnhChinh", "Ảnh chính", format: item => item.AnhChinh ? "Có" : "Không"),
             grid.Column("Chức năng", format: @<text>
                     <a href="@Url.Action("Edit", new { id = item.MaHA })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
                     <a href="@Url.Action("Details", new { id = item.MaHA })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>

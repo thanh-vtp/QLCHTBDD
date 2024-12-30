@@ -21,12 +21,12 @@ namespace QLCHTBDD_62131904.Models
         }
     
         public int MaThongSoCamera { get; set; }
-        public Nullable<int> MaTSKT { get; set; }
+        public Nullable<int> MaTSBTDT { get; set; }
         public Nullable<int> MaLoaiCamera { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDoPhanGiaiCamera> ChiTietDoPhanGiaiCameras { get; set; }
         public virtual LoaiCamera LoaiCamera { get; set; }
-        public virtual ThongSoKTDienThoai ThongSoKTDienThoai { get; set; }
+        public virtual ThongSoBienTheDienThoai ThongSoBienTheDienThoai { get; set; }
     }
 }

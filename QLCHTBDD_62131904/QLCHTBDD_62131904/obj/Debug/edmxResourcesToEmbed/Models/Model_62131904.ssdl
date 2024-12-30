@@ -31,6 +31,22 @@
     <Property Name="TenChatLieu" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
+  <EntityType Name="ChieuDai">
+    <Key>
+      <PropertyRef Name="MaChieuDai" />
+    </Key>
+    <Property Name="MaChieuDai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GTChieuDai" Type="float" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ChieuNgang">
+    <Key>
+      <PropertyRef Name="MaChieuNgang" />
+    </Key>
+    <Property Name="MaChieuNgang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GTChieuNgang" Type="float" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
   <EntityType Name="ChipDoHoaGPU">
     <Key>
       <PropertyRef Name="MaChipDoHoaGPU" />
@@ -55,22 +71,12 @@
     <Property Name="MaThongSoCamera" Type="int" />
     <Property Name="MaDoPhanGiai" Type="int" />
   </EntityType>
-  <EntityType Name="ChiTietDoPhanGiaiManHinh">
-    <Key>
-      <PropertyRef Name="MaChiTietDoPhanGiai" />
-    </Key>
-    <Property Name="MaChiTietDoPhanGiai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaDoPhanGiai" Type="int" />
-    <Property Name="ChieuNgang" Type="int" Nullable="false" />
-    <Property Name="ChieuDoc" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="ChiTietTinhNangCamera">
     <Key>
       <PropertyRef Name="MaChiTietTinhNangCamera" />
     </Key>
     <Property Name="MaChiTietTinhNangCamera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
+    <Property Name="MaTSBTDT" Type="int" />
     <Property Name="MaLoaiCamera" Type="int" />
     <Property Name="MaTinhNang" Type="int" />
   </EntityType>
@@ -136,6 +142,14 @@
     </Key>
     <Property Name="MaDinhDangPhim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenDinhDangPhim" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="DoDay">
+    <Key>
+      <PropertyRef Name="MaDoDay" />
+    </Key>
+    <Property Name="MaDoDay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GTDoDay" Type="float" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="DoPhanGiaiCamera">
@@ -221,23 +235,13 @@
     <Property Name="TenJackTaiNghe" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
-  <EntityType Name="KichThuoc">
+  <EntityType Name="KhoiLuong">
     <Key>
-      <PropertyRef Name="MaKichThuoc" />
+      <PropertyRef Name="MaKhoiLuong" />
     </Key>
-    <Property Name="MaKichThuoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ChieuDai" Type="float" />
-    <Property Name="ChieuNgang" Type="float" />
-    <Property Name="DoDay" Type="float" />
-  </EntityType>
-  <EntityType Name="KichThuocKhoiLuong">
-    <Key>
-      <PropertyRef Name="MaKichThuocKhoiLuong" />
-    </Key>
-    <Property Name="MaKichThuocKhoiLuong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaKichThuoc" Type="int" />
-    <Property Name="KhoiLuong" Type="float" />
+    <Property Name="MaKhoiLuong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GTKhoiLuong" Type="float" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="KichThuocManHinh">
     <Key>
@@ -301,6 +305,22 @@
     </Key>
     <Property Name="MaPhienBanHDH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenPhienBanHDH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="PixelDoc">
+    <Key>
+      <PropertyRef Name="MaPixelDoc" />
+    </Key>
+    <Property Name="MaPixelDoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GTPixelDoc" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="PixelNgang">
+    <Key>
+      <PropertyRef Name="MaPixelNgang" />
+    </Key>
+    <Property Name="MaPixelNgang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GTPixelNgang" Type="int" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="QuanTriHeThong">
@@ -372,29 +392,53 @@
     <Property Name="TenThietKe" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
+  <EntityType Name="ThongSoBienTheDienThoai">
+    <Key>
+      <PropertyRef Name="MaTSBTDT" />
+    </Key>
+    <Property Name="MaTSBTDT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaBT" Type="int" />
+    <Property Name="MaChip" Type="int" />
+    <Property Name="MaTocDoCPU" Type="int" />
+    <Property Name="MaChipDoHoaGPU" Type="int" />
+    <Property Name="DungLuongConLai" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaDoPhanGiai" Type="int" />
+    <Property Name="MaPixelNgang" Type="int" />
+    <Property Name="MaPixelDoc" Type="int" />
+    <Property Name="MaKichThuocManHinh" Type="int" />
+    <Property Name="MaTanSoQuet" Type="int" />
+    <Property Name="MaDungLuongPin" Type="int" />
+    <Property Name="MaChieuDai" Type="int" />
+    <Property Name="MaChieuNgang" Type="int" />
+    <Property Name="MaDoDay" Type="int" />
+    <Property Name="MaKhoiLuong" Type="int" />
+  </EntityType>
   <EntityType Name="ThongSoCamera">
     <Key>
       <PropertyRef Name="MaThongSoCamera" />
     </Key>
     <Property Name="MaThongSoCamera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
+    <Property Name="MaTSBTDT" Type="int" />
     <Property Name="MaLoaiCamera" Type="int" />
   </EntityType>
-  <EntityType Name="ThongSoKTDienThoai">
+  <EntityType Name="ThongSoDienThoai">
     <Key>
-      <PropertyRef Name="MaTSKT" />
+      <PropertyRef Name="MaTSDT" />
     </Key>
-    <Property Name="MaTSKT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaTSDT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaSP" Type="int" />
     <Property Name="MaPhienBanHDH" Type="int" />
-    <Property Name="MaChip" Type="int" />
-    <Property Name="MaTocDoCPU" Type="int" />
-    <Property Name="MaChipDoHoaGPU" Type="int" />
-    <Property Name="DungLuongConLai" Type="nvarchar" MaxLength="50" />
     <Property Name="DanhBa" Type="bit" />
     <Property Name="DenFlashCameraSau" Type="bit" />
     <Property Name="MaChuanKhangBuiNuoc" Type="int" />
+    <Property Name="MaCongNgheManHinh" Type="int" />
+    <Property Name="MaDoSang" Type="int" />
+    <Property Name="MaLoaiKinh" Type="int" />
+    <Property Name="MaLoaiPin" Type="int" />
+    <Property Name="MaHoTroSac" Type="int" />
+    <Property Name="MaTinhNangBaoMat" Type="int" />
     <Property Name="MaDinhDangGhiAm" Type="int" />
+    <Property Name="MaMangDiDong" Type="int" />
     <Property Name="MaSIM" Type="int" />
     <Property Name="MaBluetooth" Type="int" />
     <Property Name="MaCongKetNoiSac" Type="int" />
@@ -409,32 +453,16 @@
       <PropertyRef Name="MaThongSoQuayPhim" />
     </Key>
     <Property Name="MaThongSoQuayPhim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
+    <Property Name="MaTSBTDT" Type="int" />
     <Property Name="MaDoPhanGiaiQuayPhim" Type="int" />
     <Property Name="MaTocDoKhungHinh" Type="int" />
-  </EntityType>
-  <EntityType Name="ThongTinBaoMatNangCaoDienThoai">
-    <Key>
-      <PropertyRef Name="MaThongTinBaoMat" />
-    </Key>
-    <Property Name="MaThongTinBaoMat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaTinhNangBaoMat" Type="int" />
-  </EntityType>
-  <EntityType Name="ThongTinCongNgheManHinhDienThoai">
-    <Key>
-      <PropertyRef Name="MaThongTinCongNgheManHinh" />
-    </Key>
-    <Property Name="MaThongTinCongNgheManHinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaCongNgheManHinh" Type="int" />
   </EntityType>
   <EntityType Name="ThongTinCongNghePinDienThoai">
     <Key>
       <PropertyRef Name="MaThongTinCongNghePin" />
     </Key>
     <Property Name="MaThongTinCongNghePin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
+    <Property Name="MaTSBTDT" Type="int" />
     <Property Name="MaCongNghePin" Type="int" />
   </EntityType>
   <EntityType Name="ThongTinDinhDangPhimVaNhacDienThoai">
@@ -442,67 +470,24 @@
       <PropertyRef Name="MaThongTinDinhDang" />
     </Key>
     <Property Name="MaThongTinDinhDang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
+    <Property Name="MaTSBTDT" Type="int" />
     <Property Name="MaDinhDangPhim" Type="int" />
     <Property Name="MaDinhDangNhac" Type="int" />
-  </EntityType>
-  <EntityType Name="ThongTinDoSangDienThoai">
-    <Key>
-      <PropertyRef Name="MaThongTinDoSang" />
-    </Key>
-    <Property Name="MaThongTinDoSang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaDoSang" Type="int" />
   </EntityType>
   <EntityType Name="ThongTinHeThongDinhViDienThoai">
     <Key>
       <PropertyRef Name="MaThongTinHeThongDinhVi" />
     </Key>
     <Property Name="MaThongTinHeThongDinhVi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
+    <Property Name="MaTSBTDT" Type="int" />
     <Property Name="MaHeThongDinhViGPS" Type="int" />
-  </EntityType>
-  <EntityType Name="ThongTinKinhCuongLucDienThoai">
-    <Key>
-      <PropertyRef Name="MaThongTinKinhCuongLuc" />
-    </Key>
-    <Property Name="MaThongTinKinhCuongLuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaLoaiKinh" Type="int" />
-  </EntityType>
-  <EntityType Name="ThongTinMangDiDongDienThoai">
-    <Key>
-      <PropertyRef Name="MaThongTinMangDiDong" />
-    </Key>
-    <Property Name="MaThongTinMangDiDong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaMangDiDong" Type="int" />
-  </EntityType>
-  <EntityType Name="ThongTinManHinhDienThoai">
-    <Key>
-      <PropertyRef Name="MaThongTinManHinh" />
-    </Key>
-    <Property Name="MaThongTinManHinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaKichThuocManHinh" Type="int" />
-    <Property Name="MaTanSoQuet" Type="int" />
-  </EntityType>
-  <EntityType Name="ThongTinPinVaSacDienThoai">
-    <Key>
-      <PropertyRef Name="MaThongTinPinSac" />
-    </Key>
-    <Property Name="MaThongTinPinSac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
-    <Property Name="MaLoaiPin" Type="int" />
-    <Property Name="MaDungLuongPin" Type="int" />
-    <Property Name="MaHoTroSac" Type="int" />
   </EntityType>
   <EntityType Name="ThongTinTinhNangDacBietDienThoai">
     <Key>
       <PropertyRef Name="MaThongTinTinhNangDacBiet" />
     </Key>
     <Property Name="MaThongTinTinhNangDacBiet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
+    <Property Name="MaTSBTDT" Type="int" />
     <Property Name="MaTinhNangDacBiet" Type="int" />
   </EntityType>
   <EntityType Name="ThongTinWifiDienThoai">
@@ -510,7 +495,7 @@
       <PropertyRef Name="MaThongTinWifi" />
     </Key>
     <Property Name="MaThongTinWifi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaTSKT" Type="int" />
+    <Property Name="MaTSBTDT" Type="int" />
     <Property Name="MaWifi" Type="int" />
   </EntityType>
   <EntityType Name="TinhNang">
@@ -639,7 +624,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDo__MaDoP__2CF2ADDF">
+  <Association Name="FK__ChiTietDo__MaDoP__00DF2177">
     <End Role="DoPhanGiaiCamera" Type="Self.DoPhanGiaiCamera" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -653,21 +638,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDo__MaDoP__55009F39">
-    <End Role="DoPhanGiaiManHinh" Type="Self.DoPhanGiaiManHinh" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ChiTietDoPhanGiaiManHinh" Type="Self.ChiTietDoPhanGiaiManHinh" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DoPhanGiaiManHinh">
-        <PropertyRef Name="MaDoPhanGiai" />
-      </Principal>
-      <Dependent Role="ChiTietDoPhanGiaiManHinh">
-        <PropertyRef Name="MaDoPhanGiai" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietDo__MaTho__2BFE89A6">
+  <Association Name="FK__ChiTietDo__MaTho__7FEAFD3E">
     <End Role="ThongSoCamera" Type="Self.ThongSoCamera" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -681,21 +652,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDo__MaTSK__540C7B00">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ChiTietDoPhanGiaiManHinh" Type="Self.ChiTietDoPhanGiaiManHinh" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="ChiTietDoPhanGiaiManHinh">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietTi__MaLoa__42E1EEFE">
+  <Association Name="FK__ChiTietTi__MaLoa__16CE6296">
     <End Role="LoaiCamera" Type="Self.LoaiCamera" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -709,7 +666,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietTi__MaTin__43D61337">
+  <Association Name="FK__ChiTietTi__MaTin__17C286CF">
     <End Role="TinhNang" Type="Self.TinhNang" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -723,17 +680,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietTi__MaTSK__41EDCAC5">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
+  <Association Name="FK__ChiTietTi__MaTSB__15DA3E5D">
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ChiTietTinhNangCamera" Type="Self.ChiTietTinhNangCamera" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
+      <Principal Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTSBTDT" />
       </Principal>
       <Dependent Role="ChiTietTinhNangCamera">
-        <PropertyRef Name="MaTSKT" />
+        <PropertyRef Name="MaTSBTDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -763,32 +720,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__KichThuoc__MaKic__4E1E9780">
-    <End Role="KichThuoc" Type="Self.KichThuoc" Multiplicity="0..1" />
-    <End Role="KichThuocKhoiLuong" Type="Self.KichThuocKhoiLuong" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="KichThuoc">
-        <PropertyRef Name="MaKichThuoc" />
-      </Principal>
-      <Dependent Role="KichThuocKhoiLuong">
-        <PropertyRef Name="MaKichThuoc" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__KichThuoc__MaTSK__4D2A7347">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="KichThuocKhoiLuong" Type="Self.KichThuocKhoiLuong" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="KichThuocKhoiLuong">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__SanPham__MaHang__4222D4EF">
     <End Role="HangSanXuat" Type="Self.HangSanXuat" Multiplicity="0..1" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
@@ -815,7 +746,203 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoCa__MaLoa__282DF8C2">
+  <Association Name="FK__ThongSoBi__MaChi__6442E2C9">
+    <End Role="ChipXuLy" Type="Self.ChipXuLy" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChipXuLy">
+        <PropertyRef Name="MaChip" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaChip" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaChi__662B2B3B">
+    <End Role="ChipDoHoaGPU" Type="Self.ChipDoHoaGPU" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChipDoHoaGPU">
+        <PropertyRef Name="MaChipDoHoaGPU" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaChipDoHoaGPU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaChi__6CD828CA">
+    <End Role="ChieuDai" Type="Self.ChieuDai" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChieuDai">
+        <PropertyRef Name="MaChieuDai" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaChieuDai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaChi__6DCC4D03">
+    <End Role="ChieuNgang" Type="Self.ChieuNgang" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChieuNgang">
+        <PropertyRef Name="MaChieuNgang" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaChieuNgang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaDoD__6EC0713C">
+    <End Role="DoDay" Type="Self.DoDay" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoDay">
+        <PropertyRef Name="MaDoDay" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaDoDay" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaDoP__671F4F74">
+    <End Role="DoPhanGiaiManHinh" Type="Self.DoPhanGiaiManHinh" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoPhanGiaiManHinh">
+        <PropertyRef Name="MaDoPhanGiai" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaDoPhanGiai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaDun__6BE40491">
+    <End Role="DungLuongPin" Type="Self.DungLuongPin" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DungLuongPin">
+        <PropertyRef Name="MaDungLuongPin" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaDungLuongPin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaKho__6FB49575">
+    <End Role="KhoiLuong" Type="Self.KhoiLuong" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoiLuong">
+        <PropertyRef Name="MaKhoiLuong" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaKhoiLuong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaKic__69FBBC1F">
+    <End Role="KichThuocManHinh" Type="Self.KichThuocManHinh" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KichThuocManHinh">
+        <PropertyRef Name="MaKichThuocManHinh" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaKichThuocManHinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaPix__681373AD">
+    <End Role="PixelNgang" Type="Self.PixelNgang" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PixelNgang">
+        <PropertyRef Name="MaPixelNgang" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaPixelNgang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaPix__690797E6">
+    <End Role="PixelDoc" Type="Self.PixelDoc" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PixelDoc">
+        <PropertyRef Name="MaPixelDoc" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaPixelDoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaTan__6AEFE058">
+    <End Role="TanSoQuetManHinh" Type="Self.TanSoQuetManHinh" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TanSoQuetManHinh">
+        <PropertyRef Name="MaTanSoQuet" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTanSoQuet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBi__MaToc__65370702">
+    <End Role="TocDoCPU" Type="Self.TocDoCPU" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TocDoCPU">
+        <PropertyRef Name="MaTocDoCPU" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTocDoCPU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoBie__MaBT__634EBE90">
+    <End Role="BienTheSanPham" Type="Self.BienTheSanPham" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BienTheSanPham">
+        <PropertyRef Name="MaBT" />
+      </Principal>
+      <Dependent Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaBT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoCa__MaLoa__7C1A6C5A">
     <End Role="LoaiCamera" Type="Self.LoaiCamera" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -829,217 +956,273 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoCa__MaTSK__2739D489">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
+  <Association Name="FK__ThongSoCa__MaTSB__7B264821">
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ThongSoCamera" Type="Self.ThongSoCamera" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
+      <Principal Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTSBTDT" />
       </Principal>
       <Dependent Role="ThongSoCamera">
-        <PropertyRef Name="MaTSKT" />
+        <PropertyRef Name="MaTSBTDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaBlu__17036CC0">
+  <Association Name="FK__ThongSoDi__MaBlu__5BAD9CC8">
     <End Role="Bluetooth" Type="Self.Bluetooth" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Bluetooth">
         <PropertyRef Name="MaBluetooth" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaBluetooth" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaCha__1BC821DD">
+  <Association Name="FK__ThongSoDi__MaCha__607251E5">
     <End Role="ChatLieu" Type="Self.ChatLieu" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ChatLieu">
         <PropertyRef Name="MaChatLieu" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaChatLieu" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaChi__0F624AF8">
-    <End Role="ChipXuLy" Type="Self.ChipXuLy" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ChipXuLy">
-        <PropertyRef Name="MaChip" />
-      </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaChip" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongSoKT__MaChi__114A936A">
-    <End Role="ChipDoHoaGPU" Type="Self.ChipDoHoaGPU" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ChipDoHoaGPU">
-        <PropertyRef Name="MaChipDoHoaGPU" />
-      </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaChipDoHoaGPU" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongSoKT__MaChu__14270015">
+  <Association Name="FK__ThongSoDi__MaChu__5224328E">
     <End Role="ChuanKhangBuiNuoc" Type="Self.ChuanKhangBuiNuoc" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ChuanKhangBuiNuoc">
         <PropertyRef Name="MaChuanKhangBuiNuoc" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaChuanKhangBuiNuoc" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaCon__17F790F9">
+  <Association Name="FK__ThongSoDi__MaCon__531856C7">
+    <End Role="CongNgheManHinh" Type="Self.CongNgheManHinh" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CongNgheManHinh">
+        <PropertyRef Name="MaCongNgheManHinh" />
+      </Principal>
+      <Dependent Role="ThongSoDienThoai">
+        <PropertyRef Name="MaCongNgheManHinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoDi__MaCon__5CA1C101">
     <End Role="CongKetNoiSac" Type="Self.CongKetNoiSac" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CongKetNoiSac">
         <PropertyRef Name="MaCongKetNoiSac" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaCongKetNoiSac" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaCon__19DFD96B">
+  <Association Name="FK__ThongSoDi__MaCon__5E8A0973">
     <End Role="CongKetNoiKhac" Type="Self.CongKetNoiKhac" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CongKetNoiKhac">
         <PropertyRef Name="MaCongKetNoiKhac" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaCongKetNoiKhac" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaDin__151B244E">
+  <Association Name="FK__ThongSoDi__MaDin__58D1301D">
     <End Role="DinhDangGhiAm" Type="Self.DinhDangGhiAm" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DinhDangGhiAm">
         <PropertyRef Name="MaDinhDangGhiAm" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaDinhDangGhiAm" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaJac__18EBB532">
+  <Association Name="FK__ThongSoDi__MaDoS__540C7B00">
+    <End Role="DoSangToiDa" Type="Self.DoSangToiDa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoSangToiDa">
+        <PropertyRef Name="MaDoSang" />
+      </Principal>
+      <Dependent Role="ThongSoDienThoai">
+        <PropertyRef Name="MaDoSang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoDi__MaHoT__56E8E7AB">
+    <End Role="HoTroSacToiDa" Type="Self.HoTroSacToiDa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoTroSacToiDa">
+        <PropertyRef Name="MaHoTroSac" />
+      </Principal>
+      <Dependent Role="ThongSoDienThoai">
+        <PropertyRef Name="MaHoTroSac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoDi__MaJac__5D95E53A">
     <End Role="JackTaiNghe" Type="Self.JackTaiNghe" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="JackTaiNghe">
         <PropertyRef Name="MaJackTaiNghe" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaJackTaiNghe" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaPhi__0E6E26BF">
+  <Association Name="FK__ThongSoDi__MaLoa__55009F39">
+    <End Role="LoaiKinhCuongLuc" Type="Self.LoaiKinhCuongLuc" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiKinhCuongLuc">
+        <PropertyRef Name="MaLoaiKinh" />
+      </Principal>
+      <Dependent Role="ThongSoDienThoai">
+        <PropertyRef Name="MaLoaiKinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoDi__MaLoa__55F4C372">
+    <End Role="LoaiPin" Type="Self.LoaiPin" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiPin">
+        <PropertyRef Name="MaLoaiPin" />
+      </Principal>
+      <Dependent Role="ThongSoDienThoai">
+        <PropertyRef Name="MaLoaiPin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoDi__MaMan__59C55456">
+    <End Role="MangDiDong" Type="Self.MangDiDong" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MangDiDong">
+        <PropertyRef Name="MaMangDiDong" />
+      </Principal>
+      <Dependent Role="ThongSoDienThoai">
+        <PropertyRef Name="MaMangDiDong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThongSoDi__MaPhi__4F47C5E3">
     <End Role="PhienBanHDH" Type="Self.PhienBanHDH" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PhienBanHDH">
         <PropertyRef Name="MaPhienBanHDH" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaPhienBanHDH" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaSIM__160F4887">
+  <Association Name="FK__ThongSoDi__MaSIM__5AB9788F">
     <End Role="SIM" Type="Self.SIM" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SIM">
         <PropertyRef Name="MaSIM" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaSIM" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaThi__1AD3FDA4">
+  <Association Name="FK__ThongSoDi__MaThi__5F7E2DAC">
     <End Role="ThietKe" Type="Self.ThietKe" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ThietKe">
         <PropertyRef Name="MaThietKe" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaThietKe" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKT__MaToc__10566F31">
-    <End Role="TocDoCPU" Type="Self.TocDoCPU" Multiplicity="0..1">
+  <Association Name="FK__ThongSoDi__MaTin__57DD0BE4">
+    <End Role="TinhNangBaoMat" Type="Self.TinhNangBaoMat" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TocDoCPU">
-        <PropertyRef Name="MaTocDoCPU" />
+      <Principal Role="TinhNangBaoMat">
+        <PropertyRef Name="MaTinhNangBaoMat" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTocDoCPU" />
+      <Dependent Role="ThongSoDienThoai">
+        <PropertyRef Name="MaTinhNangBaoMat" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoKTD__MaSP__0D7A0286">
+  <Association Name="FK__ThongSoDie__MaSP__4E53A1AA">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="*" />
+    <End Role="ThongSoDienThoai" Type="Self.ThongSoDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SanPham">
         <PropertyRef Name="MaSP" />
       </Principal>
-      <Dependent Role="ThongSoKTDienThoai">
+      <Dependent Role="ThongSoDienThoai">
         <PropertyRef Name="MaSP" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoQu__MaDoP__395884C4">
+  <Association Name="FK__ThongSoQu__MaDoP__0D44F85C">
     <End Role="DoPhanGiaiQuayPhim" Type="Self.DoPhanGiaiQuayPhim" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1053,7 +1236,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoQu__MaToc__3A4CA8FD">
+  <Association Name="FK__ThongSoQu__MaToc__0E391C95">
     <End Role="TocDoKhungHinh" Type="Self.TocDoKhungHinh" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1067,49 +1250,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongSoQu__MaTSK__3864608B">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
+  <Association Name="FK__ThongSoQu__MaTSB__0C50D423">
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ThongSoQuayPhim" Type="Self.ThongSoQuayPhim" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
+      <Principal Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTSBTDT" />
       </Principal>
       <Dependent Role="ThongSoQuayPhim">
-        <PropertyRef Name="MaTSKT" />
+        <PropertyRef Name="MaTSBTDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinB__MaTin__16CE6296">
-    <End Role="TinhNangBaoMat" Type="Self.TinhNangBaoMat" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinBaoMatNangCaoDienThoai" Type="Self.ThongTinBaoMatNangCaoDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TinhNangBaoMat">
-        <PropertyRef Name="MaTinhNangBaoMat" />
-      </Principal>
-      <Dependent Role="ThongTinBaoMatNangCaoDienThoai">
-        <PropertyRef Name="MaTinhNangBaoMat" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinB__MaTSK__15DA3E5D">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinBaoMatNangCaoDienThoai" Type="Self.ThongTinBaoMatNangCaoDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="ThongTinBaoMatNangCaoDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinC__MaCon__0E391C95">
+  <Association Name="FK__ThongTinC__MaCon__2057CCD0">
     <End Role="CongNghePin" Type="Self.CongNghePin" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1123,49 +1278,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinC__MaCon__4C6B5938">
-    <End Role="CongNgheManHinh" Type="Self.CongNgheManHinh" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinCongNgheManHinhDienThoai" Type="Self.ThongTinCongNgheManHinhDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CongNgheManHinh">
-        <PropertyRef Name="MaCongNgheManHinh" />
-      </Principal>
-      <Dependent Role="ThongTinCongNgheManHinhDienThoai">
-        <PropertyRef Name="MaCongNgheManHinh" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinC__MaTSK__0D44F85C">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
+  <Association Name="FK__ThongTinC__MaTSB__1F63A897">
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ThongTinCongNghePinDienThoai" Type="Self.ThongTinCongNghePinDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
+      <Principal Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTSBTDT" />
       </Principal>
       <Dependent Role="ThongTinCongNghePinDienThoai">
-        <PropertyRef Name="MaTSKT" />
+        <PropertyRef Name="MaTSBTDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinC__MaTSK__4B7734FF">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinCongNgheManHinhDienThoai" Type="Self.ThongTinCongNgheManHinhDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="ThongTinCongNgheManHinhDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinD__MaDin__2BC97F7C">
+  <Association Name="FK__ThongTinD__MaDin__3552E9B6">
     <End Role="DinhDangPhim" Type="Self.DinhDangPhim" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1179,7 +1306,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinD__MaDin__2CBDA3B5">
+  <Association Name="FK__ThongTinD__MaDin__36470DEF">
     <End Role="DinhDangNhac" Type="Self.DinhDangNhac" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1193,49 +1320,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinD__MaDoS__6AEFE058">
-    <End Role="DoSangToiDa" Type="Self.DoSangToiDa" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinDoSangDienThoai" Type="Self.ThongTinDoSangDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DoSangToiDa">
-        <PropertyRef Name="MaDoSang" />
-      </Principal>
-      <Dependent Role="ThongTinDoSangDienThoai">
-        <PropertyRef Name="MaDoSang" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinD__MaTSK__2AD55B43">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
+  <Association Name="FK__ThongTinD__MaTSB__345EC57D">
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ThongTinDinhDangPhimVaNhacDienThoai" Type="Self.ThongTinDinhDangPhimVaNhacDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
+      <Principal Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTSBTDT" />
       </Principal>
       <Dependent Role="ThongTinDinhDangPhimVaNhacDienThoai">
-        <PropertyRef Name="MaTSKT" />
+        <PropertyRef Name="MaTSBTDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinD__MaTSK__69FBBC1F">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinDoSangDienThoai" Type="Self.ThongTinDoSangDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="ThongTinDoSangDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinH__MaHeT__467D75B8">
+  <Association Name="FK__ThongTinH__MaHeT__477199F1">
     <End Role="HeThongDinhViGPS" Type="Self.HeThongDinhViGPS" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1249,175 +1348,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinH__MaTSK__4589517F">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
+  <Association Name="FK__ThongTinH__MaTSB__467D75B8">
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ThongTinHeThongDinhViDienThoai" Type="Self.ThongTinHeThongDinhViDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
+      <Principal Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTSBTDT" />
       </Principal>
       <Dependent Role="ThongTinHeThongDinhViDienThoai">
-        <PropertyRef Name="MaTSKT" />
+        <PropertyRef Name="MaTSBTDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinK__MaLoa__73852659">
-    <End Role="LoaiKinhCuongLuc" Type="Self.LoaiKinhCuongLuc" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinKinhCuongLucDienThoai" Type="Self.ThongTinKinhCuongLucDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LoaiKinhCuongLuc">
-        <PropertyRef Name="MaLoaiKinh" />
-      </Principal>
-      <Dependent Role="ThongTinKinhCuongLucDienThoai">
-        <PropertyRef Name="MaLoaiKinh" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinK__MaTSK__72910220">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinKinhCuongLucDienThoai" Type="Self.ThongTinKinhCuongLucDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="ThongTinKinhCuongLucDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinM__MaKic__6166761E">
-    <End Role="KichThuocManHinh" Type="Self.KichThuocManHinh" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinManHinhDienThoai" Type="Self.ThongTinManHinhDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="KichThuocManHinh">
-        <PropertyRef Name="MaKichThuocManHinh" />
-      </Principal>
-      <Dependent Role="ThongTinManHinhDienThoai">
-        <PropertyRef Name="MaKichThuocManHinh" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinM__MaMan__3552E9B6">
-    <End Role="MangDiDong" Type="Self.MangDiDong" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinMangDiDongDienThoai" Type="Self.ThongTinMangDiDongDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MangDiDong">
-        <PropertyRef Name="MaMangDiDong" />
-      </Principal>
-      <Dependent Role="ThongTinMangDiDongDienThoai">
-        <PropertyRef Name="MaMangDiDong" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinM__MaTan__625A9A57">
-    <End Role="TanSoQuetManHinh" Type="Self.TanSoQuetManHinh" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinManHinhDienThoai" Type="Self.ThongTinManHinhDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TanSoQuetManHinh">
-        <PropertyRef Name="MaTanSoQuet" />
-      </Principal>
-      <Dependent Role="ThongTinManHinhDienThoai">
-        <PropertyRef Name="MaTanSoQuet" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinM__MaTSK__345EC57D">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinMangDiDongDienThoai" Type="Self.ThongTinMangDiDongDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="ThongTinMangDiDongDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinM__MaTSK__607251E5">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinManHinhDienThoai" Type="Self.ThongTinManHinhDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="ThongTinManHinhDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinP__MaDun__04AFB25B">
-    <End Role="DungLuongPin" Type="Self.DungLuongPin" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinPinVaSacDienThoai" Type="Self.ThongTinPinVaSacDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DungLuongPin">
-        <PropertyRef Name="MaDungLuongPin" />
-      </Principal>
-      <Dependent Role="ThongTinPinVaSacDienThoai">
-        <PropertyRef Name="MaDungLuongPin" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinP__MaHoT__05A3D694">
-    <End Role="HoTroSacToiDa" Type="Self.HoTroSacToiDa" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinPinVaSacDienThoai" Type="Self.ThongTinPinVaSacDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HoTroSacToiDa">
-        <PropertyRef Name="MaHoTroSac" />
-      </Principal>
-      <Dependent Role="ThongTinPinVaSacDienThoai">
-        <PropertyRef Name="MaHoTroSac" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinP__MaLoa__03BB8E22">
-    <End Role="LoaiPin" Type="Self.LoaiPin" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinPinVaSacDienThoai" Type="Self.ThongTinPinVaSacDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LoaiPin">
-        <PropertyRef Name="MaLoaiPin" />
-      </Principal>
-      <Dependent Role="ThongTinPinVaSacDienThoai">
-        <PropertyRef Name="MaLoaiPin" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinP__MaTSK__02C769E9">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ThongTinPinVaSacDienThoai" Type="Self.ThongTinPinVaSacDienThoai" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Principal>
-      <Dependent Role="ThongTinPinVaSacDienThoai">
-        <PropertyRef Name="MaTSKT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ThongTinT__MaTin__1F63A897">
+  <Association Name="FK__ThongTinT__MaTin__28ED12D1">
     <End Role="TinhNangDacBiet" Type="Self.TinhNangDacBiet" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1431,35 +1376,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinT__MaTSK__1E6F845E">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
+  <Association Name="FK__ThongTinT__MaTSB__27F8EE98">
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ThongTinTinhNangDacBietDienThoai" Type="Self.ThongTinTinhNangDacBietDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
+      <Principal Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTSBTDT" />
       </Principal>
       <Dependent Role="ThongTinTinhNangDacBietDienThoai">
-        <PropertyRef Name="MaTSKT" />
+        <PropertyRef Name="MaTSBTDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinW__MaTSK__3CF40B7E">
-    <End Role="ThongSoKTDienThoai" Type="Self.ThongSoKTDienThoai" Multiplicity="0..1">
+  <Association Name="FK__ThongTinW__MaTSB__3DE82FB7">
+    <End Role="ThongSoBienTheDienThoai" Type="Self.ThongSoBienTheDienThoai" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ThongTinWifiDienThoai" Type="Self.ThongTinWifiDienThoai" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ThongSoKTDienThoai">
-        <PropertyRef Name="MaTSKT" />
+      <Principal Role="ThongSoBienTheDienThoai">
+        <PropertyRef Name="MaTSBTDT" />
       </Principal>
       <Dependent Role="ThongTinWifiDienThoai">
-        <PropertyRef Name="MaTSKT" />
+        <PropertyRef Name="MaTSBTDT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ThongTinW__MaWif__3DE82FB7">
+  <Association Name="FK__ThongTinW__MaWif__3EDC53F0">
     <End Role="Wifi" Type="Self.Wifi" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1477,10 +1422,11 @@
     <EntitySet Name="BienTheSanPham" EntityType="Self.BienTheSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bluetooth" EntityType="Self.Bluetooth" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChatLieu" EntityType="Self.ChatLieu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChieuDai" EntityType="Self.ChieuDai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChieuNgang" EntityType="Self.ChieuNgang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChipDoHoaGPU" EntityType="Self.ChipDoHoaGPU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChipXuLy" EntityType="Self.ChipXuLy" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietDoPhanGiaiCamera" EntityType="Self.ChiTietDoPhanGiaiCamera" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ChiTietDoPhanGiaiManHinh" EntityType="Self.ChiTietDoPhanGiaiManHinh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietTinhNangCamera" EntityType="Self.ChiTietTinhNangCamera" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChuanKhangBuiNuoc" EntityType="Self.ChuanKhangBuiNuoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CongKetNoiKhac" EntityType="Self.CongKetNoiKhac" Schema="dbo" store:Type="Tables" />
@@ -1490,6 +1436,7 @@
     <EntitySet Name="DinhDangGhiAm" EntityType="Self.DinhDangGhiAm" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DinhDangNhac" EntityType="Self.DinhDangNhac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DinhDangPhim" EntityType="Self.DinhDangPhim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoDay" EntityType="Self.DoDay" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoPhanGiaiCamera" EntityType="Self.DoPhanGiaiCamera" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoPhanGiaiManHinh" EntityType="Self.DoPhanGiaiManHinh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoPhanGiaiQuayPhim" EntityType="Self.DoPhanGiaiQuayPhim" Schema="dbo" store:Type="Tables" />
@@ -1500,8 +1447,7 @@
     <EntitySet Name="HinhAnhSanPham" EntityType="Self.HinhAnhSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoTroSacToiDa" EntityType="Self.HoTroSacToiDa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="JackTaiNghe" EntityType="Self.JackTaiNghe" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="KichThuoc" EntityType="Self.KichThuoc" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="KichThuocKhoiLuong" EntityType="Self.KichThuocKhoiLuong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhoiLuong" EntityType="Self.KhoiLuong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KichThuocManHinh" EntityType="Self.KichThuocManHinh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiCamera" EntityType="Self.LoaiCamera" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiKinhCuongLuc" EntityType="Self.LoaiKinhCuongLuc" Schema="dbo" store:Type="Tables" />
@@ -1510,6 +1456,8 @@
     <EntitySet Name="MangDiDong" EntityType="Self.MangDiDong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MauSac" EntityType="Self.MauSac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhienBanHDH" EntityType="Self.PhienBanHDH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PixelDoc" EntityType="Self.PixelDoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PixelNgang" EntityType="Self.PixelNgang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QuanTriHeThong" EntityType="Self.QuanTriHeThong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QuocGia" EntityType="Self.QuocGia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RAM" EntityType="Self.RAM" Schema="dbo" store:Type="Tables" />
@@ -1518,19 +1466,13 @@
     <EntitySet Name="SIM" EntityType="Self.SIM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TanSoQuetManHinh" EntityType="Self.TanSoQuetManHinh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThietKe" EntityType="Self.ThietKe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongSoBienTheDienThoai" EntityType="Self.ThongSoBienTheDienThoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongSoCamera" EntityType="Self.ThongSoCamera" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ThongSoKTDienThoai" EntityType="Self.ThongSoKTDienThoai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongSoDienThoai" EntityType="Self.ThongSoDienThoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongSoQuayPhim" EntityType="Self.ThongSoQuayPhim" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ThongTinBaoMatNangCaoDienThoai" EntityType="Self.ThongTinBaoMatNangCaoDienThoai" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ThongTinCongNgheManHinhDienThoai" EntityType="Self.ThongTinCongNgheManHinhDienThoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongTinCongNghePinDienThoai" EntityType="Self.ThongTinCongNghePinDienThoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongTinDinhDangPhimVaNhacDienThoai" EntityType="Self.ThongTinDinhDangPhimVaNhacDienThoai" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ThongTinDoSangDienThoai" EntityType="Self.ThongTinDoSangDienThoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongTinHeThongDinhViDienThoai" EntityType="Self.ThongTinHeThongDinhViDienThoai" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ThongTinKinhCuongLucDienThoai" EntityType="Self.ThongTinKinhCuongLucDienThoai" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ThongTinMangDiDongDienThoai" EntityType="Self.ThongTinMangDiDongDienThoai" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ThongTinManHinhDienThoai" EntityType="Self.ThongTinManHinhDienThoai" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ThongTinPinVaSacDienThoai" EntityType="Self.ThongTinPinVaSacDienThoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongTinTinhNangDacBietDienThoai" EntityType="Self.ThongTinTinhNangDacBietDienThoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongTinWifiDienThoai" EntityType="Self.ThongTinWifiDienThoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TinhNang" EntityType="Self.TinhNang" Schema="dbo" store:Type="Tables" />
@@ -1560,32 +1502,24 @@
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDo__MaDoP__2CF2ADDF" Association="Self.FK__ChiTietDo__MaDoP__2CF2ADDF">
+    <AssociationSet Name="FK__ChiTietDo__MaDoP__00DF2177" Association="Self.FK__ChiTietDo__MaDoP__00DF2177">
       <End Role="DoPhanGiaiCamera" EntitySet="DoPhanGiaiCamera" />
       <End Role="ChiTietDoPhanGiaiCamera" EntitySet="ChiTietDoPhanGiaiCamera" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDo__MaDoP__55009F39" Association="Self.FK__ChiTietDo__MaDoP__55009F39">
-      <End Role="DoPhanGiaiManHinh" EntitySet="DoPhanGiaiManHinh" />
-      <End Role="ChiTietDoPhanGiaiManHinh" EntitySet="ChiTietDoPhanGiaiManHinh" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDo__MaTho__2BFE89A6" Association="Self.FK__ChiTietDo__MaTho__2BFE89A6">
+    <AssociationSet Name="FK__ChiTietDo__MaTho__7FEAFD3E" Association="Self.FK__ChiTietDo__MaTho__7FEAFD3E">
       <End Role="ThongSoCamera" EntitySet="ThongSoCamera" />
       <End Role="ChiTietDoPhanGiaiCamera" EntitySet="ChiTietDoPhanGiaiCamera" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDo__MaTSK__540C7B00" Association="Self.FK__ChiTietDo__MaTSK__540C7B00">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="ChiTietDoPhanGiaiManHinh" EntitySet="ChiTietDoPhanGiaiManHinh" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietTi__MaLoa__42E1EEFE" Association="Self.FK__ChiTietTi__MaLoa__42E1EEFE">
+    <AssociationSet Name="FK__ChiTietTi__MaLoa__16CE6296" Association="Self.FK__ChiTietTi__MaLoa__16CE6296">
       <End Role="LoaiCamera" EntitySet="LoaiCamera" />
       <End Role="ChiTietTinhNangCamera" EntitySet="ChiTietTinhNangCamera" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietTi__MaTin__43D61337" Association="Self.FK__ChiTietTi__MaTin__43D61337">
+    <AssociationSet Name="FK__ChiTietTi__MaTin__17C286CF" Association="Self.FK__ChiTietTi__MaTin__17C286CF">
       <End Role="TinhNang" EntitySet="TinhNang" />
       <End Role="ChiTietTinhNangCamera" EntitySet="ChiTietTinhNangCamera" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietTi__MaTSK__41EDCAC5" Association="Self.FK__ChiTietTi__MaTSK__41EDCAC5">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ChiTietTi__MaTSB__15DA3E5D" Association="Self.FK__ChiTietTi__MaTSB__15DA3E5D">
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ChiTietTinhNangCamera" EntitySet="ChiTietTinhNangCamera" />
     </AssociationSet>
     <AssociationSet Name="FK__HangSanXua__MaQG__3A81B327" Association="Self.FK__HangSanXua__MaQG__3A81B327">
@@ -1596,14 +1530,6 @@
       <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
       <End Role="HinhAnhSanPham" EntitySet="HinhAnhSanPham" />
     </AssociationSet>
-    <AssociationSet Name="FK__KichThuoc__MaKic__4E1E9780" Association="Self.FK__KichThuoc__MaKic__4E1E9780">
-      <End Role="KichThuoc" EntitySet="KichThuoc" />
-      <End Role="KichThuocKhoiLuong" EntitySet="KichThuocKhoiLuong" />
-    </AssociationSet>
-    <AssociationSet Name="FK__KichThuoc__MaTSK__4D2A7347" Association="Self.FK__KichThuoc__MaTSK__4D2A7347">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="KichThuocKhoiLuong" EntitySet="KichThuocKhoiLuong" />
-    </AssociationSet>
     <AssociationSet Name="FK__SanPham__MaHang__4222D4EF" Association="Self.FK__SanPham__MaHang__4222D4EF">
       <End Role="HangSanXuat" EntitySet="HangSanXuat" />
       <End Role="SanPham" EntitySet="SanPham" />
@@ -1612,191 +1538,195 @@
       <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoCa__MaLoa__282DF8C2" Association="Self.FK__ThongSoCa__MaLoa__282DF8C2">
+    <AssociationSet Name="FK__ThongSoBi__MaChi__6442E2C9" Association="Self.FK__ThongSoBi__MaChi__6442E2C9">
+      <End Role="ChipXuLy" EntitySet="ChipXuLy" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaChi__662B2B3B" Association="Self.FK__ThongSoBi__MaChi__662B2B3B">
+      <End Role="ChipDoHoaGPU" EntitySet="ChipDoHoaGPU" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaChi__6CD828CA" Association="Self.FK__ThongSoBi__MaChi__6CD828CA">
+      <End Role="ChieuDai" EntitySet="ChieuDai" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaChi__6DCC4D03" Association="Self.FK__ThongSoBi__MaChi__6DCC4D03">
+      <End Role="ChieuNgang" EntitySet="ChieuNgang" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaDoD__6EC0713C" Association="Self.FK__ThongSoBi__MaDoD__6EC0713C">
+      <End Role="DoDay" EntitySet="DoDay" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaDoP__671F4F74" Association="Self.FK__ThongSoBi__MaDoP__671F4F74">
+      <End Role="DoPhanGiaiManHinh" EntitySet="DoPhanGiaiManHinh" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaDun__6BE40491" Association="Self.FK__ThongSoBi__MaDun__6BE40491">
+      <End Role="DungLuongPin" EntitySet="DungLuongPin" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaKho__6FB49575" Association="Self.FK__ThongSoBi__MaKho__6FB49575">
+      <End Role="KhoiLuong" EntitySet="KhoiLuong" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaKic__69FBBC1F" Association="Self.FK__ThongSoBi__MaKic__69FBBC1F">
+      <End Role="KichThuocManHinh" EntitySet="KichThuocManHinh" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaPix__681373AD" Association="Self.FK__ThongSoBi__MaPix__681373AD">
+      <End Role="PixelNgang" EntitySet="PixelNgang" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaPix__690797E6" Association="Self.FK__ThongSoBi__MaPix__690797E6">
+      <End Role="PixelDoc" EntitySet="PixelDoc" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaTan__6AEFE058" Association="Self.FK__ThongSoBi__MaTan__6AEFE058">
+      <End Role="TanSoQuetManHinh" EntitySet="TanSoQuetManHinh" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBi__MaToc__65370702" Association="Self.FK__ThongSoBi__MaToc__65370702">
+      <End Role="TocDoCPU" EntitySet="TocDoCPU" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoBie__MaBT__634EBE90" Association="Self.FK__ThongSoBie__MaBT__634EBE90">
+      <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoCa__MaLoa__7C1A6C5A" Association="Self.FK__ThongSoCa__MaLoa__7C1A6C5A">
       <End Role="LoaiCamera" EntitySet="LoaiCamera" />
       <End Role="ThongSoCamera" EntitySet="ThongSoCamera" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoCa__MaTSK__2739D489" Association="Self.FK__ThongSoCa__MaTSK__2739D489">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ThongSoCa__MaTSB__7B264821" Association="Self.FK__ThongSoCa__MaTSB__7B264821">
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ThongSoCamera" EntitySet="ThongSoCamera" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaBlu__17036CC0" Association="Self.FK__ThongSoKT__MaBlu__17036CC0">
+    <AssociationSet Name="FK__ThongSoDi__MaBlu__5BAD9CC8" Association="Self.FK__ThongSoDi__MaBlu__5BAD9CC8">
       <End Role="Bluetooth" EntitySet="Bluetooth" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaCha__1BC821DD" Association="Self.FK__ThongSoKT__MaCha__1BC821DD">
+    <AssociationSet Name="FK__ThongSoDi__MaCha__607251E5" Association="Self.FK__ThongSoDi__MaCha__607251E5">
       <End Role="ChatLieu" EntitySet="ChatLieu" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaChi__0F624AF8" Association="Self.FK__ThongSoKT__MaChi__0F624AF8">
-      <End Role="ChipXuLy" EntitySet="ChipXuLy" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaChi__114A936A" Association="Self.FK__ThongSoKT__MaChi__114A936A">
-      <End Role="ChipDoHoaGPU" EntitySet="ChipDoHoaGPU" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaChu__14270015" Association="Self.FK__ThongSoKT__MaChu__14270015">
+    <AssociationSet Name="FK__ThongSoDi__MaChu__5224328E" Association="Self.FK__ThongSoDi__MaChu__5224328E">
       <End Role="ChuanKhangBuiNuoc" EntitySet="ChuanKhangBuiNuoc" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaCon__17F790F9" Association="Self.FK__ThongSoKT__MaCon__17F790F9">
+    <AssociationSet Name="FK__ThongSoDi__MaCon__531856C7" Association="Self.FK__ThongSoDi__MaCon__531856C7">
+      <End Role="CongNgheManHinh" EntitySet="CongNgheManHinh" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoDi__MaCon__5CA1C101" Association="Self.FK__ThongSoDi__MaCon__5CA1C101">
       <End Role="CongKetNoiSac" EntitySet="CongKetNoiSac" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaCon__19DFD96B" Association="Self.FK__ThongSoKT__MaCon__19DFD96B">
+    <AssociationSet Name="FK__ThongSoDi__MaCon__5E8A0973" Association="Self.FK__ThongSoDi__MaCon__5E8A0973">
       <End Role="CongKetNoiKhac" EntitySet="CongKetNoiKhac" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaDin__151B244E" Association="Self.FK__ThongSoKT__MaDin__151B244E">
+    <AssociationSet Name="FK__ThongSoDi__MaDin__58D1301D" Association="Self.FK__ThongSoDi__MaDin__58D1301D">
       <End Role="DinhDangGhiAm" EntitySet="DinhDangGhiAm" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaJac__18EBB532" Association="Self.FK__ThongSoKT__MaJac__18EBB532">
+    <AssociationSet Name="FK__ThongSoDi__MaDoS__540C7B00" Association="Self.FK__ThongSoDi__MaDoS__540C7B00">
+      <End Role="DoSangToiDa" EntitySet="DoSangToiDa" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoDi__MaHoT__56E8E7AB" Association="Self.FK__ThongSoDi__MaHoT__56E8E7AB">
+      <End Role="HoTroSacToiDa" EntitySet="HoTroSacToiDa" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoDi__MaJac__5D95E53A" Association="Self.FK__ThongSoDi__MaJac__5D95E53A">
       <End Role="JackTaiNghe" EntitySet="JackTaiNghe" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaPhi__0E6E26BF" Association="Self.FK__ThongSoKT__MaPhi__0E6E26BF">
+    <AssociationSet Name="FK__ThongSoDi__MaLoa__55009F39" Association="Self.FK__ThongSoDi__MaLoa__55009F39">
+      <End Role="LoaiKinhCuongLuc" EntitySet="LoaiKinhCuongLuc" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoDi__MaLoa__55F4C372" Association="Self.FK__ThongSoDi__MaLoa__55F4C372">
+      <End Role="LoaiPin" EntitySet="LoaiPin" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoDi__MaMan__59C55456" Association="Self.FK__ThongSoDi__MaMan__59C55456">
+      <End Role="MangDiDong" EntitySet="MangDiDong" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThongSoDi__MaPhi__4F47C5E3" Association="Self.FK__ThongSoDi__MaPhi__4F47C5E3">
       <End Role="PhienBanHDH" EntitySet="PhienBanHDH" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaSIM__160F4887" Association="Self.FK__ThongSoKT__MaSIM__160F4887">
+    <AssociationSet Name="FK__ThongSoDi__MaSIM__5AB9788F" Association="Self.FK__ThongSoDi__MaSIM__5AB9788F">
       <End Role="SIM" EntitySet="SIM" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaThi__1AD3FDA4" Association="Self.FK__ThongSoKT__MaThi__1AD3FDA4">
+    <AssociationSet Name="FK__ThongSoDi__MaThi__5F7E2DAC" Association="Self.FK__ThongSoDi__MaThi__5F7E2DAC">
       <End Role="ThietKe" EntitySet="ThietKe" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKT__MaToc__10566F31" Association="Self.FK__ThongSoKT__MaToc__10566F31">
-      <End Role="TocDoCPU" EntitySet="TocDoCPU" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ThongSoDi__MaTin__57DD0BE4" Association="Self.FK__ThongSoDi__MaTin__57DD0BE4">
+      <End Role="TinhNangBaoMat" EntitySet="TinhNangBaoMat" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoKTD__MaSP__0D7A0286" Association="Self.FK__ThongSoKTD__MaSP__0D7A0286">
+    <AssociationSet Name="FK__ThongSoDie__MaSP__4E53A1AA" Association="Self.FK__ThongSoDie__MaSP__4E53A1AA">
       <End Role="SanPham" EntitySet="SanPham" />
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+      <End Role="ThongSoDienThoai" EntitySet="ThongSoDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoQu__MaDoP__395884C4" Association="Self.FK__ThongSoQu__MaDoP__395884C4">
+    <AssociationSet Name="FK__ThongSoQu__MaDoP__0D44F85C" Association="Self.FK__ThongSoQu__MaDoP__0D44F85C">
       <End Role="DoPhanGiaiQuayPhim" EntitySet="DoPhanGiaiQuayPhim" />
       <End Role="ThongSoQuayPhim" EntitySet="ThongSoQuayPhim" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoQu__MaToc__3A4CA8FD" Association="Self.FK__ThongSoQu__MaToc__3A4CA8FD">
+    <AssociationSet Name="FK__ThongSoQu__MaToc__0E391C95" Association="Self.FK__ThongSoQu__MaToc__0E391C95">
       <End Role="TocDoKhungHinh" EntitySet="TocDoKhungHinh" />
       <End Role="ThongSoQuayPhim" EntitySet="ThongSoQuayPhim" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongSoQu__MaTSK__3864608B" Association="Self.FK__ThongSoQu__MaTSK__3864608B">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ThongSoQu__MaTSB__0C50D423" Association="Self.FK__ThongSoQu__MaTSB__0C50D423">
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ThongSoQuayPhim" EntitySet="ThongSoQuayPhim" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinB__MaTin__16CE6296" Association="Self.FK__ThongTinB__MaTin__16CE6296">
-      <End Role="TinhNangBaoMat" EntitySet="TinhNangBaoMat" />
-      <End Role="ThongTinBaoMatNangCaoDienThoai" EntitySet="ThongTinBaoMatNangCaoDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinB__MaTSK__15DA3E5D" Association="Self.FK__ThongTinB__MaTSK__15DA3E5D">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="ThongTinBaoMatNangCaoDienThoai" EntitySet="ThongTinBaoMatNangCaoDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinC__MaCon__0E391C95" Association="Self.FK__ThongTinC__MaCon__0E391C95">
+    <AssociationSet Name="FK__ThongTinC__MaCon__2057CCD0" Association="Self.FK__ThongTinC__MaCon__2057CCD0">
       <End Role="CongNghePin" EntitySet="CongNghePin" />
       <End Role="ThongTinCongNghePinDienThoai" EntitySet="ThongTinCongNghePinDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinC__MaCon__4C6B5938" Association="Self.FK__ThongTinC__MaCon__4C6B5938">
-      <End Role="CongNgheManHinh" EntitySet="CongNgheManHinh" />
-      <End Role="ThongTinCongNgheManHinhDienThoai" EntitySet="ThongTinCongNgheManHinhDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinC__MaTSK__0D44F85C" Association="Self.FK__ThongTinC__MaTSK__0D44F85C">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ThongTinC__MaTSB__1F63A897" Association="Self.FK__ThongTinC__MaTSB__1F63A897">
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ThongTinCongNghePinDienThoai" EntitySet="ThongTinCongNghePinDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinC__MaTSK__4B7734FF" Association="Self.FK__ThongTinC__MaTSK__4B7734FF">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="ThongTinCongNgheManHinhDienThoai" EntitySet="ThongTinCongNgheManHinhDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinD__MaDin__2BC97F7C" Association="Self.FK__ThongTinD__MaDin__2BC97F7C">
+    <AssociationSet Name="FK__ThongTinD__MaDin__3552E9B6" Association="Self.FK__ThongTinD__MaDin__3552E9B6">
       <End Role="DinhDangPhim" EntitySet="DinhDangPhim" />
       <End Role="ThongTinDinhDangPhimVaNhacDienThoai" EntitySet="ThongTinDinhDangPhimVaNhacDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinD__MaDin__2CBDA3B5" Association="Self.FK__ThongTinD__MaDin__2CBDA3B5">
+    <AssociationSet Name="FK__ThongTinD__MaDin__36470DEF" Association="Self.FK__ThongTinD__MaDin__36470DEF">
       <End Role="DinhDangNhac" EntitySet="DinhDangNhac" />
       <End Role="ThongTinDinhDangPhimVaNhacDienThoai" EntitySet="ThongTinDinhDangPhimVaNhacDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinD__MaDoS__6AEFE058" Association="Self.FK__ThongTinD__MaDoS__6AEFE058">
-      <End Role="DoSangToiDa" EntitySet="DoSangToiDa" />
-      <End Role="ThongTinDoSangDienThoai" EntitySet="ThongTinDoSangDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinD__MaTSK__2AD55B43" Association="Self.FK__ThongTinD__MaTSK__2AD55B43">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ThongTinD__MaTSB__345EC57D" Association="Self.FK__ThongTinD__MaTSB__345EC57D">
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ThongTinDinhDangPhimVaNhacDienThoai" EntitySet="ThongTinDinhDangPhimVaNhacDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinD__MaTSK__69FBBC1F" Association="Self.FK__ThongTinD__MaTSK__69FBBC1F">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="ThongTinDoSangDienThoai" EntitySet="ThongTinDoSangDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinH__MaHeT__467D75B8" Association="Self.FK__ThongTinH__MaHeT__467D75B8">
+    <AssociationSet Name="FK__ThongTinH__MaHeT__477199F1" Association="Self.FK__ThongTinH__MaHeT__477199F1">
       <End Role="HeThongDinhViGPS" EntitySet="HeThongDinhViGPS" />
       <End Role="ThongTinHeThongDinhViDienThoai" EntitySet="ThongTinHeThongDinhViDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinH__MaTSK__4589517F" Association="Self.FK__ThongTinH__MaTSK__4589517F">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ThongTinH__MaTSB__467D75B8" Association="Self.FK__ThongTinH__MaTSB__467D75B8">
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ThongTinHeThongDinhViDienThoai" EntitySet="ThongTinHeThongDinhViDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinK__MaLoa__73852659" Association="Self.FK__ThongTinK__MaLoa__73852659">
-      <End Role="LoaiKinhCuongLuc" EntitySet="LoaiKinhCuongLuc" />
-      <End Role="ThongTinKinhCuongLucDienThoai" EntitySet="ThongTinKinhCuongLucDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinK__MaTSK__72910220" Association="Self.FK__ThongTinK__MaTSK__72910220">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="ThongTinKinhCuongLucDienThoai" EntitySet="ThongTinKinhCuongLucDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinM__MaKic__6166761E" Association="Self.FK__ThongTinM__MaKic__6166761E">
-      <End Role="KichThuocManHinh" EntitySet="KichThuocManHinh" />
-      <End Role="ThongTinManHinhDienThoai" EntitySet="ThongTinManHinhDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinM__MaMan__3552E9B6" Association="Self.FK__ThongTinM__MaMan__3552E9B6">
-      <End Role="MangDiDong" EntitySet="MangDiDong" />
-      <End Role="ThongTinMangDiDongDienThoai" EntitySet="ThongTinMangDiDongDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinM__MaTan__625A9A57" Association="Self.FK__ThongTinM__MaTan__625A9A57">
-      <End Role="TanSoQuetManHinh" EntitySet="TanSoQuetManHinh" />
-      <End Role="ThongTinManHinhDienThoai" EntitySet="ThongTinManHinhDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinM__MaTSK__345EC57D" Association="Self.FK__ThongTinM__MaTSK__345EC57D">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="ThongTinMangDiDongDienThoai" EntitySet="ThongTinMangDiDongDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinM__MaTSK__607251E5" Association="Self.FK__ThongTinM__MaTSK__607251E5">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="ThongTinManHinhDienThoai" EntitySet="ThongTinManHinhDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinP__MaDun__04AFB25B" Association="Self.FK__ThongTinP__MaDun__04AFB25B">
-      <End Role="DungLuongPin" EntitySet="DungLuongPin" />
-      <End Role="ThongTinPinVaSacDienThoai" EntitySet="ThongTinPinVaSacDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinP__MaHoT__05A3D694" Association="Self.FK__ThongTinP__MaHoT__05A3D694">
-      <End Role="HoTroSacToiDa" EntitySet="HoTroSacToiDa" />
-      <End Role="ThongTinPinVaSacDienThoai" EntitySet="ThongTinPinVaSacDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinP__MaLoa__03BB8E22" Association="Self.FK__ThongTinP__MaLoa__03BB8E22">
-      <End Role="LoaiPin" EntitySet="LoaiPin" />
-      <End Role="ThongTinPinVaSacDienThoai" EntitySet="ThongTinPinVaSacDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinP__MaTSK__02C769E9" Association="Self.FK__ThongTinP__MaTSK__02C769E9">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
-      <End Role="ThongTinPinVaSacDienThoai" EntitySet="ThongTinPinVaSacDienThoai" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ThongTinT__MaTin__1F63A897" Association="Self.FK__ThongTinT__MaTin__1F63A897">
+    <AssociationSet Name="FK__ThongTinT__MaTin__28ED12D1" Association="Self.FK__ThongTinT__MaTin__28ED12D1">
       <End Role="TinhNangDacBiet" EntitySet="TinhNangDacBiet" />
       <End Role="ThongTinTinhNangDacBietDienThoai" EntitySet="ThongTinTinhNangDacBietDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinT__MaTSK__1E6F845E" Association="Self.FK__ThongTinT__MaTSK__1E6F845E">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ThongTinT__MaTSB__27F8EE98" Association="Self.FK__ThongTinT__MaTSB__27F8EE98">
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ThongTinTinhNangDacBietDienThoai" EntitySet="ThongTinTinhNangDacBietDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinW__MaTSK__3CF40B7E" Association="Self.FK__ThongTinW__MaTSK__3CF40B7E">
-      <End Role="ThongSoKTDienThoai" EntitySet="ThongSoKTDienThoai" />
+    <AssociationSet Name="FK__ThongTinW__MaTSB__3DE82FB7" Association="Self.FK__ThongTinW__MaTSB__3DE82FB7">
+      <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ThongTinWifiDienThoai" EntitySet="ThongTinWifiDienThoai" />
     </AssociationSet>
-    <AssociationSet Name="FK__ThongTinW__MaWif__3DE82FB7" Association="Self.FK__ThongTinW__MaWif__3DE82FB7">
+    <AssociationSet Name="FK__ThongTinW__MaWif__3EDC53F0" Association="Self.FK__ThongTinW__MaWif__3EDC53F0">
       <End Role="Wifi" EntitySet="Wifi" />
       <End Role="ThongTinWifiDienThoai" EntitySet="ThongTinWifiDienThoai" />
     </AssociationSet>

@@ -1,0 +1,154 @@
+﻿@model IEnumerable<QLCHTBDD_62131904.Models.ThongSoDienThoai>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DanhBa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DenFlashCameraSau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiDiemRaMat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bluetooth.TenBluetooth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChatLieu.TenChatLieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChuanKhangBuiNuoc.TenChuanKhangBuiNuoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CongKetNoiKhac.TenCongKetNoiKhac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CongKetNoiSac.TenCongKetNoiSac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CongNgheManHinh.TenCongNgheManHinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DinhDangGhiAm.TenDinhDangGhiAm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoSangToiDa.MaDoSang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoTroSacToiDa.CongSuat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JackTaiNghe.TenJackTaiNghe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiKinhCuongLuc.TenLoaiKinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiPin.TenLoaiPin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MangDiDong.TenMangDiDong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhienBanHDH.TenPhienBanHDH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SanPham.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SIM.TenSIM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThietKe.TenThietKe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhNangBaoMat.TenTinhNangBaoMat)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanhBa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DenFlashCameraSau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiDiemRaMat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bluetooth.TenBluetooth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChatLieu.TenChatLieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChuanKhangBuiNuoc.TenChuanKhangBuiNuoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CongKetNoiKhac.TenCongKetNoiKhac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CongKetNoiSac.TenCongKetNoiSac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CongNgheManHinh.TenCongNgheManHinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DinhDangGhiAm.TenDinhDangGhiAm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoSangToiDa.MaDoSang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTroSacToiDa.CongSuat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JackTaiNghe.TenJackTaiNghe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiKinhCuongLuc.TenLoaiKinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiPin.TenLoaiPin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MangDiDong.TenMangDiDong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhienBanHDH.TenPhienBanHDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SanPham.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SIM.TenSIM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThietKe.TenThietKe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhNangBaoMat.TenTinhNangBaoMat)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaTSDT }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaTSDT }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaTSDT })
+        </td>
+    </tr>
+}
+
+</table>

@@ -17,7 +17,7 @@ namespace QLCHTBDD_62131904.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MangDiDong()
         {
-            this.ThongTinMangDiDongDienThoais = new HashSet<ThongTinMangDiDongDienThoai>();
+            this.ThongSoDienThoais = new HashSet<ThongSoDienThoai>();
         }
     
         public int MaMangDiDong { get; set; }
@@ -25,6 +25,6 @@ namespace QLCHTBDD_62131904.Models
         public Nullable<bool> IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThongTinMangDiDongDienThoai> ThongTinMangDiDongDienThoais { get; set; }
+        public virtual ICollection<ThongSoDienThoai> ThongSoDienThoais { get; set; }
     }
 }

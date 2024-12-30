@@ -29,10 +29,11 @@ namespace QLCHTBDD_62131904.Models
         public virtual DbSet<BienTheSanPham> BienTheSanPhams { get; set; }
         public virtual DbSet<Bluetooth> Blueteeth { get; set; }
         public virtual DbSet<ChatLieu> ChatLieux { get; set; }
+        public virtual DbSet<ChieuDai> ChieuDais { get; set; }
+        public virtual DbSet<ChieuNgang> ChieuNgangs { get; set; }
         public virtual DbSet<ChipDoHoaGPU> ChipDoHoaGPUs { get; set; }
         public virtual DbSet<ChipXuLy> ChipXuLies { get; set; }
         public virtual DbSet<ChiTietDoPhanGiaiCamera> ChiTietDoPhanGiaiCameras { get; set; }
-        public virtual DbSet<ChiTietDoPhanGiaiManHinh> ChiTietDoPhanGiaiManHinhs { get; set; }
         public virtual DbSet<ChiTietTinhNangCamera> ChiTietTinhNangCameras { get; set; }
         public virtual DbSet<ChuanKhangBuiNuoc> ChuanKhangBuiNuocs { get; set; }
         public virtual DbSet<CongKetNoiKhac> CongKetNoiKhacs { get; set; }
@@ -42,6 +43,7 @@ namespace QLCHTBDD_62131904.Models
         public virtual DbSet<DinhDangGhiAm> DinhDangGhiAms { get; set; }
         public virtual DbSet<DinhDangNhac> DinhDangNhacs { get; set; }
         public virtual DbSet<DinhDangPhim> DinhDangPhims { get; set; }
+        public virtual DbSet<DoDay> DoDays { get; set; }
         public virtual DbSet<DoPhanGiaiCamera> DoPhanGiaiCameras { get; set; }
         public virtual DbSet<DoPhanGiaiManHinh> DoPhanGiaiManHinhs { get; set; }
         public virtual DbSet<DoPhanGiaiQuayPhim> DoPhanGiaiQuayPhims { get; set; }
@@ -52,8 +54,7 @@ namespace QLCHTBDD_62131904.Models
         public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
         public virtual DbSet<HoTroSacToiDa> HoTroSacToiDas { get; set; }
         public virtual DbSet<JackTaiNghe> JackTaiNghes { get; set; }
-        public virtual DbSet<KichThuoc> KichThuocs { get; set; }
-        public virtual DbSet<KichThuocKhoiLuong> KichThuocKhoiLuongs { get; set; }
+        public virtual DbSet<KhoiLuong> KhoiLuongs { get; set; }
         public virtual DbSet<KichThuocManHinh> KichThuocManHinhs { get; set; }
         public virtual DbSet<LoaiCamera> LoaiCameras { get; set; }
         public virtual DbSet<LoaiKinhCuongLuc> LoaiKinhCuongLucs { get; set; }
@@ -62,6 +63,8 @@ namespace QLCHTBDD_62131904.Models
         public virtual DbSet<MangDiDong> MangDiDongs { get; set; }
         public virtual DbSet<MauSac> MauSacs { get; set; }
         public virtual DbSet<PhienBanHDH> PhienBanHDHs { get; set; }
+        public virtual DbSet<PixelDoc> PixelDocs { get; set; }
+        public virtual DbSet<PixelNgang> PixelNgangs { get; set; }
         public virtual DbSet<QuocGia> QuocGias { get; set; }
         public virtual DbSet<RAM> RAMs { get; set; }
         public virtual DbSet<ROM> ROMs { get; set; }
@@ -69,19 +72,13 @@ namespace QLCHTBDD_62131904.Models
         public virtual DbSet<SIM> SIMs { get; set; }
         public virtual DbSet<TanSoQuetManHinh> TanSoQuetManHinhs { get; set; }
         public virtual DbSet<ThietKe> ThietKes { get; set; }
+        public virtual DbSet<ThongSoBienTheDienThoai> ThongSoBienTheDienThoais { get; set; }
         public virtual DbSet<ThongSoCamera> ThongSoCameras { get; set; }
-        public virtual DbSet<ThongSoKTDienThoai> ThongSoKTDienThoais { get; set; }
+        public virtual DbSet<ThongSoDienThoai> ThongSoDienThoais { get; set; }
         public virtual DbSet<ThongSoQuayPhim> ThongSoQuayPhims { get; set; }
-        public virtual DbSet<ThongTinBaoMatNangCaoDienThoai> ThongTinBaoMatNangCaoDienThoais { get; set; }
-        public virtual DbSet<ThongTinCongNgheManHinhDienThoai> ThongTinCongNgheManHinhDienThoais { get; set; }
         public virtual DbSet<ThongTinCongNghePinDienThoai> ThongTinCongNghePinDienThoais { get; set; }
         public virtual DbSet<ThongTinDinhDangPhimVaNhacDienThoai> ThongTinDinhDangPhimVaNhacDienThoais { get; set; }
-        public virtual DbSet<ThongTinDoSangDienThoai> ThongTinDoSangDienThoais { get; set; }
         public virtual DbSet<ThongTinHeThongDinhViDienThoai> ThongTinHeThongDinhViDienThoais { get; set; }
-        public virtual DbSet<ThongTinKinhCuongLucDienThoai> ThongTinKinhCuongLucDienThoais { get; set; }
-        public virtual DbSet<ThongTinMangDiDongDienThoai> ThongTinMangDiDongDienThoais { get; set; }
-        public virtual DbSet<ThongTinManHinhDienThoai> ThongTinManHinhDienThoais { get; set; }
-        public virtual DbSet<ThongTinPinVaSacDienThoai> ThongTinPinVaSacDienThoais { get; set; }
         public virtual DbSet<ThongTinTinhNangDacBietDienThoai> ThongTinTinhNangDacBietDienThoais { get; set; }
         public virtual DbSet<ThongTinWifiDienThoai> ThongTinWifiDienThoais { get; set; }
         public virtual DbSet<TinhNang> TinhNangs { get; set; }

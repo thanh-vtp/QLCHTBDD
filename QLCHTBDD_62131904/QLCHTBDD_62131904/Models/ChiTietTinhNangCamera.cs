@@ -15,12 +15,12 @@ namespace QLCHTBDD_62131904.Models
     public partial class ChiTietTinhNangCamera
     {
         public int MaChiTietTinhNangCamera { get; set; }
-        public Nullable<int> MaTSKT { get; set; }
+        public Nullable<int> MaTSBTDT { get; set; }
         public Nullable<int> MaLoaiCamera { get; set; }
         public Nullable<int> MaTinhNang { get; set; }
     
         public virtual LoaiCamera LoaiCamera { get; set; }
         public virtual TinhNang TinhNang { get; set; }
-        public virtual ThongSoKTDienThoai ThongSoKTDienThoai { get; set; }
+        public virtual ThongSoBienTheDienThoai ThongSoBienTheDienThoai { get; set; }
     }
 }

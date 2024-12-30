@@ -1,0 +1,107 @@
+﻿@model QLCHTBDD_62131904.Models.ThongSoBienTheDienThoai
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Thêm thông số cho biến thể sản phẩm</h2>
+<link href="~/Content/_pages_thongsokithuat.css" rel="stylesheet" />
+@using (Html.BeginForm("Create", "ThongSoBienTheDienThoais_62131904", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "")
+
+    <div class="form-container">
+        <!-- Thông tin sản phẩm -->
+        <div class="form-section">
+            <h3>Thông tin kĩ thuật số</h3>
+            <div class="config-row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaBT, "Mã biến thể sản phẩm", new { @class = "form-label" })
+                    @Html.DropDownList("MaBT", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaBT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="config-row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaChip, "Chip xử lý", new { @class = "form-label" })
+                    @Html.DropDownList("MaChip", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaChip, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaTocDoCPU, "TocDoCPU", new { @class = "form-label" })
+                    @Html.DropDownList("MaTocDoCPU", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TocDoCPU, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaChipDoHoaGPU, "ChipDoHoaGPU", new { @class = "form-label" })
+                    @Html.DropDownList("MaChipDoHoaGPU", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaChipDoHoaGPU, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DungLuongConLai, "Dung lượng còn lại", new { @class = "form-label" })
+                    @Html.TextBoxFor(model => model.DungLuongConLai, new { @class = "form-control", placeholder = "Nhập dung lượng còn lại (ví dụ: 64GB, 128GB)" })
+                    @Html.ValidationMessageFor(model => model.DungLuongConLai, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaDoPhanGiai, "Độ phân giải", new { @class = "form-label" })
+                    @Html.DropDownList("MaDoPhanGiai", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaDoPhanGiai, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaPixelNgang, "Độ phân giải chiều ngang (Pixel)", new { @class = "form-label" })
+                    @Html.DropDownList("MaPixelNgang", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaPixelNgang, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaPixelDoc, "Độ phân giải chiều dọc (Pixel)", new { @class = "form-label" })
+                    @Html.DropDownList("MaPixelDoc", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaPixelDoc, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaKichThuocManHinh, "Kích thước màn hình (inch)", new { @class = "form-label" })
+                    @Html.DropDownList("MaKichThuocManHinh", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaKichThuocManHinh, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaTanSoQuet, "Tần số quét màn hình", new { @class = "form-label" })
+                    @Html.DropDownList("MaTanSoQuet", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaTanSoQuet, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaDungLuongPin, "Dung lượng pin", new { @class = "form-label" })
+                    @Html.DropDownList("MaDungLuongPin", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaDungLuongPin, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaChieuDai, "Chiều dài (mm)", new { @class = "form-label" })
+                    @Html.DropDownList("MaChieuDai", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaChieuDai, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaChieuNgang, "Chiều ngang (mm)", new { @class = "form-label" })
+                    @Html.DropDownList("MaChieuNgang", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaChieuNgang, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaDoDay, "Độ dày (mm)", new { @class = "form-label" })
+                    @Html.DropDownList("MaDoDay", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaDoDay, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaKhoiLuong, "Khối lượng (g)", new { @class = "form-label" })
+                    @Html.DropDownList("MaKhoiLuong", null, "Chọn", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaKhoiLuong, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Nút hành động -->
+        <div class="form-group form-group--actions">
+            <button type="submit" class="btn btn-primary">Thêm thông số kĩ thuật cho biến thể sản phẩm</button>
+            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}

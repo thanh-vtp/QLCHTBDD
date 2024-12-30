@@ -145,13 +145,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\BienTheSanPhams\ThongSoBienTheDienThoais_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\Cameras\ChiTietDoPhanGiaiCameras_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\Cameras\ChiTietTinhNangCameras_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\Cameras\ThongSoCameras_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\BienTheSanPhams\BienTheSanPhams_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\KetNois\ThongTinHeThongDinhViDienThoais_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\KetNois\ThongTinWifiDienThoais_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\QuayPhims\ThongSoQuayPhims_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\SanPhams\ThongSoDienThoais_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\TienIchs\ThongTinDinhDangPhimVaNhacDienThoais_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\TienIchs\ThongTinTinhNangDacBietDienThoais_62131904Controller.cs" />
     <Compile Include="Controllers\QuanTris\GetCurrentAdmin_62131904Controller.cs" />
     <Compile Include="Controllers\QuanTris\QuanTriHeThongs_62131904Controller.cs" />
-    <Compile Include="Controllers\SanPhams\BienTheSanPhams_62131904Controller.cs" />
-    <Compile Include="Controllers\SanPhams\HinhAnhSanPhams_62131904Controller.cs" />
-    <Compile Include="Controllers\SanPhams\LoaiSanPhams_62131904Controller.cs" />
-    <Compile Include="Controllers\SanPhams\SanPhams_62131904Controller.cs" />
-    <Compile Include="Controllers\SanPhams\ThongSoKTDienThoais_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\HinhAnhs\HinhAnhSanPhams_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\LoaiSanPhams\LoaiSanPhams_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLySanPhams\SanPhams\SanPhams_62131904Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -165,6 +174,12 @@
     <Compile Include="Models\ChatLieu.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChieuDai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChieuNgang.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChipDoHoaGPU.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
@@ -172,9 +187,6 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDoPhanGiaiCamera.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTietDoPhanGiaiManHinh.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietTinhNangCamera.cs">
@@ -202,6 +214,9 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DinhDangPhim.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoDay.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DoPhanGiaiCamera.cs">
@@ -234,10 +249,7 @@
     <Compile Include="Models\JackTaiNghe.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KichThuoc.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\KichThuocKhoiLuong.cs">
+    <Compile Include="Models\KhoiLuong.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KichThuocManHinh.cs">
@@ -279,6 +291,12 @@
     <Compile Include="Models\PhienBanHDH.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PixelDoc.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PixelNgang.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\QuanTriHeThong.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
@@ -303,19 +321,16 @@
     <Compile Include="Models\ThietKe.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ThongSoBienTheDienThoai.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ThongSoCamera.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ThongSoKTDienThoai.cs">
+    <Compile Include="Models\ThongSoDienThoai.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThongSoQuayPhim.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThongTinBaoMatNangCaoDienThoai.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThongTinCongNgheManHinhDienThoai.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThongTinCongNghePinDienThoai.cs">
@@ -324,22 +339,7 @@
     <Compile Include="Models\ThongTinDinhDangPhimVaNhacDienThoai.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ThongTinDoSangDienThoai.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ThongTinHeThongDinhViDienThoai.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThongTinKinhCuongLucDienThoai.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThongTinMangDiDongDienThoai.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThongTinManHinhDienThoai.cs">
-      <DependentUpon>Model_62131904.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThongTinPinVaSacDienThoai.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ThongTinTinhNangDacBietDienThoai.cs">
@@ -480,16 +480,33 @@
     <Content Include="Views\SanPhams_62131904\Create.cshtml" />
     <Content Include="Views\SanPhams_62131904\Details.cshtml" />
     <Content Include="Views\SanPhams_62131904\Edit.cshtml" />
-    <Content Include="Views\ThongSoKTDienThoais_62131904\Create.cshtml" />
-    <Content Include="Views\BienTheSanPhams_62131904\Index.cshtml" />
-    <Content Include="Views\BienTheSanPhams_62131904\Create.cshtml" />
     <Content Include="Views\HinhAnhSanPhams_62131904\Create.cshtml" />
-    <Content Include="Views\ThongSoKTDienThoais_62131904\Index.cshtml" />
     <Content Include="Views\HinhAnhSanPhams_62131904\Index.cshtml" />
+    <Content Include="Views\ChiTietDoPhanGiaiCameras_62131904\Index.cshtml" />
+    <Content Include="Views\ChiTietDoPhanGiaiCameras_62131904\Create.cshtml" />
+    <Content Include="Views\BienTheSanPhams_62131904\Create.cshtml" />
+    <Content Include="Views\BienTheSanPhams_62131904\Index.cshtml" />
+    <Content Include="Views\ThongSoDienThoais_62131904\Index.cshtml" />
+    <Content Include="Views\ThongSoDienThoais_62131904\Create.cshtml" />
+    <Content Include="Views\ThongSoBienTheDienThoais_62131904\Index.cshtml" />
+    <Content Include="Views\ThongSoBienTheDienThoais_62131904\Create.cshtml" />
+    <Content Include="Views\ThongSoCameras_62131904\Index.cshtml" />
+    <Content Include="Views\ThongSoCameras_62131904\Create.cshtml" />
+    <Content Include="Views\ChiTietTinhNangCameras_62131904\Index.cshtml" />
+    <Content Include="Views\ChiTietTinhNangCameras_62131904\Create.cshtml" />
+    <Content Include="Views\ThongSoQuayPhims_62131904\Index.cshtml" />
+    <Content Include="Views\ThongSoQuayPhims_62131904\Create.cshtml" />
+    <Content Include="Views\ThongTinTinhNangDacBietDienThoais_62131904\Index.cshtml" />
+    <Content Include="Views\ThongTinTinhNangDacBietDienThoais_62131904\Create.cshtml" />
+    <Content Include="Views\ThongTinDinhDangPhimVaNhacDienThoais_62131904\Index.cshtml" />
+    <Content Include="Views\ThongTinDinhDangPhimVaNhacDienThoais_62131904\Create.cshtml" />
+    <Content Include="Views\ThongTinWifiDienThoais_62131904\Index.cshtml" />
+    <Content Include="Views\ThongTinWifiDienThoais_62131904\Create.cshtml" />
+    <Content Include="Views\ThongTinHeThongDinhViDienThoais_62131904\Index.cshtml" />
+    <Content Include="Views\ThongTinHeThongDinhViDienThoais_62131904\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DanhSachBangTinhs_62131904\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

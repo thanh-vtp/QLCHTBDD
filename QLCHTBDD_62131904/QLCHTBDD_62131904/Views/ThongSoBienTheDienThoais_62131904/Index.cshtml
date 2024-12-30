@@ -1,0 +1,118 @@
+﻿@model IEnumerable<QLCHTBDD_62131904.Models.ThongSoBienTheDienThoai>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DungLuongConLai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BienTheSanPham.DonViTinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChieuDai.MaChieuDai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChieuNgang.MaChieuNgang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChipDoHoaGPU.TenChipDoHoaGPU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChipXuLy.TenChip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoDay.MaDoDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoPhanGiaiManHinh.TenDoPhanGiai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DungLuongPin.DungLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhoiLuong.MaKhoiLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KichThuocManHinh.KichThuoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PixelDoc.MaPixelDoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PixelNgang.MaPixelNgang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TanSoQuetManHinh.MaTanSoQuet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TocDoCPU.TocDo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DungLuongConLai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BienTheSanPham.DonViTinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChieuDai.MaChieuDai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChieuNgang.MaChieuNgang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChipDoHoaGPU.TenChipDoHoaGPU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChipXuLy.TenChip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoDay.MaDoDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoPhanGiaiManHinh.TenDoPhanGiai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DungLuongPin.DungLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhoiLuong.MaKhoiLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KichThuocManHinh.KichThuoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PixelDoc.MaPixelDoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PixelNgang.MaPixelNgang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TanSoQuetManHinh.MaTanSoQuet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TocDoCPU.TocDo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaTSBTDT }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaTSBTDT }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaTSBTDT })
+        </td>
+    </tr>
+}
+
+</table>
