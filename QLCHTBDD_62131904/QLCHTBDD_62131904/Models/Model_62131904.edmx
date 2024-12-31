@@ -240,6 +240,18 @@
           <Property Name="TenJackTaiNghe" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+          <Property Name="SoDienThoai" Type="nvarchar" MaxLength="15" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="KhoiLuong">
           <Key>
             <PropertyRef Name="MaKhoiLuong" />
@@ -328,16 +340,14 @@
           <Property Name="GTPixelNgang" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
-        <EntityType Name="QuanTriHeThong">
+        <EntityType Name="QuanTriVien">
           <Key>
             <PropertyRef Name="MaQT" />
           </Key>
-          <Property Name="MaQT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Admin" Type="bit" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
-          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="MaQT" Type="int" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="QuocGia">
           <Key>
@@ -354,6 +364,13 @@
           <Property Name="MaRAM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DungLuong" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenRole" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ROM">
           <Key>
@@ -722,6 +739,30 @@
             </Principal>
             <Dependent Role="HinhAnhSanPham">
               <PropertyRef Name="MaBT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhachHang__RoleI__54CB950F">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="KhachHang">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QuanTriVi__RoleI__5006DFF2">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="QuanTriVien" Type="Self.QuanTriVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="QuanTriVien">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1452,6 +1493,7 @@
           <EntitySet Name="HinhAnhSanPham" EntityType="Self.HinhAnhSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoTroSacToiDa" EntityType="Self.HoTroSacToiDa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JackTaiNghe" EntityType="Self.JackTaiNghe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhoiLuong" EntityType="Self.KhoiLuong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KichThuocManHinh" EntityType="Self.KichThuocManHinh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiCamera" EntityType="Self.LoaiCamera" Schema="dbo" store:Type="Tables" />
@@ -1463,9 +1505,10 @@
           <EntitySet Name="PhienBanHDH" EntityType="Self.PhienBanHDH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PixelDoc" EntityType="Self.PixelDoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PixelNgang" EntityType="Self.PixelNgang" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="QuanTriHeThong" EntityType="Self.QuanTriHeThong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuanTriVien" EntityType="Self.QuanTriVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuocGia" EntityType="Self.QuocGia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RAM" EntityType="Self.RAM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ROM" EntityType="Self.ROM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SIM" EntityType="Self.SIM" Schema="dbo" store:Type="Tables" />
@@ -1534,6 +1577,14 @@
           <AssociationSet Name="FK__HinhAnhSan__MaBT__59063A47" Association="Self.FK__HinhAnhSan__MaBT__59063A47">
             <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
             <End Role="HinhAnhSanPham" EntitySet="HinhAnhSanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhachHang__RoleI__54CB950F" Association="Self.FK__KhachHang__RoleI__54CB950F">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="KhachHang" EntitySet="KhachHang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QuanTriVi__RoleI__5006DFF2" Association="Self.FK__QuanTriVi__RoleI__5006DFF2">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="QuanTriVien" EntitySet="QuanTriVien" />
           </AssociationSet>
           <AssociationSet Name="FK__SanPham__MaHang__4222D4EF" Association="Self.FK__SanPham__MaHang__4222D4EF">
             <End Role="HangSanXuat" EntitySet="HangSanXuat" />
@@ -1740,19 +1791,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLCHTBDD_62131904Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="QuanTriHeThong">
-          <Key>
-            <PropertyRef Name="MaQT" />
-          </Key>
-          <Property Name="MaQT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Admin" Type="Boolean" />
-          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="QLCHTBDD_62131904Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="QuanTriHeThongs" EntityType="Self.QuanTriHeThong" />
           <EntitySet Name="BienTheSanPhams" EntityType="QLCHTBDD_62131904Model.BienTheSanPham" />
           <EntitySet Name="Blueteeth" EntityType="QLCHTBDD_62131904Model.Bluetooth" />
           <EntitySet Name="ChatLieux" EntityType="QLCHTBDD_62131904Model.ChatLieu" />
@@ -2062,6 +2101,17 @@
           <AssociationSet Name="FK__ThongTinW__MaWif__3EDC53F0" Association="QLCHTBDD_62131904Model.FK__ThongTinW__MaWif__3EDC53F0">
             <End Role="Wifi" EntitySet="Wifis" />
             <End Role="ThongTinWifiDienThoai" EntitySet="ThongTinWifiDienThoais" />
+          </AssociationSet>
+          <EntitySet Name="KhachHangs" EntityType="QLCHTBDD_62131904Model.KhachHang" />
+          <EntitySet Name="QuanTriViens" EntityType="QLCHTBDD_62131904Model.QuanTriVien" />
+          <EntitySet Name="Roles" EntityType="QLCHTBDD_62131904Model.Role" />
+          <AssociationSet Name="FK__KhachHang__RoleI__54CB950F" Association="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__54CB950F">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QuanTriVi__RoleI__5006DFF2" Association="QLCHTBDD_62131904Model.FK__QuanTriVi__RoleI__5006DFF2">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="QuanTriVien" EntitySet="QuanTriViens" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="BienTheSanPham">
@@ -3595,24 +3645,68 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Role" Relationship="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__54CB950F" FromRole="KhachHang" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="QuanTriVien">
+          <Key>
+            <PropertyRef Name="MaQT" />
+          </Key>
+          <Property Name="MaQT" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="QLCHTBDD_62131904Model.FK__QuanTriVi__RoleI__5006DFF2" FromRole="QuanTriVien" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KhachHangs" Relationship="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__54CB950F" FromRole="Role" ToRole="KhachHang" />
+          <NavigationProperty Name="QuanTriViens" Relationship="QLCHTBDD_62131904Model.FK__QuanTriVi__RoleI__5006DFF2" FromRole="Role" ToRole="QuanTriVien" />
+        </EntityType>
+        <Association Name="FK__KhachHang__RoleI__54CB950F">
+          <End Type="QLCHTBDD_62131904Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="QLCHTBDD_62131904Model.KhachHang" Role="KhachHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="KhachHang">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QuanTriVi__RoleI__5006DFF2">
+          <End Type="QLCHTBDD_62131904Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="QLCHTBDD_62131904Model.QuanTriVien" Role="QuanTriVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="QuanTriVien">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="QLCHTBDD_62131904ModelStoreContainer" CdmEntityContainer="QLCHTBDD_62131904Entities">
-          <EntitySetMapping Name="QuanTriHeThongs">
-            <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTriHeThong">
-              <MappingFragment StoreEntitySet="QuanTriHeThong">
-                <ScalarProperty Name="MaQT" ColumnName="MaQT" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Admin" ColumnName="Admin" />
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="BienTheSanPhams">
             <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.BienTheSanPham">
               <MappingFragment StoreEntitySet="BienTheSanPham">
@@ -4215,6 +4309,37 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="TenWifi" ColumnName="TenWifi" />
                 <ScalarProperty Name="MaWifi" ColumnName="MaWifi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuanTriViens">
+            <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTriVien">
+              <MappingFragment StoreEntitySet="QuanTriVien">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="MaQT" ColumnName="MaQT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="TenRole" ColumnName="TenRole" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

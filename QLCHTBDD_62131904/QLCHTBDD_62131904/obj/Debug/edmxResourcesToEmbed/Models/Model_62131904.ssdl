@@ -235,6 +235,18 @@
     <Property Name="TenJackTaiNghe" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoDienThoai" Type="nvarchar" MaxLength="15" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
   <EntityType Name="KhoiLuong">
     <Key>
       <PropertyRef Name="MaKhoiLuong" />
@@ -323,16 +335,14 @@
     <Property Name="GTPixelNgang" Type="int" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
-  <EntityType Name="QuanTriHeThong">
+  <EntityType Name="QuanTriVien">
     <Key>
       <PropertyRef Name="MaQT" />
     </Key>
-    <Property Name="MaQT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Admin" Type="bit" />
-    <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
-    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="MaQT" Type="int" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="QuocGia">
     <Key>
@@ -349,6 +359,13 @@
     <Property Name="MaRAM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DungLuong" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenRole" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ROM">
     <Key>
@@ -717,6 +734,30 @@
       </Principal>
       <Dependent Role="HinhAnhSanPham">
         <PropertyRef Name="MaBT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KhachHang__RoleI__54CB950F">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QuanTriVi__RoleI__5006DFF2">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="QuanTriVien" Type="Self.QuanTriVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="QuanTriVien">
+        <PropertyRef Name="RoleId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1447,6 +1488,7 @@
     <EntitySet Name="HinhAnhSanPham" EntityType="Self.HinhAnhSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoTroSacToiDa" EntityType="Self.HoTroSacToiDa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="JackTaiNghe" EntityType="Self.JackTaiNghe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhoiLuong" EntityType="Self.KhoiLuong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KichThuocManHinh" EntityType="Self.KichThuocManHinh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiCamera" EntityType="Self.LoaiCamera" Schema="dbo" store:Type="Tables" />
@@ -1458,9 +1500,10 @@
     <EntitySet Name="PhienBanHDH" EntityType="Self.PhienBanHDH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PixelDoc" EntityType="Self.PixelDoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PixelNgang" EntityType="Self.PixelNgang" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="QuanTriHeThong" EntityType="Self.QuanTriHeThong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuanTriVien" EntityType="Self.QuanTriVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QuocGia" EntityType="Self.QuocGia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RAM" EntityType="Self.RAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ROM" EntityType="Self.ROM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SIM" EntityType="Self.SIM" Schema="dbo" store:Type="Tables" />
@@ -1529,6 +1572,14 @@
     <AssociationSet Name="FK__HinhAnhSan__MaBT__59063A47" Association="Self.FK__HinhAnhSan__MaBT__59063A47">
       <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
       <End Role="HinhAnhSanPham" EntitySet="HinhAnhSanPham" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KhachHang__RoleI__54CB950F" Association="Self.FK__KhachHang__RoleI__54CB950F">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="KhachHang" EntitySet="KhachHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QuanTriVi__RoleI__5006DFF2" Association="Self.FK__QuanTriVi__RoleI__5006DFF2">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="QuanTriVien" EntitySet="QuanTriVien" />
     </AssociationSet>
     <AssociationSet Name="FK__SanPham__MaHang__4222D4EF" Association="Self.FK__SanPham__MaHang__4222D4EF">
       <End Role="HangSanXuat" EntitySet="HangSanXuat" />

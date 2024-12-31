@@ -1,0 +1,158 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewBag.Title = "DanhSachSanPham";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var product in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" src="~/Content/Images/DefaultImage.png" alt="@product.TenSanPham" />
+                        <div class="card-body">
+                            <h6 class="card-title text-truncate">@product.TenSanPham</h6>
+                            <small class="text-muted">Độ phân giải: @product.DoPhanGiaiManHinh</small>
+                            <br />
+                            <small class="text-muted">Kích thước: @product.KichThuocManHinh</small>
+                            <p class="mt-2">
+                                <strong>Chọn ROM:</strong>
+                                <div class="rom-options">
+                                    @foreach (var variant in product.Variants)
+                                    {
+                                        <button class="btn btn-outline-secondary btn-sm rom-option"
+                                                data-price="@variant.DonGia"
+                                                onclick="updatePrice(this)">
+                                            @variant.ROM
+                                        </button>
+                                    }
+                                </div>
+                            </p>
+                            <p class="card-text text-danger">
+                                Giá: <span class="price">@product.Variants.First().DonGia.ToString("N0")</span> đ
+                            </p>
+                            <a href="#" class="btn btn-primary btn-sm">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shimmer mb-4 shadow-sm">
+                        <div class="shimmer-img"></div>
+                        <div class="card-body">
+                            <div class="shimmer-text shimmer-title"></div>
+                            <div class="shimmer-text shimmer-line"></div>
+                            <div class="shimmer-text shimmer-line"></div>
+                            <div class="shimmer-text shimmer-line"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+
+<script>
+    function updatePrice(button) {
+        // Lấy giá từ thuộc tính data-price
+        const price = button.getAttribute('data-price');
+
+        // Tìm phần tử hiển thị giá trong card hiện tại
+        const card = button.closest('.card');
+        const priceElement = card.querySelector('.price');
+
+        // Cập nhật giá hiển thị
+        priceElement.textContent = parseInt(price).toLocaleString() + " đ";
+    }
+</script>
+
+
+<style>
+   /* Card có dữ liệu */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Shimmer loading */
+.shimmer {
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.shimmer-img {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer-loading 1.5s infinite;
+}
+
+.shimmer-text {
+    height: 15px;
+    margin: 10px 0;
+    background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer-loading 1.5s infinite;
+}
+
+.shimmer-title {
+    height: 20px;
+    width: 60%;
+    margin-bottom: 15px;
+}
+
+.shimmer-line {
+    width: 80%;
+    height: 15px;
+    margin-bottom: 8px;
+}
+
+/* Animation shimmer */
+@@keyframes shimmer-loading {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* ROM Button */
+.rom-option {
+    margin: 2px;
+    padding: 5px 10px;
+}
+
+/* Responsive */
+@@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+</style>

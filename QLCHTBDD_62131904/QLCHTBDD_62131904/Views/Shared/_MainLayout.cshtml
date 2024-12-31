@@ -1,60 +1,63 @@
-﻿@{
-    // Tùy chỉnh ViewBag hoặc các đối tượng layout tại đây nếu cần.
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="author" content="Your Name">
-
-    <title>@ViewBag.Title</title>
-
-    <!-- Thêm CSS Bootstrap -->
+    <title>Danh Sách Sản Phẩm</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Thêm CSS tùy chỉnh cho admin -->
-    <link href="~/Content/_styleApp.css" rel="stylesheet" />
-
-    <!-- Thêm các CSS khác nếu cần -->
-    @Styles.Render("~/Content/css")
+    <!-- Custom CSS -->
+    <link href="~/Content/_main-layout.css" rel="stylesheet" />
 </head>
-<body style="margin: 0; padding: 0;">
-    <!-- Banner -->
-    <div id="banner">
-        HỆ THỐNG CỬA HÀNG BÁN ĐIỆN THOẠI DI ĐỘNG
-    </div>
+<body>
+    <!-- Header -->
+    <div id="header">
+        <div id="header-top" class="">
+            <!-- Logo -->
+            <div class="logo d-flex align-items-center">
+                <a href="@Url.Action("DanhSachSanPham", "HomePage_62131904")" class="d-flex align-items-center text-decoration-none">
+                    <img src="~/Images/pay-phone-logo.jpg" alt="Logo" class="logo-img" />
+                    <span class="ml-2 font-weight-bold">PAY Phone</span>
+                </a>
+            </div>
 
-    <!-- Menu -->
-    <div id="menu">
-        <div>
-            @Html.ActionLink("Trang chủ", "../SanPhams_62131904/Index", new { @class = "a" }) &nbsp;|&nbsp;
-            @Html.ActionLink("Sản phẩm", "../SanPhams_62131904/Index", new { @class = "a" })&nbsp;|&nbsp;
-            @Html.ActionLink("Giỏ hàng", "../SanPhams_62131904/Index", new { @class = "a" }) &nbsp;|&nbsp;
-            @Html.ActionLink("Login", "../QuanTriHeThongs_62131904/Login", new { @class = "a" })
+            <!-- Thanh tìm kiếm -->
+            <div class="search-bar">
+                <input type="text" class="form-control" placeholder="Bạn tìm gì..." />
+            </div>
+
+            <!-- Nút điều hướng -->
+            <div class="nav-icons d-flex align-items-center">
+                @Html.ActionLink("Đăng nhập", "Login", "AccountCustomer_62131904", null, new { @class = "btn btn-outline-dark mx-1" })
+                <a href="#" class="btn btn-outline-dark mx-1">Giỏ hàng</a>
+            </div>
         </div>
-        <div>
-            <p style="text-align: right;">@ViewBag.NguoiDung</p>
+        <div id="main-header">
+            <!-- Nút điều hướng -->
+            <div class="nav-icons d-flex align-items-center">
+                <a href="#" class="btn btn-outline-dark mx-1">Iphone</a>
+                <a href="#" class="btn btn-outline-dark mx-1">Xiaomi</a>
+                <a href="#" class="btn btn-outline-dark mx-1">SamSung</a>
+                <a href="#" class="btn btn-outline-dark mx-1">Sony</a>
+                <a href="#" class="btn btn-outline-dark mx-1">Asus</a>
+            </div>
         </div>
     </div>
 
     <!-- Content -->
-    <div id="content">
-        @RenderBody()
+    <div id="main-content" class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
     </div>
 
     <!-- Footer -->
     <div id="footer">
-        Copyright &copy; @DateTime.Now.Year
+        Copyright &copy; @DateTime.Now.Year | Hệ thống bán lẻ điện thoại di động
     </div>
 
-    <!-- Thêm JS jQuery, Popper.js và Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- Sử dụng jQuery đầy đủ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Thêm các script khác nếu cần -->
 </body>
 </html>
+

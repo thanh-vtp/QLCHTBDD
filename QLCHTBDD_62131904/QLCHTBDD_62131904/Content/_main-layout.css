@@ -1,0 +1,133 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-content {
+    flex: 1;
+}
+
+body {
+    background: linear-gradient(to bottom, #E8F5E9, #FFFFFF);
+    color: #333; /* Màu chữ thân thiện, dễ đọc */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/* Header chính */
+#header {
+    width: 100%;
+    background-color: #E8F5E9;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#header-top {
+    width: 1200px;
+    margin: auto;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+}
+
+#main-header {
+    width: 1200px;
+    margin: auto;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: Arial, sans-serif;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    margin-left: 10px;
+}
+
+/* Thanh tìm kiếm */
+.search-bar {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+    .search-bar input {
+        width: 100%;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        outline: none;
+    }
+
+/* Cụm nút đăng nhập và giỏ hàng */
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+
+    .nav-icons .btn {
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        padding: 8px 15px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .nav-icons .btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+.mx-2 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Content */
+#main-content {
+    margin-top: 20px;
+}
+
+/* Footer */
+#footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+    #footer a {
+        color: #ffd600;
+        text-decoration: none;
+    }
+
+        #footer a:hover {
+            text-decoration: underline;
+        }

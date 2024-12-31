@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QLCHTBDD_62131904ModelStoreContainer" CdmEntityContainer="QLCHTBDD_62131904Entities">
-    <EntitySetMapping Name="QuanTriHeThongs">
-      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTriHeThong">
-        <MappingFragment StoreEntitySet="QuanTriHeThong">
-          <ScalarProperty Name="MaQT" ColumnName="MaQT" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Admin" ColumnName="Admin" />
-          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="BienTheSanPhams">
       <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.BienTheSanPham">
         <MappingFragment StoreEntitySet="BienTheSanPham">
@@ -615,6 +603,37 @@
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="TenWifi" ColumnName="TenWifi" />
           <ScalarProperty Name="MaWifi" ColumnName="MaWifi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhachHangs">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuanTriViens">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.QuanTriVien">
+        <MappingFragment StoreEntitySet="QuanTriVien">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="MaQT" ColumnName="MaQT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="TenRole" ColumnName="TenRole" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

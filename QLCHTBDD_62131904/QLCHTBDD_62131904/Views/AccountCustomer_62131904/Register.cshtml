@@ -1,0 +1,78 @@
+﻿@model QLCHTBDD_62131904.Models.KhachHang
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Đăng kí tài khoản</h2>
+
+@using (Html.BeginForm("Register", "AccountCustomer_62131904", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Nhập email của bạn" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.HoTen)
+        @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })
+        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SoDienThoai)
+        @Html.TextBoxFor(model => model.SoDienThoai, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+        @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu của bạn" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="confirmPassword">Xác nhận mật khẩu</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Nhập lại mật khẩu của bạn" />
+        <span id="passwordMismatch" class="text-danger" style="display: none;">Mật khẩu không khớp.</span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+    </div>
+
+    if (ViewData.ModelState.IsValid == false)
+    {
+        <div class="alert alert-danger">
+            <strong>Lỗi!</strong> @ViewData["ErrorMessage"]
+        </div>
+    }
+}
+
+<script>
+    document.getElementById("registerBtn").addEventListener("click", function (e) {
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        // So sánh mật khẩu và mật khẩu nhập lại
+        if (password !== confirmPassword) {
+            e.preventDefault(); // Ngăn form gửi đi
+            document.getElementById("passwordMismatch").style.display = "block"; // Hiển thị lỗi
+        } else {
+            document.getElementById("passwordMismatch").style.display = "none"; // Ẩn lỗi nếu khớp
+        }
+    });
+</script>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+</style>

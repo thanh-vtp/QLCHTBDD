@@ -145,6 +145,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Authentication\Admin\AccountAdmin_62131904Controller.cs" />
+    <Compile Include="Controllers\Authentication\KhachHangs\AccountCustomer_62131904Controller.cs" />
+    <Compile Include="Controllers\Main\HomePage_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\BienTheSanPhams\ThongSoBienTheDienThoais_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\Cameras\ChiTietDoPhanGiaiCameras_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\Cameras\ChiTietTinhNangCameras_62131904Controller.cs" />
@@ -156,11 +159,10 @@
     <Compile Include="Controllers\QuanLySanPhams\SanPhams\ThongSoDienThoais_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\TienIchs\ThongTinDinhDangPhimVaNhacDienThoais_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\TienIchs\ThongTinTinhNangDacBietDienThoais_62131904Controller.cs" />
-    <Compile Include="Controllers\QuanTris\GetCurrentAdmin_62131904Controller.cs" />
-    <Compile Include="Controllers\QuanTris\QuanTriHeThongs_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\HinhAnhs\HinhAnhSanPhams_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\LoaiSanPhams\LoaiSanPhams_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\SanPhams\SanPhams_62131904Controller.cs" />
+    <Compile Include="Filters\AuthorizeRole.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -249,6 +251,9 @@
     <Compile Include="Models\JackTaiNghe.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KhoiLuong.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
@@ -297,13 +302,16 @@
     <Compile Include="Models\PixelNgang.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuanTriHeThong.cs">
+    <Compile Include="Models\QuanTriVien.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QuocGia.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RAM.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ROM.cs">
@@ -395,28 +403,12 @@
     <Content Include="Content\_page_hinhanhsp.css" />
     <Content Include="Content\_page_index_projects.css" />
     <Content Include="Content\_styleAdmin.css" />
-    <Content Include="Content\_styleApp.css" />
+    <Content Include="Content\_main-layout.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\468937572_1339138330394198_5060579631519032727_n.jpg" />
-    <Content Include="Images\Hoshino.jpg" />
-    <Content Include="Images\iphone-13-1-1-750x500 - Copy.jpg" />
-    <Content Include="Images\iphone-13-1-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-10-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-11-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-12-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-2-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-3-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-4-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-5-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-6-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-7-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-8-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-9-1-750x500.jpg" />
-    <Content Include="Images\iphone-13-bh-org.jpg" />
-    <Content Include="Images\petal-power-wallpaper-preview.jpg" />
-    <Content Include="Images\wallpaperflare.com_wallpaper.jpg" />
+    <Content Include="Images\logo-login.jpg" />
+    <Content Include="Images\pay-phone-logo.jpg" />
     <Content Include="Models\Model_62131904.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model_62131904.edmx</DependentUpon>
@@ -464,12 +456,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\QuanTriHeThongs_62131904\Create.cshtml" />
-    <Content Include="Views\QuanTriHeThongs_62131904\Index.cshtml" />
-    <Content Include="Views\QuanTriHeThongs_62131904\Login.cshtml" />
-    <Content Include="Views\QuanTriHeThongs_62131904\Details.cshtml" />
-    <Content Include="Views\QuanTriHeThongs_62131904\Edit.cshtml" />
-    <Content Include="Views\QuanTriHeThongs_62131904\Delete.cshtml" />
     <Content Include="Views\GetCurrentAdmin_62131904\GetCurrentAdmin.cshtml" />
     <Content Include="Views\LoaiSanPhams_62131904\Index.cshtml" />
     <Content Include="Views\LoaiSanPhams_62131904\Create.cshtml" />
@@ -504,9 +490,16 @@
     <Content Include="Views\ThongTinWifiDienThoais_62131904\Create.cshtml" />
     <Content Include="Views\ThongTinHeThongDinhViDienThoais_62131904\Index.cshtml" />
     <Content Include="Views\ThongTinHeThongDinhViDienThoais_62131904\Create.cshtml" />
+    <Content Include="Views\AccountAdmin_62131904\Login.cshtml" />
+    <Content Include="Views\AccountCustomer_62131904\Login.cshtml" />
+    <Content Include="Views\AccountCustomer_62131904\Register.cshtml" />
+    <Content Include="Views\HomePage_62131904\DanhSachSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Acount_62131904\" />
+    <Folder Include="Views\Home_62131904\" />
+    <Folder Include="Views\QuanTriViens_62131904\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

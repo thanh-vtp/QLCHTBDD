@@ -1,0 +1,170 @@
+﻿@model QLCHTBDD_62131904.Models.KhachHang
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Illustration Section -->
+    <div class="illustration-section">
+        <img src="~/Images/logo-login.jpg" alt="Shopping Illustration" />
+    </div>
+
+    <!-- Login Section -->
+    <div class="login-container">
+        <h3>Đăng nhập</h3>
+        @using (Html.BeginForm("Login", "AccountCustomer_62131904", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group text-right">
+                <a href="#" class="forgot-password">Quên mật khẩu?</a>
+            </div>
+            <button type="submit" class="btn btn-login">Đăng nhập</button>
+        }
+        <!-- Register Button -->
+        <div class="register-section mt-3 text-center">
+            <span>Bạn chưa có tài khoản?</span>
+            @Html.ActionLink("Đăng ký", "Register", "AccountCustomer_62131904", null, new { @class = "btn btn-register" })
+        </div>
+    </div>
+</div>
+
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #E8F5E9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px; /* Khoảng cách giữa hình và form */
+        padding: 20px;
+        width: 80%;
+        max-width: 1200px;
+    }
+
+    /* Illustration Section */
+    .illustration-section {
+        flex: 1;
+        text-align: center;
+    }
+
+        .illustration-section img {
+            width: 280px;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+            /* Tạo hiệu ứng blur mạnh hơn ở viền */
+            filter: none; /* Không làm mờ nội dung hình ảnh */
+            box-shadow: 0 0 25px 30px rgba(232, 245, 233, 0.9); /* Mở rộng viền mờ để hòa vào nền */
+            /* Mượt mà hơn */
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+            .illustration-section img:hover {
+                /* Hiệu ứng khi hover */
+                box-shadow: 0 0 35px 40px rgba(232, 245, 233, 1);
+            }
+
+    /* Login Section */
+    .login-container {
+        flex: 1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+        .login-container h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #CCC;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+            outline: none;
+        }
+
+    .btn-login {
+        background-color: #4CAF50;
+        color: #FFF;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+        .btn-login:hover {
+            background-color: #388E3C;
+        }
+
+    .forgot-password {
+        font-size: 14px;
+        color: #555;
+        text-decoration: none;
+    }
+
+        .forgot-password:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+
+    .btn-register {
+        display: inline-block;
+        color: #4CAF50;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .btn-register:hover {
+            color: #555;
+        }
+
+    .register-section span {
+        font-size: 14px;
+        color: #555;
+    }
+</style>

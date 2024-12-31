@@ -25,7 +25,6 @@ namespace QLCHTBDD_62131904.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<QuanTriHeThong> QuanTriHeThongs { get; set; }
         public virtual DbSet<BienTheSanPham> BienTheSanPhams { get; set; }
         public virtual DbSet<Bluetooth> Blueteeth { get; set; }
         public virtual DbSet<ChatLieu> ChatLieux { get; set; }
@@ -88,5 +87,8 @@ namespace QLCHTBDD_62131904.Models
         public virtual DbSet<TocDoKhungHinh> TocDoKhungHinhs { get; set; }
         public virtual DbSet<TrangThaiSanPham> TrangThaiSanPhams { get; set; }
         public virtual DbSet<Wifi> Wifis { get; set; }
+        public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<QuanTriVien> QuanTriViens { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
     }
 }

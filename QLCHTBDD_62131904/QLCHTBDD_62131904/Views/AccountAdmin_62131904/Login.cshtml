@@ -1,0 +1,46 @@
+﻿@model QLCHTBDD_62131904.Models.QuanTriVien
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Đăng Nhập</h2>
+
+@using (Html.BeginForm("Login", "AccountAdmin_62131904", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Username)
+        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Nhập email của bạn" })
+        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu của bạn" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+    </div>
+
+    if (ViewData.ModelState.IsValid == false)
+    {
+        <div class="alert alert-danger">
+            <strong>Lỗi!</strong> @ViewData["ErrorMessage"]
+        </div>
+    }
+}
+
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+</style>

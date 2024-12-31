@@ -10,8 +10,16 @@
 <body>
     <div class="sidebar">
         @Html.ActionLink("Admin Panel", "Index", "SanPhams_62131904", null, new { @class = "navbar-brand text-center py-3" })
-        @Html.ActionLink("Thông tin quản trị", "GetCurrentAdmin", "GetCurrentAdmin_62131904", null, new { @class = "a" })
-        @Html.ActionLink("Quản trị hệ thống", "Index", "QuanTriHeThongs_62131904", null, new { @class = "a" })
+
+        <button class="dropdown-btn">
+            Quản lý tài khoản
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @*@Html.ActionLink("Thông tin tài khoản", "Details", "QuanTriHeThongs_62131904", null, new { @class = "a" })*@
+            @Html.ActionLink("Danh sách khách hàng", "Index", "QuanTriHeThongs_62131904", null, new { @class = "a" })
+        </div>
+
         <button class="dropdown-btn">
             Quản lý sản phẩm
             <i class="fa fa-caret-down"></i>
@@ -59,11 +67,11 @@
         <div class="dropdown-container">
             @Html.ActionLink("Wifi", "Index", "ThongTinWifiDienThoais_62131904", null, new { @class = "a" })
             @Html.ActionLink("Hệ thống định vị", "Index", "ThongTinHeThongDinhViDienThoais_62131904", null, new { @class = "a" })
-        </div> 
+        </div>
 
         @Html.ActionLink("Khách hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
         @Html.ActionLink("Đơn hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
-        @Html.ActionLink("Đăng xuất", "Logout", "QuanTriHeThongs_62131904", null, new { @class = "a" })
+        @Html.ActionLink("Đăng xuất", "Logout", "AccountAdmin_62131904", null, new { @class = "a" })
     </div>
     <div class="content">
         @RenderBody()
