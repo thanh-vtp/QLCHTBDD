@@ -496,6 +496,7 @@
     <Content Include="Views\AccountCustomer_62131904\Login.cshtml" />
     <Content Include="Views\AccountCustomer_62131904\Register.cshtml" />
     <Content Include="Views\HomePage_62131904\DanhSachSanPham.cshtml" />
+    <Content Include="Views\HomePage_62131904\ChiTietSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

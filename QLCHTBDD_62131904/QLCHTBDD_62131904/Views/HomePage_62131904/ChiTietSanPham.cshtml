@@ -1,0 +1,268 @@
+﻿@model QLCHTBDD_62131904.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = Model.TenSanPham;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container product-detail">
+    <!-- Tên sản phẩm trên cùng -->
+    <h1 class="product-title">@Model.TenSanPham</h1>
+
+    <div class="row justify-content-center">
+        <!-- Vùng ảnh sản phẩm -->
+        <div class="col-lg-8">
+            <div class="image-section">
+                <!-- Ảnh chính -->
+                <img id="main-image" src="@Model.HinhAnh" alt="@Model.TenSanPham" class="img-fluid main-image" />
+
+                <!-- Danh sách ảnh phụ -->
+                <div class="image-thumbnails mt-3">
+                    @foreach (var image in Model.HinhAnhPhu)
+                    {
+                        <img src="@image" alt="Ảnh phụ" class="thumbnail-image" onclick="updateMainImage(this)" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Vùng thông tin sản phẩm -->
+        <div class="col-lg-4">
+            <!-- Phần ROM, màu và giá -->
+            <div class="product-info">
+                <div class="info-section">
+                    <h4>Chọn ROM:</h4>
+                    <div class="rom-options">
+                        @foreach (var variant in Model.Variants)
+                        {
+                            <button class="btn rom-option"
+                                    data-price="@variant.DonGia"
+                                    onclick="updatePrice(this)">
+                                @variant.ROM
+                            </button>
+                        }
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>Chọn màu:</h4>
+                    <div class="color-options">
+                        @foreach (var variant in Model.Variants)
+                        {
+                            <button class="btn color-option"
+                                    data-main-image="@variant.HinhAnhChinh"
+                                    data-thumbnails='@Html.Raw(Json.Encode(variant.HinhAnhPhu))'
+                                    onclick="updateVariantImages(this)">
+                                @variant.MauSac
+                            </button>
+                        }
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>Giá:</h4>
+                    <p class="text-danger price">
+                        <span id="product-price">
+                            @if (Model.Variants != null && Model.Variants.Any())
+                            {
+                                @Model.Variants.First().DonGia.ToString("N0")
+                            }
+                            else
+                            {
+                                @:Liên hệ
+                            }
+                        </span> đ
+                    </p>
+                </div>
+            </div>
+
+            <!-- Nút thêm vào giỏ -->
+            <div class="action-section">
+                <button class="btn btn-primary btn-add-to-cart">Thêm vào giỏ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .container.product-detail {
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Tên sản phẩm */
+    .product-title {
+        text-align: left;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Vùng ảnh chính */
+    .image-section {
+        text-align: center;
+    }
+
+    .main-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        border: 1px solid #ddd;
+    }
+
+    /* Vùng ảnh phụ */
+    .image-thumbnails {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .thumbnail-image {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+        .thumbnail-image:hover {
+            border-color: blue;
+            transform: scale(1.1);
+        }
+
+    /* Vùng thông tin sản phẩm */
+    .product-info {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    /* Phần ROM, màu sắc và giá */
+    .info-section {
+        margin-bottom: 20px;
+    }
+
+    .rom-options, .color-options {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .rom-option, .color-option {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: all 0.2s;
+        font-size: 14px;
+        background: #f9f9f9;
+    }
+
+        .rom-option:hover, .color-option:hover {
+            background-color: #f0f0f0;
+            border-color: blue;
+        }
+
+        .rom-option.active, .color-option.active {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+    /* Phần giá */
+    .price {
+        font-size: 24px;
+        font-weight: bold;
+        color: red;
+    }
+
+    /* Nút thêm vào giỏ */
+    .action-section {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-add-to-cart {
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-add-to-cart:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .btn-add-to-cart:focus {
+            outline: none;
+        }
+
+</style>
+
+<script>
+    // Cập nhật giá khi chọn ROM
+    function updatePrice(button) {
+        const price = button.getAttribute("data-price");
+        const priceElement = document.getElementById("product-price");
+        priceElement.textContent = parseInt(price).toLocaleString("vi-VN");
+
+        // Đánh dấu nút ROM được chọn
+        const allRomButtons = document.querySelectorAll(".rom-option");
+        allRomButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+    }
+
+    // Cập nhật ảnh chính và ảnh phụ khi chọn màu
+    function updateVariantImages(button) {
+        const mainImageSrc = button.getAttribute("data-main-image");
+        const thumbnailImages = button.getAttribute("data-thumbnails");
+
+        // Cập nhật ảnh chính
+        const mainImage = document.getElementById("main-image");
+        mainImage.src = mainImageSrc;
+
+        // Cập nhật danh sách ảnh phụ
+        const thumbnailContainer = document.querySelector(".image-thumbnails");
+        thumbnailContainer.innerHTML = ""; // Xóa các ảnh phụ cũ
+
+        const thumbnails = JSON.parse(thumbnailImages); // Chuyển JSON sang mảng
+        thumbnails.forEach(imageSrc => {
+            const thumbnail = document.createElement("img");
+            thumbnail.src = imageSrc;
+            thumbnail.className = "thumbnail-image";
+            thumbnail.onclick = () => updateMainImage(thumbnail); // Thay đổi ảnh chính khi nhấn vào ảnh phụ
+            thumbnailContainer.appendChild(thumbnail);
+        });
+
+        // Đánh dấu nút màu được chọn
+        const allColorButtons = document.querySelectorAll(".color-option");
+        allColorButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+    }
+
+    // Cập nhật ảnh chính khi nhấn vào ảnh phụ
+    function updateMainImage(thumbnail) {
+        const mainImage = document.getElementById("main-image");
+        mainImage.src = thumbnail.src;
+    }
+</script>
