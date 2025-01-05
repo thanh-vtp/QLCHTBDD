@@ -87,8 +87,10 @@ namespace QLCHTBDD_62131904.Models
         public virtual DbSet<TocDoKhungHinh> TocDoKhungHinhs { get; set; }
         public virtual DbSet<TrangThaiSanPham> TrangThaiSanPhams { get; set; }
         public virtual DbSet<Wifi> Wifis { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<QuanTriVien> QuanTriViens { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<ChiTietGioHang> ChiTietGioHangs { get; set; }
+        public virtual DbSet<GioHang> GioHangs { get; set; }
+        public virtual DbSet<KhachHang> KhachHangs { get; set; }
     }
 }

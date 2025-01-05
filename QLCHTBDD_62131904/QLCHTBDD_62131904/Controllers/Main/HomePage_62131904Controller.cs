@@ -55,6 +55,7 @@ namespace QLCHTBDD_62131904.Controllers.Main
                 .Where(sp => sp.MaSP == id)
                 .Select(sp => new ProductViewModel
                 {
+                    MaSanPham = sp.MaSP,
                     TenSanPham = sp.TenSP,
                     MoTa = sp.MoTa,
                     // Lấy ảnh chính hoặc ảnh mặc định nếu không có

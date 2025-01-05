@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Authentication\Admin\AccountAdmin_62131904Controller.cs" />
     <Compile Include="Controllers\Authentication\KhachHangs\AccountCustomer_62131904Controller.cs" />
+    <Compile Include="Controllers\Main\GioHang_62131904Controller.cs" />
     <Compile Include="Controllers\Main\HomePage_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\BienTheSanPhams\ThongSoBienTheDienThoais_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\Cameras\ChiTietDoPhanGiaiCameras_62131904Controller.cs" />
@@ -189,6 +190,9 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDoPhanGiaiCamera.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietGioHang.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietTinhNangCamera.cs">
@@ -234,6 +238,9 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DungLuongPin.cs">
+      <DependentUpon>Model_62131904.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GioHang.cs">
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HangSanXuat.cs">
@@ -379,6 +386,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Authentication_Services.cs" />
+    <Compile Include="ViewModels\ChiTietGioHangViewModel.cs" />
+    <Compile Include="ViewModels\GioHangViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
     <Compile Include="ViewModels\VariantViewModel.cs" />
@@ -497,6 +506,7 @@
     <Content Include="Views\AccountCustomer_62131904\Register.cshtml" />
     <Content Include="Views\HomePage_62131904\DanhSachSanPham.cshtml" />
     <Content Include="Views\HomePage_62131904\ChiTietSanPham.cshtml" />
+    <Content Include="Views\GioHang_62131904\ChiTietGioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

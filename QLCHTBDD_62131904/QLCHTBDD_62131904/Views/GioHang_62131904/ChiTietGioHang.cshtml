@@ -1,0 +1,58 @@
+﻿@model QLCHTBDD_62131904.ViewModels.GioHangViewModel
+
+@{
+    ViewBag.Title = "ChiTietGioHang";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container">
+    <h2>Giỏ hàng của bạn</h2>
+
+    @if (Model == null || Model.SanPhams.Count == 0)
+    {
+        <div class="alert alert-warning">Giỏ hàng của bạn đang trống.</div>
+    }
+    else
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sp in Model.SanPhams)
+                {
+                    <tr>
+                        <td>@sp.TenSanPham</td>
+                        <td>@sp.SoLuong</td>
+                        <td>@sp.Gia.ToString("N0") đ</td>
+                        <td>@sp.ThanhTien.ToString("N0") đ</td>
+                        @*<td>
+                            <form action="@Url.Action("XoaSanPham", "GioHang")" method="post">
+                                <input type="hidden" name="MaSP" value="@sp.MaSanPham" />
+                                <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                            </form>
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right"><strong>Tổng cộng:</strong></td>
+                    <td colspan="2">
+                        @Model.SanPhams.Sum(sp => sp.ThanhTien).ToString("N0") đ
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <a href="@Url.Action("ThanhToan", "GioHang")" class="btn btn-success">Thanh toán</a>
+    }
+</div>
+

@@ -12,26 +12,20 @@ namespace QLCHTBDD_62131904.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KhachHang
+    public partial class GioHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KhachHang()
+        public GioHang()
         {
-            this.GioHangs = new HashSet<GioHang>();
+            this.ChiTietGioHangs = new HashSet<ChiTietGioHang>();
         }
     
-        public int MaKH { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string HoTen { get; set; }
-        public string SoDienThoai { get; set; }
-        public string DiaChi { get; set; }
-        public int RoleId { get; set; }
+        public int MaGioHang { get; set; }
+        public Nullable<int> MaKH { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<bool> IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GioHang> GioHangs { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
     }
 }

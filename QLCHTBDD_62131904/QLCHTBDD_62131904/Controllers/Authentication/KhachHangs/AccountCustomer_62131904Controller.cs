@@ -69,7 +69,7 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "Email,Password,HoTen,SoDienThoai")] KhachHang khachHang)
+        public ActionResult Register([Bind(Include = "Email,Password,HoTen,SoDienThoai,DiaChi")] KhachHang khachHang)
         {
             // Kiểm tra dữ liệu đầu vào
             if (string.IsNullOrEmpty(khachHang.Email) || string.IsNullOrEmpty(khachHang.Password)
@@ -89,6 +89,7 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
             // Hash mật khẩu trước khi lưu
             khachHang.Password = Authentication_Services.HashPassword(khachHang.Password);
             khachHang.RoleId = 2; // Gán mặc định quyền "Khách hàng"
+            khachHang.CreatedOn = DateTime.Now; // Ngày tạo tài khoản
             khachHang.IsActive = true; // Mặc định kích hoạt tài khoản
 
             // Thêm khách hàng vào cơ sở dữ liệu

@@ -78,7 +78,14 @@
 
             <!-- Nút thêm vào giỏ -->
             <div class="action-section">
-                <button class="btn btn-primary btn-add-to-cart">Thêm vào giỏ</button>
+                <form action="@Url.Action("ThemVaoGio", "GioHang_62131904")" method="post">
+                    <input type="hidden" name="MaSP" value="@Model.MaSanPham" />
+                    <div class="form-group">
+                        <label for="SoLuong">Số lượng:</label>
+                        <input type="number" id="SoLuong" name="SoLuong" value="1" min="1" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-add-to-cart">Thêm vào giỏ</button>
+                </form>
             </div>
         </div>
     </div>
