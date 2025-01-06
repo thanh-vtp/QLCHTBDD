@@ -18,6 +18,7 @@ namespace QLCHTBDD_62131904.Models
         public KhachHang()
         {
             this.GioHangs = new HashSet<GioHang>();
+            this.DonHangs = new HashSet<DonHang>();
         }
     
         public int MaKH { get; set; }
@@ -33,5 +34,7 @@ namespace QLCHTBDD_62131904.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHangs { get; set; }
         public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }

@@ -37,7 +37,8 @@
                         {
                             <button class="btn rom-option"
                                     data-price="@variant.DonGia"
-                                    onclick="updatePrice(this)">
+                                    data-variant-id="@variant.BienTheID"
+                                    onclick="selectRom(this)">
                                 @variant.ROM
                             </button>
                         }
@@ -52,7 +53,8 @@
                             <button class="btn color-option"
                                     data-main-image="@variant.HinhAnhChinh"
                                     data-thumbnails='@Html.Raw(Json.Encode(variant.HinhAnhPhu))'
-                                    onclick="updateVariantImages(this)">
+                                    data-variant-id="@variant.BienTheID"
+                                    onclick="selectColor(this)">
                                 @variant.MauSac
                             </button>
                         }
@@ -77,20 +79,20 @@
             </div>
 
             <!-- Nút thêm vào giỏ -->
-            <div class="action-section">
-                <form action="@Url.Action("ThemVaoGio", "GioHang_62131904")" method="post">
-                    <input type="hidden" name="MaSP" value="@Model.MaSanPham" />
-                    <div class="form-group">
-                        <label for="SoLuong">Số lượng:</label>
-                        <input type="number" id="SoLuong" name="SoLuong" value="1" min="1" class="form-control" />
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-add-to-cart">Thêm vào giỏ</button>
-                </form>
-            </div>
+            <form action="@Url.Action("ThemVaoGio", "GioHang_62131904")" method="post">
+                <!-- Input ẩn để lưu mã biến thể -->
+                <input type="hidden" id="BienTheID" name="maBT" value="@Model.Variants.FirstOrDefault()?.BienTheID" />
+
+                <div class="form-group">
+                    <label for="SoLuong">Số lượng:</label>
+                    <input type="number" id="SoLuong" name="soLuong" value="1" min="1" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-add-to-cart">Thêm vào giỏ</button>
+            </form>
         </div>
     </div>
 </div>
-
 
 
 <style>
@@ -223,15 +225,20 @@
         .btn-add-to-cart:focus {
             outline: none;
         }
-
 </style>
 
 <script>
-    // Cập nhật giá khi chọn ROM
-    function updatePrice(button) {
+    // Chọn ROM
+    function selectRom(button) {
+        const variantId = button.getAttribute("data-variant-id");
+        console.log("Mã biến thể được chọn (ROM):", variantId);
+
+        // Cập nhật giá
         const price = button.getAttribute("data-price");
-        const priceElement = document.getElementById("product-price");
-        priceElement.textContent = parseInt(price).toLocaleString("vi-VN");
+        document.getElementById("product-price").textContent = parseInt(price).toLocaleString("vi-VN");
+
+        // Cập nhật mã biến thể trong input ẩn
+        document.getElementById("BienTheID").value = variantId;
 
         // Đánh dấu nút ROM được chọn
         const allRomButtons = document.querySelectorAll(".rom-option");
@@ -239,27 +246,32 @@
         button.classList.add("active");
     }
 
-    // Cập nhật ảnh chính và ảnh phụ khi chọn màu
-    function updateVariantImages(button) {
-        const mainImageSrc = button.getAttribute("data-main-image");
-        const thumbnailImages = button.getAttribute("data-thumbnails");
+    // Chọn màu
+    function selectColor(button) {
+        const variantId = button.getAttribute("data-variant-id");
+        console.log("Mã biến thể được chọn (Màu):", variantId);
 
         // Cập nhật ảnh chính
-        const mainImage = document.getElementById("main-image");
-        mainImage.src = mainImageSrc;
+        const mainImageSrc = button.getAttribute("data-main-image");
+        document.getElementById("main-image").src = mainImageSrc;
 
         // Cập nhật danh sách ảnh phụ
+        const thumbnailImages = button.getAttribute("data-thumbnails");
+        const thumbnails = JSON.parse(thumbnailImages);
+
         const thumbnailContainer = document.querySelector(".image-thumbnails");
         thumbnailContainer.innerHTML = ""; // Xóa các ảnh phụ cũ
 
-        const thumbnails = JSON.parse(thumbnailImages); // Chuyển JSON sang mảng
         thumbnails.forEach(imageSrc => {
             const thumbnail = document.createElement("img");
             thumbnail.src = imageSrc;
             thumbnail.className = "thumbnail-image";
-            thumbnail.onclick = () => updateMainImage(thumbnail); // Thay đổi ảnh chính khi nhấn vào ảnh phụ
+            thumbnail.onclick = () => updateMainImage(thumbnail);
             thumbnailContainer.appendChild(thumbnail);
         });
+
+        // Cập nhật mã biến thể trong input ẩn
+        document.getElementById("BienTheID").value = variantId;
 
         // Đánh dấu nút màu được chọn
         const allColorButtons = document.querySelectorAll(".color-option");
@@ -272,4 +284,5 @@
         const mainImage = document.getElementById("main-image");
         mainImage.src = thumbnail.src;
     }
+
 </script>

@@ -1,14 +1,12 @@
-﻿@*@model QLCHTBDD_62131904.Models.KhachHang*@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Sản Phẩm</title>
+    <title>Thông Tin Khách Hàng</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="~/Content/_main-layout.css" rel="stylesheet" />
+    <link href="~/Content/_user-layout.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Header -->
@@ -24,47 +22,67 @@
 
             <!-- Thanh tìm kiếm -->
             <div class="search-bar">
-                <input type="text" class="form-control" placeholder="Bạn tìm gì..." />
+                <input type="text" class="form-control" placeholder="Tìm kiếm đơn hàng" />
             </div>
 
             <!-- Nút điều hướng -->
             <div class="nav-icons d-flex align-items-center">
-                @if (Session["CustomerId"] == null)
+                @if (Session["CustomerId"] != null)
                 {
-                    @Html.ActionLink("Đăng nhập", "Login", "AccountCustomer_62131904", null, new { @class = "btn btn-outline-dark mx-1" })
-                }
-                else
-                {
-                    var customerName = Session["HoTen"] as string; // Lấy tên khách hàng từ Session
-                    if (!string.IsNullOrEmpty(customerName))
-                    {
-                        <a href="@Url.Action("ChiTietKhachHang", "AccountCustomer_62131904")" class="btn btn-outline-dark mx-1">
-                            @customerName
-                        </a>
-
-                        @Html.ActionLink("Giỏ hàng", "ChiTietGioHang", "GioHang_62131904", null, new { @class = "btn btn-outline-dark mx-1" })
-                    }
-
+                    @Html.ActionLink("Giỏ hàng", "ChiTietGioHang", "GioHang_62131904", null, new { @class = "btn btn-outline-dark mx-1" })
                 }
 
-            </div>
-        </div>
-        <div id="main-header">
-            <!-- Nút điều hướng -->
-            <div class="nav-icons d-flex align-items-center">
-                <a href="#" class="btn btn-outline-dark mx-1">Iphone</a>
-                <a href="#" class="btn btn-outline-dark mx-1">Xiaomi</a>
-                <a href="#" class="btn btn-outline-dark mx-1">SamSung</a>
-                <a href="#" class="btn btn-outline-dark mx-1">Sony</a>
-                <a href="#" class="btn btn-outline-dark mx-1">Asus</a>
             </div>
         </div>
     </div>
 
-    <!-- Content -->
+    <!-- Main Content -->
     <div id="main-content" class="container">
         <div class="row">
-            @RenderBody()
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="@Url.Action( "ChiTietGioHang", "GioHang_62131904")">
+                                <i class="fas fa-home"></i> Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("LichSuMuaHang", "LichSuMuaHang_62131904")">
+                                <i class="fas fa-history"></i> Lịch sử mua hàng
+                            </a>
+                        </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-box"></i> Tra cứu bảo hành
+                                </a>
+                            </li>*@
+                        @*<li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-gift"></i> Ưu đãi của bạn
+                                </a>
+                            </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action( "ChiTietKhachHang", "AccountCustomer_62131904")">
+                                <i class="fas fa-user"></i> Tài khoản của bạn
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Logout", "AccountCustomer_62131904")">
+                                <i class="fas fa-sign-out-alt"></i> Thoát tài khoản
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </main>
         </div>
     </div>
 
@@ -76,6 +94,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
 

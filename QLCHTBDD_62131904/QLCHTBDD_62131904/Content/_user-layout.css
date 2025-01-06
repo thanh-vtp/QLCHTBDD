@@ -99,20 +99,61 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav-icons .btn:hover {
-    background-color: #000;
-    color: #fff;
-}
+    .nav-icons .btn:hover {
+        background-color: #000;
+        color: #fff;
+    }
 
 .mx-2 {
     margin-left: 10px;
     margin-right: 10px;
 }
 
+
 /* Content */
 #main-content {
     margin-top: 20px;
+    width: 100%;
+    color: #000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* Sidebar */
+.sidebar {
+    height: 100vh; /* Full height */
+    border-right: 1px solid #ddd; /* Border bên phải */
+    padding: 10px;
+    background-color: #b3deb6;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 0;
+}
+
+.sidebar .nav-link {
+    color: #000;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #388E3C;
+    color: #fff;
+}
+
+.sidebar .nav-link.active {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+main {
+    padding-top: 20px;
+}
+
 
 /* Footer */
 #footer {

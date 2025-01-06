@@ -63,6 +63,16 @@
     <Property Name="TenChip" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="ChiTietDonHang">
+    <Key>
+      <PropertyRef Name="MaChiTiet" />
+    </Key>
+    <Property Name="MaChiTiet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaDonHang" Type="int" />
+    <Property Name="MaBT" Type="int" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="DonGia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="ChiTietDoPhanGiaiCamera">
     <Key>
       <PropertyRef Name="MaChiTietDoPhanGiaiCamera" />
@@ -77,7 +87,7 @@
     </Key>
     <Property Name="MaCTGH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaGioHang" Type="int" />
-    <Property Name="MaSP" Type="int" />
+    <Property Name="MaBT" Type="int" />
     <Property Name="SoLuong" Type="int" Nullable="false" />
     <Property Name="Gia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
   </EntityType>
@@ -161,6 +171,16 @@
     <Property Name="MaDoDay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="GTDoDay" Type="float" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="MaDonHang" />
+    </Key>
+    <Property Name="MaDonHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaKH" Type="int" />
+    <Property Name="NgayDatHang" Type="datetime" Nullable="false" />
+    <Property Name="TongTien" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MaTrangThai" Type="int" />
   </EntityType>
   <EntityType Name="DoPhanGiaiCamera">
     <Key>
@@ -575,6 +595,14 @@
     <Property Name="TocDo" Type="int" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
   </EntityType>
+  <EntityType Name="TrangThaiDonHang">
+    <Key>
+      <PropertyRef Name="MaTrangThai" />
+    </Key>
+    <Property Name="MaTrangThai" Type="int" Nullable="false" />
+    <Property Name="TenTrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
   <EntityType Name="TrangThaiSanPham">
     <Key>
       <PropertyRef Name="MaTrangThai" />
@@ -661,6 +689,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__ChiTietDo__MaDon__23F3538A">
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="MaDonHang" />
+      </Principal>
+      <Dependent Role="ChiTietDonHang">
+        <PropertyRef Name="MaDonHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__ChiTietDo__MaDoP__00DF2177">
     <End Role="DoPhanGiaiCamera" Type="Self.DoPhanGiaiCamera" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -689,7 +731,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietGi__MaGio__725BF7F6">
+  <Association Name="FK__ChiTietDon__MaBT__24E777C3">
+    <End Role="BienTheSanPham" Type="Self.BienTheSanPham" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BienTheSanPham">
+        <PropertyRef Name="MaBT" />
+      </Principal>
+      <Dependent Role="ChiTietDonHang">
+        <PropertyRef Name="MaBT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietGi__MaGio__1F2E9E6D">
     <End Role="GioHang" Type="Self.GioHang" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -703,17 +759,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietGio__MaSP__73501C2F">
-    <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1">
+  <Association Name="FK__ChiTietGio__MaBT__2022C2A6">
+    <End Role="BienTheSanPham" Type="Self.BienTheSanPham" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="ChiTietGioHang" Type="Self.ChiTietGioHang" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="SanPham">
-        <PropertyRef Name="MaSP" />
+      <Principal Role="BienTheSanPham">
+        <PropertyRef Name="MaBT" />
       </Principal>
       <Dependent Role="ChiTietGioHang">
-        <PropertyRef Name="MaSP" />
+        <PropertyRef Name="MaBT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -759,7 +815,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__GioHang__MaKH__6E8B6712">
+  <Association Name="FK__DonHang__MaKH__00AA174D">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonHang__MaTrang__019E3B86">
+    <End Role="TrangThaiDonHang" Type="Self.TrangThaiDonHang" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangThaiDonHang">
+        <PropertyRef Name="MaTrangThai" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="MaTrangThai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GioHang__MaKH__0D0FEE32">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1529,6 +1609,7 @@
     <EntitySet Name="ChieuNgang" EntityType="Self.ChieuNgang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChipDoHoaGPU" EntityType="Self.ChipDoHoaGPU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChipXuLy" EntityType="Self.ChipXuLy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietDoPhanGiaiCamera" EntityType="Self.ChiTietDoPhanGiaiCamera" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietGioHang" EntityType="Self.ChiTietGioHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietTinhNangCamera" EntityType="Self.ChiTietTinhNangCamera" Schema="dbo" store:Type="Tables" />
@@ -1541,6 +1622,7 @@
     <EntitySet Name="DinhDangNhac" EntityType="Self.DinhDangNhac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DinhDangPhim" EntityType="Self.DinhDangPhim" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoDay" EntityType="Self.DoDay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoPhanGiaiCamera" EntityType="Self.DoPhanGiaiCamera" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoPhanGiaiManHinh" EntityType="Self.DoPhanGiaiManHinh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoPhanGiaiQuayPhim" EntityType="Self.DoPhanGiaiQuayPhim" Schema="dbo" store:Type="Tables" />
@@ -1587,6 +1669,7 @@
     <EntitySet Name="TinhNangDacBiet" EntityType="Self.TinhNangDacBiet" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TocDoCPU" EntityType="Self.TocDoCPU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TocDoKhungHinh" EntityType="Self.TocDoKhungHinh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrangThaiDonHang" EntityType="Self.TrangThaiDonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TrangThaiSanPham" EntityType="Self.TrangThaiSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Wifi" EntityType="Self.Wifi" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__BienTheSa__MaMau__534D60F1" Association="Self.FK__BienTheSa__MaMau__534D60F1">
@@ -1609,6 +1692,10 @@
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
     </AssociationSet>
+    <AssociationSet Name="FK__ChiTietDo__MaDon__23F3538A" Association="Self.FK__ChiTietDo__MaDon__23F3538A">
+      <End Role="DonHang" EntitySet="DonHang" />
+      <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
+    </AssociationSet>
     <AssociationSet Name="FK__ChiTietDo__MaDoP__00DF2177" Association="Self.FK__ChiTietDo__MaDoP__00DF2177">
       <End Role="DoPhanGiaiCamera" EntitySet="DoPhanGiaiCamera" />
       <End Role="ChiTietDoPhanGiaiCamera" EntitySet="ChiTietDoPhanGiaiCamera" />
@@ -1617,12 +1704,16 @@
       <End Role="ThongSoCamera" EntitySet="ThongSoCamera" />
       <End Role="ChiTietDoPhanGiaiCamera" EntitySet="ChiTietDoPhanGiaiCamera" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietGi__MaGio__725BF7F6" Association="Self.FK__ChiTietGi__MaGio__725BF7F6">
+    <AssociationSet Name="FK__ChiTietDon__MaBT__24E777C3" Association="Self.FK__ChiTietDon__MaBT__24E777C3">
+      <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
+      <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietGi__MaGio__1F2E9E6D" Association="Self.FK__ChiTietGi__MaGio__1F2E9E6D">
       <End Role="GioHang" EntitySet="GioHang" />
       <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietGio__MaSP__73501C2F" Association="Self.FK__ChiTietGio__MaSP__73501C2F">
-      <End Role="SanPham" EntitySet="SanPham" />
+    <AssociationSet Name="FK__ChiTietGio__MaBT__2022C2A6" Association="Self.FK__ChiTietGio__MaBT__2022C2A6">
+      <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
       <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
     </AssociationSet>
     <AssociationSet Name="FK__ChiTietTi__MaLoa__16CE6296" Association="Self.FK__ChiTietTi__MaLoa__16CE6296">
@@ -1637,7 +1728,15 @@
       <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
       <End Role="ChiTietTinhNangCamera" EntitySet="ChiTietTinhNangCamera" />
     </AssociationSet>
-    <AssociationSet Name="FK__GioHang__MaKH__6E8B6712" Association="Self.FK__GioHang__MaKH__6E8B6712">
+    <AssociationSet Name="FK__DonHang__MaKH__00AA174D" Association="Self.FK__DonHang__MaKH__00AA174D">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonHang__MaTrang__019E3B86" Association="Self.FK__DonHang__MaTrang__019E3B86">
+      <End Role="TrangThaiDonHang" EntitySet="TrangThaiDonHang" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GioHang__MaKH__0D0FEE32" Association="Self.FK__GioHang__MaKH__0D0FEE32">
       <End Role="KhachHang" EntitySet="KhachHang" />
       <End Role="GioHang" EntitySet="GioHang" />
     </AssociationSet>

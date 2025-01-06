@@ -58,8 +58,11 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
         public ActionResult Logout()
         {
             // Xóa thông tin trong Session
+            Console.WriteLine(Session["CustomerId"]);
             Session.Clear();
-            return RedirectToAction("DanhSachSanPham", "SanPhams_62131904");
+            // Lưu URL quay lại
+            TempData["ReturnUrl"] = Request.UrlReferrer?.ToString();
+            return RedirectToAction("DanhSachSanPham", "HomePage_62131904");
         }
 
         public ActionResult Register()
@@ -132,6 +135,24 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
             db.SaveChanges();
 
             return RedirectToAction("DetailsAccount", "AccountCustomer_62131904");
+        }
+
+        public ActionResult ChiTietKhachHang()
+        {
+            if (Session["CustomerId"] == null)
+            {
+                return RedirectToAction("Login", "AccountCustomer_62131904");
+            }
+
+            int customerId = (int)Session["CustomerId"];
+            var customer = db.KhachHangs.FirstOrDefault(kh => kh.MaKH == customerId);
+
+            if (customer == null)
+            {
+                return HttpNotFound("Không tìm thấy thông tin khách hàng.");
+            }
+
+            return View(customer);
         }
 
     }

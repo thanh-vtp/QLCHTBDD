@@ -12,15 +12,15 @@ namespace QLCHTBDD_62131904.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ChiTietGioHang
+    public partial class ChiTietDonHang
     {
-        public int MaCTGH { get; set; }
-        public Nullable<int> MaGioHang { get; set; }
+        public int MaChiTiet { get; set; }
+        public Nullable<int> MaDonHang { get; set; }
         public Nullable<int> MaBT { get; set; }
         public int SoLuong { get; set; }
-        public decimal Gia { get; set; }
+        public decimal DonGia { get; set; }
     
         public virtual BienTheSanPham BienTheSanPham { get; set; }
-        public virtual GioHang GioHang { get; set; }
+        public virtual DonHang DonHang { get; set; }
     }
 }

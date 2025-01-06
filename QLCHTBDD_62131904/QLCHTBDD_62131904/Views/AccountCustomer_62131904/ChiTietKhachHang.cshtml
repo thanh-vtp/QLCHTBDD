@@ -1,0 +1,16 @@
+﻿@model QLCHTBDD_62131904.Models.KhachHang
+
+@{
+    ViewBag.Title = "ChiTietKhachHang";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container">
+    <h1>Thông tin khách hàng</h1>
+    <p><strong>Tên khách hàng:</strong> @Model.HoTen</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Số điện thoại:</strong> @Model.SoDienThoai</p>
+    <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
+</div>
+
+@Html.ActionLink("Đăng xuất", "Logout", "AccountCustomer_62131904", null, new { @class = "btn btn-outline-dark mx-1" })

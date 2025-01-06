@@ -19,7 +19,6 @@ namespace QLCHTBDD_62131904.Models
         {
             this.BienTheSanPhams = new HashSet<BienTheSanPham>();
             this.ThongSoDienThoais = new HashSet<ThongSoDienThoai>();
-            this.ChiTietGioHangs = new HashSet<ChiTietGioHang>();
         }
     
         public int MaSP { get; set; }
@@ -34,7 +33,5 @@ namespace QLCHTBDD_62131904.Models
         public virtual LoaiSanPham LoaiSanPham { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThongSoDienThoai> ThongSoDienThoais { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
     }
 }
