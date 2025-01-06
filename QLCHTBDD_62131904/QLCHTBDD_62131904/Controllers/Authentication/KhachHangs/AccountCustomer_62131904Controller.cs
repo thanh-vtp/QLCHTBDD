@@ -210,10 +210,13 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
                 customer.NgaySinh = model.NgaySinh;
             }
 
+            customer.UpdatedOn = DateTime.Now;
+
             try
             {
                 db.SaveChanges();
                 TempData["SuccessMessage"] = "Thông tin đã được cập nhật thành công.";
+                Console.WriteLine($"UpdatedOn: {customer.UpdatedOn}");
             }
             catch (Exception ex)
             {

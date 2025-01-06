@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\controllers\\authentication\\khachhangs\\accountcustomer_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\controllers\\authentication\\khachhangs\\accountcustomer_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\accountcustomer_62131904\\chitietkhachhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\accountcustomer_62131904\\chitietkhachhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\lichsumuahang_62131904\\lichsumuahang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\lichsumuahang_62131904\\lichsumuahang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\views\\accountcustomer_62131904\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\accountcustomer_62131904\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\controllers\\main\\lichsumuahang_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\accountcustomer_62131904\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\accountcustomer_62131904\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\controllers\\main\\lichsumuahang_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\controllers\\main\\lichsumuahang_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\controllers\\authentication\\khachhangs\\accountcustomer_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\controllers\\authentication\\khachhangs\\accountcustomer_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\views\\lichsumuahang_62131904\\lichsumuahang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\lichsumuahang_62131904\\lichsumuahang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\accountcustomer_62131904\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\accountcustomer_62131904\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\models\\model_62131904.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\models\\model_62131904.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +50,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "AccountCustomer_62131904Controller.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
+              "RelativeToolTip": "QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAQwNcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T17:29:53.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Model_62131904.edmx [Diagram1]",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Models\\Model_62131904.edmx",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Models\\Model_62131904.edmx",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Models\\Model_62131904.edmx [Diagram1]",
+              "RelativeToolTip": "QLCHTBDD_62131904\\Models\\Model_62131904.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-01-06T18:29:56.014Z",
+              "EditorCaption": " [Diagram1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "LichSuMuaHang.cshtml",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\LichSuMuaHang_62131904\\LichSuMuaHang.cshtml",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\LichSuMuaHang_62131904\\LichSuMuaHang.cshtml",
@@ -55,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "LichSuMuaHang_62131904Controller.cs",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Main\\LichSuMuaHang_62131904Controller.cs",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Controllers\\Main\\LichSuMuaHang_62131904Controller.cs",
@@ -68,26 +101,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ChiTietKhachHang.cshtml",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ChiTietKhachHang.cshtml",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ChiTietKhachHang.cshtml",
               "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ChiTietKhachHang.cshtml",
               "RelativeToolTip": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ChiTietKhachHang.cshtml",
-              "ViewState": "AgIAACAAAAAAAAAAAAAmwDIAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC4AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-01-06T17:44:18.215Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "ResetPassword.cshtml",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ResetPassword.cshtml",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ResetPassword.cshtml",
               "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ResetPassword.cshtml",
               "RelativeToolTip": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ResetPassword.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-01-06T17:31:11.819Z",
               "EditorCaption": ""
@@ -95,14 +128,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AccountCustomer_62131904Controller.cs",
-              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
-              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
-              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
-              "RelativeToolTip": "QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAowKsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T17:29:53.673Z",
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\Login.cshtml",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\Login.cshtml",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\Login.cshtml",
+              "RelativeToolTip": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-06T18:31:32.559Z",
               "EditorCaption": ""
             }
           ]

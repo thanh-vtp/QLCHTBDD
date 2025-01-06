@@ -48,12 +48,11 @@
 
             <div class="detail-item">
                 <span class="label">Ngày sinh:</span>
-                @Html.TextBoxFor(model => model.NgaySinh, new
+                @Html.TextBox("NgaySinh", Model.NgaySinh.HasValue ? Model.NgaySinh.Value.ToString("yyyy-MM-dd") : "", new
                 {
                     @class = "form-control editable",
-                    type = "date",
-                    @readonly = "readonly",
-                    value = Model.NgaySinh.Value
+                    type = "date", // Định dạng input là date
+                    @readonly = "readonly"
                 })
                 <span class="edit-icon" onclick="enableEditing(this)">
                     <i class="fas fa-edit"></i>
@@ -61,108 +60,103 @@
             </div>
 
 
+
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-update">Cập nhật thông tin</button>
             </div>
         }
     </div>
-</div>
+    </div>
 
-<script>
-    function enableEditing(icon) {
-        const input = icon.previousElementSibling;
-        input.removeAttribute("readonly");
-        input.focus();
-    }
-</script>
+    <script>
+        function enableEditing(icon) {
+            const input = icon.previousElementSibling;
+            if (input.hasAttribute("readonly")) {
+                // Nếu input đang ở trạng thái readonly, bật chỉnh sửa
+                input.removeAttribute("readonly");
+                input.focus();
+            } else {
+                // Nếu input không còn readonly, khóa lại
+                input.setAttribute("readonly", "readonly");
+            }
+        }
+    </script>
 
-
-<style>
-    .container.account-info {
-        max-width: 800px;
-/*        margin: 40px auto;*/
-        background: #fff;
-        border-radius: 8px;
-        padding: 20px 30px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        font-family: Arial, sans-serif;
-        color: #333;
-    }
-
-    .page-title {
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
-
-    .detail-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #f1f1f1;
-        position: relative;
-    }
-
-        .detail-item:last-child {
-            border-bottom: none;
+    <style>
+        .container.account-info {
+            max-width: 800px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            color: #333;
         }
 
-        .detail-item .label {
+        .page-title {
+            text-align: center;
+            font-size: 24px;
             font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f1f1;
+            position: relative;
+        }
+
+            .detail-item:last-child {
+                border-bottom: none;
+            }
+
+            .detail-item .label {
+                font-weight: bold;
+                color: #666;
+                flex: 1;
+            }
+
+        .form-control.editable {
+            flex: 2;
+            margin-left: 10px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            background-color: transparent;
+            color: #333;
+        }
+
+            .form-control.editable:focus {
+                outline: none;
+                border-bottom: 1px solid #007bff;
+            }
+
+        .edit-icon {
+            margin-left: 10px;
             color: #666;
-            flex: 1;
+            cursor: pointer;
         }
 
-    .form-control.editable {
-        flex: 2;
-        margin-left: 10px;
-        border: none;
-        border-bottom: 1px solid #ddd;
-        background-color: transparent;
-        color: #333;
-    }
+            .edit-icon:hover {
+                color: #007bff;
+            }
 
-        .form-control.editable:focus {
-            outline: none;
-            border-bottom: 1px solid #007bff;
+        .btn-update {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
         }
 
-    .edit-icon {
-        margin-left: 10px;
-        color: #666;
-        cursor: pointer;
-    }
-
-        .edit-icon:hover {
-            color: #007bff;
-        }
-
-    .btn-update {
-        background-color: #4CAF50;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-    }
-
-        .btn-update:hover {
-            background-color: #388E3C;
-            transform: scale(1.05);
-        }
-
-</style>
-
-
-<script>
-    function enableEditing(icon) {
-        const input = icon.previousElementSibling;
-        input.removeAttribute("readonly");
-        input.focus();
-    }
-</script>
+            .btn-update:hover {
+                background-color: #388E3C;
+                transform: scale(1.05);
+            }
+    </style>

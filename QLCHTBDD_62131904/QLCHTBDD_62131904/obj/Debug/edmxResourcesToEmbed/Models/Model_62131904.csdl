@@ -2054,7 +2054,7 @@
     <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
     <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="3" />
     <Property Name="RoleId" Type="Int32" Nullable="false" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
