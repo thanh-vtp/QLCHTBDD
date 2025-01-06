@@ -533,6 +533,7 @@
     <Content Include="Views\AccountCustomer_62131904\DoiMatKhau.cshtml" />
     <Content Include="Views\AccountCustomer_62131904\ResetPassword.cshtml" />
     <Content Include="Views\AccountCustomer_62131904\ConfirmResetPassword.cshtml" />
+    <Content Include="Views\HomePage_62131904\TimKiemSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

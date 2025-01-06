@@ -1,6 +1,4 @@
-﻿@*@model QLCHTBDD_62131904.Models.KhachHang*@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8" />
@@ -24,8 +22,14 @@
 
             <!-- Thanh tìm kiếm -->
             <div class="search-bar">
-                <input type="text" class="form-control" placeholder="Bạn tìm gì..." />
+                <form action="@Url.Action("TimKiemSanPham", "HomePage_62131904")" method="get" style="width: 100%">
+                    <input type="text"
+                           name="sanPhams"
+                           class="form-control"
+                           placeholder="Bạn tìm gì..." />
+                </form>
             </div>
+
 
             <!-- Nút điều hướng -->
             <div class="nav-icons d-flex align-items-center">

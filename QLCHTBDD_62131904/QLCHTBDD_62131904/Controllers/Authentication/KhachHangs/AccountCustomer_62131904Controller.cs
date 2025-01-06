@@ -216,7 +216,7 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
             {
                 db.SaveChanges();
                 TempData["SuccessMessage"] = "Thông tin đã được cập nhật thành công.";
-                Console.WriteLine($"UpdatedOn: {customer.UpdatedOn}");
+                //Console.WriteLine($"UpdatedOn: {customer.UpdatedOn}");
             }
             catch (Exception ex)
             {

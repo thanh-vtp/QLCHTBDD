@@ -14,6 +14,60 @@ namespace QLCHTBDD_62131904.Controllers.Main
         private readonly QLCHTBDD_62131904Entities db = new QLCHTBDD_62131904Entities();
 
         // HomePage_62131904
+        public ActionResult TimKiemSanPham(string sanPhams)
+        {
+            // Kiểm tra chuỗi tìm kiếm
+            if (string.IsNullOrEmpty(sanPhams))
+            {
+                TempData["Message"] = "Vui lòng nhập từ khóa tìm kiếm.";
+                return RedirectToAction("DanhSachSanPham");
+            }
+
+            // Tìm kiếm sản phẩm và ánh xạ tất cả biến thể vào ViewModel
+            var sanPhamResult = db.SanPhams
+                .Where(sp => sp.TenSP.Contains(sanPhams)) // Tìm theo từ khóa
+                .Select(sp => new ProductViewModel
+                {
+                    MaSanPham = sp.MaSP,
+                    TenSanPham = sp.TenSP,
+                    MoTa = sp.MoTa, // Thêm mô tả nếu cần
+                    DoPhanGiaiManHinh = sp.BienTheSanPhams
+                        .Select(bt => bt.ThongSoBienTheDienThoais
+                            .Select(ts => ts.DoPhanGiaiManHinh.TenDoPhanGiai)
+                            .FirstOrDefault())
+                        .FirstOrDefault(),
+                    KichThuocManHinh = sp.BienTheSanPhams
+                        .Select(bt => bt.ThongSoBienTheDienThoais
+                            .Select(ts => ts.KichThuocManHinh.KichThuoc)
+                            .FirstOrDefault())
+                        .FirstOrDefault(),
+                    HinhAnh = sp.BienTheSanPhams
+                        .SelectMany(bt => bt.HinhAnhSanPhams)
+                        .Where(ha => ha.AnhChinh == true)
+                        .Select(ha => ha.DuongDanAnh)
+                        .FirstOrDefault() ?? "~/Images/logo-login.jpg",
+                    Variants = sp.BienTheSanPhams // Lấy tất cả biến thể
+                        .Select(bt => new VariantViewModel
+                        {
+                            BienTheID = bt.MaBT,
+                            ROM = bt.ROM.DungLuong,
+                            MauSac = bt.MauSac.TenMau,
+                            DonGia = bt.DonGia
+                        })
+                        .ToList()
+                })
+                .ToList();
+
+            if (!sanPhamResult.Any())
+            {
+                TempData["Message"] = "Không tìm thấy sản phẩm phù hợp.";
+            }
+
+            return View(sanPhamResult);
+        }
+
+
+
         public ActionResult DanhSachSanPham()
         {
             var products = db.SanPhams

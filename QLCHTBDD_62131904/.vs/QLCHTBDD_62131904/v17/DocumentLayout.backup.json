@@ -3,11 +3,35 @@
   "WorkspaceRootPath": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\controllers\\authentication\\khachhangs\\accountcustomer_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\homepage_62131904\\danhsachsanpham.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\homepage_62131904\\danhsachsanpham.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\models\\model_62131904.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\models\\model_62131904.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\homepage_62131904\\timkiemsanpham.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\homepage_62131904\\timkiemsanpham.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\viewmodels\\productviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\viewmodels\\productviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\controllers\\main\\homepage_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\controllers\\main\\homepage_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\shared\\_mainlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\shared\\_mainlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\controllers\\authentication\\khachhangs\\accountcustomer_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\controllers\\authentication\\khachhangs\\accountcustomer_62131904controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\accountcustomer_62131904\\chitietkhachhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\views\\accountcustomer_62131904\\chitietkhachhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\accountcustomer_62131904\\chitietkhachhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -15,7 +39,7 @@
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\accountcustomer_62131904\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\views\\accountcustomer_62131904\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\views\\accountcustomer_62131904\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\accountcustomer_62131904\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -25,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\qlchtbdd_62131904\\views\\lichsumuahang_62131904\\lichsumuahang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\views\\lichsumuahang_62131904\\lichsumuahang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|c:\\users\\thanh\\documents\\github\\qlchtbdd\\qlchtbdd_62131904\\qlchtbdd_62131904\\models\\model_62131904.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{BA0E3B01-8136-4311-8210-B335249BCA6A}|QLCHTBDD_62131904\\QLCHTBDD_62131904.csproj|solutionrelative:qlchtbdd_62131904\\models\\model_62131904.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,20 +70,85 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\ViewModels\\ProductViewModel.cs",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\ViewModels\\ProductViewModel.cs",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\ViewModels\\ProductViewModel.cs",
+              "RelativeToolTip": "QLCHTBDD_62131904\\ViewModels\\ProductViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T20:07:58.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TimKiemSanPham.cshtml",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\HomePage_62131904\\TimKiemSanPham.cshtml",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\HomePage_62131904\\TimKiemSanPham.cshtml",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\HomePage_62131904\\TimKiemSanPham.cshtml",
+              "RelativeToolTip": "QLCHTBDD_62131904\\Views\\HomePage_62131904\\TimKiemSanPham.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-06T20:03:15.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_MainLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\Shared\\_MainLayout.cshtml",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\Shared\\_MainLayout.cshtml",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\Shared\\_MainLayout.cshtml",
+              "RelativeToolTip": "QLCHTBDD_62131904\\Views\\Shared\\_MainLayout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-06T19:58:28.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomePage_62131904Controller.cs",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Main\\HomePage_62131904Controller.cs",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Controllers\\Main\\HomePage_62131904Controller.cs",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Main\\HomePage_62131904Controller.cs",
+              "RelativeToolTip": "QLCHTBDD_62131904\\Controllers\\Main\\HomePage_62131904Controller.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAwwDQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T19:41:59.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DanhSachSanPham.cshtml",
+              "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\HomePage_62131904\\DanhSachSanPham.cshtml",
+              "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\HomePage_62131904\\DanhSachSanPham.cshtml",
+              "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\HomePage_62131904\\DanhSachSanPham.cshtml",
+              "RelativeToolTip": "QLCHTBDD_62131904\\Views\\HomePage_62131904\\DanhSachSanPham.cshtml",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAUwGYAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-06T19:27:17.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AccountCustomer_62131904Controller.cs",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
               "ToolTip": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
               "RelativeToolTip": "QLCHTBDD_62131904\\Controllers\\Authentication\\KhachHangs\\AccountCustomer_62131904Controller.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAQwNcAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAALUAAAAAAAAAAAAwwNsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-06T17:29:53.673Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Model_62131904.edmx [Diagram1]",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Models\\Model_62131904.edmx",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Models\\Model_62131904.edmx",
@@ -75,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "LichSuMuaHang.cshtml",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\LichSuMuaHang_62131904\\LichSuMuaHang.cshtml",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\LichSuMuaHang_62131904\\LichSuMuaHang.cshtml",
@@ -83,12 +168,11 @@
               "RelativeToolTip": "QLCHTBDD_62131904\\Views\\LichSuMuaHang_62131904\\LichSuMuaHang.cshtml",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T18:17:48.217Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T18:17:48.217Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "LichSuMuaHang_62131904Controller.cs",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Controllers\\Main\\LichSuMuaHang_62131904Controller.cs",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Controllers\\Main\\LichSuMuaHang_62131904Controller.cs",
@@ -96,12 +180,11 @@
               "RelativeToolTip": "QLCHTBDD_62131904\\Controllers\\Main\\LichSuMuaHang_62131904Controller.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwBEAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T18:17:38.365Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T18:17:38.365Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "ChiTietKhachHang.cshtml",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ChiTietKhachHang.cshtml",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ChiTietKhachHang.cshtml",
@@ -109,12 +192,11 @@
               "RelativeToolTip": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ChiTietKhachHang.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAAAC4AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T17:44:18.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T17:44:18.215Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "ResetPassword.cshtml",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ResetPassword.cshtml",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ResetPassword.cshtml",
@@ -122,12 +204,11 @@
               "RelativeToolTip": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\ResetPassword.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T17:31:11.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T17:31:11.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\thanh\\Documents\\GitHub\\QLCHTBDD\\QLCHTBDD_62131904\\QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\Login.cshtml",
               "RelativeDocumentMoniker": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\Login.cshtml",
@@ -135,8 +216,7 @@
               "RelativeToolTip": "QLCHTBDD_62131904\\Views\\AccountCustomer_62131904\\Login.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T18:31:32.559Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T18:31:32.559Z"
             }
           ]
         }
