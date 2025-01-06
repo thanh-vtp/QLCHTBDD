@@ -24,8 +24,8 @@ namespace QLCHTBDD_62131904.Models
         public Nullable<int> MaKH { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
     
-        public virtual KhachHang KhachHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietGioHang> ChiTietGioHangs { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
     }
 }

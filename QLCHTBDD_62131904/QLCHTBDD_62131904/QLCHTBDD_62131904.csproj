@@ -396,12 +396,14 @@
       <DependentUpon>Model_62131904.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Authentication_Services.cs" />
+    <Compile Include="Services\AuthenticationServices.cs" />
+    <Compile Include="Services\EmailServices.cs" />
     <Compile Include="ViewModels\ChiTietDonHangViewModel.cs" />
     <Compile Include="ViewModels\ChiTietGioHangViewModel.cs" />
     <Compile Include="ViewModels\GioHangViewModel.cs" />
     <Compile Include="ViewModels\LichSuMuaHangViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
     <Compile Include="ViewModels\ThanhToanViewModel.cs" />
     <Compile Include="ViewModels\VariantViewModel.cs" />
@@ -528,6 +530,9 @@
     <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\LichSuMuaHang_62131904\LichSuMuaHang.cshtml" />
     <Content Include="Views\ThanhToan_62131904\ThanhToan.cshtml" />
+    <Content Include="Views\AccountCustomer_62131904\DoiMatKhau.cshtml" />
+    <Content Include="Views\AccountCustomer_62131904\ResetPassword.cshtml" />
+    <Content Include="Views\AccountCustomer_62131904\ConfirmResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h2>Đăng kí tài khoản</h2>
+<h2>Đăng ký tài khoản</h2>
 
 @using (Html.BeginForm("Register", "AccountCustomer_62131904", FormMethod.Post))
 {
@@ -36,8 +36,14 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.NgaySinh, "Ngày sinh")
+        @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control", @type = "date" })
+        @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.Password)
-        @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu của bạn" })
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control", id = "password", placeholder = "Nhập mật khẩu của bạn" })
         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
     </div>
 
@@ -48,7 +54,7 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+        <button type="submit" class="btn btn-primary" id="registerBtn">Đăng ký</button>
     </div>
 
     if (ViewData.ModelState.IsValid == false)
@@ -60,13 +66,14 @@
 }
 
 <script>
+    // Thêm sự kiện kiểm tra mật khẩu khi nhấn nút Đăng ký
     document.getElementById("registerBtn").addEventListener("click", function (e) {
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
 
-        // So sánh mật khẩu và mật khẩu nhập lại
+        // So sánh mật khẩu và mật khẩu xác nhận
         if (password !== confirmPassword) {
-            e.preventDefault(); // Ngăn form gửi đi
+            e.preventDefault(); // Ngăn form gửi đi nếu mật khẩu không khớp
             document.getElementById("passwordMismatch").style.display = "block"; // Hiển thị lỗi
         } else {
             document.getElementById("passwordMismatch").style.display = "none"; // Ẩn lỗi nếu khớp
@@ -81,4 +88,24 @@
         margin: 0;
         padding: 0;
     }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .text-danger {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
 </style>

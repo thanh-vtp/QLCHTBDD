@@ -288,8 +288,12 @@
           <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="15" />
           <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="NgaySinh" Type="date" />
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="ResetPasswordToken" Type="nvarchar" MaxLength="255" />
+          <Property Name="TokenExpiration" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="KhoiLuong">
@@ -694,7 +698,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietDo__MaDon__23F3538A">
+        <Association Name="FK__ChiTietDo__MaDon__68D28DBC">
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -736,7 +740,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietDon__MaBT__24E777C3">
+        <Association Name="FK__ChiTietDon__MaBT__69C6B1F5">
           <End Role="BienTheSanPham" Type="Self.BienTheSanPham" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -750,7 +754,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietGi__MaGio__1F2E9E6D">
+        <Association Name="FK__ChiTietGi__MaGio__5D60DB10">
           <End Role="GioHang" Type="Self.GioHang" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -764,7 +768,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietGio__MaBT__2022C2A6">
+        <Association Name="FK__ChiTietGio__MaBT__5E54FF49">
           <End Role="BienTheSanPham" Type="Self.BienTheSanPham" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -820,7 +824,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__MaKH__00AA174D">
+        <Association Name="FK__DonHang__MaKH__6501FCD8">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -832,7 +836,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__MaTrang__019E3B86">
+        <Association Name="FK__DonHang__MaTrang__65F62111">
           <End Role="TrangThaiDonHang" Type="Self.TrangThaiDonHang" Multiplicity="0..1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -844,7 +848,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GioHang__MaKH__0D0FEE32">
+        <Association Name="FK__GioHang__MaKH__59904A2C">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -884,7 +888,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KhachHang__RoleI__69C6B1F5">
+        <Association Name="FK__KhachHang__RoleI__54CB950F">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1697,7 +1701,7 @@
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietDo__MaDon__23F3538A" Association="Self.FK__ChiTietDo__MaDon__23F3538A">
+          <AssociationSet Name="FK__ChiTietDo__MaDon__68D28DBC" Association="Self.FK__ChiTietDo__MaDon__68D28DBC">
             <End Role="DonHang" EntitySet="DonHang" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
           </AssociationSet>
@@ -1709,15 +1713,15 @@
             <End Role="ThongSoCamera" EntitySet="ThongSoCamera" />
             <End Role="ChiTietDoPhanGiaiCamera" EntitySet="ChiTietDoPhanGiaiCamera" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietDon__MaBT__24E777C3" Association="Self.FK__ChiTietDon__MaBT__24E777C3">
+          <AssociationSet Name="FK__ChiTietDon__MaBT__69C6B1F5" Association="Self.FK__ChiTietDon__MaBT__69C6B1F5">
             <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietGi__MaGio__1F2E9E6D" Association="Self.FK__ChiTietGi__MaGio__1F2E9E6D">
+          <AssociationSet Name="FK__ChiTietGi__MaGio__5D60DB10" Association="Self.FK__ChiTietGi__MaGio__5D60DB10">
             <End Role="GioHang" EntitySet="GioHang" />
             <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietGio__MaBT__2022C2A6" Association="Self.FK__ChiTietGio__MaBT__2022C2A6">
+          <AssociationSet Name="FK__ChiTietGio__MaBT__5E54FF49" Association="Self.FK__ChiTietGio__MaBT__5E54FF49">
             <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
             <End Role="ChiTietGioHang" EntitySet="ChiTietGioHang" />
           </AssociationSet>
@@ -1733,15 +1737,15 @@
             <End Role="ThongSoBienTheDienThoai" EntitySet="ThongSoBienTheDienThoai" />
             <End Role="ChiTietTinhNangCamera" EntitySet="ChiTietTinhNangCamera" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__MaKH__00AA174D" Association="Self.FK__DonHang__MaKH__00AA174D">
+          <AssociationSet Name="FK__DonHang__MaKH__6501FCD8" Association="Self.FK__DonHang__MaKH__6501FCD8">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="DonHang" EntitySet="DonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__MaTrang__019E3B86" Association="Self.FK__DonHang__MaTrang__019E3B86">
+          <AssociationSet Name="FK__DonHang__MaTrang__65F62111" Association="Self.FK__DonHang__MaTrang__65F62111">
             <End Role="TrangThaiDonHang" EntitySet="TrangThaiDonHang" />
             <End Role="DonHang" EntitySet="DonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__GioHang__MaKH__0D0FEE32" Association="Self.FK__GioHang__MaKH__0D0FEE32">
+          <AssociationSet Name="FK__GioHang__MaKH__59904A2C" Association="Self.FK__GioHang__MaKH__59904A2C">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="GioHang" EntitySet="GioHang" />
           </AssociationSet>
@@ -1753,7 +1757,7 @@
             <End Role="BienTheSanPham" EntitySet="BienTheSanPham" />
             <End Role="HinhAnhSanPham" EntitySet="HinhAnhSanPham" />
           </AssociationSet>
-          <AssociationSet Name="FK__KhachHang__RoleI__69C6B1F5" Association="Self.FK__KhachHang__RoleI__69C6B1F5">
+          <AssociationSet Name="FK__KhachHang__RoleI__54CB950F" Association="Self.FK__KhachHang__RoleI__54CB950F">
             <End Role="Role" EntitySet="Role" />
             <End Role="KhachHang" EntitySet="KhachHang" />
           </AssociationSet>
@@ -2284,21 +2288,8 @@
             <End Role="QuanTriVien" EntitySet="QuanTriViens" />
           </AssociationSet>
           <EntitySet Name="GioHangs" EntityType="QLCHTBDD_62131904Model.GioHang" />
-          <EntitySet Name="KhachHangs" EntityType="QLCHTBDD_62131904Model.KhachHang" />
-          <AssociationSet Name="FK__GioHang__MaKH__6E8B6712" Association="QLCHTBDD_62131904Model.FK__GioHang__MaKH__6E8B6712">
-            <End Role="KhachHang" EntitySet="KhachHangs" />
-            <End Role="GioHang" EntitySet="GioHangs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KhachHang__RoleI__69C6B1F5" Association="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__69C6B1F5">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="KhachHang" EntitySet="KhachHangs" />
-          </AssociationSet>
           <EntitySet Name="DonHangs" EntityType="QLCHTBDD_62131904Model.DonHang" />
           <EntitySet Name="TrangThaiDonHangs" EntityType="QLCHTBDD_62131904Model.TrangThaiDonHang" />
-          <AssociationSet Name="FK__DonHang__MaKH__00AA174D" Association="QLCHTBDD_62131904Model.FK__DonHang__MaKH__00AA174D">
-            <End Role="KhachHang" EntitySet="KhachHangs" />
-            <End Role="DonHang" EntitySet="DonHangs" />
-          </AssociationSet>
           <AssociationSet Name="FK__DonHang__MaTrang__019E3B86" Association="QLCHTBDD_62131904Model.FK__DonHang__MaTrang__019E3B86">
             <End Role="TrangThaiDonHang" EntitySet="TrangThaiDonHangs" />
             <End Role="DonHang" EntitySet="DonHangs" />
@@ -2320,6 +2311,19 @@
           <AssociationSet Name="FK__ChiTietDo__MaDon__23F3538A" Association="QLCHTBDD_62131904Model.FK__ChiTietDo__MaDon__23F3538A">
             <End Role="DonHang" EntitySet="DonHangs" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHangs" />
+          </AssociationSet>
+          <EntitySet Name="KhachHangs" EntityType="QLCHTBDD_62131904Model.KhachHang" />
+          <AssociationSet Name="FK__DonHang__MaKH__6501FCD8" Association="QLCHTBDD_62131904Model.FK__DonHang__MaKH__6501FCD8">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="DonHang" EntitySet="DonHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GioHang__MaKH__59904A2C" Association="QLCHTBDD_62131904Model.FK__GioHang__MaKH__59904A2C">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="GioHang" EntitySet="GioHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KhachHang__RoleI__54CB950F" Association="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__54CB950F">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="KhachHang" EntitySet="KhachHangs" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="BienTheSanPham">
@@ -3872,7 +3876,7 @@
           <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="QuanTriViens" Relationship="QLCHTBDD_62131904Model.FK__QuanTriVi__RoleI__5006DFF2" FromRole="Role" ToRole="QuanTriVien" />
-          <NavigationProperty Name="KhachHangs" Relationship="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__69C6B1F5" FromRole="Role" ToRole="KhachHang" />
+          <NavigationProperty Name="KhachHangs" Relationship="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__54CB950F" FromRole="Role" ToRole="KhachHang" />
         </EntityType>
         <Association Name="FK__QuanTriVi__RoleI__5006DFF2">
           <End Type="QLCHTBDD_62131904Model.Role" Role="Role" Multiplicity="1" />
@@ -3893,52 +3897,9 @@
           <Property Name="MaGioHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaKH" Type="Int32" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="KhachHang" Relationship="QLCHTBDD_62131904Model.FK__GioHang__MaKH__6E8B6712" FromRole="GioHang" ToRole="KhachHang" />
           <NavigationProperty Name="ChiTietGioHangs" Relationship="QLCHTBDD_62131904Model.FK__ChiTietGi__MaGio__1F2E9E6D" FromRole="GioHang" ToRole="ChiTietGioHang" />
+          <NavigationProperty Name="KhachHang" Relationship="QLCHTBDD_62131904Model.FK__GioHang__MaKH__59904A2C" FromRole="GioHang" ToRole="KhachHang" />
         </EntityType>
-        <EntityType Name="KhachHang">
-          <Key>
-            <PropertyRef Name="MaKH" />
-          </Key>
-          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="GioHangs" Relationship="QLCHTBDD_62131904Model.FK__GioHang__MaKH__6E8B6712" FromRole="KhachHang" ToRole="GioHang" />
-          <NavigationProperty Name="Role" Relationship="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__69C6B1F5" FromRole="KhachHang" ToRole="Role" />
-          <NavigationProperty Name="DonHangs" Relationship="QLCHTBDD_62131904Model.FK__DonHang__MaKH__00AA174D" FromRole="KhachHang" ToRole="DonHang" />
-        </EntityType>
-        <Association Name="FK__GioHang__MaKH__6E8B6712">
-          <End Type="QLCHTBDD_62131904Model.KhachHang" Role="KhachHang" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="QLCHTBDD_62131904Model.GioHang" Role="GioHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KhachHang">
-              <PropertyRef Name="MaKH" />
-            </Principal>
-            <Dependent Role="GioHang">
-              <PropertyRef Name="MaKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KhachHang__RoleI__69C6B1F5">
-          <End Type="QLCHTBDD_62131904Model.Role" Role="Role" Multiplicity="1" />
-          <End Type="QLCHTBDD_62131904Model.KhachHang" Role="KhachHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="KhachHang">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="DonHang">
           <Key>
             <PropertyRef Name="MaDonHang" />
@@ -3948,9 +3909,9 @@
           <Property Name="NgayDatHang" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TongTien" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="MaTrangThai" Type="Int32" />
-          <NavigationProperty Name="KhachHang" Relationship="QLCHTBDD_62131904Model.FK__DonHang__MaKH__00AA174D" FromRole="DonHang" ToRole="KhachHang" />
           <NavigationProperty Name="TrangThaiDonHang" Relationship="QLCHTBDD_62131904Model.FK__DonHang__MaTrang__019E3B86" FromRole="DonHang" ToRole="TrangThaiDonHang" />
           <NavigationProperty Name="ChiTietDonHangs" Relationship="QLCHTBDD_62131904Model.FK__ChiTietDo__MaDon__23F3538A" FromRole="DonHang" ToRole="ChiTietDonHang" />
+          <NavigationProperty Name="KhachHang" Relationship="QLCHTBDD_62131904Model.FK__DonHang__MaKH__6501FCD8" FromRole="DonHang" ToRole="KhachHang" />
         </EntityType>
         <EntityType Name="TrangThaiDonHang">
           <Key>
@@ -3961,18 +3922,6 @@
           <Property Name="IsActive" Type="Boolean" />
           <NavigationProperty Name="DonHangs" Relationship="QLCHTBDD_62131904Model.FK__DonHang__MaTrang__019E3B86" FromRole="TrangThaiDonHang" ToRole="DonHang" />
         </EntityType>
-        <Association Name="FK__DonHang__MaKH__00AA174D">
-          <End Type="QLCHTBDD_62131904Model.KhachHang" Role="KhachHang" Multiplicity="0..1" />
-          <End Type="QLCHTBDD_62131904Model.DonHang" Role="DonHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KhachHang">
-              <PropertyRef Name="MaKH" />
-            </Principal>
-            <Dependent Role="DonHang">
-              <PropertyRef Name="MaKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__DonHang__MaTrang__019E3B86">
           <End Type="QLCHTBDD_62131904Model.TrangThaiDonHang" Role="TrangThaiDonHang" Multiplicity="0..1" />
           <End Type="QLCHTBDD_62131904Model.DonHang" Role="DonHang" Multiplicity="*" />
@@ -4062,6 +4011,65 @@
             </Principal>
             <Dependent Role="ChiTietDonHang">
               <PropertyRef Name="MaDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ResetPasswordToken" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TokenExpiration" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="DonHangs" Relationship="QLCHTBDD_62131904Model.FK__DonHang__MaKH__6501FCD8" FromRole="KhachHang" ToRole="DonHang" />
+          <NavigationProperty Name="GioHangs" Relationship="QLCHTBDD_62131904Model.FK__GioHang__MaKH__59904A2C" FromRole="KhachHang" ToRole="GioHang" />
+          <NavigationProperty Name="Role" Relationship="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__54CB950F" FromRole="KhachHang" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK__DonHang__MaKH__6501FCD8">
+          <End Type="QLCHTBDD_62131904Model.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+          <End Type="QLCHTBDD_62131904Model.DonHang" Role="DonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="DonHang">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GioHang__MaKH__59904A2C">
+          <End Type="QLCHTBDD_62131904Model.KhachHang" Role="KhachHang" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QLCHTBDD_62131904Model.GioHang" Role="GioHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="GioHang">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KhachHang__RoleI__54CB950F">
+          <End Type="QLCHTBDD_62131904Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="QLCHTBDD_62131904Model.KhachHang" Role="KhachHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="KhachHang">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4703,21 +4711,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.KhachHang">
-              <MappingFragment StoreEntitySet="KhachHang">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DonHangs">
             <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
@@ -4757,6 +4750,25 @@
                 <ScalarProperty Name="MaBT" ColumnName="MaBT" />
                 <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
                 <ScalarProperty Name="MaChiTiet" ColumnName="MaChiTiet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="QLCHTBDD_62131904Model.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TokenExpiration" ColumnName="TokenExpiration" />
+                <ScalarProperty Name="ResetPasswordToken" ColumnName="ResetPasswordToken" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -4,49 +4,76 @@
     ViewBag.Title = "Thông Tin Tài Khoản";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 <div class="container account-info">
-    <div class="account-header text-center">
-        <img src="~/Images/avatar.png" alt="Avatar" class="avatar-img" />
-        <h2>@Model.HoTen</h2>
-    </div>
+    <h2 class="page-title">Thông Tin Tài Khoản</h2>
 
     <div class="account-details">
-        <div class="detail-item">
-            <span class="label">Họ và tên:</span>
-            <span>@Model.HoTen</span>
-        </div>
-        <div class="detail-item">
-            <span class="label">Email:</span>
-            <span>@Model.Email</span>
-        </div>
-        <div class="detail-item">
-            <span class="label">Số điện thoại:</span>
-            <span>@Model.SoDienThoai</span>
-        </div>
-        @*<div class="detail-item">
-            <span class="label">Ngày sinh:</span>
-            <span>@Model.NgaySinh?.ToString("dd/MM/yyyy") ?? "Chưa cập nhật"</span>
-        </div>*@
-        <div class="detail-item">
-            <span class="label">Địa chỉ:</span>
-            @if (@Model.DiaChi == null)
-            {
-                <span>Chưa cập nhật</span>
-            }
-            <span>@Model.DiaChi</span>
-        </div>
-    </div>
+        @using (Html.BeginForm("CapNhatThongTin", "AccountCustomer_62131904", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="text-center mt-4">
-        <a href="@Url.Action("CapNhatThongTin", "AccountCustomer_62131904")" class="btn btn-update">Cập nhật thông tin</a>
+            <div class="detail-item">
+                <span class="label">Họ và tên:</span>
+                @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control editable", @readonly = "readonly" })
+                <span class="edit-icon" onclick="enableEditing(this)">
+                    <i class="fas fa-edit"></i>
+                </span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Email:</span>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control editable", @readonly = "readonly" })
+                <span class="edit-icon" onclick="enableEditing(this)">
+                    <i class="fas fa-edit"></i>
+                </span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Số điện thoại:</span>
+                @Html.TextBoxFor(model => model.SoDienThoai, new { @class = "form-control editable", @readonly = "readonly" })
+                <span class="edit-icon" onclick="enableEditing(this)">
+                    <i class="fas fa-edit"></i>
+                </span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Địa chỉ:</span>
+                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control editable", @readonly = "readonly" })
+                <span class="edit-icon" onclick="enableEditing(this)">
+                    <i class="fas fa-edit"></i>
+                </span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Số điện thoại:</span>
+                @Html.TextBoxFor(model => model.SoDienThoai, new { @class = "form-control editable", @readonly = "readonly" })
+                <span class="edit-icon" onclick="enableEditing(this)">
+                    <i class="fas fa-edit"></i>
+                </span>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-update">Cập nhật thông tin</button>
+            </div>
+        }
     </div>
 </div>
+
+<script>
+    function enableEditing(icon) {
+        const input = icon.previousElementSibling;
+        input.removeAttribute("readonly");
+        input.focus();
+    }
+</script>
+
 
 <style>
     .container.account-info {
         max-width: 800px;
-        margin: 40px auto;
+/*        margin: 40px auto;*/
         background: #fff;
         border-radius: 8px;
         padding: 20px 30px;
@@ -55,28 +82,11 @@
         color: #333;
     }
 
-    /* Header */
-    .account-header {
-        margin-bottom: 30px;
-    }
-
-        .account-header .avatar-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            border: 2px solid #ddd;
-        }
-
-        .account-header h2 {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-
-    /* Details */
-    .account-details {
-        margin-top: 20px;
+    .page-title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
     }
 
     .detail-item {
@@ -85,6 +95,7 @@
         align-items: center;
         padding: 10px 0;
         border-bottom: 1px solid #f1f1f1;
+        position: relative;
     }
 
         .detail-item:last-child {
@@ -94,14 +105,33 @@
         .detail-item .label {
             font-weight: bold;
             color: #666;
+            flex: 1;
         }
 
-        .detail-item span {
-            color: #333;
-            text-align: right;
+    .form-control.editable {
+        flex: 2;
+        margin-left: 10px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        background-color: transparent;
+        color: #333;
+    }
+
+        .form-control.editable:focus {
+            outline: none;
+            border-bottom: 1px solid #007bff;
         }
 
-    /* Button */
+    .edit-icon {
+        margin-left: 10px;
+        color: #666;
+        cursor: pointer;
+    }
+
+        .edit-icon:hover {
+            color: #007bff;
+        }
+
     .btn-update {
         background-color: #4CAF50;
         color: #fff;
@@ -120,3 +150,12 @@
         }
 
 </style>
+
+
+<script>
+    function enableEditing(icon) {
+        const input = icon.previousElementSibling;
+        input.removeAttribute("readonly");
+        input.focus();
+    }
+</script>

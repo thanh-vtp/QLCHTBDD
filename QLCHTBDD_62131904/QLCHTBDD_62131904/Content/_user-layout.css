@@ -12,6 +12,9 @@
 
 body {
     background: linear-gradient(to bottom, #E8F5E9, #FFFFFF);
+    background-attachment: fixed; /* Giữ nền cố định khi cuộn */
+    background-repeat: no-repeat; /* Ngăn nền lặp lại */
+    background-size: cover; /* Đảm bảo nền bao phủ toàn bộ màn hình */
     color: #333; /* Màu chữ thân thiện, dễ đọc */
     font-family: 'Arial', sans-serif;
     margin: 0;

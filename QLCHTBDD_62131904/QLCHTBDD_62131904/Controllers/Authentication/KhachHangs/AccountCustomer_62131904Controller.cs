@@ -1,5 +1,6 @@
 ﻿using QLCHTBDD_62131904.Models;
 using QLCHTBDD_62131904.Services;
+using QLCHTBDD_62131904.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -32,14 +33,20 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
 
             // Tìm kiếm khách hàng
             var customer = db.KhachHangs.FirstOrDefault(c => c.Email == email);
-            if (customer == null || customer.IsActive == false )
+            if (customer == null)
             {
-                ModelState.AddModelError("", "Tài khoản không tồn tại hoặc tài khoản đã bị vô hiệu hóa.");
+                ModelState.AddModelError("", "Tài khoản không tồn tại.");
+                return View();
+            }
+
+            if (customer.IsActive == false)
+            {
+                ModelState.AddModelError("", "Tài khoản đã bị vô hiệu hóa.");
                 return View();
             }
 
             // Kiểm tra mật khẩu (có mã hóa)
-            bool isPasswordValid = Authentication_Services.VerifyPassword(customer.Password, password);
+            bool isPasswordValid = AuthenticationServices.VerifyPassword(customer.Password, password);
             if (!isPasswordValid)
             {
                 ModelState.AddModelError("", "Thông tin đăng nhập không đúng.");
@@ -72,7 +79,7 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "Email,Password,HoTen,SoDienThoai,DiaChi")] KhachHang khachHang)
+        public ActionResult Register([Bind(Include = "Email,Password,HoTen,SoDienThoai,DiaChi,NgaySinh")] KhachHang khachHang)
         {
             // Kiểm tra dữ liệu đầu vào
             if (string.IsNullOrEmpty(khachHang.Email) || string.IsNullOrEmpty(khachHang.Password)
@@ -90,7 +97,7 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
             }
 
             // Hash mật khẩu trước khi lưu
-            khachHang.Password = Authentication_Services.HashPassword(khachHang.Password);
+            khachHang.Password = AuthenticationServices.HashPassword(khachHang.Password);
             khachHang.RoleId = 2; // Gán mặc định quyền "Khách hàng"
             khachHang.CreatedOn = DateTime.Now; // Ngày tạo tài khoản
             khachHang.IsActive = true; // Mặc định kích hoạt tài khoản
@@ -103,38 +110,47 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
             return RedirectToAction("Login", "AccountCustomer_62131904");
         }
 
-        public ActionResult DetailsAccount(int userId)
+        public ActionResult DoiMatKhau()
         {
-            KhachHang khachHang = db.KhachHangs.Find(userId);
-            if (khachHang == null)
-            {
-                return HttpNotFound(); // Trả về lỗi 404
-            }
-
-            return View(khachHang);
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangePassword(int userId, string newPassword)
+        public ActionResult DoiMatKhau(string currentPassword, string newPassword, string confirmPassword)
         {
-            if (string.IsNullOrEmpty(newPassword))
+            if (string.IsNullOrEmpty(currentPassword) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
             {
-                ModelState.AddModelError("", "Mật khẩu mới không được để trống.");
+                ViewBag.Error = "Vui lòng điền đầy đủ thông tin.";
                 return View();
             }
 
-            var user = db.KhachHangs.Find(userId);
-            if (user == null)
+            if (newPassword != confirmPassword)
             {
-                return HttpNotFound();
+                ViewBag.Error = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+                return View();
             }
 
-            user.Password = Authentication_Services.HashPassword(newPassword);
-            db.Entry(user).State = EntityState.Modified;
+            int customerId = (int)Session["CustomerId"];
+            var customer = db.KhachHangs.Find(customerId);
+
+            if (customer == null)
+            {
+                ViewBag.Error = "Tài khoản không tồn tại.";
+                return View();
+            }
+
+            if (!AuthenticationServices.VerifyPassword(customer.Password, currentPassword))
+            {
+                ViewBag.Error = "Mật khẩu hiện tại không đúng.";
+                return View();
+            }
+
+            customer.Password = AuthenticationServices.HashPassword(newPassword);
             db.SaveChanges();
 
-            return RedirectToAction("DetailsAccount", "AccountCustomer_62131904");
+            ViewBag.Success = "Mật khẩu đã được đổi thành công.";
+            return View();
         }
 
         public ActionResult ChiTietKhachHang()
@@ -155,5 +171,126 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
             return View(customer);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CapNhatThongTin(KhachHang model)
+        {
+            if (Session["CustomerId"] == null)
+            {
+                return RedirectToAction("Login", "AccountCustomer_62131904");
+            }
+
+            int customerId = (int)Session["CustomerId"];
+            var customer = db.KhachHangs.FirstOrDefault(kh => kh.MaKH == customerId);
+
+            if (customer == null)
+            {
+                return HttpNotFound("Không tìm thấy khách hàng.");
+            }
+
+            // Cập nhật chỉ các trường có giá trị
+            if (!string.IsNullOrEmpty(model.HoTen))
+            {
+                customer.HoTen = model.HoTen;
+            }
+            if (!string.IsNullOrEmpty(model.Email))
+            {
+                customer.Email = model.Email;
+            }
+            if (!string.IsNullOrEmpty(model.SoDienThoai))
+            {
+                customer.SoDienThoai = model.SoDienThoai;
+            }
+            if (!string.IsNullOrEmpty(model.DiaChi))
+            {
+                customer.DiaChi = model.DiaChi;
+            }
+
+            try
+            {
+                db.SaveChanges();
+                TempData["SuccessMessage"] = "Thông tin đã được cập nhật thành công.";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi: " + ex.Message;
+            }
+
+            return RedirectToAction("ChiTietKhachHang", "AccountCustomer_62131904");
+        }
+
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                ModelState.AddModelError("", "Vui lòng nhập địa chỉ email.");
+                return View();
+            }
+
+            // Kiểm tra email không phân biệt hoa thường
+            var customer = db.KhachHangs.FirstOrDefault(c => c.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+            if (customer != null)
+            {
+                // Tạo token reset password
+                string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+                customer.ResetPasswordToken = token;
+                customer.TokenExpiration = DateTime.Now.AddHours(1);
+                db.SaveChanges();
+
+                // Gửi email reset password
+                string resetLink = Url.Action("ConfirmResetPassword", "AccountCustomer_62131904", new { token }, protocol: Request.Url.Scheme);
+                string subject = "Đặt lại mật khẩu";
+                string body = $"Vui lòng nhấn vào đường link sau để đặt lại mật khẩu: <a href='{resetLink}'>Đặt lại mật khẩu</a>";
+                EmailServices.SendEmail(email, subject, body);
+            }
+
+            TempData["SuccessMessage"] = "Nếu email tồn tại trong hệ thống, bạn sẽ nhận được hướng dẫn đặt lại mật khẩu.";
+            return RedirectToAction("ResetPassword");
+        }
+
+        public ActionResult ConfirmResetPassword(string token)
+        {
+            var customer = db.KhachHangs.FirstOrDefault(c => c.ResetPasswordToken == token && c.TokenExpiration > DateTime.Now);
+            if (customer == null)
+            {
+                TempData["ErrorMessage"] = "Token không hợp lệ hoặc đã hết hạn.";
+                return RedirectToAction("ResetPassword");
+            }
+
+            return View(new ResetPasswordViewModel { Token = token });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var customer = db.KhachHangs.FirstOrDefault(c => c.ResetPasswordToken == model.Token && c.TokenExpiration > DateTime.Now);
+            if (customer == null)
+            {
+                TempData["ErrorMessage"] = "Token không hợp lệ hoặc đã hết hạn.";
+                return RedirectToAction("ResetPassword");
+            }
+
+            // Cập nhật mật khẩu mới và làm sạch token
+            customer.Password = AuthenticationServices.HashPassword(model.NewPassword);
+            customer.ResetPasswordToken = null;
+            customer.TokenExpiration = null;
+            db.SaveChanges();
+
+            TempData["SuccessMessage"] = "Mật khẩu đã được đặt lại thành công.";
+            return RedirectToAction("Login", "AccountCustomer_62131904");
+        }
     }
 }

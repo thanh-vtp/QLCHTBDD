@@ -133,12 +133,8 @@
         <EntityTypeShape EntityType="QLCHTBDD_62131904Model.Role" Width="1.5" PointX="1" PointY="3.25" />
         <AssociationConnector Association="QLCHTBDD_62131904Model.FK__QuanTriVi__RoleI__5006DFF2" />
         <EntityTypeShape EntityType="QLCHTBDD_62131904Model.GioHang" Width="1.5" PointX="5.5" PointY="4.125" />
-        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.KhachHang" Width="1.5" PointX="3.25" PointY="3.625" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__GioHang__MaKH__6E8B6712" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__69C6B1F5" />
         <EntityTypeShape EntityType="QLCHTBDD_62131904Model.DonHang" Width="1.5" PointX="5.5" PointY="7" />
         <EntityTypeShape EntityType="QLCHTBDD_62131904Model.TrangThaiDonHang" Width="1.5" PointX="3.25" PointY="8.375" />
-        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__DonHang__MaKH__00AA174D" />
         <AssociationConnector Association="QLCHTBDD_62131904Model.FK__DonHang__MaTrang__019E3B86" />
         <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ChiTietGioHang" Width="1.5" PointX="21.375" PointY="9" />
         <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ChiTietGio__MaBT__2022C2A6" />
@@ -146,6 +142,10 @@
         <EntityTypeShape EntityType="QLCHTBDD_62131904Model.ChiTietDonHang" Width="1.5" PointX="15.375" PointY="6.625" />
         <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ChiTietDon__MaBT__24E777C3" />
         <AssociationConnector Association="QLCHTBDD_62131904Model.FK__ChiTietDo__MaDon__23F3538A" />
+        <EntityTypeShape EntityType="QLCHTBDD_62131904Model.KhachHang" Width="1.5" PointX="3.25" PointY="2.125" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__DonHang__MaKH__6501FCD8" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__GioHang__MaKH__59904A2C" />
+        <AssociationConnector Association="QLCHTBDD_62131904Model.FK__KhachHang__RoleI__54CB950F" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

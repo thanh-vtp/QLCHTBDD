@@ -17,8 +17,8 @@ namespace QLCHTBDD_62131904.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
-            this.GioHangs = new HashSet<GioHang>();
             this.DonHangs = new HashSet<DonHang>();
+            this.GioHangs = new HashSet<GioHang>();
         }
     
         public int MaKH { get; set; }
@@ -27,14 +27,18 @@ namespace QLCHTBDD_62131904.Models
         public string HoTen { get; set; }
         public string SoDienThoai { get; set; }
         public string DiaChi { get; set; }
+        public Nullable<System.DateTime> NgaySinh { get; set; }
         public int RoleId { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public string ResetPasswordToken { get; set; }
+        public Nullable<System.DateTime> TokenExpiration { get; set; }
         public Nullable<bool> IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GioHangs { get; set; }
         public virtual Role Role { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }

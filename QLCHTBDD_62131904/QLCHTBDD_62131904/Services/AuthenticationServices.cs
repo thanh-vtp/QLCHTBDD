@@ -7,7 +7,7 @@ using System.Web;
 
 namespace QLCHTBDD_62131904.Services
 {
-    public class Authentication_Services
+    public class AuthenticationServices
     {
         private const int SaltSize = 16; // Kích thước salt (16 bytes)
         private const int Iterations = 10000; // Số vòng băm (càng nhiều càng bảo mật hơn)

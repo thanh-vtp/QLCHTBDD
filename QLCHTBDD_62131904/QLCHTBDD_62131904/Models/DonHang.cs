@@ -26,9 +26,9 @@ namespace QLCHTBDD_62131904.Models
         public decimal TongTien { get; set; }
         public Nullable<int> MaTrangThai { get; set; }
     
-        public virtual KhachHang KhachHang { get; set; }
         public virtual TrangThaiDonHang TrangThaiDonHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
     }
 }
