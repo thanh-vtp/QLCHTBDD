@@ -188,7 +188,7 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
                 return HttpNotFound("Không tìm thấy khách hàng.");
             }
 
-            // Cập nhật chỉ các trường có giá trị
+            // Cập nhật các trường
             if (!string.IsNullOrEmpty(model.HoTen))
             {
                 customer.HoTen = model.HoTen;
@@ -205,6 +205,10 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
             {
                 customer.DiaChi = model.DiaChi;
             }
+            if (model.NgaySinh.HasValue)
+            {
+                customer.NgaySinh = model.NgaySinh;
+            }
 
             try
             {
@@ -218,6 +222,7 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
 
             return RedirectToAction("ChiTietKhachHang", "AccountCustomer_62131904");
         }
+
 
         public ActionResult ResetPassword()
         {

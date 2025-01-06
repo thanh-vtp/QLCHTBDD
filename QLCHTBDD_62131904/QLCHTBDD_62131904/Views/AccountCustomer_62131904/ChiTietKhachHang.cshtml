@@ -47,12 +47,19 @@
             </div>
 
             <div class="detail-item">
-                <span class="label">Số điện thoại:</span>
-                @Html.TextBoxFor(model => model.SoDienThoai, new { @class = "form-control editable", @readonly = "readonly" })
+                <span class="label">Ngày sinh:</span>
+                @Html.TextBoxFor(model => model.NgaySinh, new
+                {
+                    @class = "form-control editable",
+                    type = "date",
+                    @readonly = "readonly",
+                    value = Model.NgaySinh.Value
+                })
                 <span class="edit-icon" onclick="enableEditing(this)">
                     <i class="fas fa-edit"></i>
                 </span>
             </div>
+
 
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-update">Cập nhật thông tin</button>
