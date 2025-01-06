@@ -15,9 +15,15 @@
             <div class="image-section">
                 <!-- Ảnh chính -->
                 <img id="main-image" src="@Model.HinhAnh" alt="@Model.TenSanPham" class="img-fluid main-image" />
+            </div>
 
-                <!-- Danh sách ảnh phụ -->
-                <div class="image-thumbnails mt-3">
+            <div class="sub-image">
+                <!-- Danh sách ảnh phụ (bao gồm cả ảnh chính) -->
+                <div class="image-thumbnails">
+                    <!-- Ảnh chính -->
+                    <img src="@Model.HinhAnh" alt="Ảnh chính" class="thumbnail-image active" onclick="updateMainImage(this)" />
+
+                    <!-- Ảnh phụ -->
                     @foreach (var image in Model.HinhAnhPhu)
                     {
                         <img src="@image" alt="Ảnh phụ" class="thumbnail-image" onclick="updateMainImage(this)" />
@@ -33,13 +39,13 @@
                 <div class="info-section">
                     <h4>Chọn ROM:</h4>
                     <div class="rom-options">
-                        @foreach (var variant in Model.Variants)
+                        @foreach (var rom in Model.Variants.Select(v => v.ROM).Distinct())
                         {
                             <button class="btn rom-option"
-                                    data-price="@variant.DonGia"
-                                    data-variant-id="@variant.BienTheID"
+                                    data-price="@Model.Variants.First(v => v.ROM == rom).DonGia"
+                                    data-variant-id="@Model.Variants.First(v => v.ROM == rom).BienTheID"
                                     onclick="selectRom(this)">
-                                @variant.ROM
+                                @rom
                             </button>
                         }
                     </div>
@@ -48,14 +54,14 @@
                 <div class="info-section">
                     <h4>Chọn màu:</h4>
                     <div class="color-options">
-                        @foreach (var variant in Model.Variants)
+                        @foreach (var color in Model.Variants.Select(v => v.MauSac).Distinct())
                         {
                             <button class="btn color-option"
-                                    data-main-image="@variant.HinhAnhChinh"
-                                    data-thumbnails='@Html.Raw(Json.Encode(variant.HinhAnhPhu))'
-                                    data-variant-id="@variant.BienTheID"
+                                    data-main-image="@Model.Variants.First(v => v.MauSac == color).HinhAnhChinh"
+                                    data-thumbnails='@Html.Raw(Json.Encode(Model.Variants.First(v => v.MauSac == color).HinhAnhPhu))'
+                                    data-variant-id="@Model.Variants.First(v => v.MauSac == color).BienTheID"
                                     onclick="selectColor(this)">
-                                @variant.MauSac
+                                @color
                             </button>
                         }
                     </div>
@@ -73,7 +79,7 @@
                             {
                                 @:Liên hệ
                             }
-                        </span> đ
+                        </span>đ
                     </p>
                 </div>
             </div>
@@ -112,7 +118,14 @@
 
     /* Vùng ảnh chính */
     .image-section {
+        align-items: center;
         text-align: center;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
     }
 
     .main-image {
@@ -124,11 +137,19 @@
     }
 
     /* Vùng ảnh phụ */
+    .sub-image {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
     .image-thumbnails {
         display: flex;
         justify-content: center;
         gap: 10px;
-        margin-top: 15px;
     }
 
     .thumbnail-image {
@@ -231,37 +252,38 @@
     // Chọn ROM
     function selectRom(button) {
         const variantId = button.getAttribute("data-variant-id");
-        console.log("Mã biến thể được chọn (ROM):", variantId);
-
-        // Cập nhật giá
         const price = button.getAttribute("data-price");
-        document.getElementById("product-price").textContent = parseInt(price).toLocaleString("vi-VN");
 
-        // Cập nhật mã biến thể trong input ẩn
+        // Cập nhật giá và mã biến thể
+        document.getElementById("product-price").textContent = parseInt(price).toLocaleString("vi-VN");
         document.getElementById("BienTheID").value = variantId;
 
-        // Đánh dấu nút ROM được chọn
-        const allRomButtons = document.querySelectorAll(".rom-option");
-        allRomButtons.forEach(btn => btn.classList.remove("active"));
+        // Cập nhật nút được chọn
+        document.querySelectorAll(".rom-option").forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
     }
 
     // Chọn màu
     function selectColor(button) {
         const variantId = button.getAttribute("data-variant-id");
-        console.log("Mã biến thể được chọn (Màu):", variantId);
+        const mainImageSrc = button.getAttribute("data-main-image");
+        const thumbnails = JSON.parse(button.getAttribute("data-thumbnails"));
 
         // Cập nhật ảnh chính
-        const mainImageSrc = button.getAttribute("data-main-image");
         document.getElementById("main-image").src = mainImageSrc;
 
-        // Cập nhật danh sách ảnh phụ
-        const thumbnailImages = button.getAttribute("data-thumbnails");
-        const thumbnails = JSON.parse(thumbnailImages);
-
+        // Tạo danh sách ảnh phụ bao gồm cả ảnh chính
         const thumbnailContainer = document.querySelector(".image-thumbnails");
-        thumbnailContainer.innerHTML = ""; // Xóa các ảnh phụ cũ
+        thumbnailContainer.innerHTML = ""; // Xóa các ảnh cũ
 
+        // Thêm ảnh chính vào danh sách thumbnails
+        const mainThumbnail = document.createElement("img");
+        mainThumbnail.src = mainImageSrc;
+        mainThumbnail.className = "thumbnail-image active"; // Mặc định ảnh chính được chọn
+        mainThumbnail.onclick = () => updateMainImage(mainThumbnail);
+        thumbnailContainer.appendChild(mainThumbnail);
+
+        // Thêm ảnh phụ vào danh sách thumbnails
         thumbnails.forEach(imageSrc => {
             const thumbnail = document.createElement("img");
             thumbnail.src = imageSrc;
@@ -270,19 +292,22 @@
             thumbnailContainer.appendChild(thumbnail);
         });
 
-        // Cập nhật mã biến thể trong input ẩn
+        // Cập nhật mã biến thể
         document.getElementById("BienTheID").value = variantId;
 
-        // Đánh dấu nút màu được chọn
-        const allColorButtons = document.querySelectorAll(".color-option");
-        allColorButtons.forEach(btn => btn.classList.remove("active"));
+        // Cập nhật nút được chọn
+        document.querySelectorAll(".color-option").forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
     }
+
 
     // Cập nhật ảnh chính khi nhấn vào ảnh phụ
     function updateMainImage(thumbnail) {
         const mainImage = document.getElementById("main-image");
         mainImage.src = thumbnail.src;
-    }
 
+        // Làm nổi bật ảnh được chọn
+        document.querySelectorAll(".thumbnail-image").forEach(img => img.classList.remove("active"));
+        thumbnail.classList.add("active");
+    }
 </script>

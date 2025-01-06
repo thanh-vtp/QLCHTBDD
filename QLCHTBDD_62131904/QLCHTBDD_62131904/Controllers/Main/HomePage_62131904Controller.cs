@@ -36,13 +36,16 @@ namespace QLCHTBDD_62131904.Controllers.Main
                     .SelectMany(bt => bt.HinhAnhSanPhams)
                     .Where(ha => ha.AnhChinh == true)
                     .Select(ha => ha.DuongDanAnh)
-                     .FirstOrDefault() ?? "~/Images/logo-login.jpg",
-                Variants = sp.BienTheSanPhams.Select(bt => new VariantViewModel
-                {
-                    ROM = bt.ROM.DungLuong,
-                    DonGia = bt.DonGia,
-                    BienTheID = bt.MaBT
-                }).ToList()
+                    .FirstOrDefault() ?? "~/Images/logo-login.jpg",
+                Variants = sp.BienTheSanPhams
+                    .GroupBy(bt => bt.ROM.DungLuong) // Nhóm theo ROM để loại bỏ lặp
+                    .Select(g => new VariantViewModel
+                    {
+                        ROM = g.Key,
+                        DonGia = g.FirstOrDefault().DonGia,
+                        BienTheID = g.FirstOrDefault().MaBT
+                    })
+                    .ToList()
             })
             .ToList();
 
@@ -70,23 +73,26 @@ namespace QLCHTBDD_62131904.Controllers.Main
                         .Where(ha => ha.AnhChinh == false)
                         .Select(ha => ha.DuongDanAnh)
                         .ToList(),
-                    // Lấy danh sách các biến thể
-                    Variants = sp.BienTheSanPhams.Select(bt => new VariantViewModel
-                    {
-                        RAM = bt.RAM.DungLuong,
-                        ROM = bt.ROM.DungLuong,
-                        MauSac = bt.MauSac.TenMau,
-                        DonGia = bt.DonGia,
-                        BienTheID = bt.MaBT,
-                        HinhAnhChinh = bt.HinhAnhSanPhams
-                            .Where(ha => ha.AnhChinh == true)
-                            .Select(ha => ha.DuongDanAnh)
-                            .FirstOrDefault() ?? "~/Images/logo-login.jpg",
-                        HinhAnhPhu = bt.HinhAnhSanPhams
-                            .Where(ha => ha.AnhChinh == false)
-                            .Select(ha => ha.DuongDanAnh)
-                            .ToList()
-                    }).ToList()
+                    // Lấy danh sách các biến thể, lọc theo màu và ROM
+                    Variants = sp.BienTheSanPhams
+                        .GroupBy(bt => new { bt.ROM.DungLuong, bt.MauSac.TenMau }) // Nhóm theo ROM và màu
+                        .Select(g => new VariantViewModel
+                        {
+                            RAM = g.FirstOrDefault().RAM.DungLuong,
+                            ROM = g.Key.DungLuong,
+                            MauSac = g.Key.TenMau,
+                            DonGia = g.FirstOrDefault().DonGia,
+                            BienTheID = g.FirstOrDefault().MaBT,
+                            HinhAnhChinh = g.FirstOrDefault().HinhAnhSanPhams
+                                .Where(ha => ha.AnhChinh == true)
+                                .Select(ha => ha.DuongDanAnh)
+                                .FirstOrDefault() ?? "~/Images/logo-login.jpg",
+                            HinhAnhPhu = g.FirstOrDefault().HinhAnhSanPhams
+                                .Where(ha => ha.AnhChinh == false)
+                                .Select(ha => ha.DuongDanAnh)
+                                .ToList()
+                        })
+                        .ToList()
                 })
                 .FirstOrDefault();
 

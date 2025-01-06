@@ -22,7 +22,7 @@
 
             <!-- Thanh tìm kiếm -->
             <div class="search-bar">
-                <input type="text" class="form-control" placeholder="Tìm kiếm đơn hàng" />
+                <input type="text" class="form-control" placeholder="Bạn tìm gì..." />
             </div>
 
             <!-- Nút điều hướng -->
@@ -44,32 +44,26 @@
                 <div class="sidebar-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="@Url.Action( "ChiTietGioHang", "GioHang_62131904")">
+                            <a class="nav-link @(Request.RawUrl.Contains(Url.Action("ChiTietGioHang", "GioHang_62131904")) ? "active" : "")"
+                               href="@Url.Action("ChiTietGioHang", "GioHang_62131904")">
                                 <i class="fas fa-home"></i> Trang chủ
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("LichSuMuaHang", "LichSuMuaHang_62131904")">
+                            <a class="nav-link @(Request.RawUrl.Contains(Url.Action("LichSuMuaHang", "LichSuMuaHang_62131904")) ? "active" : "")"
+                               href="@Url.Action("LichSuMuaHang", "LichSuMuaHang_62131904")">
                                 <i class="fas fa-history"></i> Lịch sử mua hàng
                             </a>
                         </li>
-                        @*<li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-box"></i> Tra cứu bảo hành
-                                </a>
-                            </li>*@
-                        @*<li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-gift"></i> Ưu đãi của bạn
-                                </a>
-                            </li>*@
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action( "ChiTietKhachHang", "AccountCustomer_62131904")">
+                            <a class="nav-link @(Request.RawUrl.Contains(Url.Action("ChiTietKhachHang", "AccountCustomer_62131904")) ? "active" : "")"
+                               href="@Url.Action("ChiTietKhachHang", "AccountCustomer_62131904")">
                                 <i class="fas fa-user"></i> Tài khoản của bạn
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Logout", "AccountCustomer_62131904")">
+                            <a class="nav-link @(Request.RawUrl.Contains(Url.Action("Logout", "AccountCustomer_62131904")) ? "active" : "")"
+                               href="@Url.Action("Logout", "AccountCustomer_62131904")">
                                 <i class="fas fa-sign-out-alt"></i> Thoát tài khoản
                             </a>
                         </li>

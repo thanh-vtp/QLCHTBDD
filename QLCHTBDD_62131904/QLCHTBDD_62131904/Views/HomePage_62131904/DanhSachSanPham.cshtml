@@ -26,19 +26,19 @@
                                     <h6 class="card-title text-truncate">@product.TenSanPham</h6>
                                     <small class="text-muted">Độ phân giải: @product.DoPhanGiaiManHinh</small><br />
                                     <small class="text-muted">Kích thước: @product.KichThuocManHinh</small>
-                                    <p class="">
+                                    <div class="action-change-rom">
                                         <strong>Chọn ROM:</strong>
                                         <div class="rom-options">
                                             @foreach (var variant in product.Variants)
                                             {
                                                 <buttony class="btn btn-outline-secondary btn-sm rom-option"
-                                                        data-price="@variant.DonGia"
-                                                        onclick="updatePrice(this)">
+                                                         data-price="@variant.DonGia"
+                                                         onclick="updatePrice(this, event)">
                                                     @variant.ROM
                                                 </buttony>
                                             }
                                         </div>
-                                    </p>
+                                    </div>
                                     <p class="card-text text-danger">
                                         Giá:
                                         <span class="price">
@@ -80,7 +80,11 @@
 </div>
 
 <script>
-    function updatePrice(button) {
+    function updatePrice(button, event) {
+        // Ngăn chặn sự kiện mặc định của thẻ <a> nếu nút ROM được nhấn
+        event.stopPropagation(); // Ngăn sự kiện nổi lên các phần tử cha
+        event.preventDefault(); // Ngăn điều hướng mặc định của thẻ <a>
+
         // Lấy giá từ thuộc tính data-price
         const price = button.getAttribute('data-price');
 
@@ -89,101 +93,175 @@
         const priceElement = card.querySelector('.price');
 
         // Cập nhật giá hiển thị
-        priceElement.textContent = parseInt(price).toLocaleString() + " đ";
+        priceElement.textContent = parseInt(price).toLocaleString("vi-VN") + " đ";
     }
+
+    // Ngăn thẻ <a> điều hướng khi bất kỳ nút nào bên trong được click
+    document.addEventListener("DOMContentLoaded", function () {
+        const romOptions = document.querySelectorAll(".rom-option");
+        romOptions.forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+            });
+        });
+    });
 </script>
 
 
 <style>
-    /* Card có dữ liệu */
-    .card { 
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        overflow: hidden;
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
+ /* Card sản phẩm */
+.card {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #fff;
+}
 
-    .card-product {
-        height: 500px;
-    }
+.mb-4{
+    margin-bottom: 0px !important;
+}
 
-    .card-body {
-        padding: 5px;
-    }
+/* Layout của các cột trong hàng */
+.row > .col-lg-3,
+.row > .col-md-4,
+.row > .col-sm-6 {
+    padding: 5px; /* Giảm khoảng cách giữa các thẻ */
+}
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
+/* Nội dung card */
+.card-product {
+    height: 500px;
+}
 
-    .image-container {
-        padding: 10px;
-    }
+/* Hình ảnh sản phẩm */
+.image-container {
+    padding: 10px;
+}
 
-    .card-img-top {
-        height: 190px;
-        object-fit: cover;
-    }
+.card-img-top {
+    height: 190px;
+    object-fit: cover;
+    border-radius: 5px;
+}
 
-    /* Shimmer loading */
-    .shimmer {
-        background-color: #f6f6f6;
-        border-radius: 8px;
-        overflow: hidden;
-    }
+/* Nội dung của card */
+.card-body {
+    padding: 5px;
+}
 
-    .shimmer-img {
-        width: 100%;
-        height: 200px;
-        background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
-        background-size: 200% 100%;
-        animation: shimmer-loading 1.5s infinite;
-    }
+/* Hiệu ứng hover cho card */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
 
-    .shimmer-text {
-        height: 15px;
-        margin: 10px 0;
-        background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
-        background-size: 200% 100%;
-        animation: shimmer-loading 1.5s infinite;
-    }
+/* ROM Button */
+.action-change-rom {
+    margin: 10px 0px;
+}
 
-    .shimmer-title {
-        height: 20px;
-        width: 60%;
+.rom-options {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.rom-option {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.rom-option:hover {
+    background-color: #f0f0f0;
+    border-color: #007bff;
+    transform: scale(1.05);
+}
+
+.rom-option:focus {
+    outline: none;
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Giá */
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    margin-top: 5px;
+}
+
+/* Hiển thị hover với nút ROM không ảnh hưởng đến card */
+.rom-option:hover {
+    transform: scale(1.1);
+}
+
+/* Shimmer loading */
+.shimmer {
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.shimmer-img {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer-loading 1.5s infinite;
+}
+
+.shimmer-text {
+    height: 15px;
+    margin: 10px 0;
+    background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer-loading 1.5s infinite;
+}
+
+.shimmer-title {
+    height: 20px;
+    width: 60%;
+    margin-bottom: 10px; /* Giảm khoảng cách giữa các dòng shimmer */
+}
+
+.shimmer-line {
+    width: 80%;
+    height: 15px;
+    margin-bottom: 5px; /* Giảm khoảng cách giữa các dòng shimmer */
+}
+
+/* Animation shimmer */
+@@keyframes shimmer-loading {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive */
+@@media (max-width: 768px) {
+    .card {
         margin-bottom: 15px;
     }
 
-    .shimmer-line {
-        width: 80%;
-        height: 15px;
-        margin-bottom: 8px;
+    .card-product {
+        height: auto;
     }
+}
 
-    /* Animation shimmer */
-    @@keyframes shimmer-loading {
-        0% {
-            background-position: -200% 0;
-        }
-
-        100% {
-            background-position: 200% 0;
-        }
-    }
-
-    /* ROM Button */
-    .rom-option {
-        margin: 2px;
-        padding: 5px 10px;
-    }
-
-    /* Responsive */
-    @@media (max-width: 768px) {
-        .card {
-            margin-bottom: 20px;
-        }
-    }
 </style>
 
 

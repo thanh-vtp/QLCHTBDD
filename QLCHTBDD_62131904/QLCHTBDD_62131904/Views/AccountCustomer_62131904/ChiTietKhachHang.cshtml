@@ -1,16 +1,122 @@
 ﻿@model QLCHTBDD_62131904.Models.KhachHang
 
 @{
-    ViewBag.Title = "ChiTietKhachHang";
+    ViewBag.Title = "Thông Tin Tài Khoản";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<div class="container">
-    <h1>Thông tin khách hàng</h1>
-    <p><strong>Tên khách hàng:</strong> @Model.HoTen</p>
-    <p><strong>Email:</strong> @Model.Email</p>
-    <p><strong>Số điện thoại:</strong> @Model.SoDienThoai</p>
-    <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
+<div class="container account-info">
+    <div class="account-header text-center">
+        <img src="~/Images/avatar.png" alt="Avatar" class="avatar-img" />
+        <h2>@Model.HoTen</h2>
+    </div>
+
+    <div class="account-details">
+        <div class="detail-item">
+            <span class="label">Họ và tên:</span>
+            <span>@Model.HoTen</span>
+        </div>
+        <div class="detail-item">
+            <span class="label">Email:</span>
+            <span>@Model.Email</span>
+        </div>
+        <div class="detail-item">
+            <span class="label">Số điện thoại:</span>
+            <span>@Model.SoDienThoai</span>
+        </div>
+        @*<div class="detail-item">
+            <span class="label">Ngày sinh:</span>
+            <span>@Model.NgaySinh?.ToString("dd/MM/yyyy") ?? "Chưa cập nhật"</span>
+        </div>*@
+        <div class="detail-item">
+            <span class="label">Địa chỉ:</span>
+            @if (@Model.DiaChi == null)
+            {
+                <span>Chưa cập nhật</span>
+            }
+            <span>@Model.DiaChi</span>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("CapNhatThongTin", "AccountCustomer_62131904")" class="btn btn-update">Cập nhật thông tin</a>
+    </div>
 </div>
 
-@Html.ActionLink("Đăng xuất", "Logout", "AccountCustomer_62131904", null, new { @class = "btn btn-outline-dark mx-1" })
+<style>
+    .container.account-info {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 8px;
+        padding: 20px 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    /* Header */
+    .account-header {
+        margin-bottom: 30px;
+    }
+
+        .account-header .avatar-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .account-header h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+    /* Details */
+    .account-details {
+        margin-top: 20px;
+    }
+
+    .detail-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item .label {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .detail-item span {
+            color: #333;
+            text-align: right;
+        }
+
+    /* Button */
+    .btn-update {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+
+        .btn-update:hover {
+            background-color: #388E3C;
+            transform: scale(1.05);
+        }
+
+</style>
