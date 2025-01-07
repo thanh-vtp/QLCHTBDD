@@ -1,0 +1,113 @@
+﻿/* Đảm bảo layout tổng thể */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ẩn cuộn tổng thể */
+}
+
+.container-wrapper {
+    display: flex;
+    flex: 1; /* Đẩy Footer xuống dưới */
+    overflow: hidden;
+}
+/* Sidebar styles */
+.sidebar {
+    width: 300px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 15px; /* Giảm padding tổng thể */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Khoảng cách giữa các phần tử */
+}
+
+    .sidebar a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px; /* Điều chỉnh padding trong thẻ a */
+        display: block;
+        border-radius: 4px; /* Bo tròn các đường viền */
+        transition: background-color 0.3s;
+    }
+
+        .sidebar a:hover {
+            background-color: #495057; /* Thay đổi màu nền khi hover */
+        }
+
+    .sidebar .dropdown-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px; /* Khoảng cách cho nút dropdown */
+        cursor: pointer;
+        font-size: 16px;
+        outline: none;
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 4px; /* Bo góc */
+        transition: background-color 0.3s;
+    }
+
+        .sidebar .dropdown-btn:hover,
+        .sidebar .dropdown-btn.active {
+            background-color: #495057; /* Màu nền khi hover hoặc active */
+        }
+
+    .sidebar .dropdown-container {
+        /*padding-left: 20px;*/ /* Khoảng cách lùi vào cho nội dung dropdown */
+        display: none;
+        margin-top: 5px; /* Khoảng cách với nút dropdown */
+    }
+
+        .sidebar .dropdown-container a {
+            color: #adb5bd;
+            padding: 8px 15px; /* Khoảng cách cho các liên kết trong dropdown */
+            text-decoration: none;
+            display: block;
+            border-radius: 4px; /* Bo góc */
+            transition: background-color 0.3s;
+        }
+
+            .sidebar .dropdown-container a:hover {
+                color: #fff;
+                background-color: #495057; /* Màu nền khi hover */
+            }
+
+    /* Khoảng cách giữa các phần */
+    .sidebar .navbar-brand {
+        margin-bottom: 20px; /* Khoảng cách giữa logo và nội dung dưới */
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+    }
+
+
+/* Content và Footer Styles */
+.content-footer {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Chiếm không gian linh hoạt */
+    overflow: hidden;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto; /* Chỉ Content cuộn */
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+#footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    flex-shrink: 0; /* Đảm bảo Footer không co lại */
+}

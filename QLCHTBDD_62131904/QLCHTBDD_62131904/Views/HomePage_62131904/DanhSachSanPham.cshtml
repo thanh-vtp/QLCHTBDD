@@ -5,79 +5,98 @@
     ViewBag.Title = "Danh Sách Sản Phẩm";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-
-<div class="container">
-    <div class="row">
-        @if (Model != null && Model.Any())
-        {
-            foreach (var product in Model)
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<div class="container-main">
+    <div class="container">
+        <div class="row">
+            <div class="main-header">
+                <!-- Nút điều hướng -->
+                <div class="nav-icons d-flex align-items-center">
+                    <a href="#" class="btn btn-outline-primary mx-1 filter-products">
+                        <i class="fas fa-filter"></i> Lọc
+                    </a>
+                    <a href="@Url.Action("SanPhamTheoThuongHieu", "HomePage_62131904", new { thuongHieu = "Apple" })" class="btn btn-outline-dark mx-1">iPhone</a>
+                    <a href="@Url.Action("SanPhamTheoThuongHieu", "HomePage_62131904", new { thuongHieu = "Xiaomi" })" class="btn btn-outline-dark mx-1">Xiaomi</a>
+                    <a href="@Url.Action("SanPhamTheoThuongHieu", "HomePage_62131904", new { thuongHieu = "Samsung" })" class="btn btn-outline-dark mx-1">Samsung</a>
+                    <a href="@Url.Action("SanPhamTheoThuongHieu", "HomePage_62131904", new { thuongHieu = "Sony" })" class="btn btn-outline-dark mx-1">Sony</a>
+                    <a href="@Url.Action("SanPhamTheoThuongHieu", "HomePage_62131904", new { thuongHieu = "Asus" })" class="btn btn-outline-dark mx-1">Asus</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model != null && Model.Any())
             {
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <!-- Card sản phẩm -->
-                    <a href="@Url.Action("ChiTietSanPham", "HomePage_62131904", new { id = product.MaSanPham })" class="text-decoration-none">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-product">
-                                <!-- Hình ảnh sản phẩm -->
-                                <div class="image-container">
-                                    <img class="card-img-top" src="@product.HinhAnh" alt="@product.TenSanPham" />
-                                </div>
-                                <!-- Nội dung sản phẩm -->
-                                <div class="card-body">
-                                    <h6 class="card-title text-truncate">@product.TenSanPham</h6>
-                                    <small class="text-muted">Độ phân giải: @product.DoPhanGiaiManHinh</small><br />
-                                    <small class="text-muted">Kích thước: @product.KichThuocManHinh</small>
-                                    <div class="action-change-rom">
-                                        <strong>Chọn ROM:</strong>
-                                        <div class="rom-options">
-                                            @foreach (var variant in product.Variants)
-                                            {
-                                                <buttony class="btn btn-outline-secondary btn-sm rom-option"
-                                                         data-price="@variant.DonGia"
-                                                         onclick="updatePrice(this, event)">
-                                                    @variant.ROM
-                                                </buttony>
-                                            }
-                                        </div>
+                foreach (var product in Model)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <!-- Card sản phẩm -->
+                        <a href="@Url.Action("ChiTietSanPham", "HomePage_62131904", new { id = product.MaSanPham })" class="text-decoration-none">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-product">
+                                    <!-- Hình ảnh sản phẩm -->
+                                    <div class="image-container">
+                                        <img class="card-img-top" src="@product.HinhAnh" alt="@product.TenSanPham" />
                                     </div>
-                                    <p class="card-text text-danger">
-                                        Giá:
-                                        <span class="price">
-                                            @if (product.Variants != null && product.Variants.Any())
-                                            {
-                                                @product.Variants.First().DonGia.ToString("N0")
-                                            }
-                                            else
-                                            {
-                                                @:Liên hệ
-                                            }
-                                        </span>
-                                    </p>
+                                    <!-- Nội dung sản phẩm -->
+                                    <div class="card-body">
+                                        <h6 class="card-title text-truncate">@product.TenSanPham</h6>
+                                        <small class="text-muted">Độ phân giải: @product.DoPhanGiaiManHinh</small><br />
+                                        <small class="text-muted">Kích thước: @product.KichThuocManHinh</small>
+                                        <div class="action-change-rom">
+                                            <strong>Chọn ROM:</strong>
+                                            <div class="rom-options">
+                                                @foreach (var variant in product.Variants)
+                                                {
+                                                    <buttony class="btn btn-outline-secondary btn-sm rom-option"
+                                                             data-price="@variant.DonGia"
+                                                             onclick="updatePrice(this, event)">
+                                                        @variant.ROM
+                                                    </buttony>
+                                                }
+                                            </div>
+                                        </div>
+                                        <p class="card-text text-danger">
+                                            Giá:
+                                            <span class="price">
+                                                @if (product.Variants != null && product.Variants.Any())
+                                                {
+                                                    @product.Variants.First().DonGia.ToString("N0")
+                                                }
+                                                else
+                                                {
+                                                    @:Liên hệ
+                                                }
+                                            </span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                }
             }
-        }
-        else
-        {
-            for (int i = 0; i < 8; i++)
+            else
             {
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="card shimmer mb-4 shadow-sm">
-                        <div class="shimmer-img"></div>
-                        <div class="card-body">
-                            <div class="shimmer-text shimmer-title"></div>
-                            <div class="shimmer-text shimmer-line"></div>
-                            <div class="shimmer-text shimmer-line"></div>
-                            <div class="shimmer-text shimmer-line"></div>
+                for (int i = 0; i < 8; i++)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card shimmer mb-4 shadow-sm">
+                            <div class="shimmer-img"></div>
+                            <div class="card-body">
+                                <div class="shimmer-text shimmer-title"></div>
+                                <div class="shimmer-text shimmer-line"></div>
+                                <div class="shimmer-text shimmer-line"></div>
+                                <div class="shimmer-text shimmer-line"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
-        }
+        </div>
     </div>
 </div>
+
+
 
 <script>
     function updatePrice(button, event) {
@@ -110,158 +129,192 @@
 
 
 <style>
- /* Card sản phẩm */
-.card {
-    position: relative;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    background-color: #fff;
-}
 
-.mb-4{
-    margin-bottom: 0px !important;
-}
-
-/* Layout của các cột trong hàng */
-.row > .col-lg-3,
-.row > .col-md-4,
-.row > .col-sm-6 {
-    padding: 5px; /* Giảm khoảng cách giữa các thẻ */
-}
-
-/* Nội dung card */
-.card-product {
-    height: 500px;
-}
-
-/* Hình ảnh sản phẩm */
-.image-container {
-    padding: 10px;
-}
-
-.card-img-top {
-    height: 190px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-/* Nội dung của card */
-.card-body {
-    padding: 5px;
-}
-
-/* Hiệu ứng hover cho card */
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* ROM Button */
-.action-change-rom {
-    margin: 10px 0px;
-}
-
-.rom-options {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    margin-top: 5px;
-}
-
-.rom-option {
-    padding: 5px 10px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.rom-option:hover {
-    background-color: #f0f0f0;
-    border-color: #007bff;
-    transform: scale(1.05);
-}
-
-.rom-option:focus {
-    outline: none;
-    background-color: #007bff;
-    color: #fff;
-}
-
-/* Giá */
-.price {
-    font-size: 18px;
-    font-weight: bold;
-    color: red;
-    margin-top: 5px;
-}
-
-/* Hiển thị hover với nút ROM không ảnh hưởng đến card */
-.rom-option:hover {
-    transform: scale(1.1);
-}
-
-/* Shimmer loading */
-.shimmer {
-    background-color: #f6f6f6;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.shimmer-img {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
-    background-size: 200% 100%;
-    animation: shimmer-loading 1.5s infinite;
-}
-
-.shimmer-text {
-    height: 15px;
-    margin: 10px 0;
-    background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
-    background-size: 200% 100%;
-    animation: shimmer-loading 1.5s infinite;
-}
-
-.shimmer-title {
-    height: 20px;
-    width: 60%;
-    margin-bottom: 10px; /* Giảm khoảng cách giữa các dòng shimmer */
-}
-
-.shimmer-line {
-    width: 80%;
-    height: 15px;
-    margin-bottom: 5px; /* Giảm khoảng cách giữa các dòng shimmer */
-}
-
-/* Animation shimmer */
-@@keyframes shimmer-loading {
-    0% {
-        background-position: -200% 0;
+    .container-main {
+        background-color: #FFFFFF;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        border-radius: 8px;
     }
-    100% {
-        background-position: 200% 0;
-    }
-}
 
-/* Responsive */
-@@media (max-width: 768px) {
+   .filter-products {
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        padding: 8px 15px;
+        display: flex;
+        align-items: center;
+        gap: 5px; 
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .filter-products i {
+        font-size: 1rem;
+    }
+
+    .main-header {
+        width: 1200px;
+        /*    margin: auto;*/
+        padding: 10px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Card sản phẩm */
     .card {
-        margin-bottom: 15px;
+        position: relative;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        background-color: #fff;
     }
 
+    .mb-4 {
+        margin-bottom: 0px !important;
+    }
+
+    /* Layout của các cột trong hàng */
+    .row > .col-lg-3,
+    .row > .col-md-4,
+    .row > .col-sm-6 {
+        padding: 5px; /* Giảm khoảng cách giữa các thẻ */
+    }
+
+    /* Nội dung card */
     .card-product {
-        height: auto;
+        height: 500px;
     }
-}
 
+    /* Hình ảnh sản phẩm */
+    .image-container {
+        padding: 10px;
+    }
+
+    .card-img-top {
+        height: 190px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    /* Nội dung của card */
+    .card-body {
+        padding: 5px;
+    }
+
+    /* Hiệu ứng hover cho card */
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ROM Button */
+    .action-change-rom {
+        margin: 10px 0px;
+    }
+
+    .rom-options {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        margin-top: 5px;
+    }
+
+    .rom-option {
+        padding: 5px 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+        .rom-option:hover {
+            background-color: #f0f0f0;
+            border-color: #007bff;
+            transform: scale(1.05);
+        }
+
+        .rom-option:focus {
+            outline: none;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+    /* Giá */
+    .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: red;
+        margin-top: 5px;
+    }
+
+    /* Hiển thị hover với nút ROM không ảnh hưởng đến card */
+    .rom-option:hover {
+        transform: scale(1.1);
+    }
+
+    /* Shimmer loading */
+    .shimmer {
+        background-color: #f6f6f6;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .shimmer-img {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
+        background-size: 200% 100%;
+        animation: shimmer-loading 1.5s infinite;
+    }
+
+    .shimmer-text {
+        height: 15px;
+        margin: 10px 0;
+        background: linear-gradient(90deg, #f6f7f9 25%, #e0e0e0 50%, #f6f7f9 75%);
+        background-size: 200% 100%;
+        animation: shimmer-loading 1.5s infinite;
+    }
+
+    .shimmer-title {
+        height: 20px;
+        width: 60%;
+        margin-bottom: 10px; /* Giảm khoảng cách giữa các dòng shimmer */
+    }
+
+    .shimmer-line {
+        width: 80%;
+        height: 15px;
+        margin-bottom: 5px; /* Giảm khoảng cách giữa các dòng shimmer */
+    }
+
+    /* Animation shimmer */
+    @@keyframes shimmer-loading {
+        0% {
+            background-position: -200% 0;
+        }
+
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .card {
+            margin-bottom: 15px;
+        }
+
+        .card-product {
+            height: auto;
+        }
+    }
 </style>
 
 

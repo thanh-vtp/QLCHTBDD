@@ -66,8 +66,6 @@ namespace QLCHTBDD_62131904.Controllers.Main
             return View(sanPhamResult);
         }
 
-
-
         public ActionResult DanhSachSanPham()
         {
             var products = db.SanPhams
@@ -157,5 +155,57 @@ namespace QLCHTBDD_62131904.Controllers.Main
 
             return View(product);
         }
+
+        public ActionResult SanPhamTheoThuongHieu(string thuongHieu)
+        {
+            if (string.IsNullOrEmpty(thuongHieu))
+            {
+                TempData["Message"] = "Vui lòng chọn một thương hiệu hợp lệ.";
+                return RedirectToAction("DanhSachSanPham");
+            }
+
+            // Lọc sản phẩm theo tên thương hiệu
+            var sanPhamResult = db.SanPhams
+                .Where(sp => sp.HangSanXuat.TenHang.Equals(thuongHieu, StringComparison.OrdinalIgnoreCase))
+                .Select(sp => new ProductViewModel
+                {
+                    MaSanPham = sp.MaSP,
+                    TenSanPham = sp.TenSP,
+                    MoTa = sp.MoTa,
+                    DoPhanGiaiManHinh = sp.BienTheSanPhams
+                        .Select(bt => bt.ThongSoBienTheDienThoais
+                            .Select(ts => ts.DoPhanGiaiManHinh.TenDoPhanGiai)
+                            .FirstOrDefault())
+                        .FirstOrDefault(),
+                    KichThuocManHinh = sp.BienTheSanPhams
+                        .Select(bt => bt.ThongSoBienTheDienThoais
+                            .Select(ts => ts.KichThuocManHinh.KichThuoc)
+                            .FirstOrDefault())
+                        .FirstOrDefault(),
+                    HinhAnh = sp.BienTheSanPhams
+                        .SelectMany(bt => bt.HinhAnhSanPhams)
+                        .Where(ha => ha.AnhChinh == true)
+                        .Select(ha => ha.DuongDanAnh)
+                        .FirstOrDefault() ?? "~/Images/logo-login.jpg",
+                    Variants = sp.BienTheSanPhams
+                        .Select(bt => new VariantViewModel
+                        {
+                            BienTheID = bt.MaBT,
+                            ROM = bt.ROM.DungLuong,
+                            MauSac = bt.MauSac.TenMau,
+                            DonGia = bt.DonGia
+                        })
+                        .ToList()
+                })
+                .ToList();
+
+            if (!sanPhamResult.Any())
+            {
+                TempData["Message"] = $"Không tìm thấy sản phẩm thuộc thương hiệu {thuongHieu}.";
+            }
+
+            return View("DanhSachSanPham", sanPhamResult);
+        }
+
     }
 }

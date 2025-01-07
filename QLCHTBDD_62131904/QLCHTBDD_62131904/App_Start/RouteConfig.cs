@@ -16,7 +16,8 @@ namespace QLCHTBDD_62131904
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "HomePage_62131904", action = "DanhSachSanPham", id = UrlParameter.Optional }
+                //defaults: new { controller = "HomePage_62131904", action = "DanhSachSanPham", id = UrlParameter.Optional }
+                defaults: new { controller = "QuanLyKhachHang_62131904", action = "DanhSachKhanhHang", id = UrlParameter.Optional }
             );
         }
     }

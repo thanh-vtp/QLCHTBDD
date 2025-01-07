@@ -1,0 +1,29 @@
+﻿@model IEnumerable<QLCHTBDD_62131904.Models.KhachHang>
+
+
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "HoTen", rowsPerPage: 20);
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
+}
+
+<link href="~/Content/_page_index_projects.css" rel="stylesheet" />
+<h2>Danh sách khách hàng</h2>
+<div id="gridContent">
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-striped",
+        headerStyle: "table-header thead-light",
+        alternatingRowStyle: "table-alternate-row",
+        mode: WebGridPagerModes.Numeric,
+        columns: grid.Columns(
+
+            grid.Column("STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage), header: "STT"),
+            grid.Column("HoTen", "Họ tên", format: item => item.HoTen ?? "N/A"),
+            grid.Column("Email", "Email", format: item => item.Email ?? "N/A"),
+            grid.Column("SoDienThoai", "Số điện thoại", format: item => item.SoDienThoai ?? "N/A"),
+            grid.Column("DiaChi", "Địa chỉ", format: item => item.DiaChi ?? "N/A"),
+            grid.Column("IsActive", "Trạng thái", format: item => item.IsActive == true ? "Đang hoạt động" : "Ngừng hoạt động" )
+)
+)
+</div>

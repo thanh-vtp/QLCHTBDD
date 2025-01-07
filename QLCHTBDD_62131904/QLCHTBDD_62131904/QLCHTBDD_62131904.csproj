@@ -151,6 +151,7 @@
     <Compile Include="Controllers\Main\HomePage_62131904Controller.cs" />
     <Compile Include="Controllers\Main\LichSuMuaHang_62131904Controller.cs" />
     <Compile Include="Controllers\Main\ThanhToan_62131904Controller.cs" />
+    <Compile Include="Controllers\QuanLyKhachHangs\QuanLyKhachHang_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\BienTheSanPhams\ThongSoBienTheDienThoais_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\Cameras\ChiTietDoPhanGiaiCameras_62131904Controller.cs" />
     <Compile Include="Controllers\QuanLySanPhams\Cameras\ChiTietTinhNangCameras_62131904Controller.cs" />
@@ -425,11 +426,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\_admin-layout.css" />
     <Content Include="Content\_pages_sanpham.css" />
     <Content Include="Content\_pages_thongsokithuat.css" />
     <Content Include="Content\_page_hinhanhsp.css" />
     <Content Include="Content\_page_index_projects.css" />
-    <Content Include="Content\_styleAdmin.css" />
     <Content Include="Content\_main-layout.css" />
     <Content Include="Content\_user-layout.css" />
     <Content Include="favicon.ico" />
@@ -473,7 +474,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\_styleAdmin.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -534,11 +534,10 @@
     <Content Include="Views\AccountCustomer_62131904\ResetPassword.cshtml" />
     <Content Include="Views\AccountCustomer_62131904\ConfirmResetPassword.cshtml" />
     <Content Include="Views\HomePage_62131904\TimKiemSanPham.cshtml" />
+    <Content Include="Views\QuanLyKhachHang_62131904\DanhSachKhanhHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Acount_62131904\" />
-    <Folder Include="Views\QuanTriViens_62131904\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

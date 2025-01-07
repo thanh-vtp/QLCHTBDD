@@ -5,82 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - Admin Panel</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/_styleAdmin.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/_admin-layout.css" rel="stylesheet" />
+    </style>
 </head>
 <body>
-    <div class="sidebar">
-        @Html.ActionLink("Admin Panel", "Index", "SanPhams_62131904", null, new { @class = "navbar-brand text-center py-3" })
+    <div class="container-wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            @Html.ActionLink("Admin Panel", "Index", "SanPhams_62131904", null, new { @class = "navbar-brand text-center py-3" })
 
-        <button class="dropdown-btn">
-            Quản lý tài khoản
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            @*@Html.ActionLink("Thông tin tài khoản", "Details", "QuanTriHeThongs_62131904", null, new { @class = "a" })*@
-            @Html.ActionLink("Danh sách khách hàng", "Index", "QuanTriHeThongs_62131904", null, new { @class = "a" })
+            <button class="dropdown-btn" data-key="quan-ly-tai-khoan">
+                Quản lý tài khoản
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @*@Html.ActionLink("Thông tin tài khoản", "Details", "QuanTriHeThongs_62131904", null, new { @class = "a" })*@
+                @Html.ActionLink("Danh sách khách hàng", "DanhSachKhanhHang", "QuanLyKhachHang_62131904", null, new { @class = "a" })
+            </div>
+
+            <button class="dropdown-btn" data-key="quan-ly-san-pham">
+                Quản lý sản phẩm
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @*@Html.ActionLink("Danh sách loại sản phấm", "Index", "LoaiSanPhams_62131904", null, new { @class = "a" })*@
+                @Html.ActionLink("Danh sách sản phẩm", "Index", "SanPhams_62131904", null, new { @class = "a" })
+                @Html.ActionLink("Danh sách biến thể sản phẩm", "Index", "BienTheSanPhams_62131904", null, new { @class = "a" })
+                @Html.ActionLink("Thông số sản phẩm", "Index", "ThongSoDienThoais_62131904", null, new { @class = "a" })
+                @Html.ActionLink("Thông số biến thể sản phẩm", "Index", "ThongSoBienTheDienThoais_62131904", null, new { @class = "a" })
+                @Html.ActionLink("Hình ảnh biến thể của từng sản phẩm", "Index", "HinhAnhSanPhams_62131904", null, new { @class = "a" })
+            </div>
+
+            <button class="dropdown-btn" data-key="quan-ly-tinh-nang-camera">
+                Quản lý tính năng camera
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("Thông số camera", "Index", "ThongSoCameras_62131904", null, new { @class = "a" })
+                @Html.ActionLink("Chi tiết độ phân giải camera", "Index", "ChiTietDoPhanGiaiCameras_62131904", null, new { @class = "a" })
+                @Html.ActionLink("Chi tiết tính năng camera", "Index", "ChiTietTinhNangCameras_62131904", null, new { @class = "a" })
+            </div>
+
+            <button class="dropdown-btn" data-key="quan-ly-tinh-nang-quay-phim">
+                Quản lý tính năng quay phim
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("Thông số quay phim", "Index", "ThongSoQuayPhims_62131904", null, new { @class = "a" })
+            </div>
+
+            <button class="dropdown-btn" data-key="quan-ly-tien-ich">
+                Quản lý tiện ích
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("Tính năng đặc biệt", "Index", "ThongTinTinhNangDacBietDienThoais_62131904", null, new { @class = "a" })
+                @Html.ActionLink("Định dạng xem phim & nghe nhạc", "Index", "ThongTinDinhDangPhimVaNhacDienThoais_62131904", null, new { @class = "a" })
+            </div>
+
+            <button class="dropdown-btn" data-key="quan-ly-ket-noi">
+                Quản lý kết nối
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @Html.ActionLink("Wifi", "Index", "ThongTinWifiDienThoais_62131904", null, new { @class = "a" })
+                @Html.ActionLink("Hệ thống định vị", "Index", "ThongTinHeThongDinhViDienThoais_62131904", null, new { @class = "a" })
+            </div>
+
+            @Html.ActionLink("Đăng xuất", "Logout", "AccountAdmin_62131904", null, new { @class = "a" })
         </div>
 
-        <button class="dropdown-btn">
-            Quản lý sản phẩm
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            @*@Html.ActionLink("Danh sách loại sản phấm", "Index", "LoaiSanPhams_62131904", null, new { @class = "a" })*@
-            @Html.ActionLink("Danh sách sản phẩm", "Index", "SanPhams_62131904", null, new { @class = "a" })
-            @Html.ActionLink("Danh sách biến thể sản phẩm", "Index", "BienTheSanPhams_62131904", null, new { @class = "a" })
-            @Html.ActionLink("Thông số sản phẩm", "Index", "ThongSoDienThoais_62131904", null, new { @class = "a" })
-            @Html.ActionLink("Thông số biến thể sản phẩm", "Index", "ThongSoBienTheDienThoais_62131904", null, new { @class = "a" })
-            @Html.ActionLink("Hình ảnh biến thể của từng sản phẩm", "Index", "HinhAnhSanPhams_62131904", null, new { @class = "a" })
-        </div>
+        <!-- Content và Footer -->
+        <div class="content-footer">
+            <!-- Content -->
+            <div class="content">
+                @RenderBody()
+            </div>
 
-        <button class="dropdown-btn">
-            Quản lý tính năng camera
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            @Html.ActionLink("Thông số camera", "Index", "ThongSoCameras_62131904", null, new { @class = "a" })
-            @Html.ActionLink("Chi tiết độ phân giải camera", "Index", "ChiTietDoPhanGiaiCameras_62131904", null, new { @class = "a" })
-            @Html.ActionLink("Chi tiết tính năng camera", "Index", "ChiTietTinhNangCameras_62131904", null, new { @class = "a" })
+            <!-- Footer -->
+            <footer id="footer">
+                <p>© @DateTime.Now.Year Admin Panel</p>
+            </footer>
         </div>
-
-        <button class="dropdown-btn">
-            Quản lý tính năng quay phim
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            @Html.ActionLink("Thông số quay phim", "Index", "ThongSoQuayPhims_62131904", null, new { @class = "a" })
-        </div>
-
-        <button class="dropdown-btn">
-            Quản lý tiện ích
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            @Html.ActionLink("Tính năng đặc biệt", "Index", "ThongTinTinhNangDacBietDienThoais_62131904", null, new { @class = "a" })
-            @Html.ActionLink("Định dạng xem phim & nghe nhạc", "Index", "ThongTinDinhDangPhimVaNhacDienThoais_62131904", null, new { @class = "a" })
-        </div>
-
-        <button class="dropdown-btn">
-            Quản lý kết nối
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            @Html.ActionLink("Wifi", "Index", "ThongTinWifiDienThoais_62131904", null, new { @class = "a" })
-            @Html.ActionLink("Hệ thống định vị", "Index", "ThongTinHeThongDinhViDienThoais_62131904", null, new { @class = "a" })
-        </div>
-
-        @Html.ActionLink("Khách hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
-        @Html.ActionLink("Đơn hàng", "Index", "SanPhams_62131904", null, new { @class = "a" })
-        @Html.ActionLink("Đăng xuất", "Logout", "AccountAdmin_62131904", null, new { @class = "a" })
     </div>
-    <div class="content">
-        @RenderBody()
-    </div>
-    @*<footer class="text-center mt-5">
-        <p>© @DateTime.Now.Year Admin Panel</p>
-    </footer>*@
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- JavaScript -->
-    <script src="@Url.Content("~/Scripts/_styleAdmin.js")"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdownButtons = document.getElementsByClassName("dropdown-btn");
+            const sidebarState = JSON.parse(localStorage.getItem("sidebarState")) || {};
+
+            // Khôi phục trạng thái menu từ localStorage
+            for (let key in sidebarState) {
+                const dropdown = document.querySelector(`[data-key="${key}"]`);
+                if (dropdown && sidebarState[key]) {
+                    dropdown.classList.add("active");
+                    const dropdownContainer = dropdown.nextElementSibling;
+                    if (dropdownContainer) dropdownContainer.style.display = "block";
+                }
+            }
+
+            // Xử lý sự kiện click để mở/đóng menu
+            for (let i = 0; i < dropdownButtons.length; i++) {
+                dropdownButtons[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    const dropdownContainer = this.nextElementSibling;
+                    const key = this.getAttribute("data-key");
+
+                    if (dropdownContainer) {
+                        if (dropdownContainer.style.display === "block") {
+                            dropdownContainer.style.display = "none";
+                            sidebarState[key] = false;
+                        } else {
+                            dropdownContainer.style.display = "block";
+                            sidebarState[key] = true;
+                        }
+                        localStorage.setItem("sidebarState", JSON.stringify(sidebarState));
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
