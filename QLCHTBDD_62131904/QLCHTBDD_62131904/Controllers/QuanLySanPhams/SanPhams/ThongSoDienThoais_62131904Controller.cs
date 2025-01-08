@@ -17,7 +17,25 @@ namespace QLCHTBDD_62131904.Controllers.QuanLySanPhams.SanPhams
         // GET: ThongSoDienThoais_62131904
         public ActionResult Index()
         {
-            var thongSoDienThoais = db.ThongSoDienThoais.Include(t => t.Bluetooth).Include(t => t.ChatLieu).Include(t => t.ChuanKhangBuiNuoc).Include(t => t.CongKetNoiKhac).Include(t => t.CongKetNoiSac).Include(t => t.CongNgheManHinh).Include(t => t.DinhDangGhiAm).Include(t => t.DoSangToiDa).Include(t => t.HoTroSacToiDa).Include(t => t.JackTaiNghe).Include(t => t.LoaiKinhCuongLuc).Include(t => t.LoaiPin).Include(t => t.MangDiDong).Include(t => t.PhienBanHDH).Include(t => t.SanPham).Include(t => t.SIM).Include(t => t.ThietKe).Include(t => t.TinhNangBaoMat);
+            var thongSoDienThoais = db.ThongSoDienThoais
+                .Include(t => t.Bluetooth)
+                .Include(t => t.ChatLieu)
+                .Include(t => t.ChuanKhangBuiNuoc)
+                .Include(t => t.CongKetNoiKhac)
+                .Include(t => t.CongKetNoiSac)
+                .Include(t => t.CongNgheManHinh)
+                .Include(t => t.DinhDangGhiAm)
+                .Include(t => t.DoSangToiDa)
+                .Include(t => t.HoTroSacToiDa)
+                .Include(t => t.JackTaiNghe)
+                .Include(t => t.LoaiKinhCuongLuc)
+                .Include(t => t.LoaiPin)
+                .Include(t => t.MangDiDong)
+                .Include(t => t.PhienBanHDH)
+                .Include(t => t.SanPham)
+                .Include(t => t.SIM)
+                .Include(t => t.ThietKe)
+                .Include(t => t.TinhNangBaoMat);
             return View(thongSoDienThoais.ToList());
         }
 

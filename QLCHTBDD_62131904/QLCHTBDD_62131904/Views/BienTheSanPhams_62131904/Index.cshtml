@@ -22,7 +22,7 @@
         columns: grid.Columns(
 
             grid.Column("STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage), header: "STT"),
-            grid.Column("SanPham.MaSP", "Mã sản Phẩm", format: item => item.SanPham?.MaSP ?? "N/A"),
+            //grid.Column("SanPham.MaSP", "Mã sản Phẩm", format: item => item.SanPham?.MaSP ?? "N/A"),
             grid.Column("SanPham.TenSP", "Tên sản Phẩm", format: item => item.SanPham?.TenSP ?? "N/A"),
             grid.Column("MauSac.TenMau", "Màu sản Phẩm", format: item => item.MauSac?.TenMau ?? "N/A"),
             grid.Column("RAM.DungLuong", "Dung lượng RAM", format: item => item.RAM?.DungLuong ?? "N/A"),
@@ -31,11 +31,11 @@
             grid.Column("DonViTinh", "Đơn vị tính", format: item => item.DonViTinh ?? "N/A"),
             grid.Column("DonGia", "Đơn giá", format: item => item.DonGia ?? "N/A"),
             grid.Column("SKU", "SKU", format: item => item.SKU ?? "N/A"),
-            grid.Column("TrangThaiSanPham.TenTrangThai", "Thời điểm ra mắt", format: item => item.TrangThaiSanPham?.TenTrangThai ?? "N/A"),
+            grid.Column("TrangThaiSanPham.TenTrangThai", "Trạng thái sản phẩm", format: item => item.TrangThaiSanPham?.TenTrangThai ?? "N/A"),
             grid.Column("Chức năng", format: @<text>
                     <a href="@Url.Action("Edit", new { id = item.MaBT })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
                     <a href="@Url.Action("Details", new { id = item.MaBT })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>
-                    <a href="@Url.Action("Delete", new { id = item.MaBT })" title="Xóa" class='btn btn-sm btn-danger'>Xóa</a>
+                    @*<a href="@Url.Action("Delete", new { id = item.MaBT })" title="Xóa" class='btn btn-sm btn-danger'>Xóa</a>*@
             </text>)
 )
 )

@@ -1622,6 +1622,7 @@ GO
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Truy vấn mẫu
 Select * from QuanTriVien
+Select * from LoaiCamera
 Select * from KhachHang
 Select * from GioHang
 Select * from ChiTietGioHang
@@ -1670,9 +1671,9 @@ SELECT
     sp.MoTa,
     bt.MaBT, 
     bt.SKU, -- Thêm mã SKU của biến thể
-    bt.MaMau, 
-    bt.MaRAM, 
-    bt.MaROM, 
+    ms.TenMau AS MauSac, -- Lấy tên màu từ bảng MauSac
+    ram.DungLuong AS RAM, -- Lấy dung lượng RAM từ bảng RAM
+    rom.DungLuong AS ROM, -- Lấy dung lượng ROM từ bảng ROM
     bt.DonGia, 
     bt.SoLuong,
     ha.TenAnh,
@@ -1683,12 +1684,40 @@ FROM
 LEFT JOIN 
     BienTheSanPham AS bt ON sp.MaSP = bt.MaSP
 LEFT JOIN 
+    MauSac AS ms ON bt.MaMau = ms.MaMau -- Join với bảng MauSac
+LEFT JOIN 
+    RAM AS ram ON bt.MaRAM = ram.MaRAM -- Join với bảng RAM
+LEFT JOIN 
+    ROM AS rom ON bt.MaROM = rom.MaROM -- Join với bảng ROM
+LEFT JOIN 
     HinhAnhSanPham AS ha ON bt.MaBT = ha.MaBT
 WHERE 
-    sp.MaSP = 3;
+    sp.MaSP = 10;
 
-	SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE
-FROM INFORMATION_SCHEMA.COLUMNS
-WHERE TABLE_NAME = 'KhachHang';
+-------------------------------------
+-- độ phân giải camera sau 
+SELECT 
+    sp.MaSP AS MaSanPham,
+    sp.TenSP AS TenSanPham,
+    bt.MaBT AS MaBienThe,
+    lc.TenLoaiCamera AS LoaiCamera,
+    dpg.DoPhanGiai AS DoPhanGiaiCameraSau
+FROM 
+    SanPham AS sp
+LEFT JOIN 
+    BienTheSanPham AS bt ON sp.MaSP = bt.MaSP
+LEFT JOIN 
+    ThongSoBienTheDienThoai AS tsbt ON bt.MaBT = tsbt.MaBT
+LEFT JOIN 
+    ThongSoCamera AS tsc ON tsbt.MaTSBTDT = tsc.MaTSBTDT
+LEFT JOIN 
+    LoaiCamera AS lc ON tsc.MaLoaiCamera = lc.MaLoaiCamera
+LEFT JOIN 
+    ChiTietDoPhanGiaiCamera AS ctdpg ON tsc.MaThongSoCamera = ctdpg.MaThongSoCamera
+LEFT JOIN 
+    DoPhanGiaiCamera AS dpg ON ctdpg.MaDoPhanGiai = dpg.MaDoPhanGiai
+WHERE 
+    sp.MaSP = 10
+    AND lc.TenLoaiCamera = 'Sau'; -- Lọc chỉ lấy thông tin của Camera Sau
 
 

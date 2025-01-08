@@ -1,154 +1,51 @@
 ﻿@model IEnumerable<QLCHTBDD_62131904.Models.ThongSoDienThoai>
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách thông số của điện thoại";
+    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "SanPham.TenSP", rowsPerPage: 20);
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
+<link href="~/Content/_page_index_projects.css" rel="stylesheet" />
+<h2>Danh sách thông số kỹ thuật</h2>
+<p class="text-left mb-3">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DanhBa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DenFlashCameraSau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThoiDiemRaMat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bluetooth.TenBluetooth)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChatLieu.TenChatLieu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChuanKhangBuiNuoc.TenChuanKhangBuiNuoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CongKetNoiKhac.TenCongKetNoiKhac)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CongKetNoiSac.TenCongKetNoiSac)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CongNgheManHinh.TenCongNgheManHinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DinhDangGhiAm.TenDinhDangGhiAm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DoSangToiDa.MaDoSang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoTroSacToiDa.CongSuat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.JackTaiNghe.TenJackTaiNghe)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoaiKinhCuongLuc.TenLoaiKinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoaiPin.TenLoaiPin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MangDiDong.TenMangDiDong)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhienBanHDH.TenPhienBanHDH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SanPham.TenSP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SIM.TenSIM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThietKe.TenThietKe)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TinhNangBaoMat.TenTinhNangBaoMat)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DanhBa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DenFlashCameraSau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThoiDiemRaMat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bluetooth.TenBluetooth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChatLieu.TenChatLieu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChuanKhangBuiNuoc.TenChuanKhangBuiNuoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CongKetNoiKhac.TenCongKetNoiKhac)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CongKetNoiSac.TenCongKetNoiSac)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CongNgheManHinh.TenCongNgheManHinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DinhDangGhiAm.TenDinhDangGhiAm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoSangToiDa.MaDoSang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoTroSacToiDa.CongSuat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.JackTaiNghe.TenJackTaiNghe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiKinhCuongLuc.TenLoaiKinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiPin.TenLoaiPin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MangDiDong.TenMangDiDong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhienBanHDH.TenPhienBanHDH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SanPham.TenSP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SIM.TenSIM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThietKe.TenThietKe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TinhNangBaoMat.TenTinhNangBaoMat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaTSDT }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaTSDT }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaTSDT })
-        </td>
-    </tr>
-}
-
-</table>
+<div id="gridContent" style="overflow-x: auto; white-space: nowrap;">
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-striped",
+        headerStyle: "table-header thead-light",
+        alternatingRowStyle: "table-alternate-row",
+        mode: WebGridPagerModes.Numeric,
+        columns: grid.Columns(
+            grid.Column("STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage), header: "STT"),
+            grid.Column("SanPham.TenSP", "Tên SP", format: item => item.SanPham?.TenSP ?? "N/A"),
+            grid.Column("PhienBanHDH.TenPhienBanHDH", "Hệ Điều Hành", format: item => item.PhienBanHDH?.TenPhienBanHDH ?? "N/A"),
+            grid.Column("DanhBa", "Danh Bạ", format: item => item.DanhBa ? "Có" : "Không"),
+            grid.Column("DenFlashCameraSau", "Đèn Flash", format: item => item.DenFlashCameraSau ? "Có" : "Không"),
+            grid.Column("ChuanKhangBuiNuoc.TenChuanKhangBuiNuoc", "Kháng Bụi/Nước", format: item => item.ChuanKhangBuiNuoc?.TenChuanKhangBuiNuoc ?? "N/A"),
+            grid.Column("CongNgheManHinh.TenCongNgheManHinh", "Công Nghệ Màn Hình", format: item => item.CongNgheManHinh?.TenCongNgheManHinh ?? "N/A"),
+            grid.Column("DoSangToiDa.DoSang", "Độ Sáng Tối Đa", format: item => item.DoSangToiDa?.DoSang.ToString() ?? "N/A"),
+            grid.Column("LoaiKinhCuongLuc.TenLoaiKinh", "Loại Kính Cường Lực", format: item => item.LoaiKinhCuongLuc?.TenLoaiKinh ?? "N/A"),
+            grid.Column("LoaiPin.TenLoaiPin", "Loại Pin", format: item => item.LoaiPin?.TenLoaiPin ?? "N/A"),
+            grid.Column("HoTroSacToiDa.CongSuat", "Hỗ Trợ Sạc Tối Đa", format: item => item.HoTroSacToiDa?.CongSuat.ToString() ?? "N/A"),
+            grid.Column("TinhNangBaoMat.TenTinhNangBaoMat", "Tính Năng Bảo Mật", format: item => item.TinhNangBaoMat?.TenTinhNangBaoMat ?? "N/A"),
+            grid.Column("DinhDangGhiAm.TenDinhDangGhiAm", "Định Dạng Ghi Âm", format: item => item.DinhDangGhiAm?.TenDinhDangGhiAm ?? "N/A"),
+            grid.Column("MangDiDong.TenMangDiDong", "Mạng Di Động", format: item => item.MangDiDong?.TenMangDiDong ?? "N/A"),
+            grid.Column("SIM.TenSIM", "Loại SIM", format: item => item.SIM?.TenSIM ?? "N/A"),
+            grid.Column("Bluetooth.TenBluetooth", "Bluetooth", format: item => item.Bluetooth?.TenBluetooth ?? "N/A"),
+            grid.Column("CongKetNoiSac.TenCongKetNoiSac", "Cổng Kết Nối/Sạc", format: item => item.CongKetNoiSac?.TenCongKetNoiSac ?? "N/A"),
+            grid.Column("JackTaiNghe.TenJackTaiNghe", "Jack Tai Nghe", format: item => item.JackTaiNghe?.TenJackTaiNghe ?? "N/A"),
+            grid.Column("CongKetNoiKhac.TenCongKetNoiKhac", "Cổng Kết Nối Khác", format: item => item.CongKetNoiKhac?.TenCongKetNoiKhac ?? "N/A"),
+            grid.Column("ThietKe.TenThietKe", "Thiết Kế", format: item => item.ThietKe?.TenThietKe ?? "N/A"),
+            grid.Column("ChatLieu.TenChatLieu", "Chất Liệu", format: item => item.ChatLieu?.TenChatLieu ?? "N/A"),
+            grid.Column("ThoiDiemRaMat", "Thời Điểm Ra Mắt", format: item => item.ThoiDiemRaMat ?? "N/A"),
+            grid.Column("Chức năng", format: @<text>
+                    <a href="@Url.Action("Edit", new { id = item.MaTSDT })" title="Cập nhật" class='btn btn-sm btn-warning'>Sửa</a>
+                    <a href="@Url.Action("Details", new { id = item.MaTSDT })" title="Xem chi tiết" class='btn btn-sm btn-info'>Chi tiết</a>
+                    <a href="@Url.Action("Delete", new { id = item.MaTSDT })" title="Xóa" class='btn btn-sm btn-danger'>Xóa</a>
+            </text>)
+)
+)
+</div>

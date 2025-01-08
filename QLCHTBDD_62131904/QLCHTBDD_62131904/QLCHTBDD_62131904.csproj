@@ -399,6 +399,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthenticationServices.cs" />
     <Compile Include="Services\EmailServices.cs" />
+    <Compile Include="ViewModels\CameraViewModel.cs" />
     <Compile Include="ViewModels\ChiTietDonHangViewModel.cs" />
     <Compile Include="ViewModels\ChiTietGioHangViewModel.cs" />
     <Compile Include="ViewModels\GioHangViewModel.cs" />
@@ -407,6 +408,7 @@
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
     <Compile Include="ViewModels\ThanhToanViewModel.cs" />
+    <Compile Include="ViewModels\TinhNangCameraViewModel.cs" />
     <Compile Include="ViewModels\VariantViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -535,6 +537,8 @@
     <Content Include="Views\AccountCustomer_62131904\ConfirmResetPassword.cshtml" />
     <Content Include="Views\HomePage_62131904\TimKiemSanPham.cshtml" />
     <Content Include="Views\QuanLyKhachHang_62131904\DanhSachKhanhHang.cshtml" />
+    <Content Include="Views\BienTheSanPhams_62131904\Details.cshtml" />
+    <Content Include="Views\BienTheSanPhams_62131904\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

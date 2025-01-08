@@ -110,31 +110,31 @@ namespace QLCHTBDD_62131904.Controllers.SanPhams
             return View(bienTheSanPham);
         }
 
-        // GET: BienTheSanPhams_62131904/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BienTheSanPham bienTheSanPham = db.BienTheSanPhams.Find(id);
-            if (bienTheSanPham == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bienTheSanPham);
-        }
+        //// GET: BienTheSanPhams_62131904/Delete/5
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    BienTheSanPham bienTheSanPham = db.BienTheSanPhams.Find(id);
+        //    if (bienTheSanPham == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(bienTheSanPham);
+        //}
 
-        // POST: BienTheSanPhams_62131904/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            BienTheSanPham bienTheSanPham = db.BienTheSanPhams.Find(id);
-            db.BienTheSanPhams.Remove(bienTheSanPham);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: BienTheSanPhams_62131904/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    BienTheSanPham bienTheSanPham = db.BienTheSanPhams.Find(id);
+        //    db.BienTheSanPhams.Remove(bienTheSanPham);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -1,118 +1,46 @@
 ﻿@model IEnumerable<QLCHTBDD_62131904.Models.ThongSoBienTheDienThoai>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách thông số biến thể điện thoại";
+    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "BienTheSanPham.SKU", rowsPerPage: 20);
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
+<link href="~/Content/_page_index_projects.css" rel="stylesheet" />
+<h2>Danh sách thông số biến thể điện thoại</h2>
+<p class="text-left mb-3">
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DungLuongConLai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BienTheSanPham.DonViTinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChieuDai.MaChieuDai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChieuNgang.MaChieuNgang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChipDoHoaGPU.TenChipDoHoaGPU)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChipXuLy.TenChip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DoDay.MaDoDay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DoPhanGiaiManHinh.TenDoPhanGiai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DungLuongPin.DungLuong)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KhoiLuong.MaKhoiLuong)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KichThuocManHinh.KichThuoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PixelDoc.MaPixelDoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PixelNgang.MaPixelNgang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TanSoQuetManHinh.MaTanSoQuet)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TocDoCPU.TocDo)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DungLuongConLai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BienTheSanPham.DonViTinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChieuDai.MaChieuDai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChieuNgang.MaChieuNgang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChipDoHoaGPU.TenChipDoHoaGPU)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChipXuLy.TenChip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoDay.MaDoDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DoPhanGiaiManHinh.TenDoPhanGiai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DungLuongPin.DungLuong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KhoiLuong.MaKhoiLuong)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KichThuocManHinh.KichThuoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PixelDoc.MaPixelDoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PixelNgang.MaPixelNgang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TanSoQuetManHinh.MaTanSoQuet)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TocDoCPU.TocDo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaTSBTDT }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaTSBTDT }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaTSBTDT })
-        </td>
-    </tr>
-}
-
-</table>
+<div id="gridContent" style="overflow-x: auto; white-space: nowrap;">
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-striped",
+        headerStyle: "table-header thead-light",
+        alternatingRowStyle: "table-alternate-row",
+        mode: WebGridPagerModes.Numeric,
+        columns: grid.Columns(
+            grid.Column("STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage), header: "STT"),
+            grid.Column("BienTheSanPham.SKU", "SKU", format: item => item.BienTheSanPham?.SKU ?? "N/A"),
+            grid.Column("ChipXuLy.TenChip", "Chip Xử Lý", format: item => item.ChipXuLy?.TenChip ?? "N/A"),
+            grid.Column("TocDoCPU.TocDo", "Tốc Độ CPU", format: item => item.TocDoCPU?.TocDo ?? "N/A"),
+            grid.Column("ChipDoHoaGPU.TenChipDoHoaGPU", "Chip Đồ Họa GPU", format: item => item.ChipDoHoaGPU?.TenChipDoHoaGPU ?? "N/A"),
+            grid.Column("DungLuongConLai", "Dung Lượng Còn Lại", format: item => item.DungLuongConLai ?? "N/A"),
+            grid.Column("DoPhanGiaiManHinh.TenDoPhanGiai", "Độ Phân Giải Màn Hình", format: item => item.DoPhanGiaiManHinh?.TenDoPhanGiai ?? "N/A"),
+            grid.Column("PixelNgang.MaPixelNgang", "Pixel Ngang", format: item => item.PixelNgang?.MaPixelNgang ?? "N/A"),
+            grid.Column("PixelDoc.MaPixelDoc", "Pixel Dọc", format: item => item.PixelDoc?.MaPixelDoc ?? "N/A"),
+            grid.Column("KichThuocManHinh.KichThuoc", "Kích Thước Màn Hình", format: item => item.KichThuocManHinh?.KichThuoc ?? "N/A"),
+            grid.Column("TanSoQuetManHinh.MaTanSoQuet", "Tần Số Quét Màn Hình", format: item => item.TanSoQuetManHinh?.MaTanSoQuet ?? "N/A"),
+            grid.Column("DungLuongPin.DungLuong", "Dung Lượng Pin", format: item => item.DungLuongPin?.DungLuong ?? "N/A"),
+            grid.Column("ChieuDai.MaChieuDai", "Chiều Dài", format: item => item.ChieuDai?.MaChieuDai ?? "N/A"),
+            grid.Column("ChieuNgang.MaChieuNgang", "Chiều Ngang", format: item => item.ChieuNgang?.MaChieuNgang ?? "N/A"),
+            grid.Column("DoDay.MaDoDay", "Độ Dày", format: item => item.DoDay?.MaDoDay ?? "N/A"),
+            grid.Column("KhoiLuong.MaKhoiLuong", "Khối Lượng", format: item => item.KhoiLuong?.MaKhoiLuong ?? "N/A"),
+            grid.Column("Chức năng", format: @<text>
+                    <a href="@Url.Action("Edit", new { id = item.MaTSBTDT })" class='btn btn-sm btn-warning'>Sửa</a>
+                    <a href="@Url.Action("Details", new { id = item.MaTSBTDT })" class='btn btn-sm btn-info'>Chi tiết</a>
+                    <a href="@Url.Action("Delete", new { id = item.MaTSBTDT })" class='btn btn-sm btn-danger'>Xóa</a>
+            </text>)
+)
+)
+</div>

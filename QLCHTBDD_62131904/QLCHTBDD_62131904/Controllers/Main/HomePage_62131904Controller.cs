@@ -106,29 +106,28 @@ namespace QLCHTBDD_62131904.Controllers.Main
 
         public ActionResult ChiTietSanPham(int id)
         {
-            var product = db.SanPhams
+            // Fetch the product and its related data
+            var productData = db.SanPhams
                 .Where(sp => sp.MaSP == id)
-                .Select(sp => new ProductViewModel
+                .Select(sp => new
                 {
                     MaSanPham = sp.MaSP,
                     TenSanPham = sp.TenSP,
                     MoTa = sp.MoTa,
-                    // Lấy ảnh chính hoặc ảnh mặc định nếu không có
                     HinhAnh = sp.BienTheSanPhams
                         .SelectMany(bt => bt.HinhAnhSanPhams)
                         .Where(ha => ha.AnhChinh == true)
                         .Select(ha => ha.DuongDanAnh)
-                        .FirstOrDefault() ?? "~/Images/logo-login.jpg",
-                    // Lấy tất cả ảnh phụ
+                        .FirstOrDefault(),
                     HinhAnhPhu = sp.BienTheSanPhams
                         .SelectMany(bt => bt.HinhAnhSanPhams)
                         .Where(ha => ha.AnhChinh == false)
                         .Select(ha => ha.DuongDanAnh)
                         .ToList(),
-                    // Lấy danh sách các biến thể, lọc theo màu và ROM
+                    ThongSoDienThoai = sp.ThongSoDienThoais.FirstOrDefault(),
                     Variants = sp.BienTheSanPhams
-                        .GroupBy(bt => new { bt.ROM.DungLuong, bt.MauSac.TenMau }) // Nhóm theo ROM và màu
-                        .Select(g => new VariantViewModel
+                        .GroupBy(bt => new { bt.ROM.DungLuong, bt.MauSac.TenMau })
+                        .Select(g => new
                         {
                             RAM = g.FirstOrDefault().RAM.DungLuong,
                             ROM = g.Key.DungLuong,
@@ -138,23 +137,177 @@ namespace QLCHTBDD_62131904.Controllers.Main
                             HinhAnhChinh = g.FirstOrDefault().HinhAnhSanPhams
                                 .Where(ha => ha.AnhChinh == true)
                                 .Select(ha => ha.DuongDanAnh)
-                                .FirstOrDefault() ?? "~/Images/logo-login.jpg",
+                                .FirstOrDefault(),
                             HinhAnhPhu = g.FirstOrDefault().HinhAnhSanPhams
                                 .Where(ha => ha.AnhChinh == false)
                                 .Select(ha => ha.DuongDanAnh)
-                                .ToList()
+                                .ToList(),
+                            ChipXuLy = g.FirstOrDefault().ThongSoBienTheDienThoais
+                                .Select(tsbtdt => tsbtdt.ChipXuLy.TenChip)
+                                .FirstOrDefault(),
+                            TocDoCPU = g.FirstOrDefault().ThongSoBienTheDienThoais
+                                .Select(tsbtdt => tsbtdt.TocDoCPU.TocDo)
+                                .FirstOrDefault(),
+                            GPU = g.FirstOrDefault().ThongSoBienTheDienThoais
+                                .Select(tsbtdt => tsbtdt.ChipDoHoaGPU.TenChipDoHoaGPU)
+                                .FirstOrDefault(),
+                            DungLuongConLai = g.FirstOrDefault().ThongSoBienTheDienThoais
+                                .Select(tsbtdt => tsbtdt.DungLuongConLai)
+                                .FirstOrDefault(),
+                            DoPhanGiaiManHinh = g.FirstOrDefault().ThongSoBienTheDienThoais
+                                .Select(tsbtdt => tsbtdt.DoPhanGiaiManHinh.TenDoPhanGiai)
+                                .FirstOrDefault(),
+                            DungLuongPin = g.FirstOrDefault().ThongSoBienTheDienThoais
+                                           .Select(tsbtdt => tsbtdt.DungLuongPin.DungLuong)
+                                                        .FirstOrDefault(),
+                            PixelNgang = g.FirstOrDefault().ThongSoBienTheDienThoais
+                            .Select(tsbtdt => tsbtdt.PixelNgang.GTPixelNgang)
+                                                        .FirstOrDefault().ToString(),
+                            PixelDoc = g.FirstOrDefault().ThongSoBienTheDienThoais
+                            .Select(tsbtdt => tsbtdt.PixelDoc.GTPixelDoc)
+                                                        .FirstOrDefault().ToString(),
+                            KichThuocManHinh = g.FirstOrDefault().ThongSoBienTheDienThoais
+                            .Select(tsbtdt => tsbtdt.KichThuocManHinh.KichThuoc)
+                                                        .FirstOrDefault(),
+                            TanSoQuetManHinh = g.FirstOrDefault().ThongSoBienTheDienThoais
+                            .Select(tsbtdt => tsbtdt.TanSoQuetManHinh.TanSo)
+                                                        .FirstOrDefault().ToString(),
+
+                            ChieuDai = g.FirstOrDefault().ThongSoBienTheDienThoais
+                            .Select(tsbtdt => tsbtdt.ChieuDai.GTChieuDai)
+                                                          .FirstOrDefault().ToString(),
+                            ChieuNgang = g.FirstOrDefault().ThongSoBienTheDienThoais
+                            .Select(tsbtdt => tsbtdt.ChieuNgang.GTChieuNgang)
+                                                          .FirstOrDefault().ToString(),
+                            DoDay = g.FirstOrDefault().ThongSoBienTheDienThoais
+                            .Select(tsbtdt => tsbtdt.DoDay.GTDoDay)
+                                                          .FirstOrDefault().ToString(),
+                            KhoiLuong = g.FirstOrDefault().ThongSoBienTheDienThoais
+                            .Select(tsbtdt => tsbtdt.KhoiLuong.GTKhoiLuong)
+                                                          .FirstOrDefault().ToString()
+
                         })
-                        .ToList()
+                        .ToList(),
+                    Camera = new
+                    {
+                        DoPhanGiaiCameraSau = sp.BienTheSanPhams
+                            .SelectMany(bt => bt.ThongSoBienTheDienThoais)
+                            .SelectMany(tsbtdt => tsbtdt.ThongSoCameras)
+                            .Where(cam => cam.LoaiCamera.MaLoaiCamera == 2) // Camera Sau
+                            .SelectMany(cam => cam.ChiTietDoPhanGiaiCameras)
+                            .Select(dpg => dpg.DoPhanGiaiCamera.DoPhanGiai)
+                            .ToList(),
+                        DoPhanGiaiCameraTruoc = sp.BienTheSanPhams
+                            .SelectMany(bt => bt.ThongSoBienTheDienThoais)
+                            .SelectMany(tsbtdt => tsbtdt.ThongSoCameras)
+                            .Where(cam => cam.LoaiCamera.MaLoaiCamera == 1) // Camera Trước
+                            .SelectMany(cam => cam.ChiTietDoPhanGiaiCameras)
+                            .Select(dpg => dpg.DoPhanGiaiCamera.DoPhanGiai)
+                            .ToList(),
+                        QuayPhimCameraSau = sp.BienTheSanPhams
+                            .SelectMany(bt => bt.ThongSoBienTheDienThoais)
+                            .SelectMany(tsbtdt => tsbtdt.ThongSoQuayPhims)
+                            .Select(x => new
+                            {
+                                DoPhanGiai = x.DoPhanGiaiQuayPhim.TenDoPhanGiaiQuayPhim,
+                                TocDo = x.TocDoKhungHinh.TocDo
+                            })
+                            .ToList(),
+
+                        TinhNangCameraSau = sp.BienTheSanPhams
+                            .SelectMany(bt => bt.ThongSoBienTheDienThoais)
+                            .SelectMany(tsbtdt => tsbtdt.ThongSoCameras)
+                            .Where(cam => cam.LoaiCamera.MaLoaiCamera == 2) // Camera Sau
+                            .SelectMany(cam => cam.ThongSoBienTheDienThoai.ChiTietTinhNangCameras)
+                            .Select(tn => tn.TinhNang.TenTinhNang)
+                            .ToList(),
+
+                        TinhNangCameraTruoc = sp.BienTheSanPhams
+                        .SelectMany(bt => bt.ThongSoBienTheDienThoais)
+                            .SelectMany(tsbtdt => tsbtdt.ThongSoCameras)
+                            .Where(cam => cam.LoaiCamera.MaLoaiCamera == 1) // Camera Trước
+                            .SelectMany(cam => cam.ThongSoBienTheDienThoai.ChiTietTinhNangCameras)
+                            .Select(tn => tn.TinhNang.TenTinhNang)
+                            .ToList()
+                    }
                 })
                 .FirstOrDefault();
 
-            if (product == null)
+            if (productData == null)
             {
                 return HttpNotFound();
             }
 
-            return View(product);
+            // Map data to ViewModel
+            var productViewModel = new ProductViewModel
+            {
+                MaSanPham = productData.MaSanPham,
+                TenSanPham = productData.TenSanPham,
+                MoTa = productData.MoTa,
+                HinhAnh = productData.HinhAnh ?? "~/Images/logo-login.jpg",
+                HinhAnhPhu = productData.HinhAnhPhu,
+                HeDieuHanh = productData.ThongSoDienThoai?.PhienBanHDH?.TenPhienBanHDH,
+                DanhBa = productData.ThongSoDienThoai?.DanhBa == true ? "Có" : "Không",
+                DenFlash = productData.ThongSoDienThoai?.DenFlashCameraSau == true ? "Có" : "Không",
+                KhacNuocBui = productData.ThongSoDienThoai?.ChuanKhangBuiNuoc?.TenChuanKhangBuiNuoc,
+                CongNgheManHinh = productData.ThongSoDienThoai?.CongNgheManHinh?.TenCongNgheManHinh,
+                DoSangToiDa = productData.ThongSoDienThoai?.DoSangToiDa?.DoSang.ToString(),
+                LoaiKinh = productData.ThongSoDienThoai?.LoaiKinhCuongLuc?.TenLoaiKinh,
+                LoaiPin = productData.ThongSoDienThoai?.LoaiPin?.TenLoaiPin,
+                HoTroSac = productData.ThongSoDienThoai?.HoTroSacToiDa?.CongSuat,
+                TinhNangBaoMat = productData.ThongSoDienThoai?.TinhNangBaoMat?.TenTinhNangBaoMat,
+                DinhDangGhiAm = productData.ThongSoDienThoai?.DinhDangGhiAm?.TenDinhDangGhiAm,
+                MangDiDong = productData.ThongSoDienThoai?.MangDiDong?.TenMangDiDong,
+                Sim = productData.ThongSoDienThoai?.SIM?.TenSIM,
+                Bluetooth = productData.ThongSoDienThoai?.Bluetooth?.TenBluetooth,
+                CongKetNoiSac = productData.ThongSoDienThoai?.CongKetNoiSac?.TenCongKetNoiSac,
+                JackTaiNghe = productData.ThongSoDienThoai?.JackTaiNghe?.TenJackTaiNghe,
+                CongKetNoiKhac = productData.ThongSoDienThoai?.CongKetNoiKhac?.TenCongKetNoiKhac,
+                ThietKe = productData.ThongSoDienThoai?.ThietKe?.TenThietKe,
+                ChatLieu = productData.ThongSoDienThoai?.ChatLieu?.TenChatLieu,
+                ThoiDiemRaMat = productData.ThongSoDienThoai?.ThoiDiemRaMat ?? DateTime.Now,
+
+                Variants = productData.Variants.Select(v => new VariantViewModel
+                {
+                    RAM = v.RAM,
+                    ROM = v.ROM,
+                    MauSac = v.MauSac,
+                    DonGia = v.DonGia,
+                    BienTheID = v.BienTheID,
+                    HinhAnhChinh = v.HinhAnhChinh ?? "~/Images/logo-login.jpg",
+                    HinhAnhPhu = v.HinhAnhPhu,
+                    ChipXuLy = v.ChipXuLy,
+                    TocDoCPU = v.TocDoCPU,
+                    GPU = v.GPU,
+                    DungLuongConLai = v.DungLuongConLai,
+                    DoPhanGiaiManHinh = v.DoPhanGiaiManHinh,
+                    DungLuongPin = v.DungLuongPin,
+                    KichThuocManHinh = v.KichThuocManHinh,
+                    PixelNgang = v.PixelNgang,
+                    PixelDoc = v.PixelDoc,
+                    TanSoQuetManHinh = v.TanSoQuetManHinh,
+                    ChieuDai = v.ChieuDai,
+                    ChieuNgang = v.ChieuNgang,
+                    DoDay = v.DoDay,
+                    KhoiLuong = v.KhoiLuong
+
+                }).ToList(),
+
+                Camera = new CameraViewModel
+                {
+                    DoPhanGiaiCameraSau = productData.Camera.DoPhanGiaiCameraSau,
+                    DoPhanGiaiCameraTruoc = productData.Camera.DoPhanGiaiCameraTruoc,
+                    QuayPhimCameraSau = productData.Camera.QuayPhimCameraSau
+                        .Select(x => $"{x.DoPhanGiai} @ {x.TocDo}fps")
+                        .ToList(),
+                    TinhNangCameraSau = productData.Camera.TinhNangCameraSau.ToList(),
+                    TinhNangCameraTruoc = productData.Camera.TinhNangCameraTruoc.ToList(),
+                }
+            };
+
+            return View(productViewModel);
         }
+
 
         public ActionResult SanPhamTheoThuongHieu(string thuongHieu)
         {

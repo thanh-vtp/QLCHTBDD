@@ -1,0 +1,94 @@
+﻿<div class="card shadow-sm mt-4 p-4">
+    <h2 class="text-center text-primary">Chi tiết biến thể sản phẩm</h2>
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <td>@Model.SanPham.TenSP</td>
+                </tr>
+                <tr>
+                    <th>Màu sắc</th>
+                    <td>@Model.MauSac.TenMau</td>
+                </tr>
+                <tr>
+                    <th>Dung lượng RAM</th>
+                    <td>@Model.RAM.DungLuong</td>
+                </tr>
+                <tr>
+                    <th>Dung lượng ROM</th>
+                    <td>@Model.ROM.DungLuong</td>
+                </tr>
+                <tr>
+                    <th>Số lượng</th>
+                    <td>@Model.SoLuong</td>
+                </tr>
+                <tr>
+                    <th>Đơn vị tính</th>
+                    <td>@Model.DonViTinh</td>
+                </tr>
+                <tr>
+                    <th>Đơn giá</th>
+                    <td>@Model.DonGia</td>
+                </tr>
+                <tr>
+                    <th>SKU</th>
+                    <td>@Model.SKU</td>
+                </tr>
+                <tr>
+                    <th>Trạng thái</th>
+                    <td>@Model.TrangThaiSanPham.TenTrangThai</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-between mt-4">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaBT }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+
+<style>
+    /* Nền và bóng của card */
+    .card {
+        background-color: #ffffff; /* Nền trắng */
+        border: 1px solid #dee2e6; /* Đường viền mỏng */
+        border-radius: 8px; /* Bo góc */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
+    }
+
+    /* Tiêu đề */
+    h2.text-primary {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Bảng */
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+        }
+
+        .table-bordered th {
+            background-color: #f8f9fa; /* Màu nền nhạt hơn cho tiêu đề */
+            color: #343a40; /* Màu chữ đậm */
+            font-weight: bold;
+        }
+
+    /* Nút */
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border: none;
+    }
+
+</style>
