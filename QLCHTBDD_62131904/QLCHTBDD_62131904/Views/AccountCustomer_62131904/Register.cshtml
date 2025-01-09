@@ -5,78 +5,94 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h2>Đăng ký tài khoản</h2>
-
-@using (Html.BeginForm("Register", "AccountCustomer_62131904", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email)
-        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Nhập email của bạn" })
-        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+<div class="content-wrapper">
+    <!-- Illustration Section -->
+    <div class="illustration-section">
+        <img src="~/Images/register.jpg" alt="Registration Illustration" />
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.HoTen)
-        @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })
-        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
-    </div>
+    <!-- Register Section -->
+    <div class="register-container">
+        <h3>Đăng ký tài khoản</h3>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SoDienThoai)
-        @Html.TextBoxFor(model => model.SoDienThoai, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
-        @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
-    </div>
+        @using (Html.BeginForm("Register", "AccountCustomer_62131904", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.DiaChi)
-        @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", placeholder = "Nhập địa chỉ" })
-        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Nhập email của bạn" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.NgaySinh, "Ngày sinh")
-        @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control", @type = "date" })
-        @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.HoTen)
+                @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })
+                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Password)
-        @Html.PasswordFor(model => model.Password, new { @class = "form-control", id = "password", placeholder = "Nhập mật khẩu của bạn" })
-        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.SoDienThoai)
+                @Html.TextBoxFor(model => model.SoDienThoai, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+                @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+            </div>
 
-    <div class="form-group">
-        <label for="confirmPassword">Xác nhận mật khẩu</label>
-        <input type="password" class="form-control" id="confirmPassword" placeholder="Nhập lại mật khẩu của bạn" />
-        <span id="passwordMismatch" class="text-danger" style="display: none;">Mật khẩu không khớp.</span>
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DiaChi)
+                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", placeholder = "Nhập địa chỉ" })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary" id="registerBtn">Đăng ký</button>
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NgaySinh, "Ngày sinh")
+                @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control", @type = "date" })
+                @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+            </div>
 
-    if (ViewData.ModelState.IsValid == false)
-    {
-        <div class="alert alert-danger">
-            <strong>Lỗi!</strong> @ViewData["ErrorMessage"]
-        </div>
-    }
-}
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password)
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", id = "password", placeholder = "Nhập mật khẩu của bạn" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Xác nhận mật khẩu</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Nhập lại mật khẩu của bạn" />
+                <span id="passwordMismatch" class="text-danger" style="display: none;">Mật khẩu không khớp.</span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-register" id="registerBtn">Đăng ký</button>
+            </div>
+
+            if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+        }
+    </div>
+</div>
 
 <script>
-    // Thêm sự kiện kiểm tra mật khẩu khi nhấn nút Đăng ký
+    // Kiểm tra mật khẩu
     document.getElementById("registerBtn").addEventListener("click", function (e) {
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
 
-        // So sánh mật khẩu và mật khẩu xác nhận
         if (password !== confirmPassword) {
-            e.preventDefault(); // Ngăn form gửi đi nếu mật khẩu không khớp
-            document.getElementById("passwordMismatch").style.display = "block"; // Hiển thị lỗi
+            e.preventDefault(); // Ngăn form gửi đi
+            document.getElementById("passwordMismatch").style.display = "block";
         } else {
-            document.getElementById("passwordMismatch").style.display = "none"; // Ẩn lỗi nếu khớp
+            document.getElementById("passwordMismatch").style.display = "none";
         }
     });
 </script>
@@ -84,28 +100,101 @@
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f8f9fa;
+        background-color: #E8F5E9;
         margin: 0;
         padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
+
+    .content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 20px;
+        width: 80%;
+        max-width: 1200px;
+    }
+
+    .illustration-section {
+        flex: 1;
+        text-align: center;
+    }
+
+        .illustration-section img {
+            width: 280px;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 0 25px 30px rgba(232, 245, 233, 0.9);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+            .illustration-section img:hover {
+                box-shadow: 0 0 35px 40px rgba(232, 245, 233, 1);
+            }
+
+    .register-container {
+        flex: 1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        background-color: #fff;
+    }
+
+        .register-container h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
 
     .form-group {
         margin-bottom: 15px;
     }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #CCC;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+            outline: none;
+        }
+
+    .btn-register {
+        background-color: #4CAF50;
+        color: #FFF;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+        .btn-register:hover {
+            background-color: #388E3C;
+        }
 
     .text-danger {
         font-size: 14px;
         margin-top: 5px;
     }
 
-    .btn-primary {
-        background-color: #007bff;
-        border: none;
-        padding: 10px 15px;
-        font-size: 16px;
+    .alert-danger {
+        margin-top: 15px;
+        font-size: 14px;
     }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
 </style>

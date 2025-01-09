@@ -59,6 +59,14 @@
                 </span>
             </div>
 
+            <div class="detail-item">
+                <span class="label">Mật khẩu:</span>
+                <input type="text"
+                       class="form-control editable"
+                       placeholder="Nhấp để đổi mật khẩu"
+                       readonly
+                       onclick="redirectToChangePassword()" />
+            </div>
 
 
             <div class="text-center mt-4">
@@ -68,7 +76,7 @@
     </div>
     </div>
 
-    <script>
+<script>
         function enableEditing(icon) {
             const input = icon.previousElementSibling;
             if (input.hasAttribute("readonly")) {
@@ -80,7 +88,11 @@
                 input.setAttribute("readonly", "readonly");
             }
         }
-    </script>
+
+        function redirectToChangePassword() {
+        window.location.href = '@Url.Action("DoiMatKhau", "AccountCustomer_62131904")';
+    }
+</script>
 
     <style>
         .container.account-info {

@@ -1721,3 +1721,17 @@ WHERE
     AND lc.TenLoaiCamera = 'Sau'; -- Lọc chỉ lấy thông tin của Camera Sau
 
 
+
+
+--------------------------------------
+--Xem design
+SELECT 
+    COLUMN_NAME AS [Tên Cột],
+    DATA_TYPE AS [Kiểu Dữ Liệu],
+    CHARACTER_MAXIMUM_LENGTH AS [Độ Dài (nếu có)],
+    IS_NULLABLE AS [Có Thể NULL?],
+    COLUMN_DEFAULT AS [Giá Trị Mặc Định]
+FROM 
+    INFORMATION_SCHEMA.COLUMNS
+WHERE 
+    TABLE_NAME = 'QuocGia';

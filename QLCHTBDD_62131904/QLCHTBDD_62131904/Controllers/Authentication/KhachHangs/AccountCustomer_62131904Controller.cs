@@ -81,34 +81,54 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "Email,Password,HoTen,SoDienThoai,DiaChi,NgaySinh")] KhachHang khachHang)
         {
-            // Kiểm tra dữ liệu đầu vào
-            if (string.IsNullOrEmpty(khachHang.Email) || string.IsNullOrEmpty(khachHang.Password)
-                || string.IsNullOrEmpty(khachHang.HoTen) || string.IsNullOrEmpty(khachHang.SoDienThoai))
+            // Kiểm tra tính hợp lệ của dữ liệu đầu vào
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Email, mật khẩu, họ tên và số điện thoại không được để trống.");
+                ModelState.AddModelError("", "Vui lòng kiểm tra và nhập đầy đủ thông tin.");
                 return View(khachHang);
             }
 
             // Kiểm tra email đã tồn tại
             if (db.KhachHangs.Any(k => k.Email == khachHang.Email))
             {
-                ModelState.AddModelError("", "Email đã tồn tại. Vui lòng sử dụng email khác.");
+                ModelState.AddModelError("Email", "Email đã tồn tại. Vui lòng sử dụng email khác.");
                 return View(khachHang);
             }
 
-            // Hash mật khẩu trước khi lưu
-            khachHang.Password = AuthenticationServices.HashPassword(khachHang.Password);
-            khachHang.RoleId = 2; // Gán mặc định quyền "Khách hàng"
-            khachHang.CreatedOn = DateTime.Now; // Ngày tạo tài khoản
-            khachHang.IsActive = true; // Mặc định kích hoạt tài khoản
+            try
+            {
+                // Hash mật khẩu trước khi lưu
+                khachHang.Password = AuthenticationServices.HashPassword(khachHang.Password);
 
-            // Thêm khách hàng vào cơ sở dữ liệu
-            db.KhachHangs.Add(khachHang);
-            db.SaveChanges();
+                // Gán các giá trị mặc định
+                khachHang.RoleId = 2; // Quyền "Khách hàng"
+                khachHang.CreatedOn = DateTime.Now; // Ngày tạo
+                khachHang.IsActive = true; // Kích hoạt tài khoản mặc định
 
-            // actionname/ controllername
-            return RedirectToAction("Login", "AccountCustomer_62131904");
+                // Thêm vào cơ sở dữ liệu
+                db.KhachHangs.Add(khachHang);
+                db.SaveChanges();
+
+                // Chuyển hướng đến trang đăng nhập
+                TempData["SuccessMessage"] = "Đăng ký tài khoản thành công! Vui lòng đăng nhập.";
+                return RedirectToAction("Login", "AccountCustomer_62131904");
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi
+                Console.WriteLine($"Error: {ex.Message}\nStack Trace: {ex.StackTrace}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                }
+
+                // Hiển thị thông báo lỗi
+                ModelState.AddModelError("", "Có lỗi xảy ra trong quá trình đăng ký. Vui lòng thử lại.");
+                return View(khachHang);
+            }
         }
+
+
 
         public ActionResult DoiMatKhau()
         {
@@ -150,6 +170,7 @@ namespace QLCHTBDD_62131904.Controllers.Authentication.KhachHangs
             db.SaveChanges();
 
             ViewBag.Success = "Mật khẩu đã được đổi thành công.";
+            //return RedirectToAction("ChiTietKhachHang", "AccountCustomer_62131904");
             return View();
         }
 

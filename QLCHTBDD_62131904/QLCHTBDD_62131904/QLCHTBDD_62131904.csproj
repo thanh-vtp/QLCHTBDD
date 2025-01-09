@@ -442,6 +442,7 @@
     <Content Include="Images\image-test-secondary.png" />
     <Content Include="Images\logo-login.jpg" />
     <Content Include="Images\pay-phone-logo.jpg" />
+    <Content Include="Images\register.jpg" />
     <Content Include="Models\Model_62131904.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model_62131904.edmx</DependentUpon>
