@@ -69,27 +69,52 @@ namespace QLCHTBDD_62131904.Controllers.QuanLySanPhams.Cameras
         {
             if (ModelState.IsValid)
             {
-                db.ChiTietTinhNangCameras.Add(chiTietTinhNangCamera);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    // Check for duplicates
+                    bool isDuplicate = db.ChiTietTinhNangCameras.Any(ct =>
+                        ct.MaTSBTDT == chiTietTinhNangCamera.MaTSBTDT &&
+                        ct.MaLoaiCamera == chiTietTinhNangCamera.MaLoaiCamera &&
+                        ct.MaTinhNang == chiTietTinhNangCamera.MaTinhNang);
+
+                    if (isDuplicate)
+                    {
+                        ModelState.AddModelError("", "Chi tiết tính năng camera đã tồn tại. Vui lòng kiểm tra lại.");
+                    }
+                    else
+                    {
+                        // Add and save the new entry
+                        db.ChiTietTinhNangCameras.Add(chiTietTinhNangCamera);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                    ModelState.AddModelError("", "Đã xảy ra lỗi trong quá trình thêm chi tiết tính năng camera.");
+                }
             }
 
+            // Repopulate ViewBag for dropdowns
             ViewBag.MaLoaiCamera = new SelectList(db.LoaiCameras, "MaLoaiCamera", "TenLoaiCamera", chiTietTinhNangCamera.MaLoaiCamera);
             ViewBag.MaTinhNang = new SelectList(db.TinhNangs, "MaTinhNang", "TenTinhNang", chiTietTinhNangCamera.MaTinhNang);
-            var thongSoBienThe = db.ThongSoBienTheDienThoais
-            .Include(x => x.BienTheSanPham)
-            .Include(x => x.BienTheSanPham.SanPham)
-            .Select(x => new
-            {
-                MaTSBTDT = x.MaTSBTDT,
-                DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
-                "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
-                "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
-                "/ SKU: (" + x.BienTheSanPham.SKU + ")"
 
-            })
-            .ToList();
+            var thongSoBienThe = db.ThongSoBienTheDienThoais
+                .Include(x => x.BienTheSanPham)
+                .Include(x => x.BienTheSanPham.SanPham)
+                .Select(x => new
+                {
+                    MaTSBTDT = x.MaTSBTDT,
+                    DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
+                                  "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
+                                  "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
+                                  "/ SKU: (" + x.BienTheSanPham.SKU + ")"
+                })
+                .ToList();
+
             ViewBag.MaTSBTDT = new SelectList(thongSoBienThe, "MaTSBTDT", "DisplayText", chiTietTinhNangCamera.MaTSBTDT);
+
             return View(chiTietTinhNangCamera);
         }
 

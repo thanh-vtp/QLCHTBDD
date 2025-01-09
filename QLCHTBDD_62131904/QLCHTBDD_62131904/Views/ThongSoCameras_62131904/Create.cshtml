@@ -10,7 +10,7 @@
 @using (Html.BeginForm("Create", "ThongSoCameras_62131904", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "")
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
 
     <div class="form-horizontal">
         <h4>ThongSoCamera</h4>
@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MaTSBTDT, "MaTSBTDT", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MaTSBTDT", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("MaTSBTDT", (IEnumerable<SelectListItem>)ViewBag.MaTSBTDT, null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MaTSBTDT, "", new { @class = "text-danger" })
             </div>
         </div>

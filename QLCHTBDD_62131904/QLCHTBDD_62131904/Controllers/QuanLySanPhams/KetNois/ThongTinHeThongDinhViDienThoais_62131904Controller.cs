@@ -70,28 +70,55 @@ namespace QLCHTBDD_62131904.Controllers.QuanLySanPhams.KetNois
         {
             if (ModelState.IsValid)
             {
-                db.ThongTinHeThongDinhViDienThoais.Add(thongTinHeThongDinhViDienThoai);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    // Check for duplicate entry
+                    bool isDuplicate = db.ThongTinHeThongDinhViDienThoais.Any(info =>
+                        info.MaTSBTDT == thongTinHeThongDinhViDienThoai.MaTSBTDT &&
+                        info.MaHeThongDinhViGPS == thongTinHeThongDinhViDienThoai.MaHeThongDinhViGPS);
+
+                    if (isDuplicate)
+                    {
+                        ModelState.AddModelError("", "Thông tin hệ thống định vị đã tồn tại. Vui lòng kiểm tra lại.");
+                    }
+                    else
+                    {
+                        // Add new record
+                        db.ThongTinHeThongDinhViDienThoais.Add(thongTinHeThongDinhViDienThoai);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log error
+                    System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+
+                    // General error message
+                    ModelState.AddModelError("", "Đã xảy ra lỗi trong quá trình thêm thông tin hệ thống định vị.");
+                }
             }
 
+            // Repopulate ViewBag for dropdowns
             ViewBag.MaHeThongDinhViGPS = new SelectList(db.HeThongDinhViGPS, "MaHeThongDinhViGPS", "TenHeThongDinhViGPS", thongTinHeThongDinhViDienThoai.MaHeThongDinhViGPS);
             var thongSoBienThe = db.ThongSoBienTheDienThoais
-            .Include(x => x.BienTheSanPham)
-            .Include(x => x.BienTheSanPham.SanPham)
-            .Select(x => new
-            {
-                MaTSBTDT = x.MaTSBTDT,
-                DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
-                "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
-                "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
-                "/ SKU: (" + x.BienTheSanPham.SKU + ")"
+                .Include(x => x.BienTheSanPham)
+                .Include(x => x.BienTheSanPham.SanPham)
+                .Select(x => new
+                {
+                    MaTSBTDT = x.MaTSBTDT,
+                    DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
+                                  "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
+                                  "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
+                                  "/ SKU: (" + x.BienTheSanPham.SKU + ")"
+                })
+                .ToList();
 
-            })
-            .ToList();
             ViewBag.MaTSBTDT = new SelectList(thongSoBienThe, "MaTSBTDT", "DisplayText", thongTinHeThongDinhViDienThoai.MaTSBTDT);
+
             return View(thongTinHeThongDinhViDienThoai);
         }
+
 
         // GET: ThongTinHeThongDinhViDienThoais_62131904/Edit/5
         public ActionResult Edit(int? id)

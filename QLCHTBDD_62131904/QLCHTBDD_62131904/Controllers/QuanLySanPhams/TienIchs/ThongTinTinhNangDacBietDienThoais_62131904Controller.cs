@@ -69,15 +69,55 @@ namespace QLCHTBDD_62131904.Controllers.QuanLySanPhams.TienIchs
         {
             if (ModelState.IsValid)
             {
-                db.ThongTinTinhNangDacBietDienThoais.Add(thongTinTinhNangDacBietDienThoai);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    // Check for duplicate entries
+                    bool isDuplicate = db.ThongTinTinhNangDacBietDienThoais.Any(tnb =>
+                        tnb.MaTSBTDT == thongTinTinhNangDacBietDienThoai.MaTSBTDT &&
+                        tnb.MaTinhNangDacBiet == thongTinTinhNangDacBietDienThoai.MaTinhNangDacBiet);
+
+                    if (isDuplicate)
+                    {
+                        ModelState.AddModelError("", "Thông tin tính năng đặc biệt đã tồn tại. Vui lòng kiểm tra lại.");
+                    }
+                    else
+                    {
+                        // Add new entry
+                        db.ThongTinTinhNangDacBietDienThoais.Add(thongTinTinhNangDacBietDienThoai);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log the error
+                    System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+
+                    // Add general error message
+                    ModelState.AddModelError("", "Đã xảy ra lỗi trong quá trình thêm thông tin tính năng đặc biệt.");
+                }
             }
 
-            ViewBag.MaTSBTDT = new SelectList(db.ThongSoBienTheDienThoais, "MaTSBTDT", "DungLuongConLai", thongTinTinhNangDacBietDienThoai.MaTSBTDT);
-            ViewBag.MaTinhNangDacBiet = new SelectList(db.TinhNangDacBiets, "MaTinhNangDacBiet", "TenTinhNangDacBiet", thongTinTinhNangDacBietDienThoai.MaTinhNangDacBiet);
+            // Repopulate ViewBag for dropdowns
+            ViewBag.MaTSBTDT = new SelectList(
+                db.ThongSoBienTheDienThoais
+                .Include(x => x.BienTheSanPham)
+                .Select(x => new
+                {
+                    MaTSBTDT = x.MaTSBTDT,
+                    DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
+                                  "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
+                                  "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
+                                  "/ SKU: (" + x.BienTheSanPham.SKU + ")"
+                }),
+                "MaTSBTDT", "DisplayText", thongTinTinhNangDacBietDienThoai.MaTSBTDT);
+
+            ViewBag.MaTinhNangDacBiet = new SelectList(
+                db.TinhNangDacBiets, "MaTinhNangDacBiet", "TenTinhNangDacBiet", thongTinTinhNangDacBietDienThoai.MaTinhNangDacBiet);
+
             return View(thongTinTinhNangDacBietDienThoai);
         }
+
 
         // GET: ThongTinTinhNangDacBietDienThoais_62131904/Edit/5
         public ActionResult Edit(int? id)

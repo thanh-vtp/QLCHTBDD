@@ -70,27 +70,49 @@ namespace QLCHTBDD_62131904.Controllers.QuanLySanPhams.Cameras
         {
             if (ModelState.IsValid)
             {
-                db.ThongSoCameras.Add(thongSoCamera);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                // Check for duplicates
+                bool isDuplicate = db.ThongSoCameras.Any(tsc =>
+                    tsc.MaTSBTDT == thongSoCamera.MaTSBTDT &&
+                    tsc.MaLoaiCamera == thongSoCamera.MaLoaiCamera);
+
+                if (isDuplicate)
+                {
+                    ModelState.AddModelError("", "Thông số camera đã tồn tại. Vui lòng kiểm tra lại.");
+                }
+                else
+                {
+                    try
+                    {
+                        db.ThongSoCameras.Add(thongSoCamera);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                        ModelState.AddModelError("", "Đã xảy ra lỗi trong quá trình thêm thông số camera.");
+                    }
+                }
             }
 
+            // Populate ViewBag for dropdown
             ViewBag.MaLoaiCamera = new SelectList(db.LoaiCameras, "MaLoaiCamera", "TenLoaiCamera", thongSoCamera.MaLoaiCamera);
 
             var thongSoBienThe = db.ThongSoBienTheDienThoais
-            .Include(x => x.BienTheSanPham)
-            .Include(x => x.BienTheSanPham.SanPham)
-            .Select(x => new
-            {
-                MaTSBTDT = x.MaTSBTDT,
-                DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
-                "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
-                "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
-                "/ SKU: (" + x.BienTheSanPham.SKU + ")"
+                .Include(x => x.BienTheSanPham)
+                .Include(x => x.BienTheSanPham.SanPham)
+                .Select(x => new
+                {
+                    MaTSBTDT = x.MaTSBTDT,
+                    DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
+                                  "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
+                                  "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
+                                  "/ SKU: (" + x.BienTheSanPham.SKU + ")"
+                })
+                .ToList();
 
-            })
-            .ToList();
             ViewBag.MaTSBTDT = new SelectList(thongSoBienThe, "MaTSBTDT", "DisplayText", thongSoCamera.MaTSBTDT);
+
             return View(thongSoCamera);
         }
 

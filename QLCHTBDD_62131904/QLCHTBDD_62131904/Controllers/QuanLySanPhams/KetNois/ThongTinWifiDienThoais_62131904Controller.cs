@@ -69,27 +69,55 @@ namespace QLCHTBDD_62131904.Controllers.QuanLySanPhams.KetNois
         {
             if (ModelState.IsValid)
             {
-                db.ThongTinWifiDienThoais.Add(thongTinWifiDienThoai);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            var thongSoBienThe = db.ThongSoBienTheDienThoais
-            .Include(x => x.BienTheSanPham)
-            .Include(x => x.BienTheSanPham.SanPham)
-            .Select(x => new
-            {
-                MaTSBTDT = x.MaTSBTDT,
-                DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
-                "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
-                "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
-                "/ SKU: (" + x.BienTheSanPham.SKU + ")"
+                try
+                {
+                    // Check for duplicate entry
+                    bool isDuplicate = db.ThongTinWifiDienThoais.Any(info =>
+                        info.MaTSBTDT == thongTinWifiDienThoai.MaTSBTDT &&
+                        info.MaWifi == thongTinWifiDienThoai.MaWifi);
 
-            })
-            .ToList();
+                    if (isDuplicate)
+                    {
+                        ModelState.AddModelError("", "Thông tin WiFi đã tồn tại. Vui lòng kiểm tra lại.");
+                    }
+                    else
+                    {
+                        // Add new record
+                        db.ThongTinWifiDienThoais.Add(thongTinWifiDienThoai);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log error
+                    System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+
+                    // General error message
+                    ModelState.AddModelError("", "Đã xảy ra lỗi trong quá trình thêm thông tin WiFi.");
+                }
+            }
+
+            // Repopulate ViewBag for dropdowns
+            var thongSoBienThe = db.ThongSoBienTheDienThoais
+                .Include(x => x.BienTheSanPham)
+                .Include(x => x.BienTheSanPham.SanPham)
+                .Select(x => new
+                {
+                    MaTSBTDT = x.MaTSBTDT,
+                    DisplayText = x.BienTheSanPham.SanPham.TenSP + " - Màu: " + x.BienTheSanPham.MauSac.TenMau +
+                                  "/ RAM: " + x.BienTheSanPham.RAM.DungLuong +
+                                  "/ ROM: " + x.BienTheSanPham.ROM.DungLuong +
+                                  "/ SKU: (" + x.BienTheSanPham.SKU + ")"
+                })
+                .ToList();
+
             ViewBag.MaTSBTDT = new SelectList(thongSoBienThe, "MaTSBTDT", "DisplayText", thongTinWifiDienThoai.MaTSBTDT);
             ViewBag.MaWifi = new SelectList(db.Wifis, "MaWifi", "TenWifi", thongTinWifiDienThoai.MaWifi);
+
             return View(thongTinWifiDienThoai);
         }
+
 
         // GET: ThongTinWifiDienThoais_62131904/Edit/5
         public ActionResult Edit(int? id)

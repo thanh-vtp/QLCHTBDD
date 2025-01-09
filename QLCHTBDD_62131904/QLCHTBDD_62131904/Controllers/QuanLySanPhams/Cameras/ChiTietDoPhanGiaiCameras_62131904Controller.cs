@@ -72,25 +72,48 @@ namespace QLCHTBDD_62131904.Controllers.QuanLiSanPhams.Cameras
         {
             if (ModelState.IsValid)
             {
-                db.ChiTietDoPhanGiaiCameras.Add(chiTietDoPhanGiaiCamera);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    // Check for duplicates
+                    bool isDuplicate = db.ChiTietDoPhanGiaiCameras.Any(ct =>
+                        ct.MaThongSoCamera == chiTietDoPhanGiaiCamera.MaThongSoCamera &&
+                        ct.MaDoPhanGiai == chiTietDoPhanGiaiCamera.MaDoPhanGiai);
+
+                    if (isDuplicate)
+                    {
+                        ModelState.AddModelError("", "Chi tiết độ phân giải camera đã tồn tại. Vui lòng kiểm tra lại.");
+                    }
+                    else
+                    {
+                        db.ChiTietDoPhanGiaiCameras.Add(chiTietDoPhanGiaiCamera);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                    ModelState.AddModelError("", "Đã xảy ra lỗi trong quá trình thêm chi tiết độ phân giải camera.");
+                }
             }
 
-            ViewBag.MaDoPhanGiai = new SelectList(db.DoPhanGiaiCameras, "MaDoPhanGiai", "DoPhanGiai");
+            // Repopulate ViewBag items for the dropdown lists
+            ViewBag.MaDoPhanGiai = new SelectList(db.DoPhanGiaiCameras, "MaDoPhanGiai", "DoPhanGiai", chiTietDoPhanGiaiCamera.MaDoPhanGiai);
+
             var thongSoCamera = db.ThongSoCameras
                 .Include(x => x.ThongSoBienTheDienThoai.BienTheSanPham)
                 .Select(x => new
                 {
                     MaThongSoCamera = x.MaThongSoCamera,
                     DisplayText = x.ThongSoBienTheDienThoai.BienTheSanPham.SKU + " - " + x.LoaiCamera.TenLoaiCamera
-
                 })
                 .ToList();
 
-            ViewBag.MaThongSoCamera = new SelectList(thongSoCamera, "MaThongSoCamera", "DisplayText");
+            ViewBag.MaThongSoCamera = new SelectList(thongSoCamera, "MaThongSoCamera", "DisplayText", chiTietDoPhanGiaiCamera.MaThongSoCamera);
+
             return View(chiTietDoPhanGiaiCamera);
         }
+
 
         // GET: ChiTietDoPhanGiaiCameras_62131904/Edit/5
         public ActionResult Edit(int? id)
